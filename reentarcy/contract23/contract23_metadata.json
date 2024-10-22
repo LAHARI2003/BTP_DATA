@@ -1,1 +1,11 @@
-{ "contract_name": "contract23" }
+{
+    "contract_name": "contract23",
+    "contract_metadata": {
+      "contract_type": "Token Distribution Contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  

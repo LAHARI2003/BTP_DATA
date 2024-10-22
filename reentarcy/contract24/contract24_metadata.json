@@ -1,1 +1,11 @@
-{ "contract_name": "contract24" }
+{
+    "contract_name": "contract24",
+    "contract_metadata": {
+      "contract_type": "Donation and Withdrawal Contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  

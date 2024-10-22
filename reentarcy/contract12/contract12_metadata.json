@@ -1,1 +1,12 @@
-{ "contract_name": "contract12" }
+{
+    "contract_name": "contract12",
+    "contract_metadata": {
+      "contract_type": "Time-locked deposit contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy",
+        "Time lock"
+      ]
+    }
+  }
+  

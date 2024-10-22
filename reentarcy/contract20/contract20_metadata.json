@@ -1,1 +1,11 @@
-{ "contract_name": "contract20" }
+{
+    "contract_name": "contract20",
+    "contract_metadata": {
+      "contract_type": "Bank Contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  

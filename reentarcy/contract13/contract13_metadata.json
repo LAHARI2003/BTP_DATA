@@ -1,1 +1,12 @@
-{ "contract_name": "contract13" }
+{
+    "contract_name": "contract13",
+    "contract_metadata": {
+      "contract_type": "Savings and withdrawal contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy",
+        "Access control"
+      ]
+    }
+  }
+  

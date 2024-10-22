@@ -1,1 +1,11 @@
-{ "contract_name": "contract25" }
+{
+    "contract_name": "contract25",
+    "contract_metadata": {
+      "contract_type": "Bonus Withdrawal Contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  

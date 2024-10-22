@@ -1,1 +1,12 @@
-{ "contract_name": "contract15" }
+{
+    "contract_name": "contract15",
+    "contract_metadata": {
+      "contract_type": "Private banking contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy",
+        "Access control"
+      ]
+    }
+  }
+  
