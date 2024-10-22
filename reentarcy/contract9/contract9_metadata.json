@@ -1,1 +1,11 @@
-{ "contract_name": "contract9" }
+{
+    "contract_name": "contract9",
+    "contract_metadata": {
+      "contract_type": "Deposit and withdrawal wallet",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  

@@ -1,1 +1,11 @@
-{ "contract_name": "contract28" }
+{
+    "contract_name": "contract28",
+    "contract_metadata": {
+      "contract_type": "Reentrancy Insecure Contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  

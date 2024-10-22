@@ -1,1 +1,11 @@
-{ "contract_name": "contract27" }
+{
+    "contract_name": "contract27",
+    "contract_metadata": {
+      "contract_type": "Reentrancy DAO Contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  
