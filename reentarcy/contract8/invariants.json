@@ -1,0 +1,67 @@
+{
+  "invariants": [
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariant": {
+        "template": "Re-entrancy Check",
+        "expression": "msg.sender.call.value(_am)()",
+        "security_relevance": "High",
+        "description": "Ensures that the function `CashOut` is protected against re-entrancy attacks by maintaining a consistent balance state."
+      }
+    },
+    {
+      "vulnerability_category": "Access Control",
+      "invariant": {
+        "template": "isSenderOwner",
+        "expression": "msg.sender == owner",
+        "security_relevance": "High",
+        "description": "Ensures that only the owner can call the `setLog` function, protecting against unauthorized changes to the logging mechanism."
+      }
+    },
+    {
+      "vulnerability_category": "Access Control",
+      "invariant": {
+        "template": "Role-Based Access Control (RBAC)",
+        "expression": "require(tx.origin == owner)",
+        "security_relevance": "High",
+        "description": "Restricts access to sensitive operations like setting the log address, preventing unauthorized access."
+      }
+    },
+    {
+      "vulnerability_category": "Money Flow",
+      "invariant": {
+        "template": "Max Token Transfer Amount",
+        "expression": "_am <= balances[msg.sender]",
+        "security_relevance": "High",
+        "description": "Ensures that the amount withdrawn (`_am`) does not exceed the user’s balance, preventing overdrawing and unauthorized withdrawals."
+      }
+    },
+    {
+      "vulnerability_category": "Special Storage",
+      "invariant": {
+        "template": "Constant Balance Check",
+        "expression": "balances[msg.sender] >= 0",
+        "security_relevance": "Medium",
+        "description": "Ensures that a user's balance remains non-negative, preventing underflows and maintaining storage consistency."
+      }
+    },
+    {
+      "vulnerability_category": "Data Flow & Business Logic",
+      "invariant": {
+        "template": "Business Logic Consistency",
+        "expression": "balances[msg.sender] + msg.value >= balances[msg.sender]",
+        "security_relevance": "Medium",
+        "description": "Ensures that when a deposit is made, the new balance is consistent with the value deposited, preventing potential overflows."
+      }
+    },
+    {
+      "vulnerability_category": "Time Lock",
+      "invariant": {
+        "template": "Oracle Update Frequency",
+        "expression": "LastMsg.Time <= now",
+        "security_relevance": "Low",
+        "description": "Ensures that the timestamps recorded in the log do not exceed the current block time, maintaining a consistent event log."
+      }
+    }
+  ]
+}
