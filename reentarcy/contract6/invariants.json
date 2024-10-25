@@ -1,0 +1,52 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "expression": "msg.sender == owner",
+            "description": "Ensures only the owner can execute certain functions.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Access Control",
+            "expression": "owner == newOwner ? msg.sender : owner",
+            "description": "Validates that only the address marked as new owner can confirm the change of ownership.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "expression": "Holders[_addr] >= _wei",
+            "description": "Checks if the holder has enough balance before withdrawing.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "expression": "Holders[_addr] -= _wei",
+            "description": "Decreases the holder’s balance after successful withdrawal to prevent multiple withdrawals.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Time Lock",
+            "expression": "tx.origin == owner",
+            "description": "Verifies the origin of the transaction matches the owner before executing certain sensitive functions.",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Money Flow",
+            "expression": "msg.value >= MinDeposit",
+            "description": "Ensures deposits are above the minimum threshold for a valid deposit.",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Special Storage",
+            "expression": "Holders[msg.sender] += msg.value",
+            "description": "Updates the holder's balance when a deposit is made.",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Gas Control",
+            "expression": "gasUsed(WithdrawToHolder) ≤ maxGasPerFunc",
+            "description": "Limits the gas usage of the `WithdrawToHolder` function to prevent excessive gas consumption.",
+            "security_relevance": "Low"
+        }
+    ]
+}
