@@ -1,0 +1,32 @@
+{
+    "FunctionLevelAnalysis": {
+        "Deposit": {
+            "Description": "Handles deposits of Ether and logs the transaction.",
+            "DecisionPoints": [
+                "If msg.value >= MinDeposit, the deposit is processed and logged."
+            ],
+            "StateTransitionPoints": [
+                "Updates the balances mapping to reflect the new deposit."
+            ]
+        },
+        "CashOut": {
+            "Description": "Handles withdrawals of Ether by checking user balance and attempts to transfer Ether.",
+            "DecisionPoints": [
+                "Checks if the requested amount (_am) is less than or equal to the sender's balance.",
+                "Checks if the call to transfer Ether is successful."
+            ],
+            "StateTransitionPoints": [
+                "Updates balances to reduce the sender's balance upon successful withdrawal."
+            ]
+        }
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            "If msg.value >= MinDeposit in Deposit.",
+            "If _am <= balances[msg.sender] and msg.sender.call.value(_am)() in CashOut."
+        ],
+        "StateTransitionPoints": [
+            "Balances mapping update on successful Deposit or CashOut."
+        ]
+    }
+}
