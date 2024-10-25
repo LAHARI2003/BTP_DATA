@@ -1,0 +1,27 @@
+{
+    "ExecutionPathsAndCriticalProgramPoints": {
+        "FunctionLevelAnalysis": {
+            "Deposit": "Increases the balance of the sender and logs the deposit using the Log contract.",
+            "Collect": "Checks if the sender’s balance meets the minimum and requested amount before transferring funds and logging the transaction.",
+            "SetMinSum": "Sets the minimum balance required, allowed only before initialization.",
+            "SetLogFile": "Sets the address of the log file, allowed only before initialization.",
+            "Initialized": "Marks the contract as initialized."
+        },
+        "ExecutionPathTags": {
+            "DecisionPoints": {
+                "SetMinSum": "Checks if the contract is already initialized.",
+                "SetLogFile": "Checks if the contract is already initialized.",
+                "Collect": [
+                    "Checks if the sender’s balance is greater than or equal to the minimum balance.",
+                    "Checks if the sender’s balance is sufficient for the withdrawal amount."
+                ]
+            },
+            "StateTransitionPoints": {
+                "balances": "Updated when tokens are deposited or withdrawn.",
+                "MinSum": "Set when the SetMinSum function is called.",
+                "LogFile": "Set when the SetLogFile function is called.",
+                "intitalized": "Set when the Initialized function is called."
+            }
+        }
+    }
+}
