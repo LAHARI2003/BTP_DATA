@@ -1,0 +1,53 @@
+{
+  "invariants": [
+    {
+      "invariant": "balances[msg.sender] >= 0",
+      "vulnerability": "Access Control",
+      "expression": "balances[msg.sender] ≥ 0",
+      "security_relevance": "Medium",
+      "description": "Ensures that no negative balances exist for any user, protecting against incorrect balance deductions."
+    },
+    {
+      "invariant": "balances[msg.sender] >= _am",
+      "vulnerability": "Money Flow",
+      "expression": "balances[msg.sender] ≥ _am",
+      "security_relevance": "High",
+      "description": "Before allowing a withdrawal, the contract checks if the user's balance is sufficient for the withdrawal amount, preventing unauthorized fund transfers."
+    },
+    {
+      "invariant": "balances[msg.sender] >= MinSum",
+      "vulnerability": "Access Control",
+      "expression": "balances[msg.sender] ≥ MinSum",
+      "security_relevance": "Medium",
+      "description": "Ensures that the user's balance meets the minimum threshold required for collecting funds."
+    },
+    {
+      "invariant": "intitalized == true || SetMinSum/SetLogFile/Initialized functions callable",
+      "vulnerability": "Access Control",
+      "expression": "¬intitalized → (SetMinSum ∧ SetLogFile ∧ Initialized) callable",
+      "security_relevance": "High",
+      "description": "Ensures that the contract can only be initialized once and prevents reinitialization, avoiding unauthorized changes."
+    },
+    {
+      "invariant": "Log != 0x0",
+      "vulnerability": "Access Control",
+      "expression": "Log ≠ 0",
+      "security_relevance": "Low",
+      "description": "Ensures that the LogFile address is correctly set before operations that require logging, preventing null pointer exceptions."
+    },
+    {
+      "invariant": "msg.sender.call.value(_am)() → (balances[msg.sender] -= _am)",
+      "vulnerability": "Re-entrancy",
+      "expression": "msg.sender.call.value(_am)() → balances[msg.sender] := balances[msg.sender] - _am",
+      "security_relevance": "High",
+      "description": "Balances should be updated after a successful call to prevent re-entrancy attacks. This invariant should hold true for secure contract operation."
+    },
+    {
+      "invariant": "Log.AddMessage(msg.sender, _am, \"Collect\")",
+      "vulnerability": "Data Flow & Business Logic",
+      "expression": "Log.AddMessage(msg.sender, _am, \"Collect\") executed on successful withdrawal",
+      "security_relevance": "Low",
+      "description": "Ensures that all balance updates and withdrawals are logged properly for tracking purposes."
+    }
+  ]
+}
