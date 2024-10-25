@@ -1,0 +1,25 @@
+{
+    "Contract": "PERSONAL_BANK",
+    "ExecutionPathsAndCriticalProgramPoints": {
+        "FunctionLevelAnalysis": {
+            "SetMinSum": "Allows setting the minimum balance required for withdrawals, only if the contract is not initialized.",
+            "SetLogFile": "Sets the address of the LogFile contract, only if the contract is not initialized.",
+            "Initialized": "Marks the contract as initialized, preventing further changes to critical settings like MinSum or the log file address.",
+            "Deposit": "Adds Ether to the sender's balance and logs the transaction.",
+            "Collect": "Withdraws Ether if conditions are met (balance and MinSum), then logs the transaction.",
+            "FallbackFunction": "Redirects calls with Ether directly to the Deposit function."
+        },
+        "ExecutionPathTags": {
+            "DecisionPoints": [
+                "if (intitalized) in SetMinSum and SetLogFile to ensure these functions can only be called once before initialization.",
+                "if (balances[msg.sender] >= MinSum && balances[msg.sender] >= _am) in Collect to validate the withdrawal conditions.",
+                "if (msg.sender.call.value(_am)()) in Collect to attempt the Ether transfer and determine success."
+            ],
+            "StateTransitionPoints": [
+                "Updates to balances when users deposit or withdraw Ether.",
+                "Setting of the MinSum and LogFile values when the contract is uninitialized.",
+                "The initialized flag changes when the Initialized function is called."
+            ]
+        }
+    }
+}
