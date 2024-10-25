@@ -1,0 +1,8 @@
+{
+  "Time_Sensitive_Logic": {
+    "Contract_Initialization": "The SetMinSum and SetLogFile functions are time-sensitive as they can only be called before the contract is initialized."
+  },
+  "Conditional_Logic_Paths": {
+    "Withdrawal_Path": "If the balance and MinSum conditions are met in Collect, the withdrawal proceeds; otherwise, it fails."
+  }
+}
