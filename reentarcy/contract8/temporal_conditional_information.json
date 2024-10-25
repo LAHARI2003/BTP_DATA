@@ -1,0 +1,12 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": {
+      "LogTimestamp": "The AddMessage function in the Log contract records the timestamp (now) of each transaction."
+    },
+    "ConditionalLogicPaths": [
+      "The Deposit function proceeds if the msg.value >= MinDeposit condition is met.",
+      "The CashOut function only proceeds if _am <= balances[msg.sender].",
+      "Access control in setLog relies on tx.origin matching the owner’s address."
+    ]
+  }
+}
