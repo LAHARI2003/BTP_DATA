@@ -1,0 +1,52 @@
+{
+    "invariants": [
+        {
+            "expression": "acc.balance >= _am",
+            "vulnerability": "Reentrancy",
+            "security_relevance": "High",
+            "description": "Ensures that the account balance is sufficient before processing the withdrawal."
+        },
+        {
+            "expression": "acc.unlockTime <= now",
+            "vulnerability": "Access Control",
+            "security_relevance": "High",
+            "description": "Verifies that the unlock time has passed before allowing any withdrawal."
+        },
+        {
+            "expression": "msg.value >= 0",
+            "vulnerability": "Data Flow & Business Logic",
+            "security_relevance": "Low",
+            "description": "Ensures that the value sent in the transaction is non-negative."
+        },
+        {
+            "expression": "acc.balance >= MinSum",
+            "vulnerability": "Special Storage",
+            "security_relevance": "Medium",
+            "description": "Confirms that the account balance is at least the minimum required sum."
+        },
+        {
+            "expression": "History.length >= 0",
+            "vulnerability": "Data Flow & Business Logic",
+            "security_relevance": "Low",
+            "description": "Ensures that the history log is always initialized and keeps track of messages."
+        },
+        {
+            "expression": "LastMsg.Sender == _adr",
+            "vulnerability": "Data Flow & Business Logic",
+            "security_relevance": "Medium",
+            "description": "Verifies that the last message sender matches the provided address."
+        },
+        {
+            "expression": "acc.balance -= _am if msg.sender.call.value(_am)() succeeds",
+            "vulnerability": "Reentrancy",
+            "security_relevance": "High",
+            "description": "Decreases the balance only if the call to transfer ether is successful, which helps prevent reentrancy attacks."
+        },
+        {
+            "expression": "LogFile != null",
+            "vulnerability": "Special Storage",
+            "security_relevance": "Medium",
+            "description": "Ensures that the log file contract is properly initialized."
+        }
+    ]
+}
