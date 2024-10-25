@@ -1,0 +1,10 @@
+{
+    "CrossContractPoints": {
+        "CrossContractDependencies": {
+            "LogFile": "The contract depends on the LogFile contract to record transaction logs."
+        },
+        "InterContractConsistencyConditions": {
+            "LogFile": "The contract ensures that the LogFile address is set correctly before any deposits or withdrawals are logged."
+        }
+    }
+}
