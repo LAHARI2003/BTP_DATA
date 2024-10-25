@@ -1,0 +1,10 @@
+{
+    "Contract": "PERSONAL_BANK",
+    "SecurityMeasuresAndExistingProtections": {
+        "ImplementedSecurityControls": [
+            "Initialization Check: SetMinSum and SetLogFile both include if(intitalized) checks to prevent critical settings from being changed after initialization.",
+            "Balance and Minimum Sum Verification: The Collect function ensures the user’s balance is sufficient and meets the MinSum requirement before allowing a withdrawal."
+        ],
+        "FallbackFunctionality": "The contract uses a fallback function to automatically call Deposit when Ether is sent directly to the contract."
+    }
+}
