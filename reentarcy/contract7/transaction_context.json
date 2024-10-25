@@ -1,0 +1,9 @@
+{
+    "TransactionStateContext": {
+        "StakingState": "When users deposit funds through the Put function, it records their balances and unlock times.",
+        "WithdrawalState": "When users collect funds through the Collect function, it validates conditions like the minimum balance, unlock time, and transfers the funds if conditions are met."
+    },
+    "ExternalInteractions": {
+        "ExternalInteractions": "The contract interacts with the user wallet for both deposits and withdrawals. It also interacts with the Log contract to record messages for each transaction."
+    }
+}
