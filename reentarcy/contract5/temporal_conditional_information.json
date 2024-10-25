@@ -1,0 +1,13 @@
+{
+    "TemporalAndConditionalInformation": {
+        "TimeSensitiveLogic": {
+            "LogFileTimestamps": "Logs in the LogFile contract depend on the block timestamp to record when transactions occur."
+        },
+        "ConditionalLogicPaths": {
+            "SetMinSum": "Depends on whether the contract is initialized or not.",
+            "Collect": [
+                "Depends on the user’s balance being sufficient and meeting the minimum required sum."
+            ]
+        }
+    }
+}
