@@ -1,0 +1,40 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Feature": "Access Control",
+        "Description": "The constructor U_BANK correctly assigns the Log contract instance to a state variable, ensuring that only the designated Log contract is used for logging purposes."
+      },
+      {
+        "Feature": "Invariant Validation",
+        "Description": "The Collect function validates multiple conditions before allowing a withdrawal (e.g., ensuring that the balance is greater than or equal to both the minimum sum and the withdrawal amount), helping to prevent unauthorized access."
+      },
+      {
+        "Feature": "Consistent State Updates",
+        "Description": "The Put function properly updates the user's balance and unlockTime before logging the event, ensuring that the state is consistent and events reflect the correct state."
+      },
+      {
+        "Feature": "Fallback Function Usage",
+        "Description": "The fallback function calls the Put function with a default unlock time, ensuring that any direct payments to the contract are recorded properly in the system."
+      }
+    ],
+    "RiskyFeatures": [
+      {
+        "Feature": "Reentrancy Risk",
+        "Description": "The Collect function uses msg.sender.call.value(_am)(), which is vulnerable to reentrancy attacks if not protected by a reentrancy guard. The state update (acc.balance -= _am) happens after the external call, which could allow an attacker to reenter the function before the state update."
+      },
+      {
+        "Feature": "Use of Deprecated Syntax",
+        "Description": "The contract uses deprecated var syntax, which is not recommended in Solidity due to type safety concerns. It is better to explicitly declare variable types for clarity and security."
+      },
+      {
+        "Feature": "Lack of Access Control on Critical Functions",
+        "Description": "There is no access control mechanism (like onlyOwner) implemented for setting MinSum, which is a critical value in determining withdrawal eligibility. An attacker could exploit this if they find a way to change this value."
+      },
+      {
+        "Feature": "Time-Dependent Logic",
+        "Description": "The unlockTime logic depends on the now keyword, which may lead to vulnerabilities if miners manipulate timestamps to their advantage. Using block.timestamp directly and properly managing time-based logic is recommended."
+      }
+    ]
+  }
+}
