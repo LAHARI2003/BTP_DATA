@@ -1,0 +1,62 @@
+[
+    {
+        "invariant": "balances[msg.sender] >= 0",
+        "vulnerability": "Access Control",
+        "security_relevance": "High",
+        "description": "Ensures that user balances are non-negative."
+    },
+    {
+        "invariant": "MinSum >= 1 ether",
+        "vulnerability": "Access Control",
+        "security_relevance": "Medium",
+        "description": "Guarantees that the minimum sum for withdrawal is set and does not go below 1 ether."
+    },
+    {
+        "invariant": "msg.sender.call.value(_am)() -> Reentrancy",
+        "vulnerability": "Re-entrancy",
+        "security_relevance": "High",
+        "description": "Checks that external calls do not lead to re-entrancy attacks when transferring funds."
+    },
+    {
+        "invariant": "balances[msg.sender] >= _am",
+        "vulnerability": "Access Control",
+        "security_relevance": "High",
+        "description": "Ensures that a user can only withdraw an amount that is less than or equal to their balance."
+    },
+    {
+        "invariant": "initialized == true",
+        "vulnerability": "Initialization",
+        "security_relevance": "Medium",
+        "description": "Ensures that the contract is initialized properly before sensitive functions can be executed."
+    },
+    {
+        "invariant": "Log != address(0)",
+        "vulnerability": "Access Control",
+        "security_relevance": "Low",
+        "description": "Ensures that the logging contract address is valid and non-zero."
+    },
+    {
+        "invariant": "History.length >= 0",
+        "vulnerability": "Data Flow",
+        "security_relevance": "Low",
+        "description": "Ensures that the log history length is always non-negative, indicating proper tracking of events."
+    },
+    {
+        "invariant": "balances[msg.sender] -= _am",
+        "vulnerability": "Data Consistency",
+        "security_relevance": "High",
+        "description": "Ensures that the user's balance is decremented accurately when funds are collected."
+    },
+    {
+        "invariant": "msg.value >= 0",
+        "vulnerability": "Money Flow",
+        "security_relevance": "Medium",
+        "description": "Guarantees that deposits made to the contract are non-negative."
+    },
+    {
+        "invariant": "Log.AddMessage(msg.sender, msg.value, 'Put')",
+        "vulnerability": "Logging Consistency",
+        "security_relevance": "Low",
+        "description": "Ensures that deposit events are logged correctly for tracking purposes."
+    }
+]
