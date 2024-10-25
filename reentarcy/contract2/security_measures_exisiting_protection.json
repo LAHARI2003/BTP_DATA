@@ -1,0 +1,19 @@
+{
+    "ImplementedSecurityControls": [
+        {
+            "Control": "Minimum Deposit Requirement",
+            "Function": "Deposit",
+            "Details": "Ensures deposits must be greater than or equal to MinDeposit."
+        }
+    ],
+    "LackingSecurityControls": [
+        {
+            "Control": "Reentrancy Guard",
+            "Details": "The contract lacks a reentrancy guard for the CashOut function, making it vulnerable to reentrancy attacks."
+        },
+        {
+            "Control": "Access Control",
+            "Details": "No access control is present for critical functions such as CashOut."
+        }
+    ]
+}
