@@ -1,0 +1,10 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "No specific access control implemented. All functions are public.",
+    "TimeLock": "The Collect function enforces a time lock based on the unlockTime value.",
+    "MinimumBalanceCheck": "The Collect function ensures that the balance is above the MinSum before allowing withdrawals."
+  },
+  "FallbackFunctionality": {
+    "FallbackFunction": "The fallback function invokes Put with an unlock time of 0 to handle Ether deposits without function calls."
+  }
+}
