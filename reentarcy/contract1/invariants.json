@@ -1,0 +1,59 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "invariants": [
+                {
+                    "description": "The Initialized() function can only be called once.",
+                    "expression": "intitalized = false => Initialized() sets intitalized = true",
+                    "nature": "Static",
+                    "security_relevance": "High",
+                    "reasoning": "Prevents multiple initializations which could alter state variables such as MinSum or Log."
+                }
+            ]
+        },
+        {
+            "vulnerability": "Money Flow",
+            "invariants": [
+                {
+                    "description": "The total sum collected must not exceed the available balance for that user.",
+                    "expression": "balances[msg.sender] >= _am => (msg.sender.call.value(_am)() = true => balances[msg.sender] = balances[msg.sender] - _am)",
+                    "nature": "Dynamic",
+                    "security_relevance": "High",
+                    "reasoning": "Ensures that if the call to transfer ether succeeds, the balance is updated accordingly."
+                }
+            ]
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariants": [
+                {
+                    "description": "Ensure that the state change occurs before making the external call.",
+                    "expression": "balances[msg.sender] >= _am => (msg.sender.call.value(_am)() fails => balances[msg.sender] remains unchanged)",
+                    "nature": "Dynamic",
+                    "security_relevance": "High",
+                    "reasoning": "Ensures that if the call fails, the balance remains consistent."
+                }
+            ]
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "invariants": [
+                {
+                    "description": "The MinSum should always be non-zero once initialized.",
+                    "expression": "MinSum >= 1 ether after initialization",
+                    "nature": "Static",
+                    "security_relevance": "Medium",
+                    "reasoning": "Ensures that users cannot withdraw below a minimum threshold once the value is set."
+                },
+                {
+                    "description": "The Log contract address should be initialized and valid.",
+                    "expression": "Log != 0x0 after initialization",
+                    "nature": "Static",
+                    "security_relevance": "High",
+                    "reasoning": "Ensures logging is possible and prevents null address usage."
+                }
+            ]
+        }
+    ]
+}
