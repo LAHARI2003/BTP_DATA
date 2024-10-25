@@ -1,0 +1,10 @@
+{
+    "Contract": "PERSONAL_BANK",
+    "TemporalAndConditionalInformation": {
+        "TimeSensitiveLogic": "The LogFile uses now (block timestamp) to log transaction times.",
+        "ConditionalLogicPaths": [
+            "Different paths exist based on whether the contract is initialized (affecting functions like SetMinSum and SetLogFile).",
+            "Withdrawal paths depend on whether the balance and minimum sum conditions are met (Collect function)."
+        ]
+    }
+}
