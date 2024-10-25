@@ -1,0 +1,9 @@
+{
+    "ImplementedSecurityControls": {
+        "TimeLock": "The Collect function uses now > acc.unlockTime to enforce a time lock before withdrawals can occur.",
+        "AccessControl": "There is no owner-only access control or privilege separation implemented, meaning any user can interact with key functions like Put and Collect."
+    },
+    "FallbackFunctionality": {
+        "FallbackBehavior": "The fallback function calls the Put function with an unlock time of 0, allowing deposits when ether is sent directly to the contract."
+    }
+}
