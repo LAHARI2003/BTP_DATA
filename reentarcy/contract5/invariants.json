@@ -1,0 +1,65 @@
+[
+    {
+        "Invariant": "balances[msg.sender] >= 0",
+        "Vulnerability": "Access Control",
+        "SecurityRelevanceLevel": "High",
+        "Expression": "balances[msg.sender] >= 0",
+        "Description": "The balance for any address must be non-negative."
+    },
+    {
+        "Invariant": "msg.value >= 0",
+        "Vulnerability": "Money Flow",
+        "SecurityRelevanceLevel": "Low",
+        "Expression": "msg.value >= 0",
+        "Description": "The value sent with any transaction must be non-negative."
+    },
+    {
+        "Invariant": "MinSum >= 0",
+        "Vulnerability": "Special Storage",
+        "SecurityRelevanceLevel": "Medium",
+        "Expression": "MinSum >= 0",
+        "Description": "The minimum sum (MinSum) should be a non-negative value."
+    },
+    {
+        "Invariant": "balances[msg.sender] >= _am",
+        "Vulnerability": "Re-entrancy",
+        "SecurityRelevanceLevel": "High",
+        "Expression": "balances[msg.sender] >= _am",
+        "Description": "Before transferring funds, the contract checks that the balance of the sender is greater than or equal to the amount requested."
+    },
+    {
+        "Invariant": "msg.sender.call.value(_am)() == true -> balances[msg.sender] - _am >= 0",
+        "Vulnerability": "Re-entrancy",
+        "SecurityRelevanceLevel": "High",
+        "Expression": "msg.sender.call.value(_am)() == true -> balances[msg.sender] - _am >= 0",
+        "Description": "If the call to transfer funds succeeds, the remaining balance must be non-negative."
+    },
+    {
+        "Invariant": "History.length >= 0",
+        "Vulnerability": "Data Flow",
+        "SecurityRelevanceLevel": "Low",
+        "Expression": "History.length >= 0",
+        "Description": "The length of the History array in the LogFile contract must always be non-negative."
+    },
+    {
+        "Invariant": "balances[msg.sender] + msg.value >= balances[msg.sender]",
+        "Vulnerability": "Money Flow",
+        "SecurityRelevanceLevel": "Medium",
+        "Expression": "balances[msg.sender] + msg.value >= balances[msg.sender]",
+        "Description": "Depositing funds should increase the balance or keep it the same."
+    },
+    {
+        "Invariant": "intitalized == true -> MinSum is immutable",
+        "Vulnerability": "Special Storage",
+        "SecurityRelevanceLevel": "High",
+        "Expression": "intitalized == true -> MinSum is immutable",
+        "Description": "Once the contract is initialized, MinSum should no longer be modifiable."
+    },
+    {
+        "Invariant": "Log != null",
+        "Vulnerability": "Access Control",
+        "SecurityRelevanceLevel": "Medium",
+        "Expression": "Log != null",
+        "Description": "The Log contract must be set before any deposit or withdrawal operations are performed."
+    }
+]
