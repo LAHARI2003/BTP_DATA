@@ -1,0 +1,60 @@
+{
+    "invariants": [
+        {
+            "category": "Access Control",
+            "invariant": "msg.sender == tx.origin",
+            "expression": "msg.sender == tx.origin",
+            "security_relevance": "High",
+            "vulnerability": "Re-entrancy",
+            "description": "Ensures that only external accounts (EOA) can interact, preventing contract-to-contract calls."
+        },
+        {
+            "category": "Money Flow",
+            "invariant": "balance >= MinSum",
+            "expression": "Acc[msg.sender].balance >= MinSum",
+            "security_relevance": "High",
+            "vulnerability": "Access Control",
+            "description": "Verifies that the balance meets the minimum requirement before proceeding with operations."
+        },
+        {
+            "category": "Time Lock",
+            "invariant": "now >= unlockTime",
+            "expression": "now >= Acc[msg.sender].unlockTime",
+            "security_relevance": "Medium",
+            "vulnerability": "Time-based Lock",
+            "description": "Ensures that withdrawals or operations can only occur after the unlock time has passed."
+        },
+        {
+            "category": "Money Flow",
+            "invariant": "balance >= _am",
+            "expression": "Acc[msg.sender].balance >= _am",
+            "security_relevance": "High",
+            "vulnerability": "Overdraft Prevention",
+            "description": "Ensures that the withdrawal amount does not exceed the available balance of the account."
+        },
+        {
+            "category": "Gas Control",
+            "invariant": "gasleft() > gas_threshold",
+            "expression": "gasleft() > gas_threshold",
+            "security_relevance": "Medium",
+            "vulnerability": "Gas Limit Exhaustion",
+            "description": "Checks if sufficient gas is available to execute critical operations to prevent out-of-gas attacks."
+        },
+        {
+            "category": "Re-entrancy",
+            "invariant": "Acc[msg.sender].balance -= _am after call",
+            "expression": "Acc[msg.sender].balance -= _am after msg.sender.call.value(_am)()",
+            "security_relevance": "High",
+            "vulnerability": "Re-entrancy",
+            "description": "Ensures that the balance is deducted only after the transfer function completes, which is vulnerable if the external call is exploited."
+        },
+        {
+            "category": "Special Storage",
+            "invariant": "LogFile != 0x0",
+            "expression": "LogFile != 0x0",
+            "security_relevance": "Low",
+            "vulnerability": "Uninitialized Variable Check",
+            "description": "Ensures that the LogFile address is properly set during contract initialization."
+        }
+    ]
+}
