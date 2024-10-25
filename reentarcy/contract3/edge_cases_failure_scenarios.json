@@ -1,0 +1,29 @@
+{
+    "EdgeCaseAnnotations": [
+        {
+            "Function": "Deposit",
+            "Scenario": "Zero value deposits are not explicitly handled; Ether is accepted regardless of the amount."
+        },
+        {
+            "Function": "Collect",
+            "Scenario": "Insufficient balance withdrawals are checked to prevent overdraws."
+        }
+    ],
+    "CommonAttackPatterns": [
+        {
+            "Vulnerability": "Reentrancy",
+            "Location": "Collect function",
+            "Details": "The contract calls msg.sender.call.value(_am)(), allowing for potential reentrancy attacks."
+        },
+        {
+            "Vulnerability": "Uninitialized State",
+            "Location": "SetMinSum and SetLogFile functions",
+            "Details": "If these functions are called before the contract is initialized, they can alter critical parameters."
+        }
+    ],
+    "RecoveryMechanisms": [
+        {
+            "CurrentState": "None implemented. An emergency stop or circuit breaker mechanism would be beneficial."
+        }
+    ]
+}
