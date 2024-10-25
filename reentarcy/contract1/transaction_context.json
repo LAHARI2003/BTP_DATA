@@ -1,0 +1,13 @@
+{
+    "Contract": "PERSONAL_BANK",
+    "TransactionContext": {
+        "TransactionStateContext": {
+            "DepositState": "When users deposit Ether into the contract using the Deposit function or by directly sending Ether to the contract.",
+            "WithdrawalState": "When users attempt to withdraw Ether using the Collect function, which checks the user's balance and conditions for withdrawal."
+        },
+        "ExternalInteractions": [
+            "The contract interacts with an external LogFile contract to log transactions.",
+            "Ether transfers occur when users deposit or withdraw funds."
+        ]
+    }
+}
