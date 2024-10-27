@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract10",
+    "contract_metadata": {
+      "contract_type": "ETH Vault",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  
