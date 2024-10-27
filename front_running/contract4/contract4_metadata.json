@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract4",
+    "contract_metadata": {
+        "contract_type": "Game Contract (Odds and Evens)",
+        "complexity_level": "Medium",
+        "vulnerability_category": [
+            "Front Running"
+        ],
+        "vulnerable_at_lines": [25, 28]
+    }
+}

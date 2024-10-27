@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract4",
+    "contract_metadata": {
+        "contract_type": "Lottery",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Bad Randomness"
+        ],
+        "vulnerable_at_lines": [38, 42]
+    }
+}

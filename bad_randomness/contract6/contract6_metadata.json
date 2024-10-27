@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract6",
+    "contract_metadata": {
+        "contract_type": "PredictTheBlockHashChallenge",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Bad Randomness"
+        ],
+        "vulnerable_at_lines": [35]
+    }
+}
