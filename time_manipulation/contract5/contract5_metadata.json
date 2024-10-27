@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract5",
+    "contract_metadata": {
+        "contract_type": "Timed Crowdsale Contract",
+        "complexity_level": "Low",
+        "vulnerability_category": [
+            "Time Manipulation"
+        ],
+        "vulnerable_at_lines": [13]
+    }
+}

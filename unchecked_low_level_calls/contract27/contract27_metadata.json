@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract27",
+    "contract_metadata": {
+        "contract_type": "Token Sale Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [54, 65]
+    }
+}

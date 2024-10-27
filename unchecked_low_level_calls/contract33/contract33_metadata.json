@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract33",
+    "contract_metadata": {
+        "contract_type": "Game with Prize Mechanism",
+        "complexity_level": "Medium",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [100, 106, 133]
+    }
+}

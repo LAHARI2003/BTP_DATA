@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract4",
+    "contract_metadata": {
+        "contract_type": "Roulette Contract",
+        "complexity_level": "Medium",
+        "vulnerability_category": [
+            "Time Manipulation"
+        ],
+        "vulnerable_at_lines": [18, 20]
+    }
+}

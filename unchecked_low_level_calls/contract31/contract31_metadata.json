@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract31",
+    "contract_metadata": {
+        "contract_type": "Proxy and Deposit Proxy",
+        "complexity_level": "Moderate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [14]
+    }
+}

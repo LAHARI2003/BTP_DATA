@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract1",
+    "contract_metadata": {
+        "contract_type": "Proof of Concept Game Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [201, 213]
+    }
+}

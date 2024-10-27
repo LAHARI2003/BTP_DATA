@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract47",
+    "contract_metadata": {
+        "contract_type": "Ether Transfer",
+        "complexity_level": "Medium",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [44]
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract15",
+    "contract_metadata": {
+        "contract_type": "SimpleWallet Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [33]
+    }
+}

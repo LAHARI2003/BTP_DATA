@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract30",
+    "contract_metadata": {
+        "contract_type": "Splitter and Puppet Contract",
+        "complexity_level": "Moderate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [69, 71, 73, 75, 102]
+    }
+}

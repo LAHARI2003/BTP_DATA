@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract44",
+    "contract_metadata": {
+        "contract_type": "Token Distribution",
+        "complexity_level": "High",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [30]
+    }
+}
