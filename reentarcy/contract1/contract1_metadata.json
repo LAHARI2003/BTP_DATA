@@ -1,0 +1,13 @@
+{
+    "contract_name": "contract1",
+    "contract_metadata": {
+      "contract_type": "Staking contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Access control",
+        "Time lock",
+        "Money flow"
+      ]
+    }
+  }
+  
