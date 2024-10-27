@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract18",
+    "contract_metadata": {
+      "contract_type": "Savings Contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  

@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract19",
+    "contract_metadata": {
+      "contract_type": "Wallet Contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  

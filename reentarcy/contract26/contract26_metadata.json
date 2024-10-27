@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract26",
+    "contract_metadata": {
+      "contract_type": "Cross Function Reentrancy Contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  
