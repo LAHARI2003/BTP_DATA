@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract15",
+    "contract_metadata": {
+        "contract_type": "Unprotected Function Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Access Control"
+        ],
+        "vulnerable_at_lines": [25]
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract14",
+    "contract_metadata": {
+        "contract_type": "Simple Suicide Contract",
+        "complexity_level": "Low",
+        "vulnerability_category": [
+            "Access Control"
+        ],
+        "vulnerable_at_lines": [12, 13]
+    }
+}

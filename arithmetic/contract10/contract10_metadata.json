@@ -1,0 +1,12 @@
+{
+    "contract_name": "contract10",
+    "contract_metadata": {
+        "contract_type": "Integer Overflow Multi-Transaction with Single Function Example",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Arithmetic",
+            "Integer Overflow"
+        ],
+        "vulnerable_at_lines": [22]
+    }
+}

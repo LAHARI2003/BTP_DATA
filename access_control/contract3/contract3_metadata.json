@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract3",
+    "contract_metadata": {
+        "contract_type": "Missing Constructor Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Access Control"
+        ],
+        "vulnerable_at_lines": [20]
+    }
+}
