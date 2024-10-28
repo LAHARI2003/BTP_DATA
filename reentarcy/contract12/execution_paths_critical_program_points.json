@@ -1,0 +1,35 @@
+{
+    "FunctionLevelAnalysis": {
+        "Deposit": {
+            "Description": "Handles deposits, updates the user’s balance, logs the deposit, and sets the last block number.",
+            "ExecutionPathTags": {
+                "DecisionPoints": [
+                    "msg.value > MinDeposit ensures deposits meet the minimum required amount."
+                ],
+                "StateTransitionPoints": [
+                    "Updates balances and sets lastBlock to the current block."
+                ]
+            }
+        },
+        "CashOut": {
+            "Description": "Handles ETH withdrawals, checks user balance, last block number, performs transfer, updates balance, and logs withdrawal.",
+            "ExecutionPathTags": {
+                "DecisionPoints": [
+                    "_am <= balances[msg.sender] checks for sufficient balance.",
+                    "block.number > lastBlock prevents multiple withdrawals within the same block."
+                ],
+                "StateTransitionPoints": [
+                    "Updates balances, logs transaction in TransferLog, and transfers the requested amount."
+                ]
+            }
+        },
+        "AddMessage": {
+            "Description": "Logs messages in the Log contract.",
+            "ExecutionPathTags": {
+                "StateTransitionPoints": [
+                    "Updates History with new transaction messages."
+                ]
+            }
+        }
+    }
+}
