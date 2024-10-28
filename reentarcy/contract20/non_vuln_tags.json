@@ -1,0 +1,33 @@
+{
+  "nonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "AccessControl": "The contract utilizes a constructor (MY_BANK) to assign the Log file address, ensuring the logging mechanism is controlled and set once upon deployment.",
+        "MoneyFlowIntegrity": "The contract requires a minimum balance (MinSum) of 1 ether for withdrawals, which prevents small transactions and maintains a base level for withdrawals.",
+        "InvariantValidationExamples": [
+          {
+            "PutFunction": "The Put function ensures the balance of the sender account is updated before the logging event occurs, maintaining consistency.",
+            "CollectFunction": "The Collect function validates the conditions (MinSum, _am amount, and unlockTime) before permitting any transfer, enforcing specific constraints on withdrawal timing and balance limits."
+          }
+        ]
+      }
+    ]
+  },
+  "PotentiallyRiskyFeatures": {
+    "ReentrancyRisk": [
+      {
+        "CollectFunction": "The function uses 'msg.sender.call.value(_am)()' which is vulnerable to reentrancy attacks. This allows an attacker to potentially re-enter the contract during the call before 'acc.balance' is reduced, thus repeatedly calling Collect and draining funds."
+      }
+    ],
+    "GasLimitRisk": [
+      {
+        "FallbackFunction": "The fallback function calls the Put function with an unlockTime of 0, which might lead to high gas usage if invoked frequently. It could inadvertently lead to contract funds being locked if gas costs exceed transaction limits."
+      }
+    ],
+    "LackOfAccessControl": [
+      {
+        "CollectFunction": "Anyone with a minimum balance of MinSum and sufficient unlock time can call the Collect function, which may lead to misuse if unintended users gain access to calling this function under appropriate conditions."
+      }
+    ]
+  }
+}
