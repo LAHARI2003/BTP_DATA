@@ -1,0 +1,58 @@
+{
+  "invariants": [
+    {
+      "expression": "msg.value >= MinDeposit",
+      "description": "Deposit amount should be greater than or equal to the minimum deposit.",
+      "vulnerability": "Access Control",
+      "security_relevance": "Medium"
+    },
+    {
+      "expression": "balances[msg.sender] >= 0",
+      "description": "User balance should never be negative.",
+      "vulnerability": "Money Flow",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "balances[msg.sender] >= _am",
+      "description": "User withdrawal amount should not exceed their balance.",
+      "vulnerability": "Money Flow",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "LastMsg.Sender == msg.sender",
+      "description": "The last message sender in the log should match the sender of the latest transaction.",
+      "vulnerability": "Data Flow & Business Logic",
+      "security_relevance": "Low"
+    },
+    {
+      "expression": "TransferLog.AddMessage(msg.sender, msg.value, 'Deposit')",
+      "description": "Deposit action should be logged for the sender with the deposited amount.",
+      "vulnerability": "Logging Consistency",
+      "security_relevance": "Medium"
+    },
+    {
+      "expression": "TransferLog.AddMessage(msg.sender, _am, 'CashOut')",
+      "description": "CashOut action should be logged for the sender with the withdrawn amount.",
+      "vulnerability": "Logging Consistency",
+      "security_relevance": "Medium"
+    },
+    {
+      "expression": "balances[msg.sender] == Old(balances[msg.sender]) + msg.value",
+      "description": "After deposit, the balance should be updated by adding the deposited amount.",
+      "vulnerability": "Money Flow",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "balances[msg.sender] == Old(balances[msg.sender]) - _am",
+      "description": "After CashOut, the balance should be reduced by the withdrawn amount.",
+      "vulnerability": "Money Flow",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "msg.sender.call.value(_am)()",
+      "description": "Potential re-entrancy vulnerability as the external call is unguarded.",
+      "vulnerability": "Re-entrancy",
+      "security_relevance": "High"
+    }
+  ]
+}
