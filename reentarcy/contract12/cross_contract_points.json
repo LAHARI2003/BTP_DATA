@@ -1,0 +1,8 @@
+{
+    "CrossContractDependencies": {
+        "Description": "ETH_FUND depends on the Log contract to log transaction details, including sender, amount, and type."
+    },
+    "InterContractConsistencyConditions": {
+        "Description": "The contract assumes that the Log contract will always be available to record messages. Any modification to Log's structure or availability would affect ETH_FUND's operations."
+    }
+}
