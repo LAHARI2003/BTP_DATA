@@ -1,0 +1,46 @@
+{
+  "invariants": [
+    {
+      "vulnerability_category": "Access Control",
+      "invariant_template": "msg.sender == owner?",
+      "expression_representation": "msg.sender == LogFile",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability_category": "Access Control",
+      "invariant_template": "isInitialized",
+      "expression_representation": "intitalized == true",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariant_template": "nonReEntrant",
+      "expression_representation": "reentrant_lock == false",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability_category": "Money Flow",
+      "invariant_template": "TokenOutUpperBound",
+      "expression_representation": "balances[msg.sender] >= _am",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability_category": "Money Flow",
+      "invariant_template": "TokenOutUpperBound",
+      "expression_representation": "balances[msg.sender] >= MinSum",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability_category": "Gas Control",
+      "invariant_template": "Gas Cost Prediction",
+      "expression_representation": "gasUsed(Collect) <= maxGasPerFunc",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability_category": "Special Storage",
+      "invariant_template": "Constant Balance Check",
+      "expression_representation": "balance == sum(balances)",
+      "security_relevance": "High"
+    }
+  ]
+}
