@@ -1,0 +1,37 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "AccessControl": "The Deposit function ensures that only deposits above the MinDeposit threshold are added to balances, maintaining a minimum deposit policy."
+      },
+      {
+        "Logging": "The contract utilizes an external Log contract to record deposits and withdrawals, providing an auditable trail of transactions."
+      },
+      {
+        "MinimalGasCostFallback": "The fallback function is payable and does not contain logic, minimizing gas costs in case of accidental or intentional Ether transfers."
+      }
+    ],
+    "RiskyFeatures": [
+      {
+        "ReentrancyRisk": "The CashOut function uses a call.value pattern to transfer Ether to the sender, which is vulnerable to reentrancy attacks if not carefully managed. This allows a malicious contract to repeatedly call CashOut before the balances are updated, draining funds."
+      },
+      {
+        "UnprotectedWithdrawal": "The CashOut function allows any caller to withdraw Ether up to their balance without additional authentication, which could pose risks if balances are manipulated elsewhere in the contract."
+      },
+      {
+        "DirectValueTransfer": "The use of low-level call.value() in CashOut can bypass gas stipend limitations, allowing reentrant calls to be made with full gas."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "StateConsistency": "The Deposit function ensures that balances[msg.sender] is incremented by msg.value and then logged, preserving the integrity of the account balance."
+      },
+      {
+        "InvariantOnBalanceReduction": "In CashOut, the condition _am <= balances[msg.sender] checks if the requested amount is within the user’s balance before allowing a transfer."
+      },
+      {
+        "Atomicity": "The contract uses a sequence where balance is adjusted only after the call.value() transfer completes, even though this pattern can still be susceptible to reentrancy."
+      }
+    ]
+  }
+}
