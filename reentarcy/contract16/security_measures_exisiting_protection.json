@@ -1,0 +1,9 @@
+{
+    "ImplementedSecurityControls": {
+        "MinimumDepositRequirement": "Ensures only deposits of at least 1 ether are processed.",
+        "ReentrancyWarning": "Contract flagged for reentrancy risk at line 38."
+    },
+    "FallbackFunctionality": {
+        "FallbackFunction": "Allows contract to receive Ether with no additional logic implemented in fallback function."
+    }
+}
