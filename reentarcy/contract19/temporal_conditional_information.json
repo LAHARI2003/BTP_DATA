@@ -1,0 +1,9 @@
+{
+    "TimeSensitiveLogic": {
+        "Collect": "Requires that block timestamp is greater than unlockTime to allow withdrawals."
+    },
+    "ConditionalLogicPaths": {
+        "Put": "Checks if unlockTime is greater than current timestamp (now) to update the lock time.",
+        "Collect": "Withdrawal only proceeds if balance, minimum sum, and time conditions are met."
+    }
+}
