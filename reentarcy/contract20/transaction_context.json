@@ -1,0 +1,11 @@
+{
+    "TransactionContext": {
+        "TransactionStateContext": {
+            "DepositState": "When users deposit Ether using the Put function.",
+            "WithdrawalState": "When users withdraw Ether via the Collect function."
+        },
+        "ExternalInteractions": {
+            "Description": "Transfers Ether between users and the contract during deposits and withdrawals."
+        }
+    }
+}
