@@ -1,0 +1,7 @@
+{
+  "Implemented Security Controls": {
+    "Re-Initialization Check": "The intitalized flag is set to prevent reinitialization of SetMinSum and SetLogFile functions.",
+    "Balance and Time Checks": "Conditions in Collect prevent premature or overdrawn withdrawals, with minimum balance, balance sufficiency, and time-lock checks."
+  },
+  "Fallback Functionality": "The contract includes a fallback function that redirects Ether sent to the contract to the Put function with a lock time of 0."
+}
