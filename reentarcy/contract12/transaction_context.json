@@ -1,0 +1,9 @@
+{
+    "TransactionStateContext": {
+        "StakingState": "Users deposit ETH using the Deposit function.",
+        "WithdrawalState": "Users withdraw ETH through the CashOut function, provided they have sufficient balance and the last block condition is met."
+    },
+    "ExternalInteractions": {
+        "Description": "The contract interacts with an external Log contract (TransferLog) to log transaction messages and with the Ethereum blockchain for transfers."
+    }
+}
