@@ -1,0 +1,9 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": "No specific owner restriction implemented; functions are public.",
+        "BlockLimitEnforcement": "CashOut uses block.number > lastBlock to prevent multiple withdrawals in the same block."
+    },
+    "FallbackFunctionality": {
+        "Description": "Fallback function accepts Ether but does not log or credit balances, thus preventing unwanted crediting from direct transfers."
+    }
+}
