@@ -1,0 +1,9 @@
+{
+  "Implemented_Security_Controls": {
+    "MinDeposit_Check": "Deposit function enforces a minimum deposit threshold through msg.value > MinDeposit.",
+    "Balance_Check": "CashOut verifies that the user’s balance covers the withdrawal request."
+  },
+  "Fallback_Functionality": {
+    "Fallback": "A default fallback function is included, allowing the contract to receive Ether even outside of explicit Deposit transactions."
+  }
+}
