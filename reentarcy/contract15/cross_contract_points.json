@@ -1,0 +1,8 @@
+{
+    "Cross_Contract_Dependencies": [
+        "Interacts with the external Log contract to store deposit and withdrawal messages."
+    ],
+    "Inter_Contract_Consistency_Conditions": [
+        "None directly applicable, as there are no enforced consistency conditions across other contracts."
+    ]
+}
