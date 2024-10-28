@@ -1,0 +1,45 @@
+{
+  "non_vulnerable_tags": {
+    "Well-Implemented Features": [
+      {
+        "feature": "Access Control",
+        "description": "The Log contract ensures that messages are added only through the AddMessage function, preventing unauthorized data manipulation."
+      },
+      {
+        "feature": "Money Flow Integrity",
+        "description": "The balances mapping keeps track of individual user balances, ensuring that only deposited funds are reflected in user balances and preventing misallocation."
+      },
+      {
+        "feature": "Minimum Deposit Check",
+        "description": "The Deposit function enforces a minimum deposit amount, MinDeposit, ensuring that small, possibly spammy transactions are excluded."
+      }
+    ],
+    "Invariant Validation": [
+      {
+        "function": "CashOut",
+        "description": "Ensures the invariant that balances[msg.sender] must be reduced by _am after a successful cash out, maintaining consistency in balance records."
+      },
+      {
+        "function": "AddMessage",
+        "description": "The AddMessage function updates the LastMsg struct before pushing it to History, maintaining consistency of the last recorded message."
+      }
+    ]
+  },
+  "potential_risky_features": [
+    {
+      "feature": "Reentrancy Risk",
+      "description": "The CashOut function calls an external address via msg.sender.call.value(_am)() before updating the user’s balance, exposing it to a potential reentrancy attack if msg.sender has malicious fallback functions.",
+      "recommendation": "Use the Checks-Effects-Interactions pattern by updating balances[msg.sender] before calling external contracts or use the nonReentrant modifier if available."
+    },
+    {
+      "feature": "Block Dependency",
+      "description": "The CashOut function depends on the block number check (block.number > lastBlock), which may lead to unexpected behavior in certain blockchain environments. This may be exploited in rare cases where miners manipulate block timing.",
+      "recommendation": "Consider using a timestamp-based check instead, if appropriate, or improve the lastBlock logic to avoid potential exploitation."
+    },
+    {
+      "feature": "Lack of Ownership Control",
+      "description": "The ETH_FUND contract has no owner or access control mechanisms, making it publicly accessible. This can be risky as anyone can call Deposit or CashOut functions without restriction.",
+      "recommendation": "Implement ownership or access control to restrict sensitive operations as appropriate."
+    }
+  ]
+}
