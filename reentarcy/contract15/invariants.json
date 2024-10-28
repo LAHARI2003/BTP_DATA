@@ -1,0 +1,40 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "expression": "msg.sender == tx.origin",
+            "security_relevance": "medium",
+            "description": "Ensures that the caller is an externally owned account (EOA) and not another contract, reducing the risk of complex inter-contract interactions."
+        },
+        {
+            "vulnerability": "Access Control",
+            "expression": "msg.sender ∈ authorized_users",
+            "security_relevance": "high",
+            "description": "Restricts access to certain functions only to specific authorized accounts."
+        },
+        {
+            "vulnerability": "Reentrancy",
+            "expression": "balances[msg.sender] -= _am after msg.sender.call.value(_am)()",
+            "security_relevance": "high",
+            "description": "Ensures that balances are only updated after the external call to prevent reentrancy attacks."
+        },
+        {
+            "vulnerability": "Reentrancy",
+            "expression": "msg.sender.call.value(_am)() triggers no re-entrant Deposit or CashOut",
+            "security_relevance": "high",
+            "description": "Prevents reentrant calls by ensuring that `msg.sender.call.value(_am)()` does not trigger further deposit or cash-out calls from `msg.sender`."
+        },
+        {
+            "vulnerability": "Money Flow",
+            "expression": "balances[msg.sender] >= _am",
+            "security_relevance": "high",
+            "description": "Ensures that the user’s balance is sufficient for withdrawal operations."
+        },
+        {
+            "vulnerability": "Oracle Slippage",
+            "expression": "MinDeposit ≤ msg.value",
+            "security_relevance": "medium",
+            "description": "Ensures deposits are above the minimum deposit value, which serves as a check against unexpected zero or low-value transactions."
+        }
+    ]
+}
