@@ -1,0 +1,7 @@
+{
+    "CrossContractDependencies": [
+        "Log contract is instantiated within WALLET to log actions.",
+        "Log function AddMessage is called in both Put and Collect functions to store transaction details."
+    ],
+    "InterContractConsistencyConditions": "Ensures Log contract can correctly log actions by passing required parameters."
+}
