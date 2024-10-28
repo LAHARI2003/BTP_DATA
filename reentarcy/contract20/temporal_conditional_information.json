@@ -1,0 +1,11 @@
+{
+    "TemporalAndConditionalInformation": {
+        "TimeSensitiveLogic": {
+            "Description": "The Collect function depends on time conditions, specifically that current time exceeds acc.unlockTime before processing withdrawals."
+        },
+        "ConditionalLogicPaths": [
+            "The Put function sets unlockTime based on a conditional check, either setting it to _unlockTime or the current time.",
+            "The Collect function has conditional paths based on balance, unlock time, and minimum balance requirements, leading to either successful withdrawal or function reversion."
+        ]
+    }
+}
