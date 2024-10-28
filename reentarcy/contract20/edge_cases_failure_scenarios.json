@@ -1,0 +1,14 @@
+{
+    "EdgeCasesAndFailureScenarios": {
+        "EdgeCaseAnnotations": [
+            "Zero Value Deposits: The Put function accepts deposits without any restrictions on the amount, allowing zero-value deposits.",
+            "Invalid Unlock Times: The Put function sets unlockTime as either the user-provided time or the current time, which could lead to immediate unlock times."
+        ],
+        "CommonAttackPatterns": [
+            "Reentrancy Vulnerability: The Collect function contains a reentrancy vulnerability, as it sends Ether to the caller before updating the user's balance."
+        ],
+        "RecoveryMechanisms": {
+            "Suggested": "Implementing a check-effects-interactions pattern in Collect to prevent reentrancy attacks."
+        }
+    }
+}
