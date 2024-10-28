@@ -1,0 +1,52 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "feature": "Access Control",
+        "description": "The WALLET constructor enforces a set log address upon initialization, ensuring logging is directed as intended."
+      },
+      {
+        "feature": "Event Logging",
+        "description": "The AddMessage function in the Log contract records transaction details, which can aid in tracing and accountability."
+      },
+      {
+        "feature": "Fallback Function Handling",
+        "description": "The contract includes a fallback function that correctly calls the Put function, allowing deposits without the need for specific function calls."
+      },
+      {
+        "feature": "State Integrity",
+        "description": "The contract ensures account balances are updated consistently in both Put and Collect functions, maintaining accuracy in user balances."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "function": "Collect",
+        "invariant": "Account balance validation",
+        "description": "The Collect function checks that acc.balance >= MinSum and acc.balance >= _am before proceeding with transfers, ensuring minimum balance requirements are met and preventing accidental overdrafts."
+      },
+      {
+        "function": "Put",
+        "invariant": "Account unlock time validation",
+        "description": "The Put function sets unlockTime as the later of now or the provided _unlockTime, ensuring the account cannot be accessed prematurely."
+      }
+    ]
+  },
+  "PotentiallyRiskyFeatures": [
+    {
+      "feature": "Reentrancy Risk",
+      "description": "In the Collect function, the external call msg.sender.call.value(_am)() is made before updating acc.balance, potentially allowing reentrancy attacks where an attacker could reenter the function and drain funds."
+    },
+    {
+      "feature": "Lack of Access Control on Sensitive Variables",
+      "description": "The contract allows public access to MinSum, a critical value used in balance checks, without any restrictions or mechanisms to prevent unauthorized updates."
+    },
+    {
+      "feature": "Fallback Function Vulnerability",
+      "description": "The fallback function directs any Ether sent to the contract into Put(0), which could potentially be exploited if an attacker abuses the function to bypass other deposit controls or manipulate unlock times."
+    },
+    {
+      "feature": "No Circuit Breaker Mechanism",
+      "description": "The contract lacks a circuit breaker mechanism to temporarily halt operations in the event of detected vulnerabilities or unexpected activity, making it susceptible to prolonged attacks."
+    }
+  ]
+}
