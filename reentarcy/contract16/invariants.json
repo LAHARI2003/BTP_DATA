@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "balances[msg.sender] >= _am",
+      "description": "Ensures that the user's balance is sufficient before transferring funds",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "balances[msg.sender] -= _am after call(msg.sender, _am)",
+      "description": "Updates user balance after funds are transferred to prevent re-entrancy attacks",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "TransferLog != address(0)",
+      "description": "Ensures the Log contract is set before allowing operations",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.value >= MinDeposit",
+      "description": "Ensures that only deposits equal to or above the minimum limit are accepted",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "balances[msg.sender] = Old(balances[msg.sender]) + msg.value if msg.value >= MinDeposit",
+      "description": "Ensures balance consistency by adding deposit amount only if it meets the minimum threshold",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "LastMsg.Sender == _adr and LastMsg.Val == _val and LastMsg.Data == _data",
+      "description": "Updates the last message entry in the Log contract to reflect the latest transaction details",
+      "security_relevance": "Low"
+    }
+  ]
+}
