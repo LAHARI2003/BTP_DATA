@@ -1,0 +1,10 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": {
+      "UnlockTimeEnforcement": "The Collect function relies on now compared to unlockTime, making it time-sensitive."
+    },
+    "ConditionalLogicPaths": {
+      "BalanceAndUnlockTimeConditions": "Different paths for Collect based on balance and unlock time checks, leading to successful withdrawal or revert if conditions are not met."
+    }
+  }
+}
