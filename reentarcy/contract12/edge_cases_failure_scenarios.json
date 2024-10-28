@@ -1,0 +1,15 @@
+{
+    "EdgeCaseAnnotations": {
+        "ZeroValueDeposits": "Not prevented, allowing deposits with less than MinDeposit without balance credit or logging.",
+        "MultipleWithdrawalsInSameBlock": "CashOut prevents multiple withdrawals within the same block through block.number > lastBlock check."
+    },
+    "CommonAttackPatterns": {
+        "ReentrancyAttack": {
+            "Vulnerability": "msg.sender.call.value(_am)() in CashOut allows potential reentrancy.",
+            "PreventionMechanism": "None currently; would benefit from withdrawal logic to prevent reentrant calls."
+        }
+    },
+    "RecoveryMechanisms": {
+        "Description": "None implemented; a circuit breaker could stop withdrawals if reentrancy is detected."
+    }
+}
