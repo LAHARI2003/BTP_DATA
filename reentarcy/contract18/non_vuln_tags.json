@@ -1,0 +1,49 @@
+{
+  "NonVulnerableTags": {
+    "Access Control": [
+      {
+        "description": "The Initialized function ensures that certain critical functions like SetMinSum and SetLogFile can only be called once before 'intitalized' is set to true, preventing unauthorized reconfiguration."
+      }
+    ],
+    "Invariant Validation": [
+      {
+        "description": "The Collect function checks that acc.balance is greater than or equal to MinSum and the requested amount, ensuring minimum funds are available for withdrawal and state consistency before fund transfer."
+      }
+    ],
+    "Data Integrity": [
+      {
+        "description": "The Acc mapping uses a struct that stores both balance and unlockTime for each user, ensuring structured storage of critical data for each account and reducing chances of storage overlap or data inconsistency."
+      }
+    ],
+    "Money Flow Integrity": [
+      {
+        "description": "The Collect function subtracts the _am amount from the user’s balance only after a successful transfer, maintaining accurate balance representation within the contract's state."
+      },
+      {
+        "description": "Each transaction involving deposits or withdrawals calls LogFile.AddMessage, which helps maintain an auditable log for deposits and withdrawals in the History array."
+      }
+    ]
+  },
+  "PotentiallyRiskyFeatures": {
+    "Reentrancy": [
+      {
+        "description": "The Collect function transfers funds using 'call' without checks-effects-interactions pattern, making it susceptible to reentrancy attacks as the user's balance update occurs after the external call. Mitigation: Use 'transfer' or 'send' for fund transfers, or ensure state changes happen before external calls."
+      }
+    ],
+    "Initialization Risks": [
+      {
+        "description": "The initialization process relies on an 'intitalized' flag but lacks a proper access control mechanism like onlyOwner, allowing any user to finalize the initialization and potentially set or reset critical contract configurations. Mitigation: Implement an access control mechanism for initialization functions."
+      }
+    ],
+    "Gas Limit Risks in Logging": [
+      {
+        "description": "The Log contract stores all messages in an unbounded array, which can grow indefinitely, posing a risk of out-of-gas errors during logging as History increases in size. Mitigation: Implement a limit on the array size or use a more gas-efficient logging mechanism."
+      }
+    ],
+    "Timestamp Dependence": [
+      {
+        "description": "The unlockTime logic in Put and Collect relies on now (block timestamp), which can be manipulated by miners. Mitigation: Consider alternative time verification methods for critical operations or use time buffer allowances."
+      }
+    ]
+  }
+}
