@@ -1,0 +1,55 @@
+{
+  "Contract": "ETH_VAULT",
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Feature": "Access Control",
+        "Description": "Log contract address is set in constructor to a specific address, ensuring TransferLog cannot be modified after initialization."
+      },
+      {
+        "Feature": "State Integrity",
+        "Description": "The balances mapping accurately reflects deposits and withdrawals to maintain consistency in user balances."
+      },
+      {
+        "Feature": "Minimum Deposit Requirement",
+        "Description": "The Deposit function ensures a minimum deposit requirement (1 ether), which prevents spam and keeps the transaction costs economically viable."
+      },
+      {
+        "Feature": "Logging of Transactions",
+        "Description": "TransferLog logs each transaction, recording essential details such as the sender, value, and transaction type, which provides auditability."
+      },
+      {
+        "Feature": "Fallback Function",
+        "Description": "The fallback function accepts ether, allowing for non-standard transactions and improving contract interoperability."
+      }
+    ],
+    "InvariantValidation": [
+      {
+        "Function": "CashOut",
+        "Description": "Ensures that only the balance of the caller is reduced by the cash-out amount, preventing any impact on other users' balances."
+      },
+      {
+        "Function": "Deposit",
+        "Description": "Validates that deposits only increase the caller’s balance, maintaining consistency between the balance mapping and actual deposits."
+      }
+    ]
+  },
+  "PotentiallyRiskyFeatures": [
+    {
+      "Feature": "Reentrancy in CashOut",
+      "Description": "The CashOut function sends ether to the caller before reducing the caller’s balance, which exposes the contract to reentrancy attacks if `msg.sender.call.value(_am)()` allows external calls to reenter the contract."
+    },
+    {
+      "Feature": "Lack of Access Control on Critical Functions",
+      "Description": "Both Deposit and CashOut functions are accessible to any caller, potentially allowing external manipulation if used improperly or within malicious contexts."
+    },
+    {
+      "Feature": "Use of `call.value()`",
+      "Description": "Usage of `msg.sender.call.value(_am)()` is generally discouraged due to reentrancy risks and gas uncertainties; `transfer` or `send` may provide safer alternatives."
+    },
+    {
+      "Feature": "Unrestricted Fallback Function",
+      "Description": "The fallback function is `payable` without restrictions, meaning any ether sent to the contract address will be accepted without conditions, which may lead to unintentional transfers or contract balance discrepancies."
+    }
+  ]
+}
