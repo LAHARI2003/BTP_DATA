@@ -1,0 +1,26 @@
+{
+  "ExecutionPathsAndCriticalProgramPoints": {
+    "FunctionLevelAnalysis": {
+      "Put": "Handles Ether deposits, updates the user's balance, and sets unlock time.",
+      "Collect": "Manages Ether withdrawals, checking for minimum balance, unlock time, and potential reentrancy vulnerability.",
+      "FallbackFunction": "Accepts deposits with an implicit unlock time of 'now'.",
+      "Log.AddMessage": "Logs all deposit and withdrawal events with sender, amount, and timestamp."
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        {
+          "requireMinSum": "Ensures user’s balance exceeds minimum sum in Collect.",
+          "requireUnlockTime": "Enforces unlock time before allowing withdrawals in Collect.",
+          "requireBalance": "Ensures withdrawal amount does not exceed user’s balance in Collect."
+        }
+      ],
+      "StateTransitionPoints": {
+        "Updates": [
+          "Acc[msg.sender].balance update when Put or Collect is called.",
+          "Acc[msg.sender].unlockTime update in Put function.",
+          "History update in Log.AddMessage."
+        ]
+      }
+    }
+  }
+}
