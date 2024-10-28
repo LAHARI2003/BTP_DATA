@@ -1,0 +1,28 @@
+{
+  "ExecutionPathsAndCriticalProgramPoints": {
+    "FunctionLevelAnalysis": {
+      "Deposit": "Handles deposits, updates user balances, and logs the transaction.",
+      "Collect": "Handles withdrawals, checks minimum balance requirements, and potential reentrancy vulnerability.",
+      "SetMinSum": "Allows setting the minimum sum for withdrawals if not initialized.",
+      "SetLogFile": "Sets the address of the log file if not initialized.",
+      "Initialized": "Marks the contract as initialized."
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        {
+          "Deposit": "No require checks, potential risk for unvalidated deposits."
+        },
+        {
+          "Collect": "Checks if the balance is above the minimum sum and withdrawal amount."
+        },
+        {
+          "SetMinSum and SetLogFile": "Both functions check if the contract is initialized before allowing access."
+        }
+      ],
+      "StateTransitionPoints": [
+        "Updates to balances and logs in Deposit and Collect.",
+        "Changes to MinSum, Log file address, and initialization status."
+      ]
+    }
+  }
+}
