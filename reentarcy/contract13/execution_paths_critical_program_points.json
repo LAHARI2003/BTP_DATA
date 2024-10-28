@@ -1,0 +1,20 @@
+{
+  "Function-Level Analysis": {
+    "SetMinSum": "Sets the minimum withdrawal amount, executed only once due to the initialized flag.",
+    "SetLogFile": "Sets the address of the LogFile contract, also limited to a single execution.",
+    "Initialized": "Marks the contract as initialized to prevent further updates to MinSum and LogFile.",
+    "Put": "Handles deposits and adjusts user balance and unlock time based on _lockTime.",
+    "Collect": "Allows user withdrawal if balance, minimum sum, and unlock time conditions are met.",
+    "Fallback Function": "Triggers the Put function with a lock time of 0 when Ether is sent without specific data."
+  },
+  "Execution Path Tags": {
+    "Decision Points": [
+      "If (intitalized) throw in SetMinSum and SetLogFile to prevent re-initialization.",
+      "If (acc.balance >= MinSum && acc.balance >= _am && now > acc.unlockTime) in Collect to ensure conditions for withdrawal.",
+      "If (msg.sender.call.value(_am)()) in Collect to execute the external call."
+    ],
+    "State Transition Points": [
+      "Updates to Acc mapping on deposit and withdrawal, MinSum via SetMinSum, and LogFile address through SetLogFile."
+    ]
+  }
+}
