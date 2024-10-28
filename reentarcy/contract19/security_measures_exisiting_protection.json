@@ -1,0 +1,10 @@
+{
+    "ImplementedSecurityControls": [
+        "Minimum balance requirement (MinSum) in Collect to protect against withdrawals below threshold."
+    ],
+    "KnownVulnerabilities": [
+        "Reentrancy vulnerability in Collect due to lack of reentrancy guard.",
+        "Time lock mechanism in Collect is limited and does not include advanced checks against external calls."
+    ],
+    "FallbackFunctionality": "Fallback function exists to accept Ether and calls Put(0) on deposit."
+}
