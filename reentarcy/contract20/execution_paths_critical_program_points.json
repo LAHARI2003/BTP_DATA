@@ -1,0 +1,21 @@
+{
+    "ExecutionPathsAndCriticalProgramPoints": {
+        "FunctionLevelAnalysis": {
+            "Put": "Handles deposits, updates the user's balance, and sets unlock time.",
+            "Collect": "Handles withdrawals, checks minimum balance and unlock time, and executes a transfer to the user.",
+            "fallback": "Fallback function that triggers a deposit when Ether is sent without data."
+        },
+        "ExecutionPathTags": {
+            "DecisionPoints": [
+                "require(_unlockTime > now) in Put to set valid unlock times.",
+                "require(acc.balance >= MinSum) in Collect to check if balance meets minimum withdrawal requirements.",
+                "require(acc.balance >= _am) to ensure sufficient funds before withdrawing.",
+                "require(now > acc.unlockTime) to enforce unlock time before withdrawal."
+            ],
+            "StateTransitionPoints": [
+                "Updates to acc.balance and acc.unlockTime in Put.",
+                "Updates to acc.balance in Collect after successful withdrawal."
+            ]
+        }
+    }
+}
