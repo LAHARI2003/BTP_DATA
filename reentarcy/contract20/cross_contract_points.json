@@ -1,0 +1,10 @@
+{
+    "CrossContractPoints": {
+        "CrossContractDependencies": {
+            "LogContractInteraction": "The MY_BANK contract depends on the Log contract for logging messages on deposits and withdrawals."
+        },
+        "InterContractConsistencyConditions": {
+            "Description": "MY_BANK must ensure consistent logging in Log for each successful transaction involving deposits and withdrawals."
+        }
+    }
+}
