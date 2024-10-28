@@ -1,0 +1,41 @@
+{
+    "nonVulnerableTags": {
+        "wellImplementedFeatures": [
+            {
+                "feature": "Access Control",
+                "description": "The contract restricts MinSum and LogFile setup to be initialized only once, ensuring no further unauthorized modifications by using the intitalized flag."
+            },
+            {
+                "feature": "Money Flow Integrity",
+                "description": "The Deposit function guarantees balances are accurately updated to reflect user deposits, ensuring consistency in the balances mapping."
+            }
+        ],
+        "invariantValidationExamples": [
+            {
+                "function": "Collect",
+                "description": "Ensures that balances[msg.sender] must be reduced by _am only after confirming that msg.sender’s balance is sufficient for the transaction."
+            },
+            {
+                "function": "SetMinSum and SetLogFile",
+                "description": "The intitalized flag is checked to ensure these functions are called only once, enforcing invariants related to the one-time setup of the MinSum and Log contract dependencies."
+            }
+        ]
+    },
+    "riskyFeatures": [
+        {
+            "risk": "Reentrancy Vulnerability",
+            "description": "The Collect function contains a reentrancy risk due to the use of `msg.sender.call.value(_am)()`, allowing an external call to re-enter the contract before updating balances[msg.sender].",
+            "recommendation": "Implement the Checks-Effects-Interactions pattern by moving the balance update before the external call to mitigate reentrancy risk."
+        },
+        {
+            "risk": "No Ownership Restrictions",
+            "description": "The contract lacks onlyOwner modifiers for critical functions (SetMinSum, SetLogFile, and Initialized), potentially allowing any user to invoke them without restriction.",
+            "recommendation": "Consider implementing onlyOwner access control for these functions to prevent unauthorized changes."
+        },
+        {
+            "risk": "Uninitialized Contract Dependency",
+            "description": "The Log contract address is set externally, making the contract dependent on an external Log contract which may introduce vulnerabilities if it is modified or behaves unexpectedly.",
+            "recommendation": "Consider validating the Log contract’s authenticity or implementing a safe fallback to handle unexpected Log behavior."
+        }
+    ]
+}
