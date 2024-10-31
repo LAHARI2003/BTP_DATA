@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "vulnerability_category": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "expression_representation": "msg.sender == tx.origin",
+      "security_relevance_level": "Medium"
+    },
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariant": "xlock == true",
+      "expression_representation": "xlock == true",
+      "security_relevance_level": "High"
+    },
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariant": "functionCall == false during recursion",
+      "expression_representation": "functionCall == false during recursion",
+      "security_relevance_level": "High"
+    },
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariant": "require(!externalCall)",
+      "expression_representation": "require(!externalCall)",
+      "security_relevance_level": "High"
+    },
+    {
+      "vulnerability_category": "Money Flow",
+      "invariant": "msg.value ≤ v?",
+      "expression_representation": "msg.value ≤ max_value",
+      "security_relevance_level": "Medium"
+    }
+  ]
+}
