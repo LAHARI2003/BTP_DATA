@@ -1,0 +1,16 @@
+{
+    "FunctionLevelAnalysis": {
+        "getBalance": "Retrieves user balance from userBalances mapping.",
+        "addToBalance": "Increases user balance by msg.value amount.",
+        "withdrawBalance": "Withdraws funds to the user if sufficient balance exists, with an identified vulnerability on line 21."
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            "Checking msg.sender.call to execute the fund transfer in withdrawBalance."
+        ],
+        "StateTransitionPoints": [
+            "Updates userBalances when funds are added in addToBalance.",
+            "Sets userBalances[msg.sender] to 0 in withdrawBalance after a successful withdrawal attempt."
+        ]
+    }
+}
