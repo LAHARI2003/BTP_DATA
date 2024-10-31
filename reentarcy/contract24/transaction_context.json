@@ -1,0 +1,9 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "DonationState": "When users send Ether and 'donate' function is called.",
+      "WithdrawalState": "When users withdraw Ether using the 'withdraw' function."
+    },
+    "ExternalInteractions": "The contract interacts externally by transferring Ether between the contract and user addresses during donations and withdrawals."
+  }
+}
