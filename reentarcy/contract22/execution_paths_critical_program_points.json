@@ -1,0 +1,41 @@
+{
+  "ExecutionPathsCriticalPoints": {
+    "FunctionLevelAnalysis": {
+      "depositFunds": {
+        "Description": "Manages ether deposits, updating the user's balance."
+      },
+      "withdrawFunds": {
+        "Description": "Handles ether withdrawals, enforcing limits and checking conditions to prevent unauthorized access."
+      }
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        {
+          "Function": "withdrawFunds",
+          "Requirement": "require(balances[msg.sender] >= _weiToWithdraw)",
+          "Description": "Ensures the user has sufficient balance to withdraw."
+        },
+        {
+          "Function": "withdrawFunds",
+          "Requirement": "require(_weiToWithdraw <= withdrawalLimit)",
+          "Description": "Limits the maximum withdrawal amount to prevent large withdrawals."
+        },
+        {
+          "Function": "withdrawFunds",
+          "Requirement": "require(now >= lastWithdrawTime[msg.sender] + 1 weeks)",
+          "Description": "Enforces a time lock between withdrawals for each user."
+        }
+      ],
+      "StateTransitionPoints": [
+        {
+          "Variable": "balances",
+          "Description": "Updated when ether is deposited or withdrawn."
+        },
+        {
+          "Variable": "lastWithdrawTime",
+          "Description": "Updated to the current time when a user withdraws funds."
+        }
+      ]
+    }
+  }
+}
