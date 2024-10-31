@@ -1,0 +1,11 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "DepositState": "Users can deposit ether into the contract, updating their balance in `balances` mapping.",
+      "WithdrawalState": "Users can withdraw ether if conditions are met (balance, limit, and timing checks)."
+    },
+    "ExternalInteractions": {
+      "Description": "The contract handles ether transfers between users and the contract address when funds are deposited or withdrawn."
+    }
+  }
+}
