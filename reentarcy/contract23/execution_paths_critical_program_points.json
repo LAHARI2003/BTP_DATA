@@ -1,0 +1,20 @@
+{
+  "Function-Level Analysis": {
+    "airDrop": "Provides tokens to the caller if they have zero balance and support the token. Uses two modifiers (hasNoBalance and supportsToken) for checks.",
+    "supportsToken modifier": "Ensures that the caller supports the token via a keccak256 hash check.",
+    "hasNoBalance modifier": "Requires that the caller’s balance is zero to proceed."
+  },
+  "Execution Path Tags": {
+    "Decision Points": [
+      {
+        "require(tokenBalance[msg.sender] == 0)": "Ensures the caller has zero balance to call airDrop."
+      },
+      {
+        "require(keccak256(abi.encodePacked('Nu Token')) == Bank(msg.sender).supportsToken())": "Ensures compatibility of the caller with the token."
+      }
+    ],
+    "State Transition Points": [
+      "Updates tokenBalance of msg.sender in airDrop if all checks pass."
+    ]
+  }
+}
