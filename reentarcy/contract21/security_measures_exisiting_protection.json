@@ -1,0 +1,7 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": "No access control is implemented in this contract, potentially allowing any user to exploit the contract.",
+        "ReentrancyCheck": "No reentrancy checks are present, which is a major vulnerability in the withdrawBalance function.",
+        "FallbackFunctionality": "No fallback function is defined in this contract, which could lead to loss of funds if Ether is sent directly."
+    }
+}
