@@ -1,0 +1,40 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Feature": "Balance Getter",
+        "Description": "Provides a simple, gas-efficient way to view a user's balance using the getBalance function."
+      },
+      {
+        "Feature": "Balance Addition",
+        "Description": "addToBalance function accurately adds the sent ether to the user's balance, updating userBalances."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "Function": "addToBalance",
+        "Description": "Ensures that msg.value is directly added to the user's balance, maintaining accurate tracking of funds deposited by the user."
+      }
+    ]
+  },
+  "RiskyFeatures": {
+    "PotentialRisks": [
+      {
+        "Feature": "Reentrancy in withdrawBalance",
+        "Description": "The withdrawBalance function has a reentrancy vulnerability due to updating userBalances after transferring funds, which allows malicious contracts to repeatedly call the function and drain funds."
+      },
+      {
+        "Feature": "Use of call() for Ether Transfer",
+        "Description": "The contract uses call.value()() to transfer ether, which is susceptible to reentrancy attacks and unexpected behavior if msg.sender is a contract."
+      },
+      {
+        "Feature": "Lack of Access Control",
+        "Description": "No access control mechanisms are implemented, meaning that any user can call withdrawBalance and potentially exploit the function's vulnerability."
+      },
+      {
+        "Feature": "No Fallback Function",
+        "Description": "There is no fallback function, so any ether sent to the contract directly without calling addToBalance will be lost, potentially leading to loss of funds."
+      }
+    ]
+  }
+}
