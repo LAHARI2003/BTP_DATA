@@ -1,0 +1,18 @@
+{
+  "ExecutionPathsAndCriticalPoints": {
+    "FunctionLevelAnalysis": {
+      "donate": "Handles incoming Ether and updates the user's balance in the contract.",
+      "balanceOf": "Retrieves the balance of a given user address.",
+      "withdraw": "Processes user withdrawals and checks balances, then transfers Ether if conditions are met."
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        "if(balances[msg.sender] >= _amount) in 'withdraw' to confirm user balance sufficiency before withdrawal.",
+        "if(msg.sender.call.value(_amount)()) in 'withdraw' which transfers Ether and can trigger reentrancy."
+      ],
+      "StateTransitionPoints": [
+        "Updates to 'balances' map when donations or withdrawals are processed."
+      ]
+    }
+  }
+}
