@@ -1,0 +1,14 @@
+{
+  "Cross-Contract Dependencies": [
+    {
+      "Dependency": "The airDrop function relies on the supportsToken function in external contracts (e.g., Bank) to ensure token compatibility.",
+      "Impact": "This dependency is exploited by the attack contract to re-enter airDrop."
+    }
+  ],
+  "Inter-Contract Consistency Conditions": [
+    {
+      "Condition": "supportsToken modifier checks that the caller's response aligns with the expected token hash.",
+      "Importance": "Prevents unsupported contracts from calling airDrop."
+    }
+  ]
+}
