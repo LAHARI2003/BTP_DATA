@@ -1,0 +1,56 @@
+[
+    {
+        "vulnerability": "Access Control",
+        "invariant": "msg.sender == tx.origin",
+        "expression": "msg.sender == tx.origin",
+        "security_relevance": "medium"
+    },
+    {
+        "vulnerability": "Access Control",
+        "invariant": "msg.sender == owner?",
+        "expression": "msg.sender == owner",
+        "security_relevance": "high"
+    },
+    {
+        "vulnerability": "Re-entrancy",
+        "invariant": "nonReEntrant",
+        "expression": "xlock == true",
+        "security_relevance": "high"
+    },
+    {
+        "vulnerability": "Re-entrancy",
+        "invariant": "Call Depth Limit",
+        "expression": "callDepth ≤ maxDepth",
+        "security_relevance": "high"
+    },
+    {
+        "vulnerability": "Access Control",
+        "invariant": "isSenderOwner",
+        "expression": "msg.sender == owner",
+        "security_relevance": "high"
+    },
+    {
+        "vulnerability": "Re-entrancy",
+        "invariant": "Function Isolation",
+        "expression": "functionCall == false during recursion",
+        "security_relevance": "high"
+    },
+    {
+        "vulnerability": "Access Control",
+        "invariant": "Role-Based Access Control",
+        "expression": "role(msg.sender) ∈ allowed_roles",
+        "security_relevance": "medium"
+    },
+    {
+        "vulnerability": "Re-entrancy",
+        "invariant": "Re-entrancy Check",
+        "expression": "require(!externalCall)",
+        "security_relevance": "high"
+    },
+    {
+        "vulnerability": "Re-entrancy",
+        "invariant": "Cross-Contract Re-entrancy Monitor",
+        "expression": "require(funcSeqValidityAcrossContracts)",
+        "security_relevance": "high"
+    }
+]
