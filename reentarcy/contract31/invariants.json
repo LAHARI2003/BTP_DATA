@@ -1,0 +1,72 @@
+[
+  {
+    "vulnerability_category": "Access Control",
+    "invariants": [
+      {
+        "expression": "msg.sender == Channels[_lcID].partyAddresses[0] || msg.sender == Channels[_lcID].partyAddresses[1]",
+        "security_relevance": "High",
+        "description": "Ensures that only channel participants can interact with functions."
+      },
+      {
+        "expression": "require(channel.partyAddresses[0] == ECTools.recoverSigner(_state, _sigA) && channel.partyAddresses[1] == ECTools.recoverSigner(_state, _sigI))",
+        "security_relevance": "High",
+        "description": "Ensures valid signatures from both participants before any state update."
+      }
+    ]
+  },
+  {
+    "vulnerability_category": "Re-entrancy",
+    "invariants": [
+      {
+        "expression": "channel.ethBalances[0] == 0 && channel.ethBalances[1] == 0 && channel.erc20Balances[0] == 0 && channel.erc20Balances[1] == 0",
+        "security_relevance": "High",
+        "description": "Ensures funds are zeroed out before transferring to avoid re-entrancy issues during fund transfer."
+      }
+    ]
+  },
+  {
+    "vulnerability_category": "Gas Control",
+    "invariants": [
+      {
+        "expression": "totalEthDeposit == _balances[0] + _balances[1]",
+        "security_relevance": "Medium",
+        "description": "Ensures that the total Eth balance matches recorded deposits to prevent gas-related overflow."
+      },
+      {
+        "expression": "totalTokenDeposit == _balances[2] + _balances[3]",
+        "security_relevance": "Medium",
+        "description": "Prevents inconsistencies in recorded token deposits, mitigating potential gas manipulation."
+      }
+    ]
+  },
+  {
+    "vulnerability_category": "Special Storage",
+    "invariants": [
+      {
+        "expression": "numChannels >= 0",
+        "security_relevance": "Low",
+        "description": "Tracks the active channel count, ensuring it is non-negative."
+      },
+      {
+        "expression": "virtualChannels[_vcID].sequence > previousSequence",
+        "security_relevance": "Medium",
+        "description": "Verifies that the sequence for updates increases, helping maintain storage integrity."
+      }
+    ]
+  },
+  {
+    "vulnerability_category": "Money Flow",
+    "invariants": [
+      {
+        "expression": "msg.value == _balance",
+        "security_relevance": "High",
+        "description": "Ensures that the transferred Ether matches the recorded balance to prevent incorrect fund allocation."
+      },
+      {
+        "expression": "Channels[_lcID].initialDeposit[0] + Channels[_lcID].ethBalances[2] + Channels[_lcID].ethBalances[3] == _balances[0] + _balances[1]",
+        "security_relevance": "High",
+        "description": "Verifies that cumulative deposits equal cumulative balances, ensuring correct fund management."
+      }
+    ]
+  }
+]
