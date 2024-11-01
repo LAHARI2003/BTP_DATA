@@ -1,0 +1,21 @@
+{
+  "ExecutionPathsAndCriticalProgramPoints": {
+    "FunctionLevelAnalysis": {
+      "addToBalance": "Handles Ether deposits and updates user's balance in the userBalance mapping.",
+      "withdrawBalance": "Handles Ether withdrawals and attempts to transfer balance to the user.",
+      "getBalance": "Provides the user's balance."
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        {
+          "Description": "Check for successful Ether transfer.",
+          "Condition": "if (!msg.sender.call.value(userBalance[msg.sender])())"
+        }
+      ],
+      "StateTransitionPoints": [
+        "Updates userBalance when deposits are made.",
+        "Sets userBalance to zero after withdrawal."
+      ]
+    }
+  }
+}
