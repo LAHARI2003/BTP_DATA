@@ -1,0 +1,4 @@
+{
+  "CrossContractDependencies": "No external cross-contract dependencies are present in this example.",
+  "InterContractConsistencyConditions": "Not applicable as there is no interaction with other contracts."
+}
