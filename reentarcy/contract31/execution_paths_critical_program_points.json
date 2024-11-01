@@ -1,0 +1,44 @@
+{
+    "execution_paths_and_critical_points": {
+        "functions": {
+            "createChannel": "Initiates a new channel and assigns initial balances",
+            "LCOpenTimeout": "Handles timeouts when a channel is not fully open",
+            "joinChannel": "Allows a participant to join the channel and deposits funds",
+            "deposit": "Adds funds to an open channel for a participant",
+            "consensusCloseChannel": "Closes a channel if both participants consent",
+            "updateLCstate": "Updates the state of the ledger channel",
+            "initVCstate": "Sets up the state for a virtual sub-channel within the ledger channel",
+            "settleVC": "Sets the final state for a virtual channel to complete its lifecycle",
+            "byzantineCloseChannel": "Handles closeout in the event of Byzantine (disruptive) behavior"
+        },
+        "execution_path_tags": {
+            "decision_points": {
+                "createChannel": [
+                    "require(Channels[_lcID].partyAddresses[0] == address(0)) - Ensures channel is new",
+                    "require(_partyI != 0x0) - Validates the second party's address"
+                ],
+                "joinChannel": [
+                    "require(Channels[_lcID].isOpen == false) - Checks if the channel is not open",
+                    "require(msg.sender == Channels[_lcID].partyAddresses[1]) - Validates the joiner’s address"
+                ],
+                "consensusCloseChannel": [
+                    "require(Channels[_lcID].sequence < _sequence) - Checks if the sequence is higher",
+                    "require(Channels[_lcID].isOpen == true) - Validates if the channel is open"
+                ]
+            },
+            "state_transition_points": {
+                "createChannel": [
+                    "Sets initial balances, assigns participants, starts channel state",
+                    "Sets LC open timeout"
+                ],
+                "joinChannel": [
+                    "Deposits ether and/or token, updates isOpen to true"
+                ],
+                "consensusCloseChannel": [
+                    "Finalizes channel state by transferring remaining balances to participants",
+                    "Sets isOpen to false"
+                ]
+            }
+        }
+    }
+}
