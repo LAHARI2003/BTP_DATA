@@ -1,0 +1,31 @@
+{
+    "FunctionLevelAnalysis": [
+        {
+            "function": "donate",
+            "description": "Allows users to donate Ether to specified addresses, updating their credit balance."
+        },
+        {
+            "function": "withdraw",
+            "description": "Handles user withdrawals, ensuring credit balance is sufficient, and attempts to transfer the specified amount."
+        },
+        {
+            "function": "queryCredit",
+            "description": "Allows users to view the credit balance of a specified address."
+        }
+    ],
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            {
+                "line": 19,
+                "condition": "if (credit[msg.sender] >= amount)",
+                "description": "Ensures the user has sufficient balance for the withdrawal request."
+            }
+        ],
+        "StateTransitionPoints": [
+            {
+                "description": "Updates credit balance for a user on donation and withdrawal operations.",
+                "variables": ["credit"]
+            }
+        ]
+    }
+}
