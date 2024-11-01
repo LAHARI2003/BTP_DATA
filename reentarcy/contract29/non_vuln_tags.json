@@ -1,0 +1,34 @@
+{
+    "nonVulnerableTags": {
+        "Well-Implemented Features": [
+            {
+                "feature": "User Balance Retrieval",
+                "description": "The `getBalance` function allows users to check their balance securely without altering contract state."
+            },
+            {
+                "feature": "Ether Addition",
+                "description": "The `addToBalance` function correctly updates `userBalance` by adding the sent Ether value to the sender's balance, ensuring straightforward deposit functionality."
+            }
+        ],
+        "Invariant Validation Examples": [
+            {
+                "function": "addToBalance",
+                "description": "Ensures that user balance is increased by `msg.value` whenever `addToBalance` is called, maintaining accurate user balance records."
+            }
+        ],
+        "Risky Features": [
+            {
+                "feature": "Use of `call.value` in `withdrawBalance`",
+                "description": "The `withdrawBalance` function sends Ether using `call.value`, which transfers control to external contracts, potentially allowing for reentrancy attacks if not properly secured. This could be exploited to drain the contract’s funds by repeatedly calling `withdrawBalance` before `userBalance[msg.sender]` is set to 0."
+            },
+            {
+                "feature": "No Reentrancy Guard",
+                "description": "The contract lacks a reentrancy guard in `withdrawBalance`, which leaves it vulnerable to reentrancy attacks. Adding a reentrancy guard would mitigate the risk by ensuring `userBalance[msg.sender]` is set to 0 before making external calls."
+            },
+            {
+                "feature": "State Update after External Call",
+                "description": "The `userBalance[msg.sender]` update occurs after the external call in `withdrawBalance`, creating an inconsistent state during execution that can be exploited for reentrancy attacks. The recommended practice is to update state before making any external calls."
+            }
+        ]
+    }
+}
