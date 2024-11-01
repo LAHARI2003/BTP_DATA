@@ -1,0 +1,9 @@
+{
+  "ImplementedSecurityControls": [
+    {
+      "ControlType": "Transfer Success Check",
+      "Description": "Ensures that the withdrawal only completes if the transfer is successful, using require(success)."
+    }
+  ],
+  "FallbackFunctionality": []
+}
