@@ -1,0 +1,22 @@
+{
+  "FunctionLevelAnalysis": [
+    {
+      "Function": "withdrawBalance",
+      "Description": "Handles token withdrawals by sending the balance amount to the user's address and updating the balance."
+    }
+  ],
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      {
+        "Condition": "require(success)",
+        "Description": "Ensures the transfer to the user address is successful."
+      }
+    ],
+    "StateTransitionPoints": [
+      {
+        "Variable": "userBalances[msg.sender]",
+        "Description": "Updated to zero after a successful withdrawal to prevent reentrancy attacks."
+      }
+    ]
+  }
+}
