@@ -1,0 +1,21 @@
+{
+    "NonVulnerableTags": {
+        "WellImplementedFeatures": {
+            "AccessControl": "The function getFirstWithdrawalBonus correctly checks if the bonus has already been claimed by the user, limiting multiple claims.",
+            "StateUpdateOrder": "In withdrawReward, the rewardsForA balance is reset to zero before executing the external call, which helps prevent reentrancy attacks."
+        },
+        "InvariantValidationExamples": {
+            "RewardConsistency": "The rewardsForA[recipient] variable is consistently reset to zero before performing the withdrawal, ensuring accurate state consistency on rewards.",
+            "BonusClaimUniqueness": "The getFirstWithdrawalBonus function ensures that claimedBonus[recipient] is validated before allowing any reward action, preserving the invariant that bonuses are claimed only once."
+        }
+    },
+    "RiskyFeatures": {
+        "ReentrancyRisk": {
+            "FunctionCallOrder": "The getFirstWithdrawalBonus function calls withdrawReward before marking claimedBonus[recipient] as true, which opens up a potential reentrancy vulnerability.",
+            "ExternalCallInLoop": "The withdrawReward function performs an external call using recipient.call, which is vulnerable to reentrancy if not carefully managed with reentrancy guards."
+        },
+        "GasLimitRisk": {
+            "GasLimitDependence": "The withdrawReward function relies on recipient.call, which may fail if the recipient’s fallback function requires more gas than the provided gas limit allows, potentially causing issues in reward distribution."
+        }
+    }
+}
