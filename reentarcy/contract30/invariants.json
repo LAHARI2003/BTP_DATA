@@ -1,0 +1,46 @@
+{
+  "invariants": [
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariant": "xlock == true",
+      "expression": "credit[msg.sender] >= amount",
+      "description": "Ensure sufficient credit before processing withdrawal",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariant": "!externalCall",
+      "expression": "msg.sender.call.value(amount)() == false",
+      "description": "Prevent external calls in critical functions",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability_category": "Money Flow",
+      "invariant": "rtokenOut / btoken,adr ≤ v?",
+      "expression": "credit[msg.sender] - amount >= 0",
+      "description": "Ensure withdrawal doesn’t exceed available balance",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability_category": "Money Flow",
+      "invariant": "recipient ∈ whitelist",
+      "expression": "credit[to] += msg.value",
+      "description": "Track deposits accurately in recipient’s credit",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability_category": "Data Flow & Business Logic",
+      "invariant": "isInitialized(var)",
+      "expression": "credit[msg.sender] initialized",
+      "description": "Ensure account credit is initialized before use",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability_category": "Data Flow & Business Logic",
+      "invariant": "map?[index?] ≤ v?",
+      "expression": "credit[msg.sender] >= 0",
+      "description": "Ensure credit values remain non-negative",
+      "security_relevance": "low"
+    }
+  ]
+}
