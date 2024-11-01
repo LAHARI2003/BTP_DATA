@@ -1,0 +1,17 @@
+{
+    "TransactionStateContext": {
+        "States": [
+            {
+                "name": "Donation State",
+                "description": "When users donate Ether via the donate function, their credit balance is increased."
+            },
+            {
+                "name": "Withdrawal State",
+                "description": "When users attempt to withdraw funds, the withdraw function is called, which checks if they have enough credit."
+            }
+        ]
+    },
+    "ExternalInteractions": {
+        "description": "The contract interacts with users to accept donations (Ether transfer) and to send Ether back when users withdraw."
+    }
+}
