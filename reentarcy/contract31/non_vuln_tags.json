@@ -1,0 +1,33 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": {
+      "ERC20 Compliance": "The contract follows the ERC20 standard for token functionality, including functions for balanceOf, transfer, transferFrom, approve, and allowance, ensuring compatibility with standard wallets and exchanges.",
+      "Balance Integrity": "The contract maintains user balances accurately through careful checks on token and ETH balances during transfers and state updates, including sequence validation in Ledger Channel operations.",
+      "Access Control for State Updates": "Functions such as joinChannel and consensusCloseChannel ensure that only the intended participants can modify channel states, reinforcing user-specific access control.",
+      "Event Logging": "Important state changes are emitted in events (e.g., DidLCOpen, DidLCUpdateState), enabling transparency and easier tracking of contract operations."
+    },
+    "InvariantValidationExamples": {
+      "DepositInvariants": "The deposit function validates that deposited ETH and token balances for each participant reflect the channel state, ensuring balances do not exceed the intended deposit amounts.",
+      "Close Channel Invariant": "The byzantineCloseChannel function ensures that the sum of ETH and token balances for each participant equals the deposited amount, maintaining deposit consistency even in edge cases.",
+      "Virtual Channel Settlement": "The settleVC function enforces that the updated balances reflect correct allocations within the constraints of participant bonds, maintaining integrity across virtual channel balances."
+    }
+  },
+  "RiskyFeatures": {
+    "Reentrancy Risks": {
+      "Description": "Functions such as LCOpenTimeout, byzantineCloseChannel, and consensusCloseChannel involve external calls (e.g., transferring tokens or ETH) without proper reentrancy guards, making them susceptible to reentrancy attacks in scenarios where the recipient contract could reenter.",
+      "Mitigation": "Consider using reentrancy guards or moving state updates before external calls to mitigate reentrancy risks, particularly when calling external contracts or transferring tokens/ETH."
+    },
+    "Token Approval Vulnerability": {
+      "Description": "The approveAndCall function allows token transfers with an external call to the spender, introducing potential risks if the target contract is untrusted and maliciously executes reentrant calls.",
+      "Mitigation": "Limit the use of approveAndCall to trusted contracts only, or employ additional checks to avoid unintended reentrancy."
+    },
+    "Lack of Open Virtual Channel Checks": {
+      "Description": "In functions such as consensusCloseChannel and byzantineCloseChannel, there is no explicit check for open virtual channels before proceeding with certain updates, which could lead to inconsistent states if virtual channels remain open unexpectedly.",
+      "Mitigation": "Include checks to confirm that all virtual channels are closed before updating the main ledger channel state, ensuring the ledger channel and virtual channel states remain synchronized."
+    },
+    "Complexity in Multi-party Signing": {
+      "Description": "The contract’s reliance on multi-party signatures in ECTools introduces complexity and risks, particularly if one or more parties are compromised or signatures are incorrectly verified.",
+      "Mitigation": "Consider using a more straightforward signing scheme or a well-tested library for ECDSA verification to minimize signing risks and ensure reliability in multi-party authentication."
+    }
+  }
+}
