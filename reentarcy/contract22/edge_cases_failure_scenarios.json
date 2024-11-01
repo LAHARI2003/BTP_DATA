@@ -1,0 +1,30 @@
+{
+  "EdgeCasesFailureScenarios": {
+    "EdgeCaseAnnotations": [
+      {
+        "Function": "depositFunds",
+        "EdgeCase": "Zero-value deposits",
+        "Description": "There is no minimum deposit restriction, allowing zero-value transactions."
+      },
+      {
+        "Function": "withdrawFunds",
+        "EdgeCase": "Exceeding withdrawal limit",
+        "Description": "The function enforces a limit of 1 ether on withdrawals."
+      },
+      {
+        "Function": "withdrawFunds",
+        "EdgeCase": "Frequent withdrawals",
+        "Description": "A 1-week delay is enforced between withdrawals to prevent repeated access."
+      }
+    ],
+    "CommonAttackPatterns": [
+      {
+        "Pattern": "Reentrancy Attack",
+        "Vulnerability": "Reentrancy exists due to the `call.value()` pattern in withdrawFunds, potentially allowing an attacker to call withdrawFunds repeatedly before the balance is updated."
+      }
+    ],
+    "RecoveryMechanisms": {
+      "Description": "The contract does not have a fallback mechanism or emergency stop function to handle potential attacks."
+    }
+  }
+}

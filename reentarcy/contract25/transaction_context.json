@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "WithdrawalState": "Triggered when users call the withdrawReward function.",
+    "BonusClaimState": "Executed when users attempt to claim their first withdrawal bonus by calling getFirstWithdrawalBonus."
+  },
+  "ExternalInteractions": {
+    "TokenTransfer": "Tokens are transferred between the contract and user addresses when withdrawReward is called.",
+    "ReentrancyRisk": "Calling withdrawReward from within getFirstWithdrawalBonus opens the contract to reentrancy vulnerabilities."
+  }
+}

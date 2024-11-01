@@ -1,0 +1,16 @@
+{
+    "ImplementedSecurityControls": [
+        {
+            "AccessControl": "Initialization check on SetMinSum and SetLogFile functions to prevent changes after initialization."
+        }
+    ],
+    "Vulnerabilities": [
+        {
+            "Type": "Reentrancy",
+            "Details": "No reentrancy guard is implemented, exposing the contract to reentrancy attacks in the Collect function."
+        }
+    ],
+    "FallbackFunctionality": {
+        "FallbackFunction": "The contract’s fallback function calls Deposit, allowing users to deposit Ether by sending directly to the contract address."
+    }
+}

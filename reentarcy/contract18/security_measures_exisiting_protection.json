@@ -1,0 +1,7 @@
+{
+  "Implemented_Security_Controls": {
+    "Access_Control": "The intitalized flag restricts re-initialization of MinSum and LogFile settings.",
+    "Minimum_Balance": "Collect function enforces MinSum check for withdrawals, ensuring minimum balance."
+  },
+  "Fallback_Functionality": "Fallback function is defined as payable, calling Put with a lockTime of 0 by default."
+}

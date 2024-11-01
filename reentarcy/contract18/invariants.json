@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "invariant": "acc.balance >= _am",
+      "vulnerability": "Reentrancy",
+      "security_relevance": "High",
+      "description": "Ensures the contract has a sufficient balance to perform the transfer."
+    },
+    {
+      "invariant": "now > acc.unlockTime",
+      "vulnerability": "Time Lock",
+      "security_relevance": "Medium",
+      "description": "Prevents users from withdrawing funds before the designated unlock time."
+    },
+    {
+      "invariant": "acc.balance >= MinSum",
+      "vulnerability": "Access Control",
+      "security_relevance": "Medium",
+      "description": "Ensures that the user's balance meets or exceeds the minimum balance required for withdrawal."
+    },
+    {
+      "invariant": "LogFile != 0x0",
+      "vulnerability": "Null LogFile Assignment",
+      "security_relevance": "Low",
+      "description": "Guarantees that the LogFile address has been set before logging any transactions."
+    },
+    {
+      "invariant": "intitalized == true",
+      "vulnerability": "Access Control",
+      "security_relevance": "Medium",
+      "description": "Ensures that the contract initialization functions `SetMinSum` and `SetLogFile` cannot be executed after initialization."
+    },
+    {
+      "invariant": "acc.balance -= _am, acc.balance >= 0",
+      "vulnerability": "Reentrancy",
+      "security_relevance": "High",
+      "description": "Ensures that the user's balance is properly deducted upon withdrawal, preventing overdrafts."
+    }
+  ]
+}

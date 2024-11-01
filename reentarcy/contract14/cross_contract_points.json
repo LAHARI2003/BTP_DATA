@@ -1,0 +1,10 @@
+{
+  "CrossContractPoints": {
+    "CrossContractDependencies": {
+      "LogFileContract": "Interacts with the LogFile contract to log transactions during deposits and withdrawals."
+    },
+    "InterContractConsistencyConditions": {
+      "LoggingConsistency": "Ensures each deposit and withdrawal action is logged consistently with LogFile to maintain an accurate transaction history."
+    }
+  }
+}

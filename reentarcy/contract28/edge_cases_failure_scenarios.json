@@ -1,0 +1,16 @@
+{
+  "EdgeCaseAnnotations": [
+    {
+      "EdgeCase": "Reentrancy Vulnerability",
+      "Condition": "If the balance is not set to zero before the call to msg.sender, reentrancy is possible.",
+      "Location": "withdrawBalance"
+    }
+  ],
+  "CommonAttackPatterns": [
+    {
+      "AttackType": "Reentrancy",
+      "Description": "If withdrawBalance does not zero out the user’s balance before the call, an attacker could recursively call withdrawBalance to drain the contract."
+    }
+  ],
+  "RecoveryMechanisms": []
+}

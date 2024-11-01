@@ -1,0 +1,13 @@
+{
+  "EdgeCaseAnnotations": {
+    "ZeroValueDeposits": "No restriction on zero-value deposits in the Put function.",
+    "InsufficientBalanceWithdrawals": "The Collect function checks if acc.balance is sufficient and above MinSum."
+  },
+  "CommonAttackPatterns": {
+    "Reentrancy": "The Collect function uses a vulnerable call() pattern, making it susceptible to reentrancy attacks.",
+    "TimeLockBypass": "The Collect function enforces a time lock by checking if now > acc.unlockTime."
+  },
+  "RecoveryMechanisms": {
+    "EmergencyStopFunction": "No emergency stop function implemented to prevent withdrawals during an attack."
+  }
+}

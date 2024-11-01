@@ -1,0 +1,38 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Feature": "Access Control",
+        "Description": "The Log contract's AddMessage function restricts modifications to LastMsg and History arrays by limiting access through the public keyword, ensuring only authorized transactions via ETH_VAULT affect these variables."
+      },
+      {
+        "Feature": "Money Flow Integrity",
+        "Description": "The ETH_VAULT contract’s Deposit function maintains accurate tracking of deposits in the balances mapping, ensuring that each user's balance reflects their total deposits."
+      },
+      {
+        "Feature": "Invariant Validation",
+        "Description": "In the CashOut function, an invariant check ensures that _am is less than or equal to the balance of msg.sender before attempting a transfer, maintaining accurate balances and preventing overdrafts."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "Function": "CashOut",
+        "Description": "The CashOut function decreases balances[msg.sender] by _am only if the transfer to msg.sender is successful. This ensures that balances remain consistent even in cases of failed transactions, preserving the invariant that balances reflect actual available funds."
+      }
+    ]
+  },
+  "PotentiallyRiskyFeatures": [
+    {
+      "Feature": "Reentrancy Vulnerability",
+      "Description": "The CashOut function calls an external msg.sender address via msg.sender.call.value(_am)(), which opens up the contract to reentrancy attacks where an attacker could repeatedly call CashOut before balances[msg.sender] is updated."
+    },
+    {
+      "Feature": "Lack of Access Control",
+      "Description": "The CashOut and Deposit functions are accessible to any address, including potentially malicious actors. If not carefully managed, unauthorized access could lead to unintended interactions, though balances are tracked securely."
+    },
+    {
+      "Feature": "State Dependency",
+      "Description": "The MinDeposit variable is set at 1 ether but lacks flexibility to adjust over time, which may make the contract less adaptable to changes in ETH valuation or usage requirements."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": "No access control measures implemented; any user can call the donate and withdraw functions."
+    },
+    "Vulnerabilities": [
+        {
+            "type": "Reentrancy",
+            "location": "withdraw function",
+            "line": 19,
+            "description": "Potential reentrancy attack due to calling msg.sender in an unguarded manner."
+        }
+    ],
+    "FallbackFunctionality": "No fallback function implemented."
+}

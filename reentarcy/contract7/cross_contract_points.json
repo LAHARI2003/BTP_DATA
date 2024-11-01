@@ -1,0 +1,8 @@
+{
+    "CrossContractDependencies": {
+        "LogContract": "The U_BANK contract interacts with the Log contract to store and record transaction messages."
+    },
+    "InterContractConsistencyConditions": {
+        "ConsistencyConditions": "Ensures that every transaction (deposit and withdrawal) is logged correctly in the Log contract by calling the AddMessage function."
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "CrossContractPoints": {
+    "CrossContractDependencies": {
+      "LogContract": "The PrivateDeposit contract depends on the Log contract for logging deposit and withdrawal events.",
+      "Inter-ContractInteraction": "The setLog function allows setting a different Log contract, introducing an external dependency."
+    },
+    "InterContractConsistencyConditions": {
+      "LogSynchronization": "The consistency of deposit and withdrawal logs depends on the correct functioning of the linked Log contract."
+    }
+  }
+}

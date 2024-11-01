@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "balance consistency after withdrawal",
+      "expression": "balances[msg.sender] >= _amount => balances[msg.sender] = balances[msg.sender] - _amount",
+      "relevance": "high"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "positive balance requirement",
+      "expression": "balances[_to] + msg.value >= balances[_to]",
+      "relevance": "medium"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "withdraw function authorization",
+      "expression": "balances[msg.sender] >= _amount",
+      "relevance": "high"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "one call per transaction",
+      "expression": "callDepth(msg.sender) <= 1",
+      "relevance": "high"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "storage balance non-negative",
+      "expression": "balances[msg.sender] >= 0",
+      "relevance": "high"
+    }
+  ]
+}

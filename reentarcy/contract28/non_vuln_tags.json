@@ -1,0 +1,30 @@
+{
+  "NonVulnerableTags": {
+    "Access Control": {
+      "description": "Only msg.sender can withdraw their balance, meaning access is limited to the owner of the balance.",
+      "implementation_details": "The function withdrawBalance operates on msg.sender's balance only, ensuring other users' balances cannot be accessed."
+    },
+    "Money Flow Integrity": {
+      "description": "Withdrawals are executed in a single transaction flow, providing an implicit check for function completion.",
+      "implementation_details": "Amount to withdraw is stored in a local variable amountToWithdraw, maintaining correct amount assignment before transferring funds."
+    },
+    "Invariant Validation": {
+      "description": "User balance reset to 0 after withdrawal completion ensures no re-access to previous funds.",
+      "implementation_details": "userBalances[msg.sender] is set to 0 after withdrawal success to maintain accurate state of user funds."
+    }
+  },
+  "PotentiallyRiskyFeatures": {
+    "Reentrancy": {
+      "description": "The contract is susceptible to reentrancy attacks, as the transfer is made before updating the user's balance.",
+      "implementation_details": "The call to msg.sender (line 17) executes external code, which allows for recursive calls back to withdrawBalance. This could drain the contract if reentrant calls are made before userBalances[msg.sender] is set to 0."
+    },
+    "Usage of call": {
+      "description": "The usage of low-level call is generally discouraged unless necessary, as it forwards all available gas and lacks strong error handling.",
+      "implementation_details": "The call.value(amountToWithdraw) could fail silently or be exploited. Usage of transfer or send is generally preferred in such cases to provide stricter gas limits and stronger fail-safe mechanics."
+    },
+    "Missing Checks-Effects-Interactions Pattern": {
+      "description": "The function withdrawBalance does not follow the recommended Checks-Effects-Interactions pattern, making it vulnerable to reentrancy.",
+      "implementation_details": "userBalances[msg.sender] is updated after the external call rather than before, violating the recommended safety practice of Checks-Effects-Interactions."
+    }
+  }
+}

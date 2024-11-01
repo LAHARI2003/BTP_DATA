@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "DepositState": "When users send Ether and the Put function is called.",
+    "WithdrawalState": "When users request Ether via the Collect function."
+  },
+  "ExternalInteractions": {
+    "EtherTransfers": "The contract sends and receives Ether between users and the contract when depositing or withdrawing.",
+    "LogInteraction": "Interacts with an external contract (Log) to record transactions."
+  }
+}

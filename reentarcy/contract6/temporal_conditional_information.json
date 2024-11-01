@@ -1,0 +1,15 @@
+{
+  "Time-Sensitive Logic": {
+    "Ownership Confirmation": {
+      "Description": "The confirmOwner function is sensitive to the timing of when the new owner interacts with the contract."
+    }
+  },
+  "Conditional Logic Paths": {
+    "Path 1": {
+      "Condition": "Different paths exist based on whether the deposited amount exceeds the MinDeposit in the Deposit function."
+    },
+    "Path 2": {
+      "Condition": "If the Holders mapping has a positive balance for a user, different execution paths are taken for withdrawals."
+    }
+  }
+}

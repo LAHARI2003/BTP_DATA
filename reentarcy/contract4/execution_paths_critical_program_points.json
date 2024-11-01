@@ -1,0 +1,19 @@
+{
+  "Function_Level_Analysis": {
+    "Deposit": "Manages ETH deposits and logs the event with the LogFile contract.",
+    "Collect": "Handles withdrawals with checks for balance and minimum sum conditions.",
+    "SetMinSum": "Sets the minimum sum for withdrawals if the contract has not been initialized.",
+    "SetLogFile": "Assigns the log file contract if the contract has not been initialized.",
+    "Initialized": "Marks the contract as initialized to prevent further modifications."
+  },
+  "Execution_Path_Tags": {
+    "Decision_Points": [
+      "require(!intitalized) in SetMinSum and SetLogFile ensures these functions can only be called once.",
+      "if (balances[msg.sender] >= MinSum && balances[msg.sender] >= _am) ensures the withdrawal amount is valid in Collect."
+    ],
+    "State_Transition_Points": [
+      "Updates to balances in Deposit and Collect.",
+      "Setting of MinSum and Log variables during initialization."
+    ]
+  }
+}

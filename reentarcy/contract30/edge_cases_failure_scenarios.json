@@ -1,0 +1,18 @@
+{
+    "EdgeCaseAnnotations": [
+        {
+            "case": "Zero or insufficient balance withdrawals",
+            "location": "withdraw function",
+            "description": "The withdraw function checks if the user has enough balance to withdraw."
+        }
+    ],
+    "CommonAttackPatterns": [
+        {
+            "vulnerability": "Reentrancy",
+            "location": "withdraw function",
+            "line": 19,
+            "description": "If the withdraw function does not correctly handle reentrancy, an attacker can repeatedly withdraw funds."
+        }
+    ],
+    "RecoveryMechanisms": "Not implemented in this contract but could be mitigated with mechanisms to prevent reentrant calls."
+}

@@ -1,0 +1,19 @@
+{
+  "TemporalConditionalInformation": {
+    "TimeSensitiveLogic": {
+      "withdrawFunds": {
+        "Description": "Relies on the current time (`now`) to enforce a 1-week delay between user withdrawals, making the function time-sensitive."
+      }
+    },
+    "ConditionalLogicPaths": [
+      {
+        "Condition": "if balance and time conditions are met",
+        "Description": "Proceed with withdrawal if all conditions in withdrawFunds function are met."
+      },
+      {
+        "Condition": "if balance or time conditions are not met",
+        "Description": "Revert the transaction if any of the conditions in withdrawFunds function fail."
+      }
+    ]
+  }
+}

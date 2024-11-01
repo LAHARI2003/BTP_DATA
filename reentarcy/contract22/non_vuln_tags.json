@@ -1,0 +1,42 @@
+{
+    "NonVulnerableTags": {
+        "WellImplementedFeatures": {
+            "MoneyFlowIntegrity": "The contract maintains accurate balances for each user in the depositFunds function, ensuring balances[msg.sender] always reflects the sum of user deposits.",
+            "AccessControl": "No unauthorized access is permitted to the deposit and withdraw functions as they are publicly callable but limited by balance and time constraints.",
+            "InvariantValidation": [
+                {
+                    "Function": "withdrawFunds",
+                    "Invariant": "Ensures balances[msg.sender] is greater than or equal to _weiToWithdraw, preventing over-withdrawal.",
+                    "Validation": "The contract uses require to ensure that users cannot withdraw more funds than they have in their balance."
+                },
+                {
+                    "Function": "withdrawFunds",
+                    "Invariant": "Withdrawal limit checks for each user to prevent excessive withdrawals within one transaction.",
+                    "Validation": "require(_weiToWithdraw <= withdrawalLimit) enforces a limit on how much can be withdrawn at a time, which is set at 1 ether."
+                },
+                {
+                    "Function": "withdrawFunds",
+                    "Invariant": "Enforces a weekly interval between withdrawals for each user.",
+                    "Validation": "require(now >= lastWithdrawTime[msg.sender] + 1 weeks) checks that users must wait at least one week before making another withdrawal."
+                }
+            ]
+        }
+    },
+    "PotentialRiskyFeatures": {
+        "ReentrancyRisk": {
+            "Function": "withdrawFunds",
+            "RiskDescription": "The call to msg.sender.call.value(_weiToWithdraw)() is vulnerable to reentrancy, as it allows external calls before updating the balance, creating a risk of reentrant calls that could lead to draining funds.",
+            "SuggestedMitigation": "Use a checks-effects-interactions pattern by updating balances[msg.sender] before calling external addresses. Alternatively, consider using transfer or send, which have limited gas allowances."
+        },
+        "GasLimitRisk": {
+            "Function": "withdrawFunds",
+            "RiskDescription": "msg.sender.call.value(_weiToWithdraw)() can consume more gas than expected, potentially causing transaction failures or allowing gas griefing attacks by malicious contracts.",
+            "SuggestedMitigation": "Consider using transfer or send instead of call, as they impose a gas limit, reducing the risk of unexpected failures."
+        },
+        "TimeDependentLogic": {
+            "Function": "withdrawFunds",
+            "RiskDescription": "The usage of the now (block.timestamp) function introduces reliance on block timestamp, which miners can manipulate slightly, especially in the case of low-value contracts.",
+            "SuggestedMitigation": "Consider using a more reliable time management solution if exact timing is critical, although this risk is relatively low for weekly intervals."
+        }
+    }
+}

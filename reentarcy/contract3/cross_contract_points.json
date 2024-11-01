@@ -1,0 +1,9 @@
+{
+    "CrossContractDependencies": {
+        "Dependency": "LogFile contract logs events related to deposits and withdrawals.",
+        "Interaction": "The ACCURAL_DEPOSIT contract interacts with the LogFile contract through the Deposit and Collect functions."
+    },
+    "InterContractConsistencyConditions": [
+        "The LogFile contract must be deployed and correctly set for the Deposit and Collect functions to operate as intended."
+    ]
+}

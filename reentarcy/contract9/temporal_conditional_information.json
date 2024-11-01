@@ -1,0 +1,11 @@
+{
+  "TimeSensitiveLogic": {
+    "CollectFunction": "Depends on the passage of time (now compared to acc.unlockTime) to enforce the time lock."
+  },
+  "ConditionalLogicPaths": {
+    "CollectFunctionPaths": {
+      "Path1": "Proceeds with the Ether transfer if all conditions (balance, time) are met.",
+      "Path2": "Reverts if any condition is not met (e.g., balance is insufficient or unlockTime has not passed)."
+    }
+  }
+}

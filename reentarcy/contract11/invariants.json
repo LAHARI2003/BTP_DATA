@@ -1,0 +1,46 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "expression": "msg.sender == tx.origin",
+      "description": "Ensures that external accounts (EOA) are interacting, not contracts.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Reentrancy",
+      "expression": "Acc[msg.sender].balance >= _am",
+      "description": "Requires that the account balance of the sender is sufficient before withdrawal.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Time Lock",
+      "expression": "now > Acc[msg.sender].unlockTime",
+      "description": "Ensures that withdrawals can only happen after the unlock time.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Access Control",
+      "expression": "Acc[msg.sender].balance >= MinSum",
+      "description": "Verifies that the account balance meets the minimum sum before withdrawal.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "expression": "Acc[msg.sender].balance += msg.value",
+      "description": "Ensures that the user's balance correctly increments by the deposited amount.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Oracle Slippage",
+      "expression": "History.length >= 0",
+      "description": "Ensures that the transaction log has a history of messages, useful for tracking the state of transfers.",
+      "security_relevance": "Low"
+    },
+    {
+      "vulnerability": "Data Flow",
+      "expression": "History[LastMsg.index] == LastMsg",
+      "description": "Ensures that the latest message added to the log is accurately recorded in history.",
+      "security_relevance": "Low"
+    }
+  ]
+}

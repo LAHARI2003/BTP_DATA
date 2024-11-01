@@ -1,0 +1,32 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "xlock == true",
+            "security_relevance_level": "High",
+            "expression": "xlock == true",
+            "description": "This invariant is a lock mechanism preventing re-entrant calls."
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "userBalances[msg.sender] == userBalances[msg.sender] - amountToWithdraw",
+            "security_relevance_level": "High",
+            "expression": "userBalances[msg.sender] = userBalances[msg.sender] - amountToWithdraw",
+            "description": "Ensures that user balances are updated before external calls are made."
+        },
+        {
+            "vulnerability": "Access Control",
+            "invariant": "msg.sender == tx.origin",
+            "security_relevance_level": "Medium",
+            "expression": "msg.sender == tx.origin",
+            "description": "Checks that only the original caller interacts with withdrawBalance, preventing contract-based re-entrancy attacks."
+        },
+        {
+            "vulnerability": "Gas Control",
+            "invariant": "gasUsed(withdrawBalance) ≤ maxGasPerFunc",
+            "security_relevance_level": "Low",
+            "expression": "gasUsed(withdrawBalance) ≤ maxGasPerFunc",
+            "description": "Limits gas usage within the function to prevent unexpected out-of-gas errors."
+        }
+    ]
+}

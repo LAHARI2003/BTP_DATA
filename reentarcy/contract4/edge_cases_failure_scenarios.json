@@ -1,0 +1,13 @@
+{
+  "Edge_Case_Annotations": {
+    "Zero Value Deposit": "The Deposit function allows for zero-value deposits, which may be unintended.",
+    "Insufficient Balance Withdrawal": "The Collect function checks if the user's balance is sufficient for the withdrawal amount and if it meets the MinSum requirement."
+  },
+  "Common_Attack_Patterns": {
+    "Reentrancy": "The Collect function uses msg.sender.call.value(_am)(), which is susceptible to reentrancy attacks as the balance is updated after the call.",
+    "Uninitialized LogFile": "If the LogFile contract is not set before deposits, it may cause issues in logging."
+  },
+  "Recovery_Mechanisms": {
+    "No_Emergency_Functionality": "The contract does not have an emergency stop function to halt operations in case of an attack or malfunction."
+  }
+}

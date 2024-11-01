@@ -1,0 +1,10 @@
+{
+    "TransactionStateContext": {
+        "PutState": "Triggered when users deposit funds through the Put function.",
+        "CollectState": "Triggered when users attempt to withdraw funds via the Collect function."
+    },
+    "ExternalInteractions": [
+        "Transfers Ether between the user and the contract.",
+        "Logs messages via the Log contract."
+    ]
+}

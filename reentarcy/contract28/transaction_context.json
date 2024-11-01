@@ -1,0 +1,12 @@
+{
+  "TransactionStateContext": {
+    "WithdrawState": "Occurs when users withdraw tokens using the withdrawBalance function."
+  },
+  "ExternalInteractions": [
+    {
+      "Description": "Transfers tokens from the contract to the user's address during withdrawal.",
+      "Function": "withdrawBalance",
+      "InteractionType": "Transfer"
+    }
+  ]
+}

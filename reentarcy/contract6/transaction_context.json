@@ -1,0 +1,22 @@
+{
+  "Transaction State Context": {
+    "State 1": {
+      "Name": "Deposit State",
+      "Description": "When users deposit Ether using the fallback function or the Deposit function."
+    },
+    "State 2": {
+      "Name": "Withdrawal State",
+      "Description": "When users or the owner withdraw tokens or Ether using WitdrawTokenToHolder or WithdrawToHolder."
+    }
+  },
+  "External Interactions": {
+    "Interaction 1": {
+      "Type": "Token Transfer",
+      "Description": "The contract interacts with external token contracts using the WithdrawToken function, calling the 'transfer' method."
+    },
+    "Interaction 2": {
+      "Type": "Ether Transfer",
+      "Description": "Ether is transferred back to users when WithdrawToHolder is called."
+    }
+  }
+}

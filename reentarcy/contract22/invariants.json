@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "security_relevance": "Medium",
+      "description": "Ensures that the call is not proxied by another contract, limiting access to only externally owned accounts."
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "balances[msg.sender] >= _weiToWithdraw",
+      "security_relevance": "High",
+      "description": "Ensures that the user cannot withdraw more funds than their current balance, protecting against unauthorized withdrawals."
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "balances[msg.sender] -= _weiToWithdraw",
+      "security_relevance": "High",
+      "description": "Reduces the balance before external calls, which could help mitigate re-entrancy issues if placed before the call; the current placement is vulnerable."
+    },
+    {
+      "vulnerability": "Time Lock",
+      "invariant": "now >= lastWithdrawTime[msg.sender] + 1 weeks",
+      "security_relevance": "High",
+      "description": "Ensures a minimum time delay of one week between withdrawals for each address, providing rate-limiting protection."
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "_weiToWithdraw <= withdrawalLimit",
+      "security_relevance": "High",
+      "description": "Caps the withdrawal amount per transaction, protecting against excessive outflows in one transaction."
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "balances[msg.sender] == Old(balances[msg.sender]) + msg.value",
+      "security_relevance": "Medium",
+      "description": "Ensures that user balance updates correctly during deposits without unexpected changes to the state."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+    "temporal_and_conditional_information": {
+        "time_sensitive_logic": {
+            "open_timeout": "Channels require both parties to join within a specified time",
+            "update_timeout": "State updates and disputes in virtual channels are limited by the update timeout"
+        },
+        "conditional_logic_paths": {
+            "channel_open_or_closed": "Functions behave differently depending on whether channels are open or closed",
+            "is_in_settlement_state": "Virtual channels follow different paths when they are in settlement state"
+        }
+    }
+}

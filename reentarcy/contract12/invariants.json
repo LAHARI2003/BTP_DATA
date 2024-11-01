@@ -1,0 +1,49 @@
+{
+  "invariants": [
+    {
+      "vulnerability_category": "Access Control",
+      "invariant_expression": "msg.sender == tx.origin",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability_category": "Access Control",
+      "invariant_expression": "msg.sender == owner",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariant_expression": "balances[msg.sender] >= _am",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability_category": "Gas Control",
+      "invariant_expression": "gasUsed(CashOut) ≤ maxGasPerFunc",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariant_expression": "callDepth <= maxDepth",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability_category": "Oracle Slippage (Price Manipulation)",
+      "invariant_expression": "block.number > lastBlock",
+      "security_relevance": "low"
+    },
+    {
+      "vulnerability_category": "Data Flow & Business Logic",
+      "invariant_expression": "balances[msg.sender] >= 0",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability_category": "Money Flow",
+      "invariant_expression": "msg.value >= MinDeposit",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability_category": "Special Storage",
+      "invariant_expression": "History.length >= 0",
+      "security_relevance": "low"
+    }
+  ]
+}

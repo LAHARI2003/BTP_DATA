@@ -1,0 +1,67 @@
+{
+    "invariants": [
+        {
+            "name": "MinDeposit Check",
+            "expression": "msg.value >= MinDeposit",
+            "vulnerability": "Access Control",
+            "security_relevance": "High",
+            "description": "Ensures that the minimum deposit amount is met before updating balances."
+        },
+        {
+            "name": "Balance Consistency",
+            "expression": "balances[msg.sender] >= 0",
+            "vulnerability": "Special Storage",
+            "security_relevance": "High",
+            "description": "Ensures that the balance of any address is never negative."
+        },
+        {
+            "name": "Re-entrancy Protection",
+            "expression": "balances[msg.sender] >= _am",
+            "vulnerability": "Re-entrancy",
+            "security_relevance": "High",
+            "description": "Checks if the sender’s balance is sufficient before attempting to transfer the amount. However, the call pattern exposes a re-entrancy vulnerability."
+        },
+        {
+            "name": "Transaction Consistency",
+            "expression": "TransferLog.AddMessage(msg.sender, msg.value, \"Deposit\")",
+            "vulnerability": "Oracle Slippage (Logging Integrity)",
+            "security_relevance": "Medium",
+            "description": "Ensures that every deposit and withdrawal operation is logged with correct details."
+        },
+        {
+            "name": "CashOut Amount Consistency",
+            "expression": "_am <= balances[msg.sender]",
+            "vulnerability": "Access Control",
+            "security_relevance": "High",
+            "description": "Ensures that the requested cash-out amount does not exceed the sender’s balance."
+        },
+        {
+            "name": "Gas Limit for External Call",
+            "expression": "msg.sender.call.value(_am)()",
+            "vulnerability": "Gas Control",
+            "security_relevance": "Medium",
+            "description": "Ensures that the call function can proceed only if sufficient gas is provided, but does not enforce a specific gas limit."
+        },
+        {
+            "name": "Deposit Log Consistency",
+            "expression": "TransferLog.AddMessage(msg.sender, msg.value, \"Deposit\")",
+            "vulnerability": "Data Flow",
+            "security_relevance": "Low",
+            "description": "Logs deposit details for every deposit transaction."
+        },
+        {
+            "name": "CashOut Log Consistency",
+            "expression": "TransferLog.AddMessage(msg.sender, _am, \"CashOut\")",
+            "vulnerability": "Data Flow",
+            "security_relevance": "Low",
+            "description": "Logs cash-out details for every withdrawal transaction."
+        },
+        {
+            "name": "EOA Only",
+            "expression": "msg.sender == tx.origin",
+            "vulnerability": "Access Control",
+            "security_relevance": "High",
+            "description": "Ensures that only externally owned accounts (EOAs) can interact with the contract functions."
+        }
+    ]
+}

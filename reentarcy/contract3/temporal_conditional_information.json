@@ -1,0 +1,28 @@
+{
+    "TimeSensitiveLogic": {
+        "Functions": [
+            {
+                "Name": "Collect",
+                "Dependency": "The function relies on balances that may change over time due to deposits or withdrawals."
+            },
+            {
+                "Name": "LogFile",
+                "Dependency": "Uses now to timestamp messages, which is time-sensitive."
+            }
+        ]
+    },
+    "ConditionalLogicPaths": [
+        {
+            "Condition": "balances[msg.sender] >= MinSum && balances[msg.sender] >= _am",
+            "Outcome": "Withdrawal proceeds if both conditions are met; otherwise, it reverts."
+        },
+        {
+            "Condition": "intitalized",
+            "Functions": [
+                "SetMinSum",
+                "SetLogFile"
+            ],
+            "Outcome": "Prevents these functions from executing if the contract has already been initialized."
+        }
+    ]
+}

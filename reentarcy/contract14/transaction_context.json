@@ -1,0 +1,12 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "DepositState": "When users deposit funds via the Deposit function or the fallback function.",
+      "WithdrawalState": "When users withdraw funds using the Collect function."
+    },
+    "ExternalInteractions": {
+      "Deposit": "Transfers Ether from users to the contract address and logs the transaction.",
+      "Withdraw": "Transfers Ether from the contract back to the user and logs the transaction."
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "transaction_context": {
+        "transaction_state_context": {
+            "channel_creation": "Establishing a new ledger channel between two parties",
+            "depositing_funds": "Adding funds to an open ledger channel",
+            "joining_channel": "When a second party joins the channel",
+            "withdrawing_funds": "Closing a channel and distributing funds"
+        },
+        "external_interactions": {
+            "token_transfers": "ERC20 tokens are transferred between users and the contract",
+            "ether_transfers": "Ether is transferred to/from the contract during deposits and withdrawals"
+        }
+    }
+}

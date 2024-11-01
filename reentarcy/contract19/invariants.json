@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "expression": "acc.balance >= MinSum",
+      "description": "Account balance must meet minimum threshold",
+      "related_vulnerability": "Access Control",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "acc.balance >= _am",
+      "description": "Requested withdrawal amount should not exceed account balance",
+      "related_vulnerability": "Money Flow",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "now > acc.unlockTime",
+      "description": "Account must be unlocked before withdrawal",
+      "related_vulnerability": "Time Lock",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "msg.sender != address(this)",
+      "description": "Ensure no recursive contract calls are made from within the contract",
+      "related_vulnerability": "Reentrancy",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "History.length >= 0",
+      "description": "Log history must exist and be maintained for tracking",
+      "related_vulnerability": "Data Flow & Business Logic",
+      "security_relevance": "Medium"
+    },
+    {
+      "expression": "MinSum >= 1 ether",
+      "description": "Minimum balance threshold set to 1 ether",
+      "related_vulnerability": "Special Storage",
+      "security_relevance": "Medium"
+    }
+  ]
+}

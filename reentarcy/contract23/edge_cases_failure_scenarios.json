@@ -1,0 +1,18 @@
+{
+  "Edge Case Annotations": [
+    {
+      "Condition": "Zero balance check",
+      "Location": "hasNoBalance modifier",
+      "Explanation": "Ensures the user has zero balance to avoid repeated airdrops."
+    }
+  ],
+  "Common Attack Patterns": [
+    {
+      "Attack Type": "Reentrancy",
+      "Details": "The attack contract exploits reentrancy in airDrop by re-calling it within the supportsToken function, allowing unlimited airdrops."
+    }
+  ],
+  "Recovery Mechanisms": [
+    "None in this example, but reentrancy guards or mutex locks could be added to mitigate attacks."
+  ]
+}

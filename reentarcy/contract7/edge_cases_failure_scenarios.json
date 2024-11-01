@@ -1,0 +1,13 @@
+{
+    "EdgeCaseAnnotations": {
+        "ZeroValueDeposit": "The Put function allows deposits of any value, including zero. No check for minimum value is present.",
+        "InsufficientBalanceWithdrawals": "The Collect function verifies if acc.balance >= _am before allowing a withdrawal, handling the case of insufficient balance."
+    },
+    "CommonAttackPatterns": {
+        "ReentrancyAttack": "The Collect function is vulnerable to a reentrancy attack because it uses call to send funds, which may allow a malicious user to repeatedly call Collect before balance is updated.",
+        "TimeLockBypass": "If now is greater than acc.unlockTime, the user can withdraw. If this check were removed, the time lock could be bypassed."
+    },
+    "RecoveryMechanisms": {
+        "EmergencyStop": "No emergency stop mechanism is implemented to pause withdrawals in case of an attack."
+    }
+}

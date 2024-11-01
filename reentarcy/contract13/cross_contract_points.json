@@ -1,0 +1,6 @@
+{
+  "Cross-Contract Dependencies": {
+    "LogFile Contract": "The contract interacts with the LogFile contract to log transactions, affecting both the contract’s log function and the transaction record in LogFile."
+  },
+  "Inter-Contract Consistency Conditions": "Ensures that LogFile is set only once and initialized to store transaction history consistently for deposits and withdrawals."
+}

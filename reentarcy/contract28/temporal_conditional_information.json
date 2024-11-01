@@ -1,0 +1,9 @@
+{
+  "TimeSensitiveLogic": [],
+  "ConditionalLogicPaths": [
+    {
+      "Condition": "require(success)",
+      "Description": "Ensures that if the transfer fails, the withdrawal is reverted."
+    }
+  ]
+}

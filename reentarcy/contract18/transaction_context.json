@@ -1,0 +1,7 @@
+{
+  "Transaction_State_Context": {
+    "Staking_State": "Users deposit Ether or tokens by calling the 'Put' function. The contract records the deposit amount and lock time.",
+    "Withdrawal_State": "Users can withdraw Ether or tokens via the 'Collect' function, which checks for unlock time, minimum balance, and requested amount."
+  },
+  "External_Interactions": "The contract transfers Ether from users to itself upon deposit (Put function), and from itself to users upon withdrawal (Collect function)."
+}

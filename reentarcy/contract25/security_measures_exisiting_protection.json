@@ -1,0 +1,9 @@
+{
+  "ImplementedSecurityControls": {
+    "BonusClaimCheck": "getFirstWithdrawalBonus includes a require(!claimedBonus[recipient]) check to prevent multiple claims, though it is ineffective due to reentrancy vulnerability."
+  },
+  "MissingProtections": {
+    "ReentrancyProtection": "No reentrancy protection mechanisms (such as mutexes or reentrancy guards) are in place."
+  },
+  "FallbackFunctionality": "No fallback function is implemented, which limits gas management flexibility."
+}

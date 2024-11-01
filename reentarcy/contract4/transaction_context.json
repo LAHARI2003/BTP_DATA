@@ -1,0 +1,10 @@
+{
+  "Transaction_State_Context": {
+    "Deposit_State": "When users send ETH, Deposit is called, and balances are updated.",
+    "Collect_State": "When users withdraw ETH using the Collect function, checks and external calls are performed."
+  },
+  "External_Interactions": {
+    "Deposit_Interaction": "Transfers ETH from the sender to the contract.",
+    "Collect_Interaction": "Transfers ETH from the contract to the sender using a call to the sender's address."
+  }
+}

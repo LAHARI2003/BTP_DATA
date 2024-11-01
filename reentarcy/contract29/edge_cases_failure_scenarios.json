@@ -1,0 +1,16 @@
+{
+  "EdgeCasesAndFailureScenarios": {
+    "EdgeCaseAnnotations": {
+      "ZeroValueDeposits": "The addToBalance function does not check for zero-value deposits, which may result in unexpected balance updates.",
+      "ReentrancyAttack": "The withdrawBalance function is vulnerable to reentrancy attacks, as the contract does not protect against recursive calls by external contracts."
+    },
+    "CommonAttackPatterns": [
+      {
+        "VulnerabilityType": "Reentrancy",
+        "Line": 24,
+        "Description": "Allows for recursive withdrawals by an external contract if it calls back to the withdrawBalance function."
+      }
+    ],
+    "RecoveryMechanisms": "No recovery mechanisms are implemented, as there is no emergency stop or protective modifier for withdrawals."
+  }
+}

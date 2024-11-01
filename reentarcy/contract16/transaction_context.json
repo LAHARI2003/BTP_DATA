@@ -1,0 +1,10 @@
+{
+    "TransactionStateContext": {
+        "DepositState": "When users deposit Ether and the Deposit function is called.",
+        "CashOutState": "When users withdraw Ether via the CashOut function."
+    },
+    "ExternalInteractions": {
+        "Deposit": "Transfers Ether from users to contract balances and logs the transfer.",
+        "CashOut": "Transfers Ether from contract balances to users if conditions are met and logs the withdrawal."
+    }
+}

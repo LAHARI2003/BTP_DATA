@@ -1,0 +1,10 @@
+{
+  "EdgeCaseAnnotations": {
+    "Double Withdrawal": "The getFirstWithdrawalBonus function enables double withdrawal due to reentrancy, allowing attackers to repeatedly call the function before claimedBonus is set to true.",
+    "Zero Balance Withdrawal": "If rewardsForA[recipient] is zero, calling withdrawReward results in no actual withdrawal but still incurs gas costs."
+  },
+  "CommonAttackPatterns": {
+    "ReentrancyAttack": "The contract is vulnerable to reentrancy as withdrawReward can be called repeatedly before claimedBonus is set to true."
+  },
+  "RecoveryMechanisms": "No recovery mechanisms or fallback functions are implemented in this contract."
+}

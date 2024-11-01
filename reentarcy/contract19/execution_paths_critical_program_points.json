@@ -1,0 +1,18 @@
+{
+    "FunctionLevelAnalysis": {
+        "Put": "Manages deposits, updating the user's balance and unlock time. Calls LogFile to log the deposit.",
+        "Collect": "Handles withdrawals, checking balance and unlock time, and potentially vulnerable to reentrancy.",
+        "fallbackFunction": "Default function calls Put(0) when Ether is sent directly to the contract."
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            "require(acc.balance >= MinSum) in Collect to ensure balance meets minimum requirements.",
+            "require(acc.balance >= _am) in Collect to check if balance is sufficient for withdrawal.",
+            "require(now > acc.unlockTime) in Collect to enforce unlock time for withdrawals."
+        ],
+        "StateTransitionPoints": [
+            "Updates to balance and unlockTime within the Put function.",
+            "Updates to balance within the Collect function upon successful withdrawal."
+        ]
+    }
+}

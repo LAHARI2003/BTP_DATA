@@ -1,0 +1,9 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": "There is no time-dependent logic in this contract.",
+    "ConditionalLogicPaths": [
+      "If oCredit > 0 in withdrawAll function determines whether a withdrawal will proceed or not.",
+      "The require(callResult) checks if the Ether transfer call was successful and reverts otherwise."
+    ]
+  }
+}

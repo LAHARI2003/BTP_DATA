@@ -1,0 +1,6 @@
+{
+    "CrossContractPoints": {
+        "CrossContractDependencies": "Direct dependency on the external Log contract to record transaction history.",
+        "InterContractConsistencyConditions": "Assumes that the Log contract operates securely; any malfunction or attack on the Log contract could affect the integrity of ETH_VAULT's logging."
+    }
+}

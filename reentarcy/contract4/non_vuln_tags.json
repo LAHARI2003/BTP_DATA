@@ -1,0 +1,43 @@
+{
+  "Contract": "PRIVATE_ETH_CELL",
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Feature": "Access Control",
+        "Description": "The contract ensures that the 'SetMinSum' and 'SetLogFile' functions are protected by the 'intitalized' flag, preventing re-initialization after the initial setup."
+      },
+      {
+        "Feature": "Logging Mechanism",
+        "Description": "The 'Deposit' and 'Collect' functions log user transactions by calling 'Log.AddMessage', which provides transparency in the contract's activity."
+      },
+      {
+        "Feature": "Fallback Function Implementation",
+        "Description": "The fallback function is well-implemented to call the 'Deposit' function when the contract receives ETH, ensuring correct accounting of deposits."
+      }
+    ],
+    "InvariantValidations": [
+      {
+        "Function": "Deposit",
+        "Description": "The 'Deposit' function maintains the invariant that 'balances[msg.sender]' is updated to reflect the increase in the user's balance, ensuring accurate tracking of deposited funds."
+      },
+      {
+        "Function": "Collect",
+        "Description": "The 'Collect' function checks two conditions: whether 'balances[msg.sender]' is greater than or equal to 'MinSum' and the amount '_am', ensuring that withdrawals are only allowed when the conditions are met."
+      }
+    ],
+    "PotentiallyRiskyFeatures": [
+      {
+        "Feature": "Direct Call for Withdrawal",
+        "Description": "The 'Collect' function uses 'msg.sender.call.value(_am)()', which is susceptible to reentrancy attacks. While the balance is reduced after the call, it could still be exploited if not carefully handled."
+      },
+      {
+        "Feature": "Initialization Flag Usage",
+        "Description": "The 'intitalized' flag is used to prevent re-initialization, but the spelling ('intitalized' instead of 'initialized') could cause confusion or bugs. Consistent and correct naming conventions are recommended."
+      },
+      {
+        "Feature": "Lack of Access Control for Key Functions",
+        "Description": "Functions like 'Initialized', 'SetMinSum', and 'SetLogFile' lack proper access control mechanisms such as 'onlyOwner'. This allows anyone to set or modify these parameters before the 'intitalized' flag is set to true."
+      }
+    ]
+  }
+}

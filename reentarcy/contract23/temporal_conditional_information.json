@@ -1,0 +1,17 @@
+{
+  "Time-Sensitive Logic": [
+    "None identified, as the contract lacks explicit time-based constraints."
+  ],
+  "Conditional Logic Paths": [
+    {
+      "Path": "supportsToken modifier",
+      "Description": "Requires the token compatibility check to pass for airDrop execution.",
+      "Outcome": "airDrop only proceeds if the caller passes the compatibility check."
+    },
+    {
+      "Path": "hasNoBalance modifier",
+      "Description": "Ensures zero balance before tokens are airdropped.",
+      "Outcome": "Prevents users with existing balances from receiving more tokens."
+    }
+  ]
+}

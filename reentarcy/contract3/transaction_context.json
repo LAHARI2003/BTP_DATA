@@ -1,0 +1,16 @@
+{
+    "TransactionStateContext": {
+        "DepositState": "When users deposit Ether and Deposit function is called.",
+        "WithdrawalState": "When users attempt to withdraw Ether via the Collect function."
+    },
+    "ExternalInteractions": [
+        {
+            "Function": "Deposit",
+            "Interaction": "Logs deposit events via the Log contract."
+        },
+        {
+            "Function": "Collect",
+            "Interaction": "Transfers Ether to the user and logs the event via the Log contract."
+        }
+    ]
+}

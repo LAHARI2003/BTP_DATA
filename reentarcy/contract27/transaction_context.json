@@ -1,0 +1,11 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "DepositState": "When users send Ether to the contract via the deposit function.",
+      "WithdrawalState": "When users withdraw all their credited Ether using the withdrawAll function."
+    },
+    "ExternalInteractions": [
+      "The contract interacts with external addresses by sending Ether during withdrawals using msg.sender.call.value."
+    ]
+  }
+}

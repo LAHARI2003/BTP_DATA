@@ -1,0 +1,46 @@
+{
+  "ContractName": "Reentrancy_cross_function",
+  "Source": "https://consensys.github.io/smart-contract-best-practices/known_attacks/",
+  "Author": "consensys",
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "AccessControl": {
+          "Description": "Functions are appropriately restricted to prevent unauthorized calls. Only msg.sender can withdraw their own balance, enforcing user-specific access."
+        },
+        "MoneyFlowIntegrity": {
+          "Description": "The contract logic maintains user-specific balances in the mapping userBalances, and changes are applied directly to user balances, preventing outflows not tied to existing user balances."
+        },
+        "StateConsistency": {
+          "Description": "The transfer function ensures balance adjustments for both sender and recipient in the userBalances mapping, maintaining accurate fund flow and state consistency."
+        }
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "TransferFunctionValidation": {
+          "Description": "Within the transfer function, the amount subtracted from userBalances[msg.sender] is added to userBalances[to], ensuring that the total user balances remain consistent."
+        },
+        "WithdrawBalanceValidation": {
+          "Description": "Before resetting userBalances[msg.sender] to zero, withdrawBalance checks and transfers the balance back to the user, which prevents double-spending if correctly executed without re-entrancy vulnerabilities."
+        }
+      }
+    ]
+  },
+  "RiskyFeatures": [
+    {
+      "ReentrancyRisk": {
+        "Location": "withdrawBalance() function",
+        "Description": "The use of call.value() in withdrawBalance() is vulnerable to reentrancy attacks. Reentrancy can occur if the recipient contract re-invokes withdrawBalance before userBalances[msg.sender] is set to zero, potentially draining funds."
+      },
+      "LowLevelCalls": {
+        "Location": "withdrawBalance() function",
+        "Description": "The call.value() pattern used in this function is less secure than using transfer() or send(), which are preferred for sending Ether. This pattern increases susceptibility to reentrancy if other safety measures are not in place."
+      },
+      "LockingMechanismAbsence": {
+        "Location": "Entire contract",
+        "Description": "No use of reentrancy guard (e.g., nonReentrant modifier or mutex) in functions dealing with balance changes, which would prevent recursive calls during execution."
+      }
+    ]
+  ]
+}

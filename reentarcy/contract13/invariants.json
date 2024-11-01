@@ -1,0 +1,52 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "invariant": "msg.sender == owner || !intitalized",
+            "description": "Ensures that the contract initialization functions (`SetMinSum`, `SetLogFile`) are only accessible when `intitalized` is false.",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Access Control",
+            "invariant": "Log != address(0)",
+            "description": "Verifies that the `Log` address must be set before interacting with log functionalities.",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "acc.balance >= _am && acc.balance >= MinSum && now > acc.unlockTime",
+            "description": "Prevents withdrawals from being made unless the account balance is sufficient, the minimum sum condition is met, and the unlock time has passed.",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "acc.balance >= _am → acc.balance -= _am after external call",
+            "description": "Ensures the account balance is decremented only after the external call to prevent re-entrancy.",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "invariant": "acc.unlockTime >= now + _lockTime",
+            "description": "Guarantees that the unlock time can only be extended and not shortened arbitrarily, maintaining proper lock conditions.",
+            "security_relevance": "medium"
+        },
+        {
+            "vulnerability": "Oracle Slippage",
+            "invariant": "block.timestamp >= acc.unlockTime",
+            "description": "Ensures time-based operations rely on `block.timestamp`, mitigating any dependency on external time sources.",
+            "security_relevance": "medium"
+        },
+        {
+            "vulnerability": "Special Storage",
+            "invariant": "acc.balance >= 0",
+            "description": "Ensures that account balances never go negative, maintaining storage integrity.",
+            "security_relevance": "low"
+        },
+        {
+            "vulnerability": "Special Storage",
+            "invariant": "History.length >= 0",
+            "description": "Guarantees that the log `History` array maintains valid entries, providing a history of log messages.",
+            "security_relevance": "low"
+        }
+    ]
+}

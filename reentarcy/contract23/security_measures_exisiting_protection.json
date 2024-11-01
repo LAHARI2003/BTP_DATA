@@ -1,0 +1,9 @@
+{
+  "Implemented Security Controls": [
+    {
+      "Control": "Modifiers",
+      "Description": "airDrop function uses hasNoBalance and supportsToken modifiers to control execution."
+    }
+  ],
+  "Fallback Functionality": "Not applicable in this contract."
+}

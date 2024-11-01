@@ -1,0 +1,9 @@
+{
+  "Implemented_Security_Controls": {
+    "Access_Control": "The intitalized flag ensures certain functions like SetMinSum and SetLogFile can only be called once.",
+    "Logging": "The contract logs deposits and withdrawals using the LogFile contract to maintain a record of transactions."
+  },
+  "Fallback_Functionality": {
+    "Fallback_Deposit": "The fallback function allows users to deposit ETH by simply sending it to the contract address."
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "TimeSensitiveLogic": {
+        "WithdrawalTimeLock": "The Collect function relies on the passage of time (now > acc.unlockTime) to determine if funds can be withdrawn."
+    },
+    "ConditionalLogicPaths": {
+        "BalanceAndTimeChecks": [
+            "if (acc.balance >= MinSum && acc.balance >= _am && now > acc.unlockTime) determines whether the withdrawal will proceed or revert."
+        ]
+    }
+}

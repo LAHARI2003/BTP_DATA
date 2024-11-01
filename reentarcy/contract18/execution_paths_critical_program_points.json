@@ -1,0 +1,17 @@
+{
+  "Function_Level_Analysis": {
+    "Put": "Handles deposits, updates the user balance and lock time, and logs the transaction.",
+    "Collect": "Handles withdrawals, checks for minimum balance, unlock time, and reentrancy vulnerability in the payable transfer."
+  },
+  "Execution_Path_Tags": {
+    "Decision_Points": [
+      "intitalized check in SetMinSum and SetLogFile to prevent re-initialization",
+      "balance check in Collect to prevent overdraft",
+      "unlock time check in Collect to enforce lock period"
+    ],
+    "State_Transition_Points": [
+      "Updates to Acc (user balances and unlock times) on deposits and withdrawals",
+      "Updates to MinSum on initialization"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+    "TimeSensitiveLogic": {
+        "CashOut": {
+            "Description": "Depends on block timing, preventing multiple withdrawals within the same block using block.number > lastBlock."
+        }
+    },
+    "ConditionalLogicPaths": {
+        "DepositCondition": {
+            "Description": "Only deposits above MinDeposit are recorded in balances and TransferLog."
+        },
+        "CashOutConditions": {
+            "Description": "Allows withdrawal only if balance is sufficient and last block condition is satisfied."
+        }
+    }
+}

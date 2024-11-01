@@ -1,0 +1,23 @@
+{
+  "Edge Case Annotations": {
+    "Zero Value Deposits": {
+      "Condition": "Handled by requiring the deposited value to be greater than the MinDeposit amount."
+    },
+    "Reentrancy": {
+      "Condition": "Present in the WithdrawToHolder function due to the use of low-level call with value."
+    }
+  },
+  "Common Attack Patterns": {
+    "Access Control Vulnerability": {
+      "Description": "If the onlyOwner modifier was missing, unauthorized users could perform sensitive actions like withdrawing tokens."
+    },
+    "Reentrancy": {
+      "Description": "The WithdrawToHolder function is vulnerable to reentrancy attacks, as it calls an external address with Ether before updating the state."
+    }
+  },
+  "Recovery Mechanisms": {
+    "Mechanism 1": {
+      "Description": "No emergency stop or pausing function is present to mitigate attacks or bugs."
+    }
+  }
+}

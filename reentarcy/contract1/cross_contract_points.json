@@ -1,0 +1,7 @@
+{
+    "Contract": "PERSONAL_BANK",
+    "CrossContractPoints": {
+        "CrossContractDependencies": "The contract depends on an external LogFile contract to record transaction logs.",
+        "InterContractConsistencyConditions": "The LogFile contract must be correctly set and functional; otherwise, logging operations in Deposit and Collect may fail."
+    }
+}

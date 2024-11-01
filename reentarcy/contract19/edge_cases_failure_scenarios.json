@@ -1,0 +1,11 @@
+{
+    "EdgeCaseAnnotations": [
+        "Zero value deposits in Put are allowed but set unlockTime.",
+        "Insufficient balance withdrawals in Collect are checked against MinSum and _am parameters.",
+        "Unlock time requirement for withdrawals is ensured with now > acc.unlockTime."
+    ],
+    "CommonAttackPatterns": [
+        "Reentrancy vulnerability in Collect function as it lacks reentrancy protection."
+    ],
+    "RecoveryMechanisms": "No emergency stop or recovery mechanism is present in the contract."
+}

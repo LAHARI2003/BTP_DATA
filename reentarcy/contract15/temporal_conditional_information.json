@@ -1,0 +1,12 @@
+{
+    "Time_Sensitive_Logic": {
+        "AddMessage": "Uses 'now' for timestamping each log entry, making it time-sensitive."
+    },
+    "Conditional_Logic_Paths": {
+        "Deposit": "If condition based on minimum deposit requirement (msg.value > MinDeposit).",
+        "CashOut": [
+            "Conditional path based on user's balance (if _am <= balances[msg.sender]).",
+            "Conditional path for reentrancy (if msg.sender.call.value(_am)())."
+        ]
+    }
+}

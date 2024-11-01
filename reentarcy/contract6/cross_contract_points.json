@@ -1,0 +1,12 @@
+{
+  "Cross-Contract Dependencies": {
+    "Dependency 1": {
+      "Description": "The WithdrawToken function interacts with external token contracts using low-level call functions."
+    }
+  },
+  "Inter-Contract Consistency Conditions": {
+    "Condition 1": {
+      "Description": "Ensures that when tokens are transferred using the WithdrawToken function, the state of the external token contract aligns with the balance managed by the TokenBank contract."
+    }
+  }
+}

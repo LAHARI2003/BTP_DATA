@@ -1,0 +1,11 @@
+{
+  "Transaction State Context": {
+    "Airdrop State": "When a contract meets the requirements and airDrop is called, tokens are added to the user's balance."
+  },
+  "External Interactions": [
+    {
+      "Interaction": "The contract interacts with external contracts (Bank and attack contracts) via the supportsToken modifier to verify token compatibility.",
+      "Details": "The airDrop function calls an external supportsToken function, which is exploited by the attack contract for reentrancy."
+    }
+  ]
+}

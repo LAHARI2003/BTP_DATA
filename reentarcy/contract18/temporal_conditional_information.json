@@ -1,0 +1,4 @@
+{
+  "Time_Sensitive_Logic": "The Collect function depends on the lock time, comparing the current timestamp (now) with the stored unlock time.",
+  "Conditional_Logic_Paths": "The Collect function contains checks on balance, unlock time, and minimum balance to determine eligibility for withdrawal."
+}

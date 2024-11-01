@@ -1,0 +1,7 @@
+{
+    "Implemented_Security_Controls": [
+        "Minimum Deposit Requirement: Deposit function checks msg.value > MinDeposit.",
+        "Balance Check: CashOut function checks _am <= balances[msg.sender] to ensure sufficient funds."
+    ],
+    "Fallback_Functionality": "The fallback function allows the contract to receive ether directly but lacks protective measures."
+}

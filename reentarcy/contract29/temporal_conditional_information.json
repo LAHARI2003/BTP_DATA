@@ -1,0 +1,11 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": "No explicit time-sensitive logic; does not depend on block.timestamp.",
+    "ConditionalLogicPaths": [
+      {
+        "Description": "Execution proceeds to set balance to zero only if transfer is successful.",
+        "Condition": "if (!msg.sender.call.value(userBalance[msg.sender])())"
+      }
+    ]
+  }
+}

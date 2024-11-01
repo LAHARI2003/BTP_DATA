@@ -1,0 +1,17 @@
+{
+    "TimeSensitiveLogic": {
+        "CashOut": {
+            "Description": "Relies on the successful execution of msg.sender.call.value(_am)() and then updates the balance."
+        }
+    },
+    "ConditionalLogicPaths": [
+        {
+            "Condition": "_am <= balances[msg.sender]",
+            "Outcome": "Proceeds with withdrawal if true, otherwise reverts."
+        },
+        {
+            "Condition": "msg.sender.call.value(_am)()",
+            "Outcome": "Proceeds with logging and balance update if successful; otherwise, the call reverts and balances remain unchanged."
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+    "CrossContractDependencies": [
+        "This contract interacts with the Log contract through the TransferLog instance, which stores transaction history.",
+        "CashOut relies on the Log contract to log cash-out transactions."
+    ],
+    "InterContractConsistencyConditions": [
+        "Consistency between recorded history in Log contract and actions performed in PrivateBank contract."
+    ]
+}

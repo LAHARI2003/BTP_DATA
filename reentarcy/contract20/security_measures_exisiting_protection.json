@@ -1,0 +1,14 @@
+{
+    "SecurityMeasuresAndExistingProtections": {
+        "ImplementedSecurityControls": [
+            "Minimum Balance Requirement: The Collect function enforces a minimum balance check using MinSum to prevent withdrawals below a certain threshold.",
+            "Unlock Time Verification: The Collect function checks that the current time exceeds unlockTime before allowing withdrawals."
+        ],
+        "PotentialVulnerabilities": [
+            "Reentrancy in Collect: Potential for reentrancy attack due to the call.value() pattern."
+        ],
+        "FallbackFunctionality": {
+            "Description": "Fallback function is present to handle direct Ether deposits by calling Put with an unlock time of 0."
+        }
+    }
+}

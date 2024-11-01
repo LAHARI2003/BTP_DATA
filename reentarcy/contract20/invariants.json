@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "expression": "msg.sender.balance >= MinSum",
+      "related_vulnerability": "Access Control",
+      "security_relevance_level": "High",
+      "description": "Ensures that the balance is at least the minimum required sum before allowing withdrawal."
+    },
+    {
+      "expression": "Acc[msg.sender].balance >= _am",
+      "related_vulnerability": "Access Control",
+      "security_relevance_level": "High",
+      "description": "Checks if the account balance is sufficient to allow the specified withdrawal amount."
+    },
+    {
+      "expression": "now > Acc[msg.sender].unlockTime",
+      "related_vulnerability": "Access Control",
+      "security_relevance_level": "Medium",
+      "description": "Ensures that the unlock time has passed before allowing a withdrawal operation."
+    },
+    {
+      "expression": "msg.sender.call.value(_am)()",
+      "related_vulnerability": "Re-entrancy",
+      "security_relevance_level": "High",
+      "description": "This call poses a re-entrancy risk as it allows external calls before updating state, creating the potential for multiple withdrawals."
+    },
+    {
+      "expression": "Acc[msg.sender].balance - _am >= 0",
+      "related_vulnerability": "Data Flow & Business Logic",
+      "security_relevance_level": "High",
+      "description": "Ensures that the balance does not go below zero after withdrawal, maintaining account state integrity."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+    "TimeSensitiveLogic": "Not applicable, as this contract does not depend on time-based conditions.",
+    "ConditionalLogicPaths": [
+        {
+            "path": "withdraw function",
+            "condition": "if (credit[msg.sender] >= amount)",
+            "outcome": "If condition passes, funds are transferred; otherwise, the transaction reverts."
+        }
+    ]
+}

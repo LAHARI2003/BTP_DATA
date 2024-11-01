@@ -1,0 +1,9 @@
+{
+    "TransactionStateContext": {
+        "DepositState": "Users add funds using addToBalance.",
+        "WithdrawalState": "Users withdraw funds using withdrawBalance."
+    },
+    "ExternalInteractions": {
+        "EtherTransfer": "The contract directly interacts with user accounts through Ether transfers in withdrawBalance, creating potential for reentrancy."
+    }
+}

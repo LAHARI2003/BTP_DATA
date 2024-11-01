@@ -1,0 +1,11 @@
+{
+  "Edge_Case_Annotations": {
+    "Zero_Deposit_Value": "No validation on minimum deposit value in the Put function; users may attempt zero-value deposits.",
+    "Minimum_Balance": "The Collect function checks if the user has at least MinSum in balance to proceed with a withdrawal."
+  },
+  "Common_Attack_Patterns": {
+    "Reentrancy": "Potential reentrancy vulnerability in Collect due to use of call.value, flagged at vulnerable line.",
+    "Re-initialization": "The intitalized flag checks for re-initialization, preventing repeated setups of MinSum and LogFile values."
+  },
+  "Recovery_Mechanisms": "No recovery mechanisms implemented for emergencies or reentrancy mitigation."
+}

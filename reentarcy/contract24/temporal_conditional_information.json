@@ -1,0 +1,8 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": "No time-dependent logic exists in this contract.",
+    "ConditionalLogicPaths": [
+      "In 'withdraw', two conditional paths exist based on user balance sufficiency and external call success. If conditions fail, Ether transfer doesn't happen and balance is not deducted."
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "ExecutionPathsAndCriticalProgramPoints": {
+    "FunctionLevelAnalysis": {
+      "withdrawAll": "Manages the withdrawal of credited Ether and ensures the caller's credit is reset after a successful transfer.",
+      "deposit": "Increases the credited amount for the sender and the overall contract balance when Ether is sent."
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        "if (oCredit > 0) in withdrawAll to check for positive credit before proceeding with withdrawal."
+      ],
+      "StateTransitionPoints": [
+        "Updates to credit mapping and balance in both deposit and withdrawAll functions.",
+        "Reset of credit[msg.sender] to 0 after successful withdrawal in withdrawAll."
+      ]
+    }
+  }
+}

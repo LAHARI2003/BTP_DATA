@@ -1,0 +1,13 @@
+{
+    "CrossContractDependencies": [
+        {
+            "Dependency": "The PrivateBank contract depends on the Log contract for recording transactions.",
+            "Interaction": "The Deposit and CashOut functions call AddMessage on the Log contract to log transaction details."
+        }
+    ],
+    "InterContractConsistencyConditions": [
+        {
+            "Condition": "The TransferLog object must be correctly initialized with the Log contract address, or transaction logging will fail."
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "Contract": "PERSONAL_BANK",
+    "EdgeCasesAndFailureScenarios": {
+        "EdgeCaseAnnotations": [
+            "Uninitialized contract: The SetMinSum and SetLogFile functions can only be called once before the contract is initialized.",
+            "Insufficient balance: The Collect function ensures the user has sufficient balance and meets the MinSum requirement before proceeding with withdrawal."
+        ],
+        "CommonAttackPatterns": [
+            "Reentrancy Attack: The Collect function contains a known vulnerability where Ether is sent using call.value() before updating the balance.",
+            "Initialization Flaw: If the Initialized function is not called promptly, it may allow unauthorized updates to critical contract variables (MinSum and LogFile)."
+        ],
+        "RecoveryMechanisms": "None implemented. If an emergency stop or circuit breaker mechanism were added, it would be labeled here."
+    }
+}

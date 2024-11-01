@@ -1,0 +1,46 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == owner",
+      "expression": "msg.sender == owner",
+      "security_relevance": "high",
+      "description": "Ensures only the contract owner can execute specific functions, critical to avoid unauthorized access."
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "claimedBonus[recipient] == false",
+      "expression": "claimedBonus[recipient] == false",
+      "security_relevance": "high",
+      "description": "Checks that the recipient has not previously claimed the bonus, preventing multiple bonus claims."
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "rewardsForA[recipient] == 0 after withdrawReward(recipient)",
+      "expression": "rewardsForA[recipient] == 0",
+      "security_relevance": "high",
+      "description": "Ensures the balance is zeroed out after withdrawal to prevent repeated withdrawals due to re-entrancy."
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "amountToWithdraw ≤ rewardsForA[recipient]",
+      "expression": "amountToWithdraw <= rewardsForA[recipient]",
+      "security_relevance": "medium",
+      "description": "Guarantees the requested withdrawal amount does not exceed the available rewards for the user."
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "claimedBonus[recipient] = true after first withdrawal",
+      "expression": "claimedBonus[recipient] == true",
+      "security_relevance": "high",
+      "description": "Sets claimedBonus to true after the first bonus withdrawal to prevent additional claims."
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "rewardsForA[recipient] >= 0",
+      "expression": "rewardsForA[recipient] >= 0",
+      "security_relevance": "medium",
+      "description": "Ensures rewards are non-negative to prevent unauthorized reward manipulations."
+    }
+  ]
+}

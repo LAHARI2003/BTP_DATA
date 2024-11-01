@@ -1,0 +1,10 @@
+{
+  "Implemented Security Controls": {
+    "Access Control": {
+      "Control": "The onlyOwner modifier restricts access to sensitive functions like WithdrawToken and WithdrawToHolder."
+    }
+  },
+  "Fallback Functionality": {
+    "Description": "A fallback function is present and forwards Ether to the Deposit function when Ether is sent directly."
+  }
+}

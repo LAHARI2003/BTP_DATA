@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "balances[msg.sender] >= _am",
+      "description": "Ensure that the user balance is sufficient before a cash-out operation.",
+      "relevance_level": "High"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "balances[msg.sender] -= _am after call",
+      "description": "Ensure balances are updated immediately after cash-out to prevent re-entrancy.",
+      "relevance_level": "High"
+    },
+    {
+      "vulnerability": "Data Flow",
+      "invariant": "msg.value >= MinDeposit",
+      "description": "Deposits must meet the minimum deposit requirement.",
+      "relevance_level": "Medium"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin in Deposit",
+      "description": "Directly initiated calls required for deposit to prevent automated contract calls.",
+      "relevance_level": "Low"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "balances[msg.sender] >= 0",
+      "description": "User balances must always be non-negative.",
+      "relevance_level": "Medium"
+    },
+    {
+      "vulnerability": "Logging Consistency",
+      "invariant": "History.length == n_calls(AddMessage)",
+      "description": "Log length in the `History` array should match the number of log entries recorded.",
+      "relevance_level": "Low"
+    }
+  ]
+}
