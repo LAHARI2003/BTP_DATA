@@ -1,0 +1,15 @@
+{
+    "Function_Level_Analysis": {
+        "transfer": "Handles the transfer of tokens between addresses and updates balances accordingly",
+        "withdrawBalance": "Manages the withdrawal of balance for a user and performs an external call which is vulnerable to reentrancy attacks"
+    },
+    "Execution_Path_Tags": {
+        "Decision_Points": [
+            "if(userBalances[msg.sender] >= amount) in transfer to check if the sender has sufficient balance",
+            "require(success) in withdrawBalance to ensure successful transfer"
+        ],
+        "State_Transition_Points": [
+            "Updates to userBalances when tokens are transferred or withdrawn"
+        ]
+    }
+}
