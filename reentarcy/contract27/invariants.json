@@ -1,0 +1,46 @@
+{
+  "invariants": [
+    {
+      "invariant": "credit[msg.sender] >= 0",
+      "vulnerability": "Access Control",
+      "expression": "credit[msg.sender] ≥ 0",
+      "security_relevance": "High"
+    },
+    {
+      "invariant": "balance >= 0",
+      "vulnerability": "Money Flow",
+      "expression": "balance ≥ 0",
+      "security_relevance": "High"
+    },
+    {
+      "invariant": "msg.sender.call.value(oCredit)() executes only if oCredit > 0",
+      "vulnerability": "Re-entrancy",
+      "expression": "oCredit > 0 ⇒ msg.sender.call.value(oCredit)()",
+      "security_relevance": "High"
+    },
+    {
+      "invariant": "credit[msg.sender] == 0 after successful withdrawal",
+      "vulnerability": "Access Control",
+      "expression": "credit[msg.sender] == 0 after withdrawAll()",
+      "security_relevance": "High"
+    },
+    {
+      "invariant": "credit[msg.sender] <= balance",
+      "vulnerability": "Money Flow",
+      "expression": "credit[msg.sender] ≤ balance",
+      "security_relevance": "Medium"
+    },
+    {
+      "invariant": "msg.value >= 0 during deposit",
+      "vulnerability": "Money Flow",
+      "expression": "msg.value ≥ 0",
+      "security_relevance": "Medium"
+    },
+    {
+      "invariant": "balance == Σ(credit[addresses])",
+      "vulnerability": "Special Storage",
+      "expression": "balance == Σ credit[addresses]",
+      "security_relevance": "Medium"
+    }
+  ]
+}
