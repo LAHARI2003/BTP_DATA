@@ -1,0 +1,15 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "DepositState": "Users deposit Ether via the addToBalance function, which updates their balance in userBalance mapping.",
+      "WithdrawalState": "Users withdraw Ether via the withdrawBalance function, transferring funds out and updating the balance to zero."
+    },
+    "ExternalInteractions": {
+      "Description": "Transfers Ether between users and the contract's address.",
+      "InteractionPoints": [
+        "Ether transferred to contract during addToBalance (payable function).",
+        "Ether transferred back to user in withdrawBalance function."
+      ]
+    }
+  }
+}
