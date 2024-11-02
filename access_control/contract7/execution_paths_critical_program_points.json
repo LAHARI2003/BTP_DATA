@@ -1,0 +1,17 @@
+{
+  "FunctionLevelAnalysis": {
+    "newOwner": "Allows the addition of a new owner, but lacks access control, meaning any caller can assign new ownership.",
+    "deleteOwner": "Enables the deletion of an owner, restricted to either the root owner or the parent owner.",
+    "withdrawAll": "Enables owners to transfer the contract’s entire balance to their own address."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "require(_owner != 0) in newOwner to ensure non-zero owner address.",
+      "require(owners[_owner] == msg.sender || (owners[_owner] != 0 && msg.sender == root)) in deleteOwner to check proper authority for deletion."
+    ],
+    "StateTransitionPoints": [
+      "Updates `owners` mapping in newOwner and deleteOwner functions.",
+      "Contract balance is transferred in withdrawAll."
+    ]
+  }
+}
