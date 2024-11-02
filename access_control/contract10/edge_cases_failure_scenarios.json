@@ -1,0 +1,14 @@
+{
+  "Edge_Case_Annotations": {
+    "Initialization_Limit": "Ensures `initMultiowned` and `initWallet` are called only once",
+    "Remove_Owner_Safety": "Only removes owner if remaining confirmations can be met",
+    "Daily_Limit_Overflow": "underLimit checks for overflow to prevent excessive spending"
+  },
+  "Common_Attack_Patterns": {
+    "Access_Control": "Potential vulnerability if `onlymanyowners` modifier is bypassed",
+    "Replay_Attacks": "Relies on unique operation hashes to prevent repeated approvals"
+  },
+  "Recovery_Mechanisms": {
+    "Pending_Clearance": "Removes stale pending transactions to reset the state if needed"
+  }
+}
