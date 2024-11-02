@@ -1,0 +1,17 @@
+{
+  "FunctionLevelAnalysis": {
+    "FallbackFunction": "Collects Ether sent to the contract and stores it in the contract balance.",
+    "withdrawAll": {
+      "Functionality": "Transfers the entire balance to the specified recipient address if the owner initiates the transaction.",
+      "SecurityCheck": "Validates ownership using tx.origin."
+    }
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "require(tx.origin == owner) in withdrawAll to verify that the original caller of the transaction is the owner"
+    ],
+    "StateTransitionPoints": [
+      "Update of the contract balance when Ether is received or withdrawn"
+    ]
+  }
+}
