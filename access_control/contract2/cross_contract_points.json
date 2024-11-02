@@ -1,0 +1,13 @@
+{
+  "CrossContractDependencies": [
+    {
+      "Contract": "FibonacciLib",
+      "Dependency": "The FibonacciBalance contract relies on the `FibonacciLib` contract to calculate Fibonacci numbers.",
+      "Functionality": "The `delegatecall` in the `withdraw` function calls `setFibonacci` in FibonacciLib, setting `calculatedFibNumber`."
+    }
+  ],
+  "InterContractConsistencyConditions": {
+    "Condition": "Both contracts should ensure that `calculatedFibNumber` and other state variables remain consistent.",
+    "Example": "If the Fibonacci library state changes unexpectedly, it may impact calculations in FibonacciBalance."
+  }
+}
