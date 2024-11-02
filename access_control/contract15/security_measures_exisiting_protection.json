@@ -1,0 +1,6 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "No access control is implemented on the changeOwner function in this version, making it insecure"
+  },
+  "FallbackFunctionality": "No fallback function is implemented in this contract"
+}
