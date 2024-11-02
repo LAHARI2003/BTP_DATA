@@ -1,0 +1,22 @@
+{
+  "ImplementedSecurityControls": {
+    "Delegatecall with Fibonacci Library": {
+      "Purpose": "Offloads Fibonacci calculations to an external library to simplify the contract.",
+      "Limitations": "Lacks access control, posing a risk if `fibonacciLibrary` is compromised."
+    }
+  },
+  "Security Vulnerabilities": {
+    "Access Control": {
+      "Issue": "Lack of access control on the fallback function allows unrestricted delegatecall.",
+      "Suggested Mitigation": "Implement an onlyOwner modifier or similar mechanism to restrict access."
+    },
+    "Reentrancy": {
+      "Issue": "The `withdraw` function transfers Ether after delegatecall, potentially allowing reentrancy.",
+      "Suggested Mitigation": "Ensure checks-effects-interactions pattern is followed or use reentrancy guards."
+    }
+  },
+  "Fallback Functionality": {
+    "Usage": "Enables calling arbitrary functions in `fibonacciLibrary`.",
+    "Risks": "Can be abused to alter the contract state or exploit vulnerabilities in the library."
+  }
+}
