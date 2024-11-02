@@ -1,0 +1,8 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": {
+            "withdraw": "The onlyowner modifier is used to restrict the withdraw function to the owner."
+        }
+    },
+    "FallbackFunctionality": "The contract has a fallback function that allows it to receive Ether, without any restrictions."
+}
