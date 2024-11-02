@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "creator == msg.sender",
+      "description": "Ensures that only the contract creator can call specific functions, such as migrating funds.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "balances[msg.sender] >= 0",
+      "description": "Checks that a user’s balance is non-negative, ensuring no underflows in user balances.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "balances[msg.sender] - amount >= 0",
+      "description": "Prevents underflow during withdrawal, ensuring balances remain consistent post-withdrawal.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.sender.transfer(amount) ≤ this.balance",
+      "description": "Ensures that the contract has enough Ether to cover a transfer request, avoiding overdrawing.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "assert(balances[msg.sender] + msg.value > balances[msg.sender])",
+      "description": "Prevents overflow in balances when a user deposits Ether, ensuring correct balance calculation.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "this.balance ≥ 0",
+      "description": "Ensures that the contract balance is non-negative.",
+      "security_relevance": "Low"
+    }
+  ]
+}
