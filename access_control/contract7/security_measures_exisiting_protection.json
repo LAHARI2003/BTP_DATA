@@ -1,0 +1,8 @@
+{
+  "ImplementedSecurityControls": {
+    "PartialAccessControl": "The `onlyOwner` modifier is applied to deleteOwner and withdrawAll functions, but `newOwner` lacks this protection."
+  },
+  "FallbackFunctionality": {
+    "FallbackFunction": "The fallback function allows the contract to receive ether when called with no data."
+  }
+}
