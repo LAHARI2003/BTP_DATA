@@ -1,0 +1,13 @@
+{
+  "Edge Case Annotations": {
+    "Zero Deposit": "The deposit function doesn't explicitly reject zero-value deposits.",
+    "Overflow in Deposit": "The deposit function uses an assert to avoid balance overflow, which could revert if triggered."
+  },
+  "Common Attack Patterns": {
+    "Repeated Refund": "The refund function lacks a balance reset, allowing repeated calls by attackers to drain the contract.",
+    "Access Control for Migration": "If migrateTo didn't check for creator access, funds could be misappropriated."
+  },
+  "Recovery Mechanisms": {
+    "Emergency Migration": "The migrateTo function can transfer all funds to a secure address in emergencies."
+  }
+}
