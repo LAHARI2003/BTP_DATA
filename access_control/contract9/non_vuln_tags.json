@@ -1,0 +1,35 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "AccessControl": "Correct usage of onlyowner and onlymanyowners modifiers to restrict access to critical functions, ensuring only designated owners can perform sensitive actions."
+      },
+      {
+        "EventLogging": "Comprehensive event logging in functions (e.g., Confirmation, OwnerChanged, Deposit), ensuring traceability of key actions within the wallet contract."
+      },
+      {
+        "DailyLimitCheck": "The underLimit function verifies if a transaction is within the allowed daily limit, reducing the risk of exceeding spending caps and maintaining daily spend integrity."
+      },
+      {
+        "MultiOwnerIntegrity": "The initMultiowned function initializes multiple owners and sets a requirement for multi-signature confirmation, enforcing a secure multisig setup."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "OwnerRemovalInvariant": "The removeOwner function ensures that the required number of owners (m_required) is not higher than the remaining number of owners, maintaining multisig consistency."
+      },
+      {
+        "TransactionConfirmationInvariant": "The confirmAndCheck function ensures that only unconfirmed operations are confirmed by owners, preventing repeated confirmations on the same transaction."
+      },
+      {
+        "SpendLimitResetInvariant": "The resetSpentToday function, with onlymanyowners restriction, resets daily spend, maintaining the invariant that m_spentToday resets on each new day."
+      }
+    ]
+  },
+  "RiskyFeatures": {
+    "DelegateCallUsage": "Use of delegatecall in the fallback function and other functions (e.g., _walletLibrary.delegatecall(msg.data)) without strict input validation is risky. Delegatecall can execute arbitrary code if msg.data is manipulated, potentially leading to vulnerabilities such as reentrancy or unauthorized code execution.",
+    "LackOfFunctionWhitelisting": "The fallback function lacks explicit whitelisting of permissible delegatecall targets, making it vulnerable to potential misuse if untrusted calls are inadvertently passed through msg.data.",
+    "Dynamic Owners Array": "The m_owners array is dynamically updated through multiple functions (e.g., addOwner, removeOwner), which could lead to inconsistencies or exploits if not carefully managed and validated.",
+    "Suicide (Kill) Function": "The kill function, allowing the contract to self-destruct with onlymanyowners modifier, could pose a risk if the access control or multisig configuration is compromised, potentially allowing unauthorized termination of the contract."
+  }
+}
