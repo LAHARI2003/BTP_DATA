@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "owners[msg.sender] != 0",
+      "expression": "msg.sender ∈ owners",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "owners[root] = root",
+      "expression": "owners[root] == root",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "owners[_owner] = msg.sender",
+      "expression": "owners[_owner] == msg.sender",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "root == msg.sender",
+      "expression": "msg.sender == root",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.sender.transfer(this.balance)",
+      "expression": "transfer(msg.sender, this.balance)",
+      "security_relevance": "medium"
+    }
+  ]
+}
