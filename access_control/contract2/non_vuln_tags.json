@@ -1,0 +1,64 @@
+{
+  "NonVulnerableTags": {
+    "AccessControl": {
+      "Description": "Ensures that only the designated Fibonacci library is called when accessing Fibonacci-related functions.",
+      "Examples": [
+        {
+          "Tag": "DelegateCall Restricted",
+          "Details": "The contract restricts Fibonacci calculations to a specific library address, reducing the risk of arbitrary external calls."
+        }
+      ]
+    },
+    "MoneyFlowIntegrity": {
+      "Description": "Ensures that the withdrawal amount aligns with the calculated Fibonacci number multiplied by 1 ether.",
+      "Examples": [
+        {
+          "Tag": "Consistent Payout Calculations",
+          "Details": "The calculated Fibonacci number is used consistently to determine withdrawal amounts in ether, ensuring accuracy in payouts."
+        }
+      ]
+    },
+    "InvariantValidation": {
+      "Description": "The withdrawal function enforces logical state updates prior to transferring funds to ensure consistent contract state.",
+      "Examples": [
+        {
+          "Tag": "Withdrawal Counter Increments",
+          "Details": "The withdrawalCounter is incremented each time the withdraw function is called, enforcing consistency in state updates across withdrawals."
+        }
+      ]
+    }
+  },
+  "RiskyFeatures": {
+    "DelegateCallRisk": {
+      "Description": "Potentially unsafe delegatecall usage for external function calls could expose the contract to vulnerabilities if the library is replaced or compromised.",
+      "Details": [
+        {
+          "Tag": "Unrestricted DelegateCall in Fallback",
+          "Details": "The fallback function uses delegatecall with msg.data, allowing any data payload to execute in the Fibonacci library context, which could lead to unexpected behavior if input is not controlled."
+        },
+        {
+          "Tag": "DelegateCall to External Library in Withdraw Function",
+          "Details": "The withdraw function makes a delegatecall to fibonacciLibrary without verifying if the library address is safe, potentially allowing malicious code execution if the library address is changed."
+        }
+      ]
+    },
+    "ReentrancyRisk": {
+      "Description": "Potential reentrancy vulnerability due to external call before updating the contract state.",
+      "Details": [
+        {
+          "Tag": "Transfer Before State Update",
+          "Details": "The withdraw function transfers ether to msg.sender based on calculatedFibNumber before setting calculatedFibNumber explicitly to zero or adjusting balances, which could enable a reentrancy attack."
+        }
+      ]
+    },
+    "StateConsistency": {
+      "Description": "Lack of state checks after delegatecall can lead to inconsistencies if the Fibonacci library's calculations modify unexpected contract variables.",
+      "Details": [
+        {
+          "Tag": "CalculatedFibNumber Dependency",
+          "Details": "The contract assumes that the delegatecall to fibonacciLibrary will set calculatedFibNumber as expected, without verifying the post-call state, which can lead to incorrect withdrawal amounts if altered."
+        }
+      ]
+    }
+  }
+}
