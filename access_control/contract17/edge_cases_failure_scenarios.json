@@ -1,0 +1,13 @@
+{
+  "Edge_Case_Annotations": {
+    "Zero_Value_Deposits": "The `deposit` function does not explicitly handle cases where `msg.value` is zero.",
+    "Insufficient_Balance_Withdrawals": "The `withdraw` function includes a `require` check to prevent users from withdrawing more than their balance."
+  },
+  "Common_Attack_Patterns": {
+    "Access_Control_Vulnerability": "The `creator` role is established through the `initWallet` function, allowing any user to become the creator and potentially exploit the `migrateTo` function.",
+    "Overflow_Attack": "The contract uses `assert` to check for balance overflow, although a safer approach would be using SafeMath functions to prevent overflow."
+  },
+  "Recovery_Mechanisms": {
+    "Emergency_Transfer": "The `migrateTo` function allows the creator to transfer all funds to a specific address in an emergency."
+  }
+}
