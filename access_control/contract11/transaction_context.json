@@ -1,0 +1,9 @@
+{
+  "TransactionStateContext": {
+    "CollectionState": "When Ether is sent to the contract via the fallback function, it is stored in the contract balance.",
+    "WithdrawalState": "The withdrawAll function allows the owner to withdraw all Ether from the contract."
+  },
+  "ExternalInteractions": {
+    "EtherTransfers": "The contract interacts with the Ethereum blockchain to accept and store Ether sent to it and to transfer Ether to the recipient via withdrawAll."
+  }
+}
