@@ -1,0 +1,10 @@
+{
+  "Transaction State Context": {
+    "State": [
+      "Forwarding State: When users call the forward function to execute external calls on behalf of the proxy."
+    ]
+  },
+  "External Interactions": [
+    "The contract uses delegatecall to interact with an external contract specified in the forward function. This transfers the execution context to the callee, allowing it to execute code in the proxy’s context."
+  ]
+}
