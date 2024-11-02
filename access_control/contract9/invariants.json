@@ -1,0 +1,70 @@
+{
+  "invariants": [
+    {
+      "category": "Access Control",
+      "expression": "isOwner(msg.sender) → msg.sender ∈ owners",
+      "relevance_level": "High",
+      "description": "Ensures that only owners can perform certain operations."
+    },
+    {
+      "category": "Access Control",
+      "expression": "m_ownerIndex[msg.sender] > 0",
+      "relevance_level": "High",
+      "description": "Checks if the message sender is a registered owner before granting access to certain functions."
+    },
+    {
+      "category": "Access Control",
+      "expression": "m_owners[m_ownerIndex[owner]] == owner",
+      "relevance_level": "High",
+      "description": "Ensures owner mappings are correct and consistent."
+    },
+    {
+      "category": "Access Control",
+      "expression": "m_numOwners ≤ 250",
+      "relevance_level": "Medium",
+      "description": "Limits the number of owners to a maximum of 250, which is the contract-defined limit."
+    },
+    {
+      "category": "Access Control",
+      "expression": "msg.sender == tx.origin → only external accounts can call fallback function",
+      "relevance_level": "High",
+      "description": "Prevents contract calls in the fallback function, minimizing reentrancy risks."
+    },
+    {
+      "category": "Daily Limit",
+      "expression": "m_spentToday + value ≤ m_dailyLimit",
+      "relevance_level": "High",
+      "description": "Restricts daily spending within the set daily limit to prevent excessive withdrawals."
+    },
+    {
+      "category": "Re-entrancy",
+      "expression": "nonReentrant(tx.origin, func) → !reentrant",
+      "relevance_level": "High",
+      "description": "Prevents re-entrant calls to critical functions, avoiding potential double-spending vulnerabilities."
+    },
+    {
+      "category": "Ownership Transfer",
+      "expression": "msg.sender == m_owners[m_ownerIndex[oldOwner]] → m_ownerIndex[newOwner] == m_ownerIndex[oldOwner]",
+      "relevance_level": "Medium",
+      "description": "Ensures only owners can replace other owners."
+    },
+    {
+      "category": "Oracle Price Manipulation",
+      "expression": "|oracle1 - oracle2| ≤ maxDeviation",
+      "relevance_level": "Medium",
+      "description": "Ensures the price from multiple oracle sources remains consistent within a specified deviation limit."
+    },
+    {
+      "category": "Gas Control",
+      "expression": "gasUsed ≤ m_dailyLimit",
+      "relevance_level": "Medium",
+      "description": "Limits gas usage to ensure no function exceeds the set daily gas limit, preventing unexpected resource exhaustion."
+    },
+    {
+      "category": "Transaction Integrity",
+      "expression": "m_pending[_operation].yetNeeded ≤ m_required",
+      "relevance_level": "High",
+      "description": "Enforces that a transaction cannot proceed unless the required number of confirmations is met."
+    }
+  ]
+}
