@@ -1,0 +1,9 @@
+{
+  "Implemented_Security_Controls": {
+    "Access_Control": "Multi-sig approvals through `onlymanyowners` modifier",
+    "Daily_Limit": "Limits daily spending through `underLimit` function"
+  },
+  "Fallback_Functionality": {
+    "Fund_Acceptance": "Accepts funds with fallback function"
+  }
+}
