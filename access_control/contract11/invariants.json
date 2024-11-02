@@ -1,0 +1,40 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "invariant": "EOA only (only external accounts)",
+            "expression": "tx.origin == owner",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Access Control",
+            "invariant": "isSenderOwner (checks if the sender is the owner)",
+            "expression": "msg.sender == owner",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Access Control",
+            "invariant": "Role-Based Access Control (RBAC)",
+            "expression": "msg.sender == owner",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Access Control",
+            "invariant": "Privilege Escalation Check",
+            "expression": "tx.origin == owner",
+            "security_relevance": "medium"
+        },
+        {
+            "vulnerability": "Money Flow",
+            "invariant": "TokenOutUpperBound",
+            "expression": "_recipient.transfer(this.balance)",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Special Storage",
+            "invariant": "Constant Balance Check",
+            "expression": "this.balance ≥ 0",
+            "security_relevance": "medium"
+        }
+    ]
+}
