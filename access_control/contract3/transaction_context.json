@@ -1,0 +1,16 @@
+{
+    "TransactionStateContext": {
+        "InitializationState": "The contract initializes the owner only if IamMissing function is called.",
+        "WithdrawalState": "Owner can withdraw all contract balance through the withdraw function."
+    },
+    "ExternalInteractions": [
+        {
+            "description": "The contract accepts Ether transfers through the fallback function.",
+            "type": "payable function"
+        },
+        {
+            "description": "Transfers Ether to the owner when the withdraw function is called.",
+            "type": "withdrawal"
+        }
+    ]
+}
