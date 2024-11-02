@@ -1,0 +1,8 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": {
+      "tx.origin Check": "The contract uses tx.origin == owner to limit access to the sendTo function, but this is vulnerable to phishing attacks if another contract calls this function."
+    }
+  },
+  "FallbackFunctionality": "No fallback function is present in this contract."
+}
