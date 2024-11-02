@@ -1,0 +1,9 @@
+{
+    "TimeSensitiveLogic": {
+        "PayoutTiming": "Payouts to earlier participants depend on the balance being sufficient to cover the payout amount in addPayout function."
+    },
+    "ConditionalLogicPaths": {
+        "ConditionalFeeReduction": "If the transaction value is at least 50 ether, the fee percentage is reduced by 50%.",
+        "MultiplierAdjustment": "The pyramid multiplier decreases at specific participant counts (10, 25) to adjust payout speed."
+    }
+}
