@@ -1,0 +1,32 @@
+[
+    {
+        "vulnerability": "Access Control",
+        "invariant": "msg.sender == owner",
+        "description": "Ensures that only the owner can perform restricted actions.",
+        "security_relevance": "High"
+    },
+    {
+        "vulnerability": "Access Control",
+        "invariant": "msg.sender == tx.origin",
+        "description": "Validates that the transaction initiator is the message sender to reduce proxy usage risks.",
+        "security_relevance": "Medium"
+    },
+    {
+        "vulnerability": "Money Flow",
+        "invariant": "msg.value <= this.balance",
+        "description": "Ensures that transferred funds do not exceed the contract's balance.",
+        "security_relevance": "Medium"
+    },
+    {
+        "vulnerability": "Money Flow",
+        "invariant": "owner.transfer(this.balance)",
+        "description": "Verifies that only the contract balance is transferred.",
+        "security_relevance": "High"
+    },
+    {
+        "vulnerability": "Access Control",
+        "invariant": "require(msg.sender == owner)",
+        "description": "Checks that only the owner can call specific functions (in this case, withdraw).",
+        "security_relevance": "High"
+    }
+]
