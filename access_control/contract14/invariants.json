@@ -1,0 +1,34 @@
+[
+    {
+        "invariant": {
+            "expression": "msg.sender == owner",
+            "description": "Only the owner can execute critical functions"
+        },
+        "related_vulnerability": "Access Control",
+        "security_relevance": "High"
+    },
+    {
+        "invariant": {
+            "expression": "msg.sender == tx.origin",
+            "description": "Checks if the function caller is the transaction origin"
+        },
+        "related_vulnerability": "Access Control",
+        "security_relevance": "Medium"
+    },
+    {
+        "invariant": {
+            "expression": "require(msg.sender == owner)",
+            "description": "Ensure that only owner can call self-destruct function"
+        },
+        "related_vulnerability": "Access Control",
+        "security_relevance": "High"
+    },
+    {
+        "invariant": {
+            "expression": "logAccessChanges(tx.origin, role)",
+            "description": "Logs changes to access control"
+        },
+        "related_vulnerability": "Access Control Consistency Audit",
+        "security_relevance": "Medium"
+    }
+]
