@@ -1,0 +1,30 @@
+{
+    "FunctionLevelAnalysis": {
+        "IamMissing": {
+            "description": "Sets the owner of the contract if called.",
+            "vulnerability": "Not correctly defined as a constructor, hence can be called by anyone, potentially allowing anyone to reset the owner."
+        },
+        "fallback": {
+            "description": "Accepts Ether sent to the contract.",
+            "vulnerability": "No restrictions, making the contract always accept Ether."
+        },
+        "withdraw": {
+            "description": "Transfers all Ether in the contract to the owner.",
+            "securityCheck": "onlyowner modifier restricts this function to the contract owner."
+        }
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            {
+                "require": "msg.sender == owner",
+                "context": "Restricts the withdraw function to the contract owner."
+            }
+        ],
+        "StateTransitionPoints": [
+            {
+                "stateVariable": "owner",
+                "context": "The owner is set in IamMissing function."
+            }
+        ]
+    }
+}
