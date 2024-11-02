@@ -1,0 +1,19 @@
+{
+  "Edge_Case_Annotations": {
+    "Underflow_in_PopBonusCode": {
+      "Description": "The bonusCodes.length-- operation may cause an underflow if unchecked in newer Solidity versions, potentially allowing array manipulation."
+    },
+    "Invalid_Index_in_UpdateBonusCodeAt": {
+      "Description": "If idx is out of bounds of the array, this could throw an error."
+    }
+  },
+  "Common_Attack_Patterns": {
+    "Access_Control_Vulnerability": {
+      "Description": "The Destroy function has proper access control; however, if removed, it would allow any user to destruct the contract and transfer funds."
+    },
+    "Array_Manipulation_Vulnerability": {
+      "Description": "Underflow in PopBonusCode allows potential exploitation."
+    }
+  },
+  "Recovery_Mechanisms": "None"
+}
