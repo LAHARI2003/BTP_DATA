@@ -1,0 +1,50 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": {
+      "AccessControl": [
+        {
+          "Description": "Correct usage of onlyowner modifier to restrict access to specific functions for the creator, enhancing security and preventing unauthorized access.",
+          "Functions": ["collectAllFees", "collectFeesInEther", "collectPercentOfFees", "changeOwner", "changeMultiplier", "changeFeePercentage"]
+        }
+      ],
+      "MoneyFlowIntegrity": [
+        {
+          "Description": "The contract ensures collected fees and participant balances are managed separately, with collectedFees and balance variables reflecting their respective values independently.",
+          "Variables": ["collectedFees", "balance"]
+        }
+      ],
+      "InvariantValidationExamples": [
+        {
+          "Description": "The addPayout function ensures the contract state is consistent by updating balance and payoutOrder sequentially when enough balance exists for payouts.",
+          "Function": "addPayout"
+        }
+      ]
+    },
+    "RiskyFeatures": {
+      "ConstructorMislabeling": {
+        "Description": "The DynamicPyramid function is intended as the constructor but lacks the correct constructor syntax, allowing any user to call it and set themselves as the creator. This vulnerability allows unauthorized access and control over restricted functions.",
+        "VulnerableLines": [23]
+      },
+      "FallbackFunctionWithoutGuard": {
+        "Description": "The fallback function allows any transaction with a non-zero ether value to invoke init, potentially causing unintended behavior or contract manipulation if not carefully managed.",
+        "Function": "fallback",
+        "RiskyLine": [35]
+      },
+      "UncheckedSendOperation": {
+        "Description": "The send function is used within a loop without checking for success, which can result in failed transactions if there is insufficient gas, potentially locking up the balance and preventing payouts.",
+        "Function": "addPayout",
+        "RiskyLines": [65]
+      },
+      "FeeControlLoophole": {
+        "Description": "The fee control functions allow the creator to set arbitrary fee percentages or multiplier values within bounds, which may disadvantage participants if altered significantly.",
+        "Functions": ["changeMultiplier", "changeFeePercentage"],
+        "RiskyLines": [85, 90]
+      },
+      "InconsistentStateReversion": {
+        "Description": "If certain conditions fail in collectAllFees, collectFeesInEther, or collectPercentOfFees, the contract throws, which reverts the state inconsistently and may cause user funds to be locked.",
+        "Functions": ["collectAllFees", "collectFeesInEther", "collectPercentOfFees"],
+        "RiskyLines": [72, 77, 83]
+      }
+    }
+  }
+}
