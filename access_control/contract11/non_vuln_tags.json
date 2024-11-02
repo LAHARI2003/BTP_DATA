@@ -1,0 +1,30 @@
+{
+  "non_vulnerable_tags": [
+    {
+      "feature": "Contract Ownership Initialization",
+      "description": "The contract constructor sets the owner to a specified address, ensuring that only the designated address holds owner privileges when the contract is deployed."
+    },
+    {
+      "feature": "Fallback Function for Ether Collection",
+      "description": "The contract includes a fallback function, allowing it to receive Ether when funds are sent directly to the contract. This enables the contract to accumulate Ether without requiring an explicit function call, which is useful in some use cases."
+    }
+  ],
+  "risky_features": [
+    {
+      "feature": "Access Control with tx.origin",
+      "description": "The contract uses `tx.origin` to verify the sender's identity in the `withdrawAll` function, which is risky. The use of `tx.origin` for access control can be exploited in phishing attacks, as it may permit unauthorized entities to invoke sensitive functions if the original sender is tricked."
+    },
+    {
+      "feature": "Direct Transfer of Contract Balance",
+      "description": "The `withdrawAll` function transfers the entire contract balance to an arbitrary recipient if the access control condition is met. This can be dangerous as it lacks finer-grained access control, such as limiting the transfer amount or recipient validation."
+    },
+    {
+      "feature": "No Event Logging for Critical Actions",
+      "description": "There is no event emitted in the `withdrawAll` function when the balance is transferred. Event logging is recommended for critical actions, especially those that move funds, as it provides a traceable history for audits and transparency."
+    },
+    {
+      "feature": "Hardcoded Owner Privileges",
+      "description": "The contract owner is set only during contract initialization, with no way to transfer ownership. This lack of flexibility could be a limitation if ownership needs to be transferred or if the owner loses access to the designated address."
+    }
+  ]
+}
