@@ -1,0 +1,39 @@
+{
+    "invariants": [
+        {
+            "name": "Owner Access Control",
+            "vulnerability": "Access Control",
+            "expression": "msg.sender == owner",
+            "security_relevance": "High",
+            "description": "Ensures that only the contract owner can call certain functions, such as Destroy."
+        },
+        {
+            "name": "Array Bounds Check",
+            "vulnerability": "Data Flow",
+            "expression": "idx < bonusCodes.length",
+            "security_relevance": "High",
+            "description": "Prevents out-of-bounds writes in UpdateBonusCodeAt by checking index validity."
+        },
+        {
+            "name": "Non-negative Array Length",
+            "vulnerability": "Special Storage",
+            "expression": "bonusCodes.length >= 0",
+            "security_relevance": "Low",
+            "description": "Guarantees the array length is non-negative since array length is an unsigned integer."
+        },
+        {
+            "name": "Self-Destruct Access Control",
+            "vulnerability": "Access Control",
+            "expression": "msg.sender == owner",
+            "security_relevance": "High",
+            "description": "Ensures that only the owner can call Destroy to prevent unauthorized contract destruction."
+        },
+        {
+            "name": "Prevent Underflow on Array Length",
+            "vulnerability": "Special Storage",
+            "expression": "bonusCodes.length > 0 before decrement",
+            "security_relevance": "Medium",
+            "description": "Prevents underflow in PopBonusCode by ensuring array length is greater than zero before decrementing."
+        }
+    ]
+}
