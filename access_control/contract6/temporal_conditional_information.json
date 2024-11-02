@@ -1,0 +1,15 @@
+{
+    "TimeSensitiveLogic": "None - this contract does not rely on time-based logic.",
+    "ConditionalLogicPaths": [
+        {
+            "Condition": "If map.length <= key",
+            "Location": "set function",
+            "Description": "Adjusts map length dynamically to accommodate the key index."
+        },
+        {
+            "Condition": "If msg.sender == owner",
+            "Location": "withdraw function",
+            "Description": "Restricts balance withdrawal to the owner only."
+        }
+    ]
+}
