@@ -1,0 +1,20 @@
+{
+    "TransactionStateContext": {
+        "States": [
+            {
+                "State": "Setting State",
+                "Description": "When users add or modify values in the map via the set function."
+            },
+            {
+                "State": "Withdrawal State",
+                "Description": "When the contract owner withdraws balance via the withdraw function."
+            }
+        ],
+        "ExternalInteractions": [
+            {
+                "Interaction": "Balance Withdrawal",
+                "Description": "Transfers ether from the contract to the owner's address in withdraw function."
+            }
+        ]
+    }
+}
