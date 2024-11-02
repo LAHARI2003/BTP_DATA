@@ -1,0 +1,18 @@
+{
+    "EdgeCaseAnnotations": {
+        "Invalid Key Index": {
+            "Description": "Setting a value with a very high key may consume excessive gas due to array expansion."
+        }
+    },
+    "CommonAttackPatterns": {
+        "AccessControlVulnerability": {
+            "Location": "set function",
+            "Description": "The set function lacks access restrictions, allowing any user to modify storage."
+        },
+        "OwnerOnlyRestriction": {
+            "Location": "withdraw function",
+            "Description": "The withdraw function requires msg.sender to be the owner to withdraw contract balance."
+        }
+    },
+    "RecoveryMechanisms": "None - no emergency recovery mechanism implemented for unauthorized access."
+}
