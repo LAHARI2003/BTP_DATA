@@ -1,0 +1,10 @@
+{
+  "EdgeCaseAnnotations": {
+    "FallbackFunction": "Accepts Ether with no restrictions, which may lead to accumulation of unexpected funds if Ether is sent mistakenly or by malicious actors.",
+    "WithdrawFunction": "Uses tx.origin instead of msg.sender, which introduces potential phishing vulnerabilities as it may be exploited to trick the owner into initiating transactions from another contract."
+  },
+  "CommonAttackPatterns": {
+    "PhishingAttack": "The withdrawAll function’s use of tx.origin makes it vulnerable to phishing attacks, where an attacker can trick the contract owner into calling withdrawAll from a malicious contract."
+  },
+  "RecoveryMechanisms": "None implemented. An emergency stop mechanism or an owner-only withdrawal method could improve security."
+}
