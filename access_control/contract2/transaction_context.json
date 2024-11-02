@@ -1,0 +1,11 @@
+{
+  "TransactionStateContext": {
+    "WithdrawalState": {
+      "Description": "Users can withdraw funds based on Fibonacci calculations in the `withdraw` function.",
+      "ExternalInteraction": "Transfers Ether from contract to users based on the calculated Fibonacci number."
+    },
+    "FallbackState": {
+      "Description": "Fallback function allows users to call functions in the `fibonacciLibrary` through delegatecall."
+    }
+  }
+}
