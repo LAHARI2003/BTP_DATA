@@ -1,0 +1,8 @@
+{
+  "TransactionStateContext": {
+    "TransferState": "When funds are sent to a specified receiver using sendTo function"
+  },
+  "ExternalInteractions": {
+    "EtherTransfer": "The contract transfers Ether to the specified receiver address when sendTo is called."
+  }
+}
