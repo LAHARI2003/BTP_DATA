@@ -1,0 +1,48 @@
+{
+  "Function_Level_Analysis": {
+    "PushBonusCode": {
+      "Purpose": "Adds a new bonus code to the array.",
+      "Critical_Points": [
+        "Updates the bonusCodes array by adding a new entry."
+      ]
+    },
+    "PopBonusCode": {
+      "Purpose": "Removes the last bonus code from the array.",
+      "Critical_Points": [
+        "Potential underflow vulnerability due to length decrement.",
+        "Condition 0 <= bonusCodes.length is always true."
+      ]
+    },
+    "UpdateBonusCodeAt": {
+      "Purpose": "Updates a specific bonus code at a given index.",
+      "Critical_Points": [
+        "Allows modification of any index within bounds of bonusCodes array."
+      ]
+    },
+    "Destroy": {
+      "Purpose": "Transfers contract's ETH to owner and destroys contract.",
+      "Critical_Points": [
+        "Requires msg.sender to be owner.",
+        "Transfers remaining ETH to the owner upon contract self-destruction."
+      ]
+    }
+  },
+  "Execution_Path_Tags": {
+    "Decision_Points": [
+      {
+        "require(0 <= bonusCodes.length)": "Always true and therefore redundant."
+      },
+      {
+        "require(idx < bonusCodes.length)": "Ensures index is within bounds before modifying array."
+      },
+      {
+        "require(msg.sender == owner)": "Prevents unauthorized users from destroying the contract."
+      }
+    ],
+    "State_Transition_Points": [
+      {
+        "bonusCodes": "Updates when bonus code is pushed, popped, or updated."
+      }
+    ]
+  }
+}
