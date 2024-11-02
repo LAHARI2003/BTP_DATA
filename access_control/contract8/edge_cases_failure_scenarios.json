@@ -1,0 +1,10 @@
+{
+  "EdgeCaseAnnotations": {
+    "ZeroAddressReceiver": "The sendTo function could transfer to a zero address if not validated.",
+    "InsufficientBalance": "The contract's balance may be insufficient to transfer the requested amount, which would cause the transaction to fail."
+  },
+  "CommonAttackPatterns": {
+    "AccessControlVulnerability": "Using tx.origin for access control is dangerous as it can allow a phishing attack if another contract is involved."
+  },
+  "RecoveryMechanisms": "No recovery mechanisms are implemented in this example."
+}
