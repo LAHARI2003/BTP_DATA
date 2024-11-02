@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "invariant": "creator == msg.sender",
+      "vulnerability": "Access Control",
+      "security_relevance": "High",
+      "description": "Ensures that only the contract creator can call specific functions such as migrating funds."
+    },
+    {
+      "invariant": "balances[msg.sender] + msg.value > balances[msg.sender]",
+      "vulnerability": "Overflow Protection",
+      "security_relevance": "Medium",
+      "description": "Checks for integer overflow on deposit operations, ensuring that balances can safely store the added value."
+    },
+    {
+      "invariant": "amount <= balances[msg.sender]",
+      "vulnerability": "Access Control",
+      "security_relevance": "High",
+      "description": "Ensures that the user does not withdraw more funds than they hold in their balance."
+    },
+    {
+      "invariant": "balances[msg.sender] -= amount",
+      "vulnerability": "Data Consistency",
+      "security_relevance": "High",
+      "description": "Maintains balance consistency by decreasing the balance after a successful withdrawal."
+    },
+    {
+      "invariant": "this.balance >= 0",
+      "vulnerability": "Asset Protection",
+      "security_relevance": "Low",
+      "description": "Ensures the contract balance is non-negative, which should inherently hold in Ethereum."
+    }
+  ]
+}
