@@ -1,0 +1,42 @@
+{
+  "ContractName": "Missing",
+  "NonVulnerableTags": {
+    "AccessControl": {
+      "WellImplementedFeatures": [
+        {
+          "Description": "The withdraw function correctly restricts access to only the owner using the onlyowner modifier."
+        }
+      ],
+      "PotentialRisks": [
+        {
+          "Description": "The constructor function is incorrectly named as 'missing' instead of 'Missing' (case-sensitive in Solidity versions prior to 0.5.0), meaning this function does not execute upon deployment. As a result, the owner variable is never initialized, allowing any user to call withdraw without restriction.",
+          "Impact": "This can lead to unauthorized access to the withdraw function."
+        }
+      ]
+    },
+    "MoneyFlowIntegrity": {
+      "WellImplementedFeatures": [
+        {
+          "Description": "The withdraw function ensures that the balance of the contract is transferred only to the owner, following the specified money flow path."
+        }
+      ],
+      "PotentialRisks": [
+        {
+          "Description": "Since the constructor is not properly defined, the 'owner' variable remains uninitialized, allowing unrestricted access to withdraw funds. This disrupts the intended money flow integrity, making it possible for anyone to withdraw the contract’s balance."
+        }
+      ]
+    },
+    "InvariantValidation": {
+      "WellImplementedFeatures": [
+        {
+          "Description": "The onlyowner modifier checks that the caller is the owner, maintaining a strict access control invariant for restricted functions."
+        }
+      ],
+      "PotentialRisks": [
+        {
+          "Description": "The lack of a proper constructor leads to the failure of invariant validation for the 'onlyowner' modifier. Without an initialized owner, this check is effectively bypassed, causing potential inconsistency in access control across the contract."
+        }
+      ]
+    }
+  }
+}
