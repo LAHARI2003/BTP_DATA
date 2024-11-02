@@ -1,0 +1,29 @@
+{
+  "Transaction_State_Context": {
+    "Bonus_Code_Management": {
+      "Description": "Managing bonus codes array, including adding, updating, and removing codes.",
+      "Functions": [
+        "PushBonusCode",
+        "PopBonusCode",
+        "UpdateBonusCodeAt"
+      ]
+    },
+    "Contract_Ownership": {
+      "Description": "Owner management and verification during self-destruction.",
+      "Functions": [
+        "Destroy"
+      ]
+    }
+  },
+  "External_Interactions": {
+    "ETH_Transfers": {
+      "Description": "Fallback function enables receiving ETH into the contract."
+    },
+    "Selfdestruct": {
+      "Description": "Transfers all contract ETH to the owner upon contract destruction.",
+      "Functions": [
+        "Destroy"
+      ]
+    }
+  }
+}
