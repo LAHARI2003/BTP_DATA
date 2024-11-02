@@ -1,0 +1,9 @@
+{
+  "TransactionStateContext": {
+    "OwnershipState": "The contract maintains an ownership structure where the root owner can add new owners without explicit restrictions.",
+    "DeletionState": "Owners can be removed through the `deleteOwner` function, which only allows deletion by the root or by a parent owner."
+  },
+  "ExternalInteractions": {
+    "WithdrawFunction": "Transfers the contract's entire balance to the owner via the `withdrawAll` function if called by an owner."
+  }
+}
