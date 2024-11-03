@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "security_relevance": "high",
+      "description": "Ensures that the call is directly from an externally owned account (EOA) and not from a contract."
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.value == 1 ether",
+      "security_relevance": "high",
+      "description": "Requires that the function is called with exactly 1 ether, which is necessary for participation in the contract's functions."
+    },
+    {
+      "vulnerability": "Gas Control",
+      "invariant": "gasUsed(settle) ≤ maxGasPerFunc",
+      "security_relevance": "medium",
+      "description": "Limits the gas used in the settle function to prevent potential DoS issues and ensure efficient gas usage."
+    },
+    {
+      "vulnerability": "Time Lock",
+      "invariant": "block.number > guesses[msg.sender].block",
+      "security_relevance": "high",
+      "description": "Ensures that the settle function is called only after the block specified in the lockInGuess function, enforcing a minimum waiting period."
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "balanceOf(contract) ≥ 0",
+      "security_relevance": "low",
+      "description": "Ensures that the contract’s balance does not become negative, which is critical for preventing unexpected failures in ether transfers."
+    },
+    {
+      "vulnerability": "Bad Randomness",
+      "invariant": "blockhash(guesses[msg.sender].block) != 0 for block.number - guesses[msg.sender].block ≤ 256",
+      "security_relevance": "high",
+      "description": "Ensures that blockhash returns a valid non-zero hash for blocks within the 256-block limit."
+    }
+  ]
+}
