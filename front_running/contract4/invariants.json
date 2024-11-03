@@ -1,0 +1,50 @@
+[
+    {
+        "vulnerability": "Access Control",
+        "invariant": "msg.sender == owner",
+        "description": "Ensures that only the owner can withdraw profits.",
+        "security_relevance": "High"
+    },
+    {
+        "vulnerability": "Money Flow",
+        "invariant": "msg.value == 1 ether",
+        "description": "Ensures that each player pays exactly 1 ether to participate.",
+        "security_relevance": "Medium"
+    },
+    {
+        "vulnerability": "Money Flow",
+        "invariant": "this.balance >= 1 ether",
+        "description": "Ensures the contract has a minimum balance before a payout.",
+        "security_relevance": "Medium"
+    },
+    {
+        "vulnerability": "Re-entrancy",
+        "invariant": "tot == 0 or tot == 2",
+        "description": "Ensures that the game has either zero or two players before starting a new round.",
+        "security_relevance": "High"
+    },
+    {
+        "vulnerability": "Gas Control",
+        "invariant": "gasleft() >= gasThreshold",
+        "description": "Ensures sufficient gas remains for a complete execution to avoid partial state changes.",
+        "security_relevance": "Low"
+    },
+    {
+        "vulnerability": "Data Flow",
+        "invariant": "players.length == 2",
+        "description": "Ensures that exactly two players are stored before a game round can begin.",
+        "security_relevance": "High"
+    },
+    {
+        "vulnerability": "Data Flow",
+        "invariant": "n = players[0].number + players[1].number",
+        "description": "Calculates the sum of numbers chosen by both players, for determining the winner.",
+        "security_relevance": "Medium"
+    },
+    {
+        "vulnerability": "Oracle Slippage",
+        "invariant": "this.balance >= totalPayout",
+        "description": "Ensures that the contract balance can cover the payout for the winner.",
+        "security_relevance": "High"
+    }
+]
