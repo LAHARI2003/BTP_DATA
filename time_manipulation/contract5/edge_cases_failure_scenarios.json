@@ -1,0 +1,26 @@
+{
+  "EdgeCaseAnnotations": {
+    "Annotations": [
+      {
+        "EdgeCase": "Time manipulation",
+        "Description": "Since block timestamps can be manipulated slightly by miners, there is a potential for the condition to return a false positive or negative."
+      }
+    ]
+  },
+  "CommonAttackPatterns": {
+    "Patterns": [
+      {
+        "AttackPattern": "Time manipulation",
+        "Description": "If a miner manipulates the block timestamp slightly, they may alter the time-dependent condition to influence contract behavior."
+      }
+    ]
+  },
+  "RecoveryMechanisms": {
+    "Mechanisms": [
+      {
+        "RecoveryMechanism": "None",
+        "Description": "No built-in mechanism to recover from or handle manipulated timestamps."
+      }
+    ]
+  }
+}
