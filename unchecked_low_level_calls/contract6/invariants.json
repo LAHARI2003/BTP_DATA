@@ -1,0 +1,52 @@
+{
+  "invariants": [
+    {
+      "expression": "msg.sender == owner",
+      "vulnerability": "Access Control",
+      "description": "Ensures that only the owner can execute specific functions.",
+      "relevance": "High"
+    },
+    {
+      "expression": "newOwner != owner",
+      "vulnerability": "Access Control",
+      "description": "Prevents reassigning ownership to the current owner in `changeOwner` function.",
+      "relevance": "Low"
+    },
+    {
+      "expression": "Holders[msg.sender] >= 0",
+      "vulnerability": "Special Storage",
+      "description": "Guarantees that each holder has a non-negative balance.",
+      "relevance": "Medium"
+    },
+    {
+      "expression": "MinDeposit >= 1 ether",
+      "vulnerability": "Time Lock",
+      "description": "Minimum deposit limit for each transaction, ensuring deposits meet a minimum threshold.",
+      "relevance": "Medium"
+    },
+    {
+      "expression": "this.balance >= Holders[msg.sender]",
+      "vulnerability": "Money Flow",
+      "description": "Contract balance should be sufficient to cover deposits by holders.",
+      "relevance": "High"
+    },
+    {
+      "expression": "Holders[_addr] >= _wei",
+      "vulnerability": "Unchecked Low-Level Calls",
+      "description": "Ensures the holder has enough balance before making a withdrawal.",
+      "relevance": "High"
+    },
+    {
+      "expression": "owner != address(0)",
+      "vulnerability": "Access Control",
+      "description": "Ensures the contract owner is not set to an invalid address.",
+      "relevance": "High"
+    },
+    {
+      "expression": "token != address(0)",
+      "vulnerability": "Unchecked Low-Level Calls",
+      "description": "Ensures a valid token address is used for transfer to avoid unintended token burn.",
+      "relevance": "High"
+    }
+  ]
+}
