@@ -1,0 +1,46 @@
+{
+  "Contract": "Refunder",
+  "NonVulnerableTags": {
+    "InvariantValidation": [
+      {
+        "Description": "Ensures that only the refund addresses added to the refundAddresses array can receive refunds, preserving a consistent list of refund addresses.",
+        "Function": "refundAll",
+        "Invariant": "refundAddresses only contains valid refund addresses initialized in the constructor."
+      }
+    ],
+    "AccessControl": [
+      {
+        "Description": "The contract implicitly restricts access to the refundAll function by requiring that it be called only in specific scenarios (though ideally, it should include additional access control).",
+        "Function": "refundAll",
+        "BestPractice": "Consider adding onlyOwner or a similar access modifier for better control over refund execution."
+      }
+    ],
+    "DataIntegrity": [
+      {
+        "Description": "The refundAll function iterates over refundAddresses array based on the array length, ensuring no out-of-bounds errors as long as refundAddresses is valid.",
+        "Function": "refundAll",
+        "DataIntegrityCheck": "Iteration is bounded by refundAddresses.length, ensuring data integrity."
+      }
+    ]
+  },
+  "PotentiallyRiskyFeatures": {
+    "DenialOfService": [
+      {
+        "Description": "The refundAll function has the potential to revert if any refund recipient's .send fails, blocking subsequent refunds and resulting in a Denial of Service.",
+        "VulnerableLine": 24,
+        "RiskMitigationSuggestion": "Consider using transfer or a pull pattern for refunds to prevent DoS from failing transactions."
+      }
+    ],
+    "LoopingOverDynamicArray": [
+      {
+        "Description": "The refundAll function iterates over the entire refundAddresses array, which can grow indefinitely. This can lead to high gas costs, making it possible for the function to fail due to block gas limits.",
+        "VulnerableLine": 21,
+        "RiskMitigationSuggestion": "Introduce a limit on refundAddresses array size or utilize batched processing for refunding addresses."
+      }
+    ]
+  },
+  "AdditionalComments": [
+    "The contract lacks sufficient access control. It would be beneficial to limit access to the refundAll function, ideally to a specific owner or administrator.",
+    "The send function used in refundAll only forwards 2,300 gas, which could prevent the refund from succeeding if the recipient requires more gas. Consider using .call.value() if flexibility is needed, or a pull-based refund model."
+  ]
+}
