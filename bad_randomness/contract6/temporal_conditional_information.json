@@ -1,0 +1,12 @@
+{
+    "Time-Sensitive Logic": {
+        "lockInGuess": "Records the block number at the time of guess and increments by 1 for the target block.",
+        "settle": "Depends on block.number advancing past guesses[msg.sender].block for the settlement to proceed."
+    },
+    "Conditional Logic Paths": {
+        "Settlement Path": [
+            "If the guess matches the block hash, 2 Ether is transferred.",
+            "If the guess does not match, no Ether is transferred and the user’s guess is reset."
+        ]
+    }
+}
