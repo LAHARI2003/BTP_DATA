@@ -1,0 +1,7 @@
+{
+    "Time-Sensitive Logic": "None directly, as this contract does not rely on block timestamp or time-based restrictions.",
+    "Conditional Logic Paths": [
+        "If-Condition for Dynamic Array Length: `if(numElements == array.length)` within `insertNnumbers` adjusts array length when capacity is reached.",
+        "Conditional Execution of Clear Functions: `clear` and `clearDOS` execute only if `numElements > 1500`, potentially blocking resets for smaller arrays."
+    ]
+}
