@@ -1,0 +1,16 @@
+{
+  "NonVulnerableTags": {
+    "Access Control": "The run function is publicly accessible, but as there is no specific access control mechanism, no restrictions are present for who can call this function.",
+    "Invariant Validation": "The contract correctly initializes the count variable to 1 and publicly declares it, ensuring transparency of the contract state.",
+    "State Management Integrity": "The count variable is directly affected by user input in the run function, and although there is no verification of input values, it is designed to update count without additional side effects in the contract."
+  },
+  "WellImplementedFeatures": {
+    "Transparency": "The count variable is declared as public, making the value of count accessible to all users, which allows tracking of its state.",
+    "Simplicity": "The contract maintains a minimal, straightforward design, reducing the complexity of the state and potential attack vectors."
+  },
+  "PotentiallyRiskyFeatures": {
+    "Integer Underflow Vulnerability": "The run function allows subtraction from the count variable without checking if the input exceeds the current count, which could lead to an integer underflow. This behavior is a known vulnerability that could allow malicious actors to manipulate count into an unintended state.",
+    "Lack of Input Validation": "There is no validation for the input in the run function, allowing users to pass any arbitrary value, potentially resulting in overflow or underflow issues due to lack of boundary checks.",
+    "Unrestricted Public Function": "The run function is publicly accessible without access restrictions. In cases where any user can call functions that alter the contract’s state, this can potentially allow unintended manipulations or attacks if proper precautions are not taken."
+  }
+}
