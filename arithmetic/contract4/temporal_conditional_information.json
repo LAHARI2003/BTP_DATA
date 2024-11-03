@@ -1,0 +1,15 @@
+{
+  "TimeSensitiveLogic": {
+    "Details": []
+  },
+  "ConditionalLogicPaths": {
+    "Details": [
+      {
+        "Path": "Addition Operation in run",
+        "Condition": "Input value is added to count unconditionally.",
+        "Risk": "No checks for overflow; the operation always proceeds."
+      }
+    ]
+  },
+  "Notes": "The IntegerOverflowAdd contract does not involve time-sensitive logic but has a critical conditional path where an unchecked addition occurs."
+}
