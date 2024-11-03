@@ -1,0 +1,19 @@
+{
+    "Edge Case Annotations": [
+        {
+            "Zero Value Participation": "If a participant sends an amount other than TICKET_AMOUNT, the assertion fails."
+        },
+        {
+            "Low Participation": "If there are fewer participants, the pot will be smaller, reducing the potential jackpot."
+        }
+    ],
+    "Common Attack Patterns": [
+        {
+            "Time Manipulation": "The random selection method is based on block timestamp, making it vulnerable to manipulation by miners. This is flagged at the point of randomness generation."
+        },
+        {
+            "Access Control Vulnerability": "None present in this contract, but if unauthorized access to the bank account was allowed, it would be flagged."
+        }
+    ],
+    "Recovery Mechanisms": "None implemented. An emergency pause function could be used to halt the lottery in the event of an attack."
+}
