@@ -1,0 +1,15 @@
+{
+  "SecurityMeasures": {
+    "ImplementedSecurityControls": {
+      "AccessControl": {
+        "Description": "No specific access control is present, so any address can call `run`."
+      },
+      "UnderflowCheck": {
+        "Description": "No underflow protection implemented on the arithmetic operation, making it vulnerable."
+      }
+    },
+    "FallbackFunctionality": {
+      "Description": "No fallback function is present; thus, unexpected Ether sent to this contract will be rejected."
+    }
+  }
+}
