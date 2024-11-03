@@ -1,0 +1,16 @@
+{
+  "EdgeCaseAnnotations": {
+    "ZeroValueTransfers": "No validation for ticket purchases when msg.value is zero. Could handle separately.",
+    "MultipleTicketPurchase": "While loop in buyTickets allows purchasing multiple tickets with a single transaction if funds allow.",
+    "LeftoverEtherReturn": "buyTickets sends back excess Ether if more is sent than required.",
+    "BadRandomness": "chooseWinner uses block parameters for randomness, which can be manipulated by miners."
+  },
+  "CommonAttackPatterns": [
+    "RandomnessManipulation": "Randomness derived from block properties, potentially manipulatable by miners or participants.",
+    "AccessControlVulnerability": "If feeAddress is compromised, unauthorized access to endRaffle and kill can occur."
+  ],
+  "RecoveryMechanisms": {
+    "EmergencyPause": "togglePause controlled by feeAddress allows emergency pausing.",
+    "ContractDestruction": "kill function allows destruction by feeAddress, if needed."
+  }
+}
