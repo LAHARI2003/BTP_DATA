@@ -1,0 +1,20 @@
+{
+  "EdgeCases": {
+    "EdgeCaseAnnotations": {
+      "ZeroValueInput": {
+        "Description": "If `input` is 0, no overflow or underflow occurs, and the result remains valid."
+      },
+      "OverflowPotential": {
+        "Description": "If `input` is greater than `count`, underflow occurs, causing `res` to wrap to a large integer value."
+      }
+    },
+    "CommonAttackPatterns": {
+      "Underflow": {
+        "Description": "The function can be used to trigger an arithmetic underflow when `input` > `count`, although it remains local and does not impact contract state."
+      }
+    },
+    "RecoveryMechanisms": {
+      "Description": "None implemented in this contract."
+    }
+  }
+}
