@@ -1,0 +1,28 @@
+{
+    "invariants": [
+        {
+            "vulnerability_category": "Time Lock",
+            "invariant": {
+                "expression": "block.timestamp != pastBlockTime",
+                "description": "Ensures only one transaction per block",
+                "relevance_level": "High"
+            }
+        },
+        {
+            "vulnerability_category": "Money Flow",
+            "invariant": {
+                "expression": "msg.value == 10 ether",
+                "description": "Ensures a bet amount of exactly 10 ether",
+                "relevance_level": "High"
+            }
+        },
+        {
+            "vulnerability_category": "Money Flow",
+            "invariant": {
+                "expression": "msg.sender == winner if block.timestamp % 15 == 0",
+                "description": "Transfers balance to sender if they win",
+                "relevance_level": "Medium"
+            }
+        }
+    ]
+}
