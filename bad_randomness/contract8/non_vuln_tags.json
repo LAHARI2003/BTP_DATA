@@ -1,0 +1,75 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "feature": "Access Control",
+        "description": "Usage of onlyOwner and onlyAnimator modifiers to restrict access to critical functions like changeOwner, changeAnimator, and setInvestStart."
+      },
+      {
+        "feature": "Money Flow Integrity",
+        "description": "The contract ensures walletBalance reflects the total funds available for user withdrawals, and balances are accurately updated when users invest, disinvest, or win in the lottery."
+      },
+      {
+        "feature": "Dividend Distribution Integrity",
+        "description": "commitDividend function accurately tracks and distributes dividends to users, ensuring wallets are updated for each dividend period to prevent discrepancies."
+      },
+      {
+        "feature": "Betting Limits Enforcement",
+        "description": "hashBetMax is used to limit the maximum bet size per block, protecting the contract from excessive bet amounts in one block."
+      },
+      {
+        "feature": "Funds Security for Owner Withdrawals",
+        "description": "coldStore function contains safety checks for owner withdrawals, ensuring that investBalance and walletBalance are not compromised. Additionally, it imposes a 0.25% weekly limit on withdrawals when funding exceeds 50%."
+      },
+      {
+        "feature": "Housekeeping Function",
+        "description": "houseKeeping function keeps track of the dividend period and updates the contract state based on the current block number, helping maintain consistency in dividend payout cycles."
+      },
+      {
+        "feature": "Lottery Result Validation",
+        "description": "The betOf and won functions ensure only valid lottery results are paid out by comparing the bet hashes against recorded block hashes, adding reliability to lottery outcomes."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "invariant": "Wallet Balance Reduction Before Transfer",
+        "description": "The payWallet function ensures wallets[msg.sender].balance is reduced before transferring funds to the user, preserving the consistency of walletBalance."
+      },
+      {
+        "invariant": "Balance Updates on Transfer",
+        "description": "transferFrom and transfer functions ensure sender and receiver balances are correctly updated, maintaining accurate account states and preventing fund misallocation."
+      },
+      {
+        "invariant": "Investment Limit Check",
+        "description": "The invest function validates that the total investBalance does not exceed investBalanceMax, preventing overflows and ensuring investment caps are respected."
+      }
+    ],
+    "RiskyFeatures": [
+      {
+        "feature": "Randomness for Lottery",
+        "description": "Uses blockhash for randomness in lottery outcomes (e.g., calcHashes and betPrize). Blockhash-based randomness is predictable and can be manipulated by miners, making the lottery potentially exploitable.",
+        "riskLevel": "High"
+      },
+      {
+        "feature": "Use of assert Statements",
+        "description": "Multiple assert statements (e.g., in SafeMath and access control modifiers) could lead to unexpected contract termination if any condition fails, potentially freezing funds.",
+        "riskLevel": "Medium"
+      },
+      {
+        "feature": "Handling of Dividends without Cap",
+        "description": "The commitDividend function calculates dividends without a cap, which may cause an overflow if dividends are unusually high or if totalSupply grows significantly.",
+        "riskLevel": "Medium"
+      },
+      {
+        "feature": "ColdStore Function's Withdrawal Criteria",
+        "description": "The coldStore function allows the owner to withdraw if funding is above 50%, provided the amount is within 0.25% of the balance weekly. However, under high-frequency transactions, this could allow gradual siphoning of funds if improperly monitored.",
+        "riskLevel": "Low"
+      },
+      {
+        "feature": "Unrestricted addHashes Function",
+        "description": "The addHashes function allows anyone to increase the length of the hashes array up to hashesSize, which may lead to higher gas consumption and possibly degrade contract performance if abused.",
+        "riskLevel": "Low"
+      }
+    ]
+  }
+}
