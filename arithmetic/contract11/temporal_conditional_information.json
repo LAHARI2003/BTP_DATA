@@ -1,0 +1,8 @@
+{
+  "TimeSensitiveLogic": {
+    "Description": "Not applicable. The contract does not have any time-based conditions."
+  },
+  "ConditionalLogicPaths": {
+    "Conditions": "No conditional branches in the add function, as it only performs a balance increment operation."
+  }
+}
