@@ -1,0 +1,39 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Unchecked Low-Level Calls",
+      "invariant": "msg.sender ∈ allowed_roles",
+      "expression": "role(msg.sender) ∈ {allowed_roles}",
+      "security_relevance": "High",
+      "description": "Ensures only allowed roles can initiate the transfer function to prevent unauthorized access."
+    },
+    {
+      "vulnerability": "Unchecked Low-Level Calls",
+      "invariant": "require(validAddress(caddress))",
+      "expression": "isContract(caddress) == true",
+      "security_relevance": "High",
+      "description": "Checks that `caddress` is a valid contract address, mitigating issues with erroneous or unintended address calls."
+    },
+    {
+      "vulnerability": "Unchecked Low-Level Calls",
+      "invariant": "require(_tos.length == v.length)",
+      "expression": "|_tos| == |v|",
+      "security_relevance": "Medium",
+      "description": "Ensures that `_tos` and `v` arrays have matching lengths to prevent unintended behavior."
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == owner",
+      "expression": "msg.sender == owner",
+      "security_relevance": "High",
+      "description": "Ensures that only the contract owner or an authorized entity can invoke critical functions, reducing unauthorized access risks."
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "checkSufficientBalance(from, v)",
+      "expression": "balance(from) ≥ sum(v)",
+      "security_relevance": "High",
+      "description": "Ensures that the `from` address has a sufficient balance to complete the transfers specified in `v`."
+    }
+  ]
+}
