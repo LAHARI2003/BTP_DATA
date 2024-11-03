@@ -1,0 +1,20 @@
+{
+  "EdgeCaseAnnotations": [
+    {
+      "description": "If creditorAddresses length is below 1500, the emptyCreditors function will not clear the array, as the condition is unmet.",
+      "function": "emptyCreditors"
+    },
+    {
+      "description": "Adding 350 entries for each caller can quickly reach the gas limit, potentially preventing further interactions if the array size becomes very large.",
+      "function": "addCreditors"
+    }
+  ],
+  "CommonAttackPatterns": [
+    {
+      "description": "Denial of Service",
+      "lines": [16, 17, 18],
+      "details": "If too many entries are added, the contract may hit gas limits, potentially blocking further interactions."
+    }
+  ],
+  "RecoveryMechanisms": "None provided. The contract lacks an emergency stop or alternative mechanism to handle gas limit issues."
+}
