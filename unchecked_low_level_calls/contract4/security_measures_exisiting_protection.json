@@ -1,0 +1,8 @@
+{
+    "Implemented Security Controls": [
+        "Minimal input validation": "`_tos.length > 0` ensures at least one transfer attempt."
+    ],
+    "Fallback Functionality": [
+        "Not applicable as no fallback or receive function is implemented to handle unexpected Ether transfers."
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": {
+            "Modifier": "onlyOwner",
+            "Description": "Restricts critical functions to only the contract owner."
+        }
+    },
+    "ExistingVulnerabilities": [
+        {
+            "Vulnerability": "Unchecked low-level calls",
+            "Functions": ["WithdrawToken", "WithdrawToHolder"],
+            "Lines": [44, 97],
+            "Description": "Potential issue with unchecked token transfer and Ether transfer calls, which may lead to reentrancy or failure without revert handling."
+        }
+    ]
+}

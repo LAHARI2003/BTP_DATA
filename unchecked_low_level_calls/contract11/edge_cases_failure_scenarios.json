@@ -1,0 +1,13 @@
+{
+  "Edge Case Annotations": [
+    {
+      "Empty Recipients List": "The transfer function checks for _tos.length > 0 to prevent calls with no recipients."
+    }
+  ],
+  "Common Attack Patterns": [
+    {
+      "Unchecked External Calls": "The caddress.call in the transfer function does not check if the external call succeeds, which could lead to unintended behavior or token loss if the call fails."
+    }
+  ],
+  "Recovery Mechanisms": "No recovery mechanisms are in place to handle potential issues from failed or reverted low-level calls."
+}

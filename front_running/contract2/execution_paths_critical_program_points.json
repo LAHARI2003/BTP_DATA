@@ -1,0 +1,29 @@
+{
+  "FunctionLevelAnalysis": {
+    "setReward": {
+      "Purpose": "Allows the owner to set the reward amount",
+      "Conditions": [
+        "Checks if claimed is false to ensure reward has not been claimed",
+        "Checks if the caller is the owner to restrict access"
+      ]
+    },
+    "claimReward": {
+      "Purpose": "Allows users to claim the reward based on a submission check",
+      "Conditions": [
+        "Checks if claimed is false to ensure reward has not been claimed already",
+        "Requires submission to be less than 10"
+      ]
+    }
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "require(!claimed) in setReward to check if reward is already claimed",
+      "require(msg.sender == owner) in setReward to restrict access to the owner",
+      "require(submission < 10) in claimReward to validate user submission"
+    ],
+    "StateTransitionPoints": [
+      "Updates claimed to true in claimReward when reward is successfully claimed",
+      "Updates reward to msg.value in setReward when the owner sets a new reward"
+    ]
+  }
+}

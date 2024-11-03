@@ -1,0 +1,64 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == owner",
+      "description": "Only the owner can call certain functions",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "description": "Only direct calls from externally owned accounts (EOAs) are allowed",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "openToPublic == true",
+      "description": "Game is accessible only if openToPublic is set to true",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "wagers[msg.sender] > 0",
+      "description": "Only users with an existing wager can call the 'play' function",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.value == betLimit",
+      "description": "Bet amount must equal the current betting limit",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "timestamps[msg.sender] < block.number",
+      "description": "Play function can only execute if the timestamp is in the past block",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "address(this).balance >= ethToTransfer",
+      "description": "Contract should have sufficient balance to execute payouts",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "totalDonated == Σ donations",
+      "description": "Total donated amount should equal the sum of all donations",
+      "security_relevance": "Low"
+    },
+    {
+      "vulnerability": "Data Flow",
+      "invariant": "difficulty > 0",
+      "description": "Difficulty value should always be greater than zero",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Oracle Slippage (Price Manipulation)",
+      "invariant": "winningNumber ∈ [1, difficulty]",
+      "description": "Winning number should be within the expected range",
+      "security_relevance": "Low"
+    }
+  ]
+}

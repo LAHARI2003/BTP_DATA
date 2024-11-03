@@ -1,0 +1,12 @@
+{
+  "Implemented Security Controls": {
+    "Access Control": {
+      "Owner Functions": "The onlyOwner modifier restricts certain functions to the contract owner, including AdjustBetAmounts, AdjustDifficulty, and transferAnyERC20Token."
+    },
+    "User Verification": {
+      "Only Real People": "The onlyRealPeople modifier ensures that contracts cannot interact, protecting against flash loan or bot attacks."
+    },
+    "Open to Public Toggle": "The isOpenToPublic modifier allows the contract owner to open or close the game to public participation."
+  },
+  "Fallback Functionality": "A default payable fallback function allows ETH deposits but without custom logic."
+}

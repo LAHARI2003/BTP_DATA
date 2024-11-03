@@ -1,0 +1,26 @@
+{
+  "Function-Level Analysis": {
+    "wager": "Logs the player's bet and associated block number; requires 0.01 ETH.",
+    "play": "Determines if the player has won or lost based on difficulty and a random value; triggers payouts or losses accordingly.",
+    "donate": "Allows a user to donate directly to the whale address.",
+    "payout": "Transfers half of the contract balance to the winner if they win.",
+    "loseWager": "Transfers half of the bet amount to the whale when the player loses.",
+    "AdjustBetAmounts": "Owner-only function to set a new bet limit.",
+    "AdjustDifficulty": "Owner-only function to set a new difficulty."
+  },
+  "Execution Path Tags": {
+    "Decision Points": [
+      "require(msg.sender == owner) in onlyOwner for owner-only functions.",
+      "require(openToPublic) in isOpenToPublic for functions accessible only when public.",
+      "require(wagers[msg.sender] > 0) in onlyPlayers to allow only participants with active wagers.",
+      "require(msg.value == betLimit) in wager to ensure correct bet value.",
+      "require(wagers[msg.sender] == 0) in wager to prevent multiple simultaneous wagers.",
+      "require(blockNumber < block.number) in play to ensure the player is eligible to play."
+    ],
+    "State Transition Points": [
+      "Updates to timestamps and wagers mappings upon placing a wager.",
+      "Updates to totalDonated upon donation or loss.",
+      "Updates to openToPublic, difficulty, and betLimit through owner functions."
+    ]
+  }
+}

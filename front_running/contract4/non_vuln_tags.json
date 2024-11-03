@@ -1,0 +1,42 @@
+{
+  "contract": "OddsAndEvens",
+  "nonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "AccessControl": "The getProfit function restricts access to only the owner, ensuring only the contract owner can withdraw the contract’s balance."
+      },
+      {
+        "MoneyFlowIntegrity": "The contract ensures that the total profit is only accessible to the owner, preserving fund integrity with respect to its owner."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "Function": "play",
+        "Description": "The function ensures that exactly 1 ether is sent when calling play(), thereby enforcing a fixed entry fee. If the value is incorrect, the transaction is reverted."
+      },
+      {
+        "Function": "andTheWinnerIs",
+        "Description": "The function validates the total count of players (tot==2) before executing the core logic, which ensures the game only executes once two players have joined."
+      }
+    ]
+  },
+  "riskyFeatures": {
+    "PublicAccess": [
+      {
+        "Variable": "players",
+        "Description": "The players array is marked as public for debugging purposes, which could expose sensitive information about players (addresses and numbers) during gameplay."
+      }
+    ],
+    "PotentialIssues": [
+      {
+        "Reentrancy": "The send function is used in andTheWinnerIs and getProfit functions without reentrancy protection. This may be risky if not protected by further checks."
+      },
+      {
+        "GameLogic": "The contract does not validate player addresses or number uniqueness, potentially allowing one player to fill both spots and game the outcome."
+      },
+      {
+        "UncheckedSendResult": "In the andTheWinnerIs function, the result of the send operation is stored in a boolean variable but is never checked for success or failure, which could lead to unexpected behaviors if the transfer fails."
+      }
+    ]
+  }
+}

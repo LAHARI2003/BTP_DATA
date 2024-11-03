@@ -1,0 +1,9 @@
+{
+    "TransactionStateContext": {
+        "DepositState": "When users deposit Ether and the Deposit function is called, adding Ether to the Holders mapping if the amount is above MinDeposit.",
+        "WithdrawalState": "When users withdraw tokens or Ether, managed through WitdrawTokenToHolder and WithdrawToHolder functions with specific checks for Holder balances and permissions."
+    },
+    "ExternalInteractions": {
+        "TokenTransfers": "Transfers tokens between users and the contract address using token.call() for token transfers and _addr.call.value() for Ether withdrawals."
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "RewardSettingState": "When the owner sets the reward by calling setReward and transfers ETH to the contract",
+    "RewardClaimingState": "When a user claims the reward by calling claimReward with a valid submission"
+  },
+  "ExternalInteractions": [
+    "The contract transfers ETH to the owner when setReward is called by the owner.",
+    "The contract transfers ETH to a user when claimReward is called by the user."
+  ]
+}

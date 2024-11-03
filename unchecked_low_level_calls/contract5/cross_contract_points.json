@@ -1,0 +1,10 @@
+{
+    "CrossContractDependencies": {
+        "UncheckedLLCalls": {
+            "Description": "Potential vulnerability due to unchecked low-level call in WithdrawToken and WithdrawToHolder functions."
+        }
+    },
+    "InterContractConsistencyConditions": {
+        "Condition": "Ensuring WithdrawToken and WithdrawToHolder functions only proceed when Holder balances are sufficient to maintain consistency across external calls."
+    }
+}

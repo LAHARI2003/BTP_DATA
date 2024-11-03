@@ -1,0 +1,22 @@
+{
+  "invariants": [
+    {
+      "invariant": "block.timestamp >= 1546300800",
+      "related_vulnerability": "Time Lock",
+      "security_relevance": "High",
+      "expression": "block.timestamp >= fixed_timestamp"
+    },
+    {
+      "invariant": "xentrySdrBlk ≠ rexitSdrBlk",
+      "related_vulnerability": "Time Lock",
+      "security_relevance": "Medium",
+      "expression": "entry_block != exit_block"
+    },
+    {
+      "invariant": "rcurtBlk − xlstBlk ≥ nbBlks",
+      "related_vulnerability": "Time Lock",
+      "security_relevance": "Low",
+      "expression": "current_block - last_block >= required_blocks"
+    }
+  ]
+}

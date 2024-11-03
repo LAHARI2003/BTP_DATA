@@ -1,0 +1,22 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "RedeemState": "Triggered when a user calls the redeem function and meets the eligibility condition.",
+      "WithdrawState": "Triggered when the owner withdraws the balance."
+    },
+    "ExternalInteractions": [
+      {
+        "Function": "redeem",
+        "Interaction": "Transfers the contract balance to the owner and the sender if minimum eligibility is met."
+      },
+      {
+        "Function": "withdraw",
+        "Interaction": "Transfers the contract balance to the owner."
+      },
+      {
+        "Function": "Command",
+        "Interaction": "Performs an external call to an address with provided data."
+      }
+    ]
+  }
+}

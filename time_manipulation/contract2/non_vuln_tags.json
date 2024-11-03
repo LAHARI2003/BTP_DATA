@@ -1,0 +1,48 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "feature": "Access Control",
+        "description": "Ownership of the contract is set correctly upon deployment with 'owner = msg.sender' in the constructor, which ensures only the deployer can manage owner-restricted operations."
+      },
+      {
+        "feature": "State Update Consistency",
+        "description": "The jackpot amount is consistently updated when an investment is made with 'jackpot += msg.value/2', ensuring that the contract balance reflects all investments properly."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "function": "resetInvestment",
+        "description": "Validates the invariant that the lastInvestor's address is cleared and jackpot reset to 1 ether after funds are transferred, ensuring consistency in state updates for new investments."
+      },
+      {
+        "function": "Governmental (constructor)",
+        "description": "Ensures the invariant that the initial jackpot is set to 1 ether with a check on 'msg.value < 1 ether', preventing deployment with insufficient funding."
+      }
+    ]
+  },
+  "RiskyFeatures": {
+    "TimeManipulation": [
+      {
+        "location": "invest()",
+        "description": "The contract uses 'block.timestamp' to update 'lastInvestmentTimestamp', which may be manipulated in environments with block time manipulation. This can be exploited to affect the timing of investment resets."
+      },
+      {
+        "location": "resetInvestment()",
+        "description": "The reset mechanism uses 'block.timestamp' to determine if enough time has passed since the last investment. Miners could manipulate this timestamp to trigger or delay the reset function, potentially allowing attacks on the jackpot."
+      }
+    ],
+    "ReentrancyRisk": [
+      {
+        "location": "resetInvestment()",
+        "description": "Funds are sent to 'lastInvestor' and 'owner' using '.send()'. If any called external address has fallback functions that consume significant gas, it could prevent subsequent operations from completing, leading to potential locking of funds or incomplete state updates."
+      }
+    ],
+    "GasLimitRisk": [
+      {
+        "location": "attack()",
+        "description": "The recursive attack function calls itself until a count limit is reached, with a decreasing gas allowance. This could result in a stack overflow or reach gas limits if executed repeatedly, potentially leading to a denial of service attack on the target contract."
+      }
+    ]
+  }
+}

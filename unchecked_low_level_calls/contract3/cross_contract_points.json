@@ -1,0 +1,8 @@
+{
+  "CrossContractDependencies": {
+    "MigrationAgent": "Interacts with external contract to transfer tokens during migration using migrate function."
+  },
+  "InterContractConsistencyConditions": [
+    "If tokens are migrated, total supply in the original contract must be decremented to avoid double-spending in the new contract."
+  ]
+}

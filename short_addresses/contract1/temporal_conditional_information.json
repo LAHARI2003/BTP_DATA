@@ -1,0 +1,10 @@
+{
+  "Time-Sensitive Logic": "None. The contract has no logic dependent on time-based conditions.",
+  "Conditional Logic Paths": [
+    {
+      "Path": "Balance Sufficiency Check",
+      "Description": "In `sendCoin`, if the sender's balance is insufficient, the transaction will not proceed.",
+      "Code": "if (balances[msg.sender] < amount) return false;"
+    }
+  ]
+}

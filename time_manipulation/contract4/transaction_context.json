@@ -1,0 +1,9 @@
+{
+    "Transaction State Context": {
+        "Bet State": "When users place a bet by sending 10 ether.",
+        "Block-Time Dependency": "The contract allows only one bet per block by checking the pastBlockTime."
+    },
+    "External Interactions": {
+        "Ether Transfer": "The contract accepts ether from users when they place a bet and sends the entire balance to the user if they win."
+    }
+}

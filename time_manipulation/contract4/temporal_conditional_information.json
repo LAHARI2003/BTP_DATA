@@ -1,0 +1,6 @@
+{
+    "Time-Sensitive Logic": "The fallback function's behavior depends on the block timestamp, specifically when now % 15 == 0.",
+    "Conditional Logic Paths": {
+        "Winner Check": "If the block timestamp modulus 15 equals 0, the user wins and receives the contract balance."
+    }
+}

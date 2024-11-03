@@ -1,0 +1,10 @@
+{
+  "Transaction State Context": {
+    "State": {
+      "Transfer State": "Tokens are transferred from the sender to the recipient when the `sendCoin` function is called."
+    },
+    "External Interactions": {
+      "Token Transfer": "Tokens are internally transferred between user addresses when the `sendCoin` function is called. There is no external contract interaction."
+    }
+  }
+}

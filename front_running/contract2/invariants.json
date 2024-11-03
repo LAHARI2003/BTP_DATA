@@ -1,0 +1,46 @@
+{
+  "invariants": [
+    {
+      "vulnerability_category": "Access Control",
+      "invariant": "msg.sender == owner",
+      "expression": "msg.sender == owner",
+      "security_relevance": "High",
+      "description": "Ensures that only the owner can set the reward. Protects access to key functions."
+    },
+    {
+      "vulnerability_category": "Money Flow",
+      "invariant": "reward >= 0",
+      "expression": "reward ≥ 0",
+      "security_relevance": "Medium",
+      "description": "Ensures that the reward is always non-negative and does not underflow."
+    },
+    {
+      "vulnerability_category": "Money Flow",
+      "invariant": "msg.value >= reward",
+      "expression": "msg.value ≥ reward",
+      "security_relevance": "High",
+      "description": "Ensures the new reward is sufficient to cover the previous reward, avoiding unintended fund transfers."
+    },
+    {
+      "vulnerability_category": "Time Lock",
+      "invariant": "!claimed",
+      "expression": "claimed == false",
+      "security_relevance": "High",
+      "description": "Ensures the reward can only be claimed once, preventing re-entrancy and front-running attacks."
+    },
+    {
+      "vulnerability_category": "Access Control",
+      "invariant": "msg.sender == owner -> msg.sender.transfer(reward)",
+      "expression": "msg.sender == owner ⟹ msg.sender.transfer(reward)",
+      "security_relevance": "High",
+      "description": "Only the owner can transfer the reward, controlling access to critical funds."
+    },
+    {
+      "vulnerability_category": "Time Lock",
+      "invariant": "claimed -> reward == 0",
+      "expression": "claimed ⟹ reward == 0",
+      "security_relevance": "Medium",
+      "description": "Once the reward is claimed, it should be reset, avoiding unexpected payouts."
+    }
+  ]
+}

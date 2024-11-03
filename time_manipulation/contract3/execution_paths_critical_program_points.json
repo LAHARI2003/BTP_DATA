@@ -1,0 +1,16 @@
+{
+  "Function_Level_Analysis": {
+    "payOut": "Handles the payout based on random conditions and updates the contract's balance and leader.",
+    "randomGen": "Generates a random number based on the current timestamp.",
+    "draw": "Initiates a lottery draw and triggers payout by calling 'payOut'."
+  },
+  "Execution_Path_Tags": {
+    "Decision_Points": [
+      "rand > 0 and now - rand > 24 hours in payOut to determine payout eligibility.",
+      "msg.value >= 1 ether in payOut to assign a new leader."
+    ],
+    "State_Transition_Points": [
+      "Updates to 'leader' and 'timestamp' when a new leader is assigned in payOut."
+    ]
+  }
+}

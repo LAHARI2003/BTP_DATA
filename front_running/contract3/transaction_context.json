@@ -1,0 +1,11 @@
+{
+    "TransactionStateContext": {
+        "ContractPurpose": "To reward users who can find the pre-image of a specific hash with 1000 ether.",
+        "ExecutionStates": {
+            "SolveState": "When users attempt to match the pre-image of the hash by calling the solve function."
+        },
+        "ExternalInteractions": [
+            "The contract transfers ether to users who provide the correct solution."
+        ]
+    }
+}

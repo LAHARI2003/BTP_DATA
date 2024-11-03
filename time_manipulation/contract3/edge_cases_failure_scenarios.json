@@ -1,0 +1,15 @@
+{
+  "Edge_Case_Annotations": {
+    "Low_Value_Deposits": "The payOut function has conditions based on rand and a 24-hour delay to determine eligibility for payout.",
+    "Balance_Checks": "In payOut, the contract balance is checked before sending to the leader, ensuring no overdraw."
+  },
+  "Common_Attack_Patterns": [
+    {
+      "Time_Manipulation_Vulnerability": "Possible manipulation of block timestamp in 'randomGen' and in the 24-hour condition in 'payOut' to influence payouts."
+    },
+    {
+      "Access_Control_Issues": "No direct owner or access control present, increasing susceptibility to manipulation by any sender."
+    }
+  ],
+  "Recovery_Mechanisms": "None implemented in this contract; could benefit from an emergency stop or lock to prevent manipulation."
+}

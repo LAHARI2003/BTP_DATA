@@ -1,0 +1,12 @@
+{
+  "TimeSensitiveLogic": {
+    "Description": "The contract has no specific time-based conditions, but depends on minimum deposit thresholds for certain functionality."
+  },
+  "ConditionalLogicPaths": {
+    "Conditions": [
+      "changeOwner depends on owner identity verification.",
+      "confirmOwner depends on matching newOwner identity.",
+      "Deposit and withdrawals depend on meeting MinDeposit requirements."
+    ]
+  }
+}

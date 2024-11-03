@@ -1,0 +1,9 @@
+{
+  "ImplementedSecurityControls": {
+    "SafeMathLibrary": "All mathematical operations use SafeMath to prevent overflow and underflow issues.",
+    "ZeroAddressChecks": "transfer, approve, and transferFrom functions check for zero address inputs to prevent tokens from being irreversibly burned."
+  },
+  "FallbackFunctionality": {
+    "Description": "No fallback function is implemented in this ERC20 contract."
+  }
+}

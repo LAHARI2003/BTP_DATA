@@ -1,0 +1,13 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": "There is no time-based logic in the contract.",
+    "ConditionalLogicPaths": [
+      {
+        "EtherCondition": "The play function checks if exactly 1 ether is sent, or the transaction is reverted."
+      },
+      {
+        "PlayerCountCondition": "The game waits until two players have joined before calculating a winner."
+      }
+    ]
+  }
+}

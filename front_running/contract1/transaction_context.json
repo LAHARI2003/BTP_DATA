@@ -1,0 +1,9 @@
+{
+  "TransactionStateContext": {
+    "TransferState": "When tokens are transferred between addresses using transfer or transferFrom functions.",
+    "ApprovalState": "When a spender is allowed by an owner to spend tokens on their behalf using the approve function."
+  },
+  "ExternalInteractions": {
+    "Description": "The contract facilitates transfers of tokens between addresses and manages allowances for spender accounts."
+  }
+}

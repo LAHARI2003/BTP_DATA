@@ -1,0 +1,34 @@
+{
+  "contract_name": "EtherLotto",
+  "non_vulnerable_tags": {
+    "Access Control": {
+      "description": "The contract sets the `bank` address to `msg.sender` in the constructor, ensuring that only the contract creator initially controls where the fee is transferred."
+    },
+    "Money Flow Integrity": {
+      "description": "The contract ensures that the pot balance is incremented when a ticket is purchased (`pot += msg.value`). Similarly, the jackpot (minus fee) is transferred to the winner when the lottery is won, maintaining a proper flow of funds."
+    },
+    "Invariant Validation": {
+      "description": "The `assert(msg.value == TICKET_AMOUNT)` invariant ensures that only users who send the exact `TICKET_AMOUNT` can participate, preventing incorrect or fraudulent participation."
+    },
+    "Fee Management": {
+      "description": "The contract has a dedicated mechanism for sending a fixed fee (`FEE_AMOUNT`) to the bank account (`bank.transfer(FEE_AMOUNT)`), ensuring consistent fee handling."
+    }
+  },
+  "risky_features": {
+    "Time Manipulation Risk": {
+      "description": "The use of `block.timestamp` for generating randomness is highly susceptible to miner manipulation (reported at line 43). This could potentially allow miners to control the outcome of the lottery, making the contract vulnerable to exploitation."
+    },
+    "Randomness Insecurity": {
+      "description": "The contract uses `sha3(block.timestamp)` for randomness, which is predictable and insecure for generating random numbers. This could lead to biased or predictable outcomes in the lottery, reducing fairness."
+    },
+    "Potential Reentrancy Risk": {
+      "description": "Although there are no explicit checks for reentrancy in the `play` function, transferring Ether (`msg.sender.transfer(pot - FEE_AMOUNT)`) before resetting the `pot` could introduce a reentrancy vulnerability in specific scenarios."
+    },
+    "Fixed Ticket Amount": {
+      "description": "The contract uses a constant value for `TICKET_AMOUNT`, which limits flexibility. If there is a need to adjust ticket prices, the contract would require redeployment, which may not be ideal for scalability or future use cases."
+    },
+    "Lack of Fallback Function": {
+      "description": "There is no fallback function in the contract, which means that Ether sent directly to the contract (without calling the `play` function) will be rejected, potentially leading to user experience issues."
+    }
+  }
+}

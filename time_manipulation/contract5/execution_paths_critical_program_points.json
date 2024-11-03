@@ -1,0 +1,24 @@
+{
+  "FunctionLevelAnalysis": {
+    "Functions": [
+      {
+        "Function": "isSaleFinished",
+        "Purpose": "Determines if the sale period has ended by comparing the current timestamp to a fixed end timestamp."
+      }
+    ]
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      {
+        "Condition": "block.timestamp >= 1546300800",
+        "Description": "Ensures that the sale period has ended based on a hardcoded end time."
+      }
+    ],
+    "StateTransitionPoints": [
+      {
+        "Transition": "None",
+        "Description": "The function is a read-only view and does not modify any state variables."
+      }
+    ]
+  }
+}

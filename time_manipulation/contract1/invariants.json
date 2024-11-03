@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "invariant": "msg.value == TICKET_AMOUNT",
+      "related_vulnerability": "Access Control",
+      "security_relevance": "High",
+      "description": "Ensures that participants provide the exact required amount to enter the lottery."
+    },
+    {
+      "invariant": "pot >= 0",
+      "related_vulnerability": "Money Flow",
+      "security_relevance": "Medium",
+      "description": "The jackpot (pot) is always non-negative, preventing underflow errors."
+    },
+    {
+      "invariant": "bank != 0",
+      "related_vulnerability": "Access Control",
+      "security_relevance": "High",
+      "description": "The bank address is initialized to a non-zero address upon contract deployment."
+    },
+    {
+      "invariant": "random ∈ {0, 1}",
+      "related_vulnerability": "Data Flow",
+      "security_relevance": "Medium",
+      "description": "Ensures the random variable is always binary (0 or 1), keeping a 50% chance distribution as intended."
+    },
+    {
+      "invariant": "pot = 0 after winner receives jackpot",
+      "related_vulnerability": "Money Flow",
+      "security_relevance": "High",
+      "description": "Ensures that the jackpot resets to 0 after a win is distributed, avoiding accidental reuse of funds."
+    },
+    {
+      "invariant": "pot >= FEE_AMOUNT",
+      "related_vulnerability": "Gas Control",
+      "security_relevance": "Medium",
+      "description": "Ensures there are sufficient funds in the pot to deduct the fee before payout, avoiding negative balances."
+    }
+  ]
+}

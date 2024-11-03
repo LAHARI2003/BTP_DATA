@@ -1,0 +1,18 @@
+{
+  "TransactionStateContext": {
+    "States": [
+      {
+        "State": "Sale State",
+        "Description": "Occurs when the isSaleFinished function is called to check if the sale period has ended."
+      }
+    ]
+  },
+  "ExternalInteractions": {
+    "Interactions": [
+      {
+        "Function": "isSaleFinished",
+        "Description": "Checks if the sale is finished based on a fixed timestamp."
+      }
+    ]
+  }
+}

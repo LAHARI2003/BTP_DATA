@@ -1,0 +1,53 @@
+{
+    "non_vulnerable_tags": {
+        "Access Control": [
+            {
+                "description": "Usage of onlyOwner modifier in functions OpenToThePublic, AdjustBetAmounts, AdjustDifficulty, and transferAnyERC20Token restricts access to the contract owner, ensuring only the contract owner can call these functions."
+            },
+            {
+                "description": "Usage of onlyRealPeople modifier in the constructor and various functions prevents contracts from interacting, ensuring only externally-owned accounts can interact."
+            },
+            {
+                "description": "isOpenToPublic modifier is used to control access to certain functions, ensuring that the contract is only accessible when openToPublic is true."
+            }
+        ],
+        "Money Flow Integrity": [
+            {
+                "description": "The contract maintains balance integrity with totalDonated, which accumulates the amount donated and wagered by players who lose."
+            },
+            {
+                "description": "EthBalance, currentDifficulty, currentBetLimit, and winnersPot functions provide read-only access to key information, enhancing transparency without affecting the contract state."
+            }
+        ],
+        "Invariant Validation": [
+            {
+                "description": "The wager function checks if wagers[msg.sender] == 0, ensuring that players cannot place multiple bets without resetting their wager status."
+            },
+            {
+                "description": "play function resets timestamps[msg.sender] and wagers[msg.sender] before transferring tokens, ensuring that any changes to player state are reflected immediately and accurately."
+            }
+        ]
+    },
+    "risky_features": {
+        "Unchecked External Calls": [
+            {
+                "description": "The donateToWhale and loseWager functions use low-level call (whale.call.value(amount)) without validating the success of the call, which could fail silently, leaving the contract in an inconsistent state if the whale address does not implement the donate function correctly."
+            }
+        ],
+        "Randomness Manipulation Risk": [
+            {
+                "description": "The randomSeed variable and the blockhash in the play function are used to determine winning outcomes. Since blockhash and other on-chain factors can be influenced, an attacker might manipulate the game outcome by timing the block in which they interact."
+            }
+        ],
+        "Replay Vulnerability": [
+            {
+                "description": "The wager function uses block.number as a timestamp. This approach might be vulnerable to replay attacks since block numbers are predictable, which could allow players to manipulate their odds by timing their wagers."
+            }
+        ],
+        "Lack of Player Refund Mechanism": [
+            {
+                "description": "The contract lacks a clear refund or cancellation mechanism for players who might change their minds or experience delays, which could lead to unreturned funds in certain cases."
+            }
+        ]
+    }
+}

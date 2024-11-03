@@ -1,0 +1,46 @@
+{
+  "invariants": [
+    {
+      "invariant": "_balances[msg.sender] >= value",
+      "vulnerability": "Access Control",
+      "expression": "msg.sender.balance >= transferAmount",
+      "security_relevance": "high"
+    },
+    {
+      "invariant": "_allowed[from][msg.sender] >= value",
+      "vulnerability": "Access Control",
+      "expression": "_allowed[from][msg.sender] >= transferAmount",
+      "security_relevance": "high"
+    },
+    {
+      "invariant": "_balances[to] >= 0",
+      "vulnerability": "Special Storage",
+      "expression": "_balances[to] >= 0",
+      "security_relevance": "medium"
+    },
+    {
+      "invariant": "_balances[msg.sender] == totalSupply",
+      "vulnerability": "Special Storage",
+      "expression": "sum(_balances) == totalSupply",
+      "security_relevance": "high"
+    },
+    {
+      "invariant": "_allowed[msg.sender][spender] >= 0",
+      "vulnerability": "Money Flow",
+      "expression": "_allowed[msg.sender][spender] >= 0",
+      "security_relevance": "low"
+    },
+    {
+      "invariant": "_allowed[msg.sender][spender] == approvedAmount",
+      "vulnerability": "Front Running",
+      "expression": "_allowed[msg.sender][spender] == approvedAmount",
+      "security_relevance": "high"
+    },
+    {
+      "invariant": "totalSupply >= sum(_balances)",
+      "vulnerability": "Special Storage",
+      "expression": "totalSupply >= sum(_balances)",
+      "security_relevance": "medium"
+    }
+  ]
+}

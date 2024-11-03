@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "InvestmentState": "When users deposit ether using the invest function.",
+    "ResetState": "When the resetInvestment function is called to distribute the jackpot and reset the contract."
+  },
+  "ExternalInteractions": {
+    "EtherTransfers": "Transfers ether between users and the contract address in invest and resetInvestment functions.",
+    "OwnerInteraction": "The contract owner can initialize the contract with 1 ether upon deployment."
+  }
+}

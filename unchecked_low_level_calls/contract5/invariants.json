@@ -1,0 +1,40 @@
+{
+    "invariants": [
+        {
+            "invariant": "msg.sender == owner",
+            "expression": "msg.sender == owner",
+            "related_vulnerability": "Access Control",
+            "security_relevance_level": "High"
+        },
+        {
+            "invariant": "owner == newOwner after confirmOwner",
+            "expression": "owner == newOwner if msg.sender == newOwner after confirmOwner",
+            "related_vulnerability": "Access Control",
+            "security_relevance_level": "High"
+        },
+        {
+            "invariant": "msg.sender.balance >= amount",
+            "expression": "Holders[msg.sender] >= _wei",
+            "related_vulnerability": "Money Flow",
+            "security_relevance_level": "Medium"
+        },
+        {
+            "invariant": "Holders[_addr] >= _wei",
+            "expression": "Holders[_addr] >= _wei",
+            "related_vulnerability": "Money Flow",
+            "security_relevance_level": "Medium"
+        },
+        {
+            "invariant": "msg.value >= MinDeposit",
+            "expression": "msg.value >= MinDeposit",
+            "related_vulnerability": "Special Storage",
+            "security_relevance_level": "Low"
+        },
+        {
+            "invariant": "MinDeposit is constant",
+            "expression": "MinDeposit = 1 ether",
+            "related_vulnerability": "Special Storage",
+            "security_relevance_level": "Low"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "ContractName": "MyToken",
+    "NonVulnerableTags": {
+        "Access Control": {
+            "Description": "The constructor function MyToken() initializes the balance of the contract creator without allowing external interference."
+        },
+        "Money Flow Integrity": {
+            "Description": "The sendCoin function ensures that the sender has sufficient balance before transferring, maintaining integrity in the balance management.",
+            "Validation": "Balance checks prevent the sender's balance from going negative."
+        },
+        "Invariant Validation": {
+            "Description": "In the sendCoin function, the balance of msg.sender is reduced by the amount and the balance of the recipient is increased, keeping total balances consistent."
+        }
+    },
+    "PotentiallyRiskyFeatures": {
+        "Short Address Attack": {
+            "Description": "The sendCoin function is vulnerable to short address attacks, which can occur in older Solidity versions. It is critical to add parameter length verification to prevent misinterpretation of input parameters in the sendCoin function.",
+            "Recommendation": "Consider using the latest Solidity version and length-checking on function parameters to ensure safer contract execution."
+        },
+        "tx.origin Usage": {
+            "Description": "The constructor function MyToken uses tx.origin to assign initial balance, which can lead to issues if the contract is called through another contract (tx.origin might not be the actual contract owner).",
+            "Recommendation": "Consider using msg.sender instead of tx.origin in the constructor to assign initial balance more securely."
+        },
+        "Lack of Access Control on sendCoin": {
+            "Description": "There is no modifier or access control on sendCoin, meaning any user can send tokens on behalf of the caller's address. This could potentially lead to misuse.",
+            "Recommendation": "Add appropriate access control or security checks to ensure only authorized transfers are allowed if required."
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "EdgeCaseAnnotations": {
+    "ZeroContributions": "The createDaoPOLSKAtokens function requires msg.value > 0 to prevent zero-value contributions.",
+    "AllowanceRaceCondition": "Mitigated in approve function by requiring allowance to be reset to zero before changing.",
+    "MaxSupplyLimit": "createDaoPOLSKAtokens checks that contributions do not exceed the supply limit."
+  },
+  "CommonAttackPatterns": {
+    "UncheckedLowLevelCalls": "Fund transfer functions rely on low-level .send calls, which could fail silently.",
+    "AccessControlVulnerability": "Owner-specific functions like setSupply and sendTokenAw could pose risks if not restricted to owner."
+  },
+  "RecoveryMechanisms": {
+    "RefundState": "Refund functionality available if funding fails, allowing users to reclaim Ether.",
+    "FundingToggle": "Funding and migration toggles are available to handle transitions during ICO."
+  }
+}

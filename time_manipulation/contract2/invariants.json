@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "expression": "msg.sender == owner",
+      "vulnerability": "Access Control",
+      "security_relevance": "High",
+      "description": "Ensures that only the contract owner can perform sensitive actions, like initializing the contract or withdrawing excess funds."
+    },
+    {
+      "expression": "block.timestamp >= lastInvestmentTimestamp + ONE_MINUTE",
+      "vulnerability": "Time Lock",
+      "security_relevance": "High",
+      "description": "Prevents `resetInvestment` from being called too frequently, enforcing a minimum time interval of ONE_MINUTE between investments."
+    },
+    {
+      "expression": "jackpot >= 1 ether",
+      "vulnerability": "Special Storage",
+      "security_relevance": "Medium",
+      "description": "Ensures that the jackpot does not fall below 1 ether, which is required for the correct functioning of the contract's core logic."
+    },
+    {
+      "expression": "msg.value >= jackpot / 2",
+      "vulnerability": "Money Flow",
+      "security_relevance": "High",
+      "description": "Ensures that any investment made is at least half of the current jackpot, preventing small investments that could potentially exploit the contract."
+    },
+    {
+      "expression": "lastInvestor != 0",
+      "vulnerability": "Data Flow",
+      "security_relevance": "Medium",
+      "description": "Ensures that the `lastInvestor` is not null, which is necessary for correctly processing the last investor's address and jackpot payout."
+    }
+  ]
+}

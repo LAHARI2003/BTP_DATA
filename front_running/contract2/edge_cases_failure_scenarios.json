@@ -1,0 +1,14 @@
+{
+  "EdgeCaseAnnotations": {
+    "RewardAlreadyClaimed": "The setReward and claimReward functions both check that claimed is false before proceeding",
+    "InvalidSubmission": "The claimReward function enforces submission < 10 to validate the input"
+  },
+  "CommonAttackPatterns": {
+    "AccessControlVulnerability": "The claimReward function could be front-run if claimed is not immediately checked, potentially allowing repeated calls",
+    "FrontRunning": [
+      "The reward transfer in setReward could be front-run, enabling a different user to attempt to claim before claimed is updated",
+      "The claimReward transfer could be vulnerable to front-running if claimed is not immediately set to true after the reward is transferred"
+    ]
+  },
+  "RecoveryMechanisms": "None implemented in this contract. Adding an emergency stop could enhance security in a production contract"
+}

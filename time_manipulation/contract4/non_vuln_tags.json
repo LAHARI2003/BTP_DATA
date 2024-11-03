@@ -1,0 +1,28 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "AccessControl": "The contract restricts betting to only once per block by utilizing pastBlockTime, which ensures that only one bet can be placed per block."
+      },
+      {
+        "TransactionAmount": "The contract requires a specific amount (10 ether) to be sent with each transaction, enforcing consistent betting stakes and maintaining a predictable balance for payout if the player wins."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "BetConsistency": "The require statement checks that msg.value is exactly 10 ether, ensuring that bets are consistently valued and preventing unauthorized or incorrect amounts from being processed."
+      }
+    ]
+  },
+  "RiskyFeatures": [
+    {
+      "TimeManipulationRisk": "The contract relies on the now timestamp to determine winning conditions (when now % 15 == 0) and restrict betting (one bet per block), making it vulnerable to block timestamp manipulation by miners, which could potentially lead to exploitative behavior."
+    },
+    {
+      "HighBetRequirement": "Requiring a fixed 10 ether bet may expose users to significant loss if they lose the bet, making the contract financially risky for users without further protections or lower-stakes options."
+    },
+    {
+      "LackOfAccessControlForOwner": "The contract does not include any owner or admin controls for withdrawing funds or stopping the game, which could lead to a locked contract if the funds are depleted or if no winning bets occur, stranding funds permanently."
+    }
+  ]
+}

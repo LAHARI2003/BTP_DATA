@@ -1,0 +1,14 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": [
+      "Only owner can set supply, otherchains total, and migration agent addresses.",
+      "Only migrationMaster can toggle migration state."
+    ],
+    "TokenBurning": "Users can burn their tokens, and burnFrom allows burning on behalf of others with allowance.",
+    "FallbackFunctionality": "Allows Ether deposits during funding state but reverts otherwise."
+  },
+  "AdditionalSecurityMechanisms": {
+    "AllowanceCheck": "approve function requires resetting to zero before modifying to prevent race conditions.",
+    "FundingEndCheck": "ICO ends if block number exceeds fundingEndBlock limit to prevent perpetual funding."
+  }
+}

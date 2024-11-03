@@ -1,0 +1,19 @@
+{
+  "ExecutionPathsAndCriticalProgramPoints": {
+    "FunctionLevelAnalysis": {
+      "play": "Allows players to participate in the game by submitting a number.",
+      "andTheWinnerIs": "Calculates the winner based on the sum of numbers submitted by players and sends the reward.",
+      "getProfit": "Enables the contract owner to withdraw the contract's balance."
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        "if (msg.value != 1 ether) throw - Validates that exactly 1 ether is sent to play.",
+        "if (tot == 2) andTheWinnerIs() - Proceeds to determine the winner only if two players have joined."
+      ],
+      "StateTransitionPoints": [
+        "Updates to players array and tot when a player joins the game in play function.",
+        "Resets players array and tot after determining the winner in andTheWinnerIs function."
+      ]
+    }
+  }
+}

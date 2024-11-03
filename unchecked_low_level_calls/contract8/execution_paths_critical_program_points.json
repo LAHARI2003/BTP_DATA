@@ -1,0 +1,30 @@
+{
+  "ExecutionPathsAndCriticalProgramPoints": {
+    "FunctionLevelAnalysis": {
+      "redeem": {
+        "Description": "Handles user eligibility for a giveaway by transferring contract balance if conditions are met."
+      },
+      "withdraw": {
+        "Description": "Allows the owner to withdraw the contract's balance after verifying ownership."
+      },
+      "Command": {
+        "Description": "Allows the owner to execute arbitrary external calls with given data."
+      }
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        {
+          "Condition": "msg.value >= minEligibility",
+          "Purpose": "Ensures the sender meets the minimum eligibility to trigger the redeem function."
+        },
+        {
+          "Condition": "msg.sender == Owner",
+          "Purpose": "Restricts access to the withdraw and Command functions to the contract owner."
+        }
+      ],
+      "StateTransitionPoints": [
+        "Balance of the contract changes when redeem or withdraw functions are executed."
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "Restricts access to transfer function based on a hardcoded address check for msg.sender."
+  },
+  "FallbackFunctionality": {
+    "None": "No fallback function or mechanism for handling unexpected calls or funds sent directly to the contract."
+  }
+}

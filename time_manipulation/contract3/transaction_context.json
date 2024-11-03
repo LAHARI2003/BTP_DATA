@@ -1,0 +1,9 @@
+{
+  "Transaction_State_Context": {
+    "Payout_State": "When the payout function 'payOut' is triggered based on random condition checks.",
+    "Leader_State": "When a new leader is assigned if specific conditions are met in the 'payOut' function."
+  },
+  "External_Interactions": {
+    "Token_Transfer": "The contract transfers Ether between the contract and the users based on conditions in the payOut function."
+  }
+}

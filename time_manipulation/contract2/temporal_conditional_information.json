@@ -1,0 +1,9 @@
+{
+  "TimeSensitiveLogic": {
+    "Description": "resetInvestment function depends on the passage of time, using block.timestamp in comparison with lastInvestmentTimestamp."
+  },
+  "ConditionalLogicPaths": [
+    "Investment conditions based on msg.value and jackpot requirements.",
+    "Reset conditions based on time (block.timestamp comparison) and jackpot distribution logic."
+  ]
+}

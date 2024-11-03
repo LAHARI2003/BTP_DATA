@@ -1,0 +1,34 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "invariant": "msg.sender ∈ authorized_senders",
+            "expression": "msg.sender == tx.origin",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "invariant": "msg.value ≤ maxAmount",
+            "expression": "msg.value ≤ 1000 ether",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "invariant": "hash integrity maintained",
+            "expression": "hash == sha3(solution)",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Gas Control",
+            "invariant": "gasLimit(msg.sender) ≤ maxGas",
+            "expression": "gas ≤ block.gaslimit",
+            "security_relevance": "medium"
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "nonReEntrant",
+            "expression": "transfer_allowed == false during transfer",
+            "security_relevance": "high"
+        }
+    ]
+}

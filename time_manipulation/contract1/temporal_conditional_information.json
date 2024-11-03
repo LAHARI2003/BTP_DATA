@@ -1,0 +1,13 @@
+{
+    "Time-Sensitive Logic": {
+        "Description": "The contract relies on block.timestamp for random selection of winners, making it time-sensitive."
+    },
+    "Conditional Logic Paths": [
+        {
+            "Winning Path": "If `random == 0`, the participant is deemed a winner and receives the pot minus fee."
+        },
+        {
+            "Losing Path": "If `random != 0`, no transfer is made, and the pot accumulates."
+        }
+    ]
+}

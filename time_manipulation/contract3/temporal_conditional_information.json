@@ -1,0 +1,10 @@
+{
+  "Time_Sensitive_Logic": {
+    "Time_Dependent": "'payOut' depends on time calculations (now - rand > 24 hours) making it susceptible to miner manipulation."
+  },
+  "Conditional_Logic_Paths": [
+    {
+      "Payout_Conditions": "The contract follows different paths in 'payOut' based on whether rand is valid, a 24-hour period has passed, and if the user has sent enough Ether."
+    }
+  ]
+}

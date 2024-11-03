@@ -1,0 +1,12 @@
+{
+  "Transaction State Context": {
+    "Wager State": "When users place a bet by calling the wager function.",
+    "Play State": "When users trigger the play function to determine the result of their bet.",
+    "Donation State": "When users call the donate function to transfer funds directly to the whale address."
+  },
+  "External Interactions": {
+    "ETH Transfer to Whale": "ETH is transferred to the whale address when users lose or donate.",
+    "ETH Transfer to Winner": "ETH is transferred to the winning player when the play function determines they have won.",
+    "ERC20 Token Transfer": "A function is included to transfer any ERC20 tokens sent to the contract accidentally."
+  }
+}

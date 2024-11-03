@@ -1,0 +1,16 @@
+{
+  "FunctionLevelAnalysis": {
+    "invest": "Handles user investments and updates the last investor and jackpot amounts.",
+    "resetInvestment": "Distributes jackpot to the last investor and allows the owner to withdraw remaining ether after a time lock."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "require(msg.value >= jackpot/2) in invest to ensure minimum investment threshold.",
+      "require(block.timestamp >= lastInvestmentTimestamp + ONE_MINUTE) in resetInvestment to enforce a time lock."
+    ],
+    "StateTransitionPoints": [
+      "Updates to lastInvestor, jackpot, and lastInvestmentTimestamp during investments.",
+      "Resets lastInvestor, jackpot, and lastInvestmentTimestamp when resetInvestment is called."
+    ]
+  }
+}

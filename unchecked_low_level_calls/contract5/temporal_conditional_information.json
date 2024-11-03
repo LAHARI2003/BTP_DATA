@@ -1,0 +1,29 @@
+{
+    "TimeSensitiveLogic": {
+        "OwnershipTransfer": {
+            "Function": "confirmOwner",
+            "Condition": "msg.sender == newOwner",
+            "Description": "Enforces ownership transfer only if called by the designated new owner."
+        }
+    },
+    "ConditionalLogicPaths": [
+        {
+            "Function": "Deposit",
+            "Path": "If msg.value > MinDeposit, add balance to Holders; otherwise, ignore.",
+            "Description": "Allows deposits only if the value is above the minimum threshold."
+        },
+        {
+            "Function": "WitdrawTokenToHolder",
+            "Path": "If Holders[_to] > 0, reset Holder balance and execute token transfer.",
+            "Description": "Prevents token withdrawal if the specified Holder has no balance."
+        },
+        {
+            "Function": "WithdrawToHolder",
+            "Paths": [
+                "If Holders[msg.sender] > 0 and Holders[_addr] >= _wei, execute Ether transfer.",
+                "Otherwise, revert."
+            ],
+            "Description": "Prevents Ether withdrawal if either the caller or specified address has insufficient balance."
+        }
+    ]
+}

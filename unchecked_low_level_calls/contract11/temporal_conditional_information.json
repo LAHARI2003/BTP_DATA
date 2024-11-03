@@ -1,0 +1,8 @@
+{
+  "Time-Sensitive Logic": "None in this contract.",
+  "Conditional Logic Paths": [
+    {
+      "Valid Recipients Check": "Requires _tos.length > 0 to proceed; if not, the transaction is reverted."
+    }
+  ]
+}

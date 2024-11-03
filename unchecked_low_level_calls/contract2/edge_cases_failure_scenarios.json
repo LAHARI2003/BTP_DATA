@@ -1,0 +1,12 @@
+{
+  "Edge_Case_Annotations": {
+    "Unchecked_Call": "The low-level call to the provided address does not check if the call was successful.",
+    "Input_Address_Control": "The address passed to callAddress could be a contract, externally owned account, or an invalid address."
+  },
+  "Common_Attack_Patterns": {
+    "Reentrancy": "If the call initiates a state-changing call back into the Caller contract or other vulnerable logic, reentrancy attacks may be possible."
+  },
+  "Recovery_Mechanisms": {
+    "None": "No mechanisms are provided to recover from failed external calls or vulnerabilities introduced through call execution."
+  }
+}

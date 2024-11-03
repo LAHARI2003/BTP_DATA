@@ -1,0 +1,13 @@
+{
+  "EdgeCaseAnnotations": {
+    "ZeroAddressTransfer": "transfer and transferFrom functions check to != address(0) to prevent sending tokens to the zero address.",
+    "InsufficientBalance": "transfer and transferFrom functions ensure value <= _balances[sender] to avoid overdraws.",
+    "ExcessiveAllowance": "transferFrom ensures value <= _allowed[from][msg.sender] to prevent overspending."
+  },
+  "CommonAttackPatterns": {
+    "FrontRunning": "Potential front-running vulnerability in approve function if an allowance reset scenario occurs without setting allowance to zero first."
+  },
+  "RecoveryMechanisms": {
+    "Description": "No specific recovery mechanisms are implemented in this ERC20 contract."
+  }
+}

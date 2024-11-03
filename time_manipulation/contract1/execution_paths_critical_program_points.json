@@ -1,0 +1,27 @@
+{
+    "Function-Level Analysis": {
+        "play": {
+            "Description": "Handles lottery participation, increases pot, and randomly selects a winner."
+        }
+    },
+    "Execution Path Tags": {
+        "Decision Points": [
+            {
+                "require": "msg.value == TICKET_AMOUNT",
+                "Description": "Ensures participants pay the required ether amount to play."
+            },
+            {
+                "if": "random == 0",
+                "Description": "Determines whether the participant wins or loses based on a random value."
+            }
+        ],
+        "State Transition Points": [
+            {
+                "pot": "Updated when a user participates or wins the pot."
+            },
+            {
+                "bank": "Receives a fee when a participant wins."
+            }
+        ]
+    }
+}

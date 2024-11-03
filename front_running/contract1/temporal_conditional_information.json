@@ -1,0 +1,11 @@
+{
+  "TimeSensitiveLogic": {
+    "Description": "No specific time-based logic exists in this contract."
+  },
+  "ConditionalLogicPaths": {
+    "Conditions": [
+      "transfer and transferFrom: Checks balance and allowance conditions before executing.",
+      "approve: Checks for non-zero spender address before setting allowance."
+    ]
+  }
+}

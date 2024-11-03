@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "TransactionStates": [
+      "Transfer State: When tokens are transferred to specified addresses via the transfer function."
+    ],
+    "ExternalInteractions": [
+      "Calls the external contract at caddress to transfer tokens using the transferFrom method."
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "expression": "balances[tx.origin] >= 0",
+      "description": "Balance of any account should always be non-negative",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Access Control",
+      "expression": "balances[msg.sender] >= amount",
+      "description": "Sender's balance should be greater than or equal to the transfer amount",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Access Control",
+      "expression": "msg.sender != to",
+      "description": "Prevent self-transfer to maintain transaction integrity",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Short Address Attack",
+      "expression": "sizeof(to) == 20",
+      "description": "Ensure that 'to' address has a valid length (20 bytes) to prevent short address attack",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "expression": "balances[msg.sender] - amount >= 0",
+      "description": "Ensure sufficient funds are available before deducting from sender's balance",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "expression": "balances[to] + amount >= balances[to]",
+      "description": "Ensure no overflow in recipient’s balance when adding transfer amount",
+      "security_relevance": "High"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "CrossContractDependencies": [
+    {
+      "Contract": "Attacker",
+      "Dependency": "Attacker contract calls resetInvestment in Governmental contract as part of a potential attack vector."
+    }
+  ],
+  "InterContractConsistencyConditions": "If this contract interacted with other jackpot pools, conditions would be needed to keep the total balance consistent across pools."
+}

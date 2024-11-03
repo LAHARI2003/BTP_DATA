@@ -1,0 +1,12 @@
+{
+  "TransactionStateContext": {
+    "FundingState": "When users contribute Ether to receive tokens during ICO.",
+    "RefundState": "When users request refunds if funding fails.",
+    "MigrationState": "When users migrate tokens to a new contract."
+  },
+  "ExternalInteractions": [
+    "Transfers Ether from users to contract in exchange for tokens during ICO.",
+    "Transfers tokens from the contract to users based on their Ether contributions.",
+    "Migrates tokens to a new contract if migration is enabled."
+  ]
+}

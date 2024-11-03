@@ -1,0 +1,9 @@
+{
+    "ImplementedSecurityControls": {
+        "HashChallenge": "The contract requires the solution to match the stored hash, providing a layer of difficulty for unauthorized access."
+    },
+    "KnownSecurityIssues": {
+        "FrontRunningVulnerability": "The solve function is susceptible to front-running, as the hash match check occurs without any additional obfuscation of the solution."
+    },
+    "FallbackFunctionality": "None implemented."
+}

@@ -1,0 +1,16 @@
+{
+    "Function-Level Analysis": {
+        "Fallback Function": "Handles bets by accepting exactly 10 ether and updating the pastBlockTime.",
+        "Decision Points": [
+            "require(msg.value == 10 ether)": "Ensures that users send exactly 10 ether to place a bet.",
+            "require(now != pastBlockTime)": "Forces only one transaction per block to prevent time manipulation."
+        ],
+        "Conditional Logic Paths": {
+            "Winner Logic": "If now % 15 == 0, the user wins, and the contract balance is transferred to them."
+        },
+        "State Transition Points": [
+            "Updates pastBlockTime on every valid bet",
+            "Transfers contract balance to the sender if they win"
+        ]
+    }
+}

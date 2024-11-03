@@ -1,0 +1,59 @@
+{
+    "contract": "TokenBank",
+    "nonVulnerableTags": {
+        "Access Control": [
+            {
+                "description": "The onlyOwner modifier is correctly applied to functions that perform critical actions, ensuring only the contract owner can execute these operations.",
+                "functions": ["changeOwner", "WithdrawToken", "WitdrawTokenToHolder", "WithdrawToHolder"]
+            }
+        ],
+        "Money Flow Integrity": [
+            {
+                "description": "The Deposit function ensures that deposits are only credited to Holders mapping if they meet the minimum required deposit amount (MinDeposit).",
+                "functions": ["Deposit"]
+            },
+            {
+                "description": "The WitdrawTokenToHolder function zeroes out the Holder’s balance before initiating the token transfer, ensuring no double-spending or reentrancy risks on balance tracking.",
+                "functions": ["WitdrawTokenToHolder"]
+            }
+        ],
+        "Invariant Validation": [
+            {
+                "description": "The WithdrawToHolder function validates that the Holder's balance is sufficient to cover the requested withdrawal amount before initiating the transfer, preserving consistency of state updates.",
+                "functions": ["WithdrawToHolder"]
+            },
+            {
+                "description": "Owner control is properly verified through confirmOwner function, ensuring only the intended new owner can confirm ownership transfer, thus maintaining ownership consistency.",
+                "functions": ["confirmOwner"]
+            }
+        ]
+    },
+    "riskyFeatures": {
+        "Unchecked Low-Level Calls": [
+            {
+                "description": "The WithdrawToken function makes a low-level call to the token's transfer function without checking the return value, which could lead to potential fund loss if the transfer fails.",
+                "function": "WithdrawToken",
+                "risk": "Potentially unhandled failure in transfer, resulting in unexpected behavior or asset loss."
+            },
+            {
+                "description": "The WithdrawToHolder function performs an external call with .call.value without verifying success, which can be exploited if the recipient contract does not handle transfers correctly or maliciously reverts the transaction.",
+                "function": "WithdrawToHolder",
+                "risk": "Unchecked low-level call with value transfer; may lead to unexpected fund loss or reentrancy issues if recipient behavior is untrusted."
+            }
+        ],
+        "Owner Privileges in Fund Withdrawals": [
+            {
+                "description": "The onlyOwner modifier restricts withdrawal functions, but excessive reliance on ownership control without multi-signature or timelock mechanisms introduces a centralization risk.",
+                "function": "WithdrawToken, WitdrawTokenToHolder, WithdrawToHolder",
+                "risk": "Single owner control over fund withdrawal may lead to misuse or mismanagement of funds if ownership is compromised."
+            }
+        ],
+        "Lack of Constructor for Initial Setup": [
+            {
+                "description": "The initTokenBank function must be called explicitly to initialize the contract owner and MinDeposit, which might lead to issues if this is overlooked.",
+                "function": "initTokenBank",
+                "risk": "Potential misconfiguration or delay in setting up the initial state, as there is no constructor enforcing setup during deployment."
+            }
+        ]
+    }
+}

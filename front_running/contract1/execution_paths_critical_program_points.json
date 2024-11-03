@@ -1,0 +1,26 @@
+{
+  "FunctionLevelAnalysis": {
+    "balanceOf": "Retrieves the token balance of a specified address.",
+    "allowance": "Checks the amount a spender is allowed to withdraw from the owner’s account.",
+    "transfer": "Transfers tokens from the sender's address to another address after checking balance sufficiency.",
+    "approve": "Sets the allowance for a spender to withdraw tokens from the sender's account.",
+    "transferFrom": "Allows a spender to transfer tokens on behalf of the owner, checking allowance and balance."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": {
+      "transfer": [
+        "require(value <= _balances[msg.sender])",
+        "require(to != address(0))"
+      ],
+      "approve": "require(spender != address(0))",
+      "transferFrom": [
+        "require(value <= _balances[from])",
+        "require(value <= _allowed[from][msg.sender])",
+        "require(to != address(0))"
+      ]
+    },
+    "StateTransitionPoints": [
+      "_balances, _allowed, _totalSupply": "Updated during transfers and approvals."
+    ]
+  }
+}

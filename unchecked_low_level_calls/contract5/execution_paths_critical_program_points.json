@@ -1,0 +1,39 @@
+{
+    "FunctionLevelAnalysis": {
+        "Deposit": "Handles deposits of Ether, updating Holders if msg.value exceeds MinDeposit.",
+        "WitdrawTokenToHolder": "Withdraws specified tokens to a holder address if the holder has a positive balance.",
+        "WithdrawToHolder": "Withdraws Ether to a specified address if the caller has a balance in Holders and it exceeds the requested withdrawal amount."
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            {
+                "Function": "Deposit",
+                "Condition": "msg.value > MinDeposit",
+                "Description": "Ensures deposits meet the minimum requirement."
+            },
+            {
+                "Function": "WitdrawTokenToHolder",
+                "Condition": "Holders[_to] > 0",
+                "Description": "Checks if the holder has a balance before allowing token withdrawal."
+            },
+            {
+                "Function": "WithdrawToHolder",
+                "Conditions": [
+                    "Holders[msg.sender] > 0",
+                    "Holders[_addr] >= _wei"
+                ],
+                "Description": "Checks both the caller’s balance and the amount requested for Ether withdrawal."
+            }
+        ],
+        "StateTransitionPoints": [
+            {
+                "Variable": "Holders",
+                "Description": "Updated when tokens or Ether are deposited or withdrawn."
+            },
+            {
+                "Variable": "owner",
+                "Description": "Updated in the confirmOwner function if newOwner confirms ownership transfer."
+            }
+        ]
+    }
+}
