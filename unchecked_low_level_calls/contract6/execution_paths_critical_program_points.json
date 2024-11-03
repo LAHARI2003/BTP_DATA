@@ -1,0 +1,24 @@
+{
+  "FunctionLevelAnalysis": {
+    "changeOwner": "Allows the owner to initiate a new owner assignment.",
+    "confirmOwner": "Enables the new owner to confirm ownership.",
+    "WithdrawToken": "Transfers specified tokens from the contract to a designated address.",
+    "initTokenBank": "Sets the initial owner and minimum deposit.",
+    "Deposit": "Accepts deposits above MinDeposit and updates Holders mapping.",
+    "WitdrawTokenToHolder": "Withdraws tokens to a specific holder if they have a positive balance.",
+    "WithdrawToHolder": "Transfers Ether to a holder if sufficient balance is present.",
+    "Bal": "Returns the contract's current balance."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "if(msg.sender == newOwner) in confirmOwner - checks new owner identity.",
+      "if(msg.value > MinDeposit) in Deposit - validates minimum deposit threshold.",
+      "if(Holders[_addr] >= _wei) in WithdrawToHolder - ensures sufficient balance for withdrawal."
+    ],
+    "StateTransitionPoints": [
+      "Assignment of newOwner in changeOwner.",
+      "Update of Holders mapping in Deposit and WithdrawToHolder functions.",
+      "Token and Ether transfers via WithdrawToken and _addr.call in WithdrawToHolder."
+    ]
+  }
+}
