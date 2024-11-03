@@ -1,0 +1,8 @@
+{
+  "CrossContractDependencies": {
+    "Description": "No direct cross-contract dependencies are present in this ERC20 implementation."
+  },
+  "InterContractConsistencyConditions": {
+    "Description": "Not applicable, as the contract is self-contained and does not interact with other contracts."
+  }
+}
