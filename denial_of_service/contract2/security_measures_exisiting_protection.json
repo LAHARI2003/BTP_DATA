@@ -1,0 +1,7 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "None. All functions are public, allowing any address to interact without restrictions.",
+    "GasLimitMitigation": "None. No limits or restrictions are applied to avoid gas limit issues in addCreditors.",
+    "FallbackFunctionality": "Not provided in this contract."
+  }
+}
