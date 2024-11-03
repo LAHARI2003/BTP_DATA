@@ -1,0 +1,21 @@
+{
+    "FunctionLevelAnalysis": {
+        "solve": {
+            "Purpose": "Handles attempts to solve the hash challenge and transfers 1000 ether if successful.",
+            "ExecutionFlow": {
+                "DecisionPoints": [
+                    {
+                        "Condition": "require(hash == sha3(solution))",
+                        "Purpose": "Validates that the provided solution is the correct pre-image of the stored hash."
+                    }
+                ],
+                "StateTransitionPoints": [
+                    {
+                        "Action": "Ether transfer",
+                        "Description": "If the solution matches, the sender receives 1000 ether."
+                    }
+                ]
+            }
+        }
+    }
+}
