@@ -1,0 +1,6 @@
+{
+  "CrossContractPoints": {
+    "CrossContractDependencies": "There are no direct cross-contract dependencies.",
+    "InterContractConsistencyConditions": "Not applicable, as there is no interaction with other contracts."
+  }
+}
