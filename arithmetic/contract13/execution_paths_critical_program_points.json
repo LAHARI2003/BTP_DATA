@@ -1,0 +1,18 @@
+{
+  "FunctionAnalysis": {
+    "deposit": "Manages Ether deposits, updates user balance, and sets the lock time.",
+    "increaseLockTime": "Allows users to extend their lock time by a specified number of seconds.",
+    "withdraw": "Handles Ether withdrawals, checks lock time, and transfers Ether back to the user."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "require(balances[msg.sender] > 0) in withdraw to ensure users have a balance to withdraw.",
+      "require(now > lockTime[msg.sender]) in withdraw to enforce the lock period."
+    ],
+    "StateTransitionPoints": [
+      "Updates to balances[msg.sender] and lockTime[msg.sender] during deposit.",
+      "Modifies lockTime[msg.sender] during increaseLockTime.",
+      "Sets balances[msg.sender] to 0 during withdrawal."
+    ]
+  }
+}
