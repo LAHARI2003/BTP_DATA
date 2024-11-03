@@ -1,0 +1,19 @@
+{
+  "EdgeCaseAnnotations": [
+    "Minimum investment: The invest function requires msg.value >= jackpot/2 to handle small investments.",
+    "Time manipulation: Uses block.timestamp, which can be manipulated by miners within a certain limit."
+  ],
+  "CommonAttackPatterns": [
+    {
+      "Pattern": "Reentrancy attack",
+      "Explanation": "An attacker could recursively call invest or resetInvestment in specific conditions."
+    },
+    {
+      "Pattern": "Time manipulation",
+      "Explanation": "Potential manipulation of block.timestamp in the resetInvestment function could lead to early withdrawals."
+    }
+  ],
+  "RecoveryMechanisms": [
+    "Adding a circuit breaker to disable resetInvestment during suspicious activity could help recover in case of attack."
+  ]
+}
