@@ -1,0 +1,9 @@
+{
+  "TimeSensitiveLogic": {
+    "WithdrawFunction": "Depends on the current block timestamp (now), requiring it to be later than the user's lock time for withdrawal to proceed."
+  },
+  "ConditionalLogicPaths": {
+    "DepositPath": "Deposit execution path if user calls deposit with a positive Ether value.",
+    "WithdrawalPath": "Withdrawal path proceeds if the balance and lock time conditions are met, otherwise reverts."
+  }
+}
