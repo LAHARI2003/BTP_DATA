@@ -1,0 +1,41 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Tag": "Access Control",
+        "Description": "The inheritToNextGeneration function enforces that only the current corruptElite can pass on control to a new generation, preserving intended control hierarchy."
+      },
+      {
+        "Tag": "State Consistency",
+        "Description": "The contract maintains an accurate reflection of total debt and payout through separate tracking in totalDebt and totalPayedOut functions, ensuring that creditor balances are transparent and can be calculated at any time."
+      },
+      {
+        "Tag": "Invariant Validation",
+        "Description": "In lendGovernmentMoney, the invariant that profitFromCrash should not exceed 10000 ETH is enforced by a conditional check, ensuring that the system does not accumulate an excessive profit reserve."
+      }
+    ],
+    "MoneyFlowIntegrity": [
+      {
+        "Description": "The contract maintains a robust flow for distributing funds, where 5% goes to corruptElite, 5% increases profitFromCrash, and the remaining 90% prioritizes paying out previous creditors. This distribution helps to preserve fund flow integrity by maintaining creditor and economy allocations."
+      }
+    ]
+  },
+  "RiskyFeatures": [
+    {
+      "Tag": "Reentrancy Risk",
+      "Description": "Multiple unprotected calls to send in lendGovernmentMoney could allow reentrancy attacks. If any send call triggers external code execution, the contract’s state might be compromised before completion, especially affecting lastCreditorPayedOut and profitFromCrash."
+    },
+    {
+      "Tag": "Denial of Service",
+      "Description": "The creditorAddresses and creditorAmounts arrays could become extremely large, potentially making gas costs prohibitively high for functions like lendGovernmentMoney. This can prevent creditor payment processing, effectively causing a denial of service in fund disbursement."
+    },
+    {
+      "Tag": "Lack of Input Validation",
+      "Description": "The lendGovernmentMoney function does not check if msg.sender is already in creditorAddresses, which could lead to duplicate creditor entries and inconsistent accounting within the creditor lists."
+    },
+    {
+      "Tag": "Unchecked Call Return Values",
+      "Description": "Direct calls to send in functions (e.g., corruptElite.send(amount)) do not check the success of the call, potentially leaving creditor or elite payouts unconfirmed and affecting the integrity of payouts if send fails due to low gas."
+    }
+  ]
+}
