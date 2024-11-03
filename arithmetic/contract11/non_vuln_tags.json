@@ -1,0 +1,28 @@
+{
+    "ContractName": "Overflow_Add",
+    "Source": "https://smartcontractsecurity.github.io/SWC-registry/docs/SWC-101#overflow-simple-addsol",
+    "NonVulnerableTags": {
+        "WellImplementedFeatures": [
+            {
+                "Feature": "Simple State Variable Initialization",
+                "Description": "The 'balance' variable is correctly initialized with a value of 1, which sets a predictable starting state for the contract."
+            }
+        ],
+        "InvariantValidation": [
+            {
+                "Invariant": "balance reflects all deposits",
+                "Description": "The 'balance' variable is updated with the deposit amount, maintaining a direct correlation with the function's inputs. However, due to the risk of overflow in this version of Solidity (0.4.25), additional validation is necessary."
+            }
+        ],
+        "RiskyFeatures": [
+            {
+                "Risk": "Potential Integer Overflow in add function",
+                "Description": "The contract's add function directly increments 'balance' by 'deposit' without any overflow checks. In Solidity 0.4.25, this can lead to an integer overflow, causing unexpected behavior or even critical security issues if unchecked."
+            },
+            {
+                "Risk": "Lack of Access Control",
+                "Description": "The add function lacks access control, meaning any external account can call this function to change the state of 'balance'. If this is not intended, the function should implement access restrictions."
+            }
+        ]
+    }
+}
