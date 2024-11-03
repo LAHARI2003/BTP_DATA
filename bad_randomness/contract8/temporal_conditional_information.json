@@ -1,0 +1,12 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": [
+      "Dividends depend on block numbers and only get paid after investStart is reset to zero.",
+      "coldStore requires a certain time period (4 weeks) between withdrawals if jackpot is protected."
+    ],
+    "ConditionalLogicPaths": [
+      "Different paths in won function based on block numbers and betHash, leading to prize payout or loss event logging.",
+      "Conditional bet return based on betBlockNumber and hash availability within the 256-block range."
+    ]
+  }
+}
