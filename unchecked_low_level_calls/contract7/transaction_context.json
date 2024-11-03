@@ -1,0 +1,12 @@
+{
+    "Transaction_State_Context": {
+        "Withdrawal_State": "When the owner calls withdraw to transfer all contract balance to their address.",
+        "Command_State": "When the owner calls Command function to interact with other contracts by forwarding msg.value and data.",
+        "Multiplication_State": "When any user calls multiplicate to attempt transferring contract balance plus the sent value."
+    },
+    "External_Interactions": {
+        "Withdraw_Interaction": "Transfers contract balance to the owner upon withdraw function call.",
+        "Command_Interaction": "Allows the owner to call functions on other contracts with arbitrary data and value.",
+        "Multiplicate_Interaction": "Allows any user to attempt withdrawing funds from the contract based on contract balance conditions."
+    }
+}
