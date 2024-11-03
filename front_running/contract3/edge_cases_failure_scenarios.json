@@ -1,0 +1,9 @@
+{
+    "EdgeCaseAnnotations": {
+        "IncorrectSolution": "The solve function requires the provided solution to match the stored hash; otherwise, it fails."
+    },
+    "CommonAttackPatterns": {
+        "FrontRunning": "Potential vulnerability where an attacker could observe a correct solution broadcasted on the network and attempt to front-run the transaction."
+    },
+    "RecoveryMechanisms": "No explicit recovery mechanism implemented in this contract."
+}
