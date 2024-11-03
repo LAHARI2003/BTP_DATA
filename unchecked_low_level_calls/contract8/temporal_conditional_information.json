@@ -1,0 +1,15 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": "No time-based logic present in this contract; all conditions are based on the transaction context.",
+    "ConditionalLogicPaths": [
+      {
+        "Condition": "msg.value >= minEligibility",
+        "Description": "Defines a path where the redeem function executes and transfers balance based on eligibility."
+      },
+      {
+        "Condition": "msg.sender == Owner",
+        "Description": "Enforces owner-only access to withdraw and Command functions, defining alternate paths for owner and non-owner calls."
+      }
+    ]
+  }
+}
