@@ -1,0 +1,13 @@
+{
+  "TransactionStateContext": {
+    "State": [
+      {
+        "Name": "Count Manipulation",
+        "Description": "The 'count' state variable is updated when 'run' function is called."
+      }
+    ]
+  },
+  "ExternalInteractions": {
+    "InteractionDescription": "There are no external interactions (e.g., token transfers) in this contract. The contract only updates internal storage."
+  }
+}
