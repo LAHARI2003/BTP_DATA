@@ -1,0 +1,7 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": "The gameIsGoingOn modifier restricts access to hit and stand to prevent users from interacting with non-existent or completed games.",
+        "BetLimits": "Minimum and maximum bet values (minBet and maxBet) are enforced to control bet sizes."
+    },
+    "FallbackFunctionality": "A fallback function is present to receive Ether but does not perform any actions, potentially allowing for accidental deposits without intent."
+}
