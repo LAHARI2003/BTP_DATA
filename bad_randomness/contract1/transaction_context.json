@@ -1,0 +1,10 @@
+{
+    "TransactionStateContext": {
+        "OngoingGameState": "When a user starts a game and receives initial cards via the deal function.",
+        "GameEndState": "When the game concludes due to conditions in the checkGameResult function."
+    },
+    "ExternalInteractions": {
+        "TokenTransfers": "Ether is transferred from the player to the contract when a bet is placed. Prizes are sent to the player if they win.",
+        "RandomCardAssignment": "Randomness for card assignment via Deck.deal function based on block data (vulnerable to prediction)."
+    }
+}
