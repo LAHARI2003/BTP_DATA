@@ -1,0 +1,16 @@
+{
+  "EdgeCasesAndFailureScenarios": {
+    "EdgeCaseAnnotations": [
+      "Zero value betting: playSystem enforces msg.value > 0.",
+      "Betting after maximum bet cap: hashBetMax limits the maximum amount that can be placed per bet."
+    ],
+    "CommonAttackPatterns": [
+      "Access control vulnerability: use of onlyOwner in setInvestStart prevents unauthorized access.",
+      "Hash-based randomness vulnerability: betPrize relies on block hashes, which could be exploited if not within 256 blocks."
+    ],
+    "RecoveryMechanisms": [
+      "payWallet function to release locked wallet funds.",
+      "resetBet function allows the owner to reset bet tracking after overflow or excessive bets."
+    ]
+  }
+}
