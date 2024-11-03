@@ -1,0 +1,46 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "expression": "msg.sender == tx.origin",
+            "description": "Ensures that the caller is an externally owned account (EOA) to prevent contract-based exploits.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Time Lock",
+            "expression": "lockTime[msg.sender] >= now",
+            "description": "Ensures that the lock time set for the user is not in the past.",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Time Lock",
+            "expression": "lockTime[msg.sender] >= now + 1 weeks",
+            "description": "Ensures that the initial lock time is set to one week after the deposit, preventing immediate withdrawals.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Time Lock",
+            "expression": "lockTime[msg.sender] >= lockTime[msg.sender] + _secondsToIncrease",
+            "description": "Prevents integer overflow in lock time by ensuring safe addition of _secondsToIncrease.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "expression": "balances[msg.sender] >= 0",
+            "description": "Ensures that the user’s balance is non-negative.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "expression": "balances[msg.sender] == 0 after withdraw()",
+            "description": "Ensures that the user’s balance is reset to zero after withdrawal, preventing re-entrancy vulnerabilities.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Money Flow",
+            "expression": "transferValue == balances[msg.sender]",
+            "description": "Ensures that the transferred amount matches the user’s balance, preventing unauthorized token transfer.",
+            "security_relevance": "Medium"
+        }
+    ]
+}
