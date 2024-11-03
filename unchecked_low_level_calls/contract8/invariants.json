@@ -1,0 +1,40 @@
+{
+    "invariants": [
+        {
+            "expression": "msg.value >= minEligibility",
+            "vulnerability_category": "Access Control",
+            "security_relevance": "High",
+            "description": "Ensures only eligible accounts can call the redeem function based on msg.value."
+        },
+        {
+            "expression": "msg.sender == Owner",
+            "vulnerability_category": "Access Control",
+            "security_relevance": "High",
+            "description": "Limits certain function calls (withdraw, Command) to the contract owner only."
+        },
+        {
+            "expression": "this.balance == 0 after Owner.transfer(this.balance)",
+            "vulnerability_category": "Money Flow",
+            "security_relevance": "High",
+            "description": "Ensures that the balance is transferred out to Owner and depleted when the balance transfer occurs."
+        },
+        {
+            "expression": "this.balance == 0 after msg.sender.transfer(this.balance)",
+            "vulnerability_category": "Money Flow",
+            "security_relevance": "High",
+            "description": "In redeem, it ensures all remaining balance is transferred out to msg.sender, leading to contract depletion."
+        },
+        {
+            "expression": "adr.call.value(msg.value)(data)",
+            "vulnerability_category": "Re-entrancy",
+            "security_relevance": "High",
+            "description": "Direct call to external address without checks; unchecked low-level call may allow for re-entrancy attacks."
+        },
+        {
+            "expression": "this.balance >= 0",
+            "vulnerability_category": "Special Storage",
+            "security_relevance": "Medium",
+            "description": "Ensures that contract balance is non-negative at any point in time."
+        }
+    ]
+}
