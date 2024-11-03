@@ -1,0 +1,31 @@
+{
+  "FunctionLevelAnalysis": {
+    "buy": "Handles the purchase of tokens and checks the exact ether sent for the number of tokens.",
+    "sell": "Manages the sale of tokens and verifies user balance and transfer amount.",
+    "isComplete": "Returns true if the contract’s balance is below 1 ether, indicating the challenge is complete."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      {
+        "Function": "buy",
+        "Condition": "require(msg.value == numTokens * PRICE_PER_TOKEN)",
+        "Purpose": "Ensures the user sent the exact amount of ether required for the requested tokens."
+      },
+      {
+        "Function": "sell",
+        "Condition": "require(balanceOf[msg.sender] >= numTokens)",
+        "Purpose": "Confirms the user has enough tokens to sell."
+      }
+    ],
+    "StateTransitionPoints": [
+      {
+        "Function": "buy",
+        "Updates": "balanceOf[msg.sender] is incremented based on numTokens purchased."
+      },
+      {
+        "Function": "sell",
+        "Updates": "balanceOf[msg.sender] is decremented by the number of tokens sold; ether is transferred."
+      }
+    ]
+  }
+}
