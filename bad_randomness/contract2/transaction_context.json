@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "StakingState": "The buyTickets function accepts Ether and records contestants' participation.",
+    "RaffleState": "The chooseWinner function triggers a raffle outcome once all tickets are purchased."
+  },
+  "ExternalInteractions": {
+    "EtherTransfers": "Transfers Ether between participants, the winning address, and the fee address.",
+    "ContestantStorage": "Stores contestant details and ticket gaps to maintain participation records."
+  }
+}
