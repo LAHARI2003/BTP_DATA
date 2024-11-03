@@ -1,0 +1,22 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "feature": "Fixed Sale End Time",
+        "description": "The sale end time is hardcoded to a specific date, ensuring a definite end point for the crowdsale."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "function": "isSaleFinished",
+        "description": "Ensures that the crowdsale has an explicit time-check to verify whether the sale period has ended before proceeding with any further operations."
+      }
+    ]
+  },
+  "PotentiallyRiskyFeatures": [
+    {
+      "feature": "Timestamp Dependence",
+      "description": "The use of block.timestamp in the isSaleFinished function could make the contract behavior dependent on the block's timestamp, which may be influenced by miners within a limited range. This could introduce potential risk in scenarios where exact timing is critical."
+    }
+  ]
+}
