@@ -1,0 +1,88 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == owner",
+      "expression": "msg.sender == owner",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == migrationMaster (required for migration control functions)",
+      "expression": "msg.sender == migrationMaster",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Token Supply Limit",
+      "invariant": "totalSupply <= supplylimit",
+      "expression": "totalSupply ≤ supplylimit",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "msg.sender.transfer(amount) (checked to prevent re-entrancy issues)",
+      "expression": "msg.sender.transfer(amount)",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Overflow and Underflow",
+      "invariant": "totalSupply >= balances[msg.sender]",
+      "expression": "totalSupply ≥ balances[msg.sender]",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Refund State Integrity",
+      "invariant": "refundstate == false (checked to prevent improper refunds)",
+      "expression": "refundstate == false",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Funding State Integrity",
+      "invariant": "funding == false (checked to prevent unauthorized funding actions)",
+      "expression": "funding == false",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Token Minting",
+      "invariant": "balances[_to] + _value > balances[_to] (ensures non-negative balance post-transfer)",
+      "expression": "balances[_to] + _value > balances[_to]",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Allowance Integrity",
+      "invariant": "allowed[_from][msg.sender] >= _value (ensures sufficient allowance before token transfer)",
+      "expression": "allowed[_from][msg.sender] ≥ _value",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Migration State Control",
+      "invariant": "migratestate == false (migration can only occur when explicitly enabled)",
+      "expression": "migratestate == false",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Token Ownership Transfer",
+      "invariant": "totalSupply == sum(balances.values()) (ensures total supply reflects all account balances)",
+      "expression": "totalSupply == sum(balances.values())",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Funding End Block",
+      "invariant": "block.number > fundingEndBlock + 8 * oneweek (ensures funding period is correctly bounded)",
+      "expression": "block.number > fundingEndBlock + 8 * oneweek",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Balance Integrity During Refund",
+      "invariant": "ETHValue == balancesRAW[msg.sender] (ensures refund corresponds to stored balance)",
+      "expression": "ETHValue == balancesRAW[msg.sender]",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Token Creation Cap",
+      "invariant": "msg.value <= (supplylimit - totalSupply) / CreationRate (prevents exceeding the token cap)",
+      "expression": "msg.value ≤ (supplylimit - totalSupply) / CreationRate",
+      "security_relevance": "High"
+    }
+  ]
+}
