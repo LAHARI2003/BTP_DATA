@@ -1,0 +1,34 @@
+{
+  "NonVulnerableTags": {
+    "AccessControl": {
+      "Description": "The `onlyOwner` modifier is used correctly in functions like `changeOwner`, `WithdrawToken`, `WitdrawTokenToHolder`, and `WithdrawToHolder` to restrict access to critical operations.",
+      "Implementation": "Ensures that only the contract owner can call these functions, helping to secure funds against unauthorized access."
+    },
+    "StateIntegrity": {
+      "Description": "The contract maintains the integrity of `Holders` mapping by updating values before making any transfers, ensuring internal state consistency.",
+      "Implementation": "For instance, in the `WitdrawTokenToHolder` and `WithdrawToHolder` functions, `Holders` balance is updated before any token transfers are initiated, preventing potential balance discrepancies."
+    },
+    "MinDepositEnforcement": {
+      "Description": "The `Deposit` function enforces a minimum deposit requirement using `MinDeposit` variable, ensuring that only deposits above a certain threshold are accepted.",
+      "Implementation": "Prevents small dust transactions, which can help in saving gas and reducing clutter within the contract’s `Holders` mapping."
+    },
+    "OwnerChangeProcess": {
+      "Description": "The ownership transfer process involves two steps (`changeOwner` and `confirmOwner`), which provides a more secure way to transfer ownership by requiring confirmation from the new owner.",
+      "Implementation": "This reduces the risk of mistakenly transferring ownership, as the new owner must confirm the transfer before it is completed."
+    }
+  },
+  "RiskyFeatures": {
+    "UncheckedLowLevelCalls": {
+      "Description": "The contract uses low-level calls without checking their success, particularly in `WithdrawToken` and `WithdrawToHolder`, which can result in lost funds if the calls fail.",
+      "PotentialRisk": "Funds may be permanently lost if the call fails since it does not handle or revert on failure. Also, this can create security risks in contracts interacting with other contracts that might not follow expected behavior."
+    },
+    "ReentrancyRisk": {
+      "Description": "The contract does not have protections against reentrancy attacks, which could be exploited during `WithdrawToHolder` if an external call re-enters the contract and modifies state unexpectedly.",
+      "PotentialRisk": "Without `reentrancy` guard, the external call to `_addr` within `WithdrawToHolder` could lead to reentrant behavior, especially since `Holders` mapping is updated before the low-level call."
+    },
+    "PotentialStateInitializationIssue": {
+      "Description": "The contract relies on the `initTokenBank` function for initialization of important parameters like `MinDeposit`, but it can be called multiple times, potentially causing issues with contract state.",
+      "PotentialRisk": "If `initTokenBank` is called more than once, it could overwrite the `owner` and `MinDeposit` values, allowing for unintended behavior and potential access control vulnerabilities."
+    }
+  }
+}
