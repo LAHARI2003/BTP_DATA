@@ -1,0 +1,10 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "GameState": "The contract manages a game state where two players enter numbers and the winner is determined based on whether the sum is odd or even."
+    },
+    "ExternalInteractions": {
+      "TokenTransfers": "Transfers ether between players and the contract based on game results."
+    }
+  }
+}
