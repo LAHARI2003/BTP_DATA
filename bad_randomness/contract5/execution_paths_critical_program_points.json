@@ -1,0 +1,28 @@
+{
+  "FunctionLevelAnalysis": {
+    "join": "Manages deposits by users, collects fees, and handles balances.",
+    "rand": "Generates random values to select unpaid entries, based on block hash calculations.",
+    "changeOwner": "Allows only the owner to change the contract's owner.",
+    "changeMultiplier": "Allows the owner to change the multiplier for payouts within a specific range.",
+    "changeFee": "Allows the owner to change the deposit fee, with an upper limit of 5%."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": {
+      "join": [
+        "require(msg.value >= 1 ether) to ensure the minimum deposit threshold.",
+        "require(users[msg.sender].id == address(0)) to check if the user is new."
+      ],
+      "rand": [
+        "rand function relies on block.blockhash for generating a random number, which is a vulnerability."
+      ],
+      "changeMultiplier": [
+        "require(multi >= 110 && multi <= 150) to ensure multiplier remains within allowed limits."
+      ]
+    },
+    "StateTransitionPoints": {
+      "balance": "Updated when deposits are made or payouts are issued.",
+      "entries": "New entries are added upon deposits.",
+      "users[msg.sender].deposits": "Incremented when a user makes a deposit."
+    }
+  }
+}
