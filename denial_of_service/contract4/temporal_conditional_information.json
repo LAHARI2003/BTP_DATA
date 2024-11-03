@@ -1,0 +1,10 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": {
+      "Description": "No time-sensitive logic is present in this contract as there are no time-based restrictions or conditions."
+    },
+    "ConditionalLogicPaths": [
+      "Conditional path based on listAddresses length - if the length is under 1500, addresses are added; otherwise, the array is reset."
+    ]
+  }
+}
