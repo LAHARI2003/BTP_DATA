@@ -1,0 +1,49 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Feature": "SafeMath Library Integration",
+        "Description": "The contract uses SafeMath for mathematical operations, which prevents overflow and underflow issues."
+      },
+      {
+        "Feature": "Constructor Initial Balance Assignment",
+        "Description": "The constructor ensures the total supply is assigned to the contract deployer upon initialization, which establishes initial balance allocation securely."
+      },
+      {
+        "Feature": "Event Emissions on State Changes",
+        "Description": "Events such as Transfer and Approval are emitted after changes in state, allowing for tracking of state transitions in a transparent and consistent way."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "Function": "transfer",
+        "Invariant": "Balance Consistency",
+        "Description": "The transfer function ensures that the sender's balance is decreased before the recipient's balance is increased, which maintains consistent state updates in case of failures."
+      },
+      {
+        "Function": "approve",
+        "Invariant": "Spender Allowance Consistency",
+        "Description": "The approve function validates that the spender’s address is not the zero address, ensuring that an allowance is only set for valid accounts."
+      },
+      {
+        "Function": "transferFrom",
+        "Invariant": "Allowance and Balance Validation",
+        "Description": "The transferFrom function checks both the allowance and the sender's balance before transferring, preserving balance integrity by ensuring sufficient funds and allowance."
+      }
+    ]
+  },
+  "PotentiallyRiskyFeatures": [
+    {
+      "Feature": "Lack of front-running protection in approve function",
+      "Description": "The approve function allows changing allowances without any mechanism to mitigate front-running risks, which can lead to unintended token spending if a prior approval is modified during transactions."
+    },
+    {
+      "Feature": "Allowance resetting issue",
+      "Description": "There is a risk in resetting allowance in approve function. If a user intends to change allowance, they should first set it to 0 and then to the new value to avoid race conditions."
+    },
+    {
+      "Feature": "No Total Supply Getter Function",
+      "Description": "The _totalSupply variable is private, and there is no public getter for the total supply. This limits transparency, as users or other contracts may need to know the total supply for various operations."
+    }
+  ]
+}
