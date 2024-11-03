@@ -1,0 +1,14 @@
+{
+  "Edge Case Annotations": {
+    "Incorrect Bet Value": "The wager function requires msg.value == betLimit to prevent incorrect bet values.",
+    "Multiple Wagers": "The wager function requires wagers[msg.sender] == 0 to avoid multiple simultaneous bets by the same player.",
+    "Old Block Number": "The play function reverts if the block number does not meet timestamp requirements."
+  },
+  "Common Attack Patterns": {
+    "Unchecked Call Vulnerability": "The loseWager and donateToWhale functions use low-level .call without checking for success, which could lead to issues if the whale address reverts.",
+    "Owner Manipulation": "Potential risks if onlyOwner functions are misused, such as changing difficulty and bet limits mid-game."
+  },
+  "Recovery Mechanisms": {
+    "Emergency Token Recovery": "A function is included to transfer any mistakenly sent ERC20 tokens."
+  }
+}
