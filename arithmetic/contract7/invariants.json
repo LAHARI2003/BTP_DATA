@@ -1,0 +1,25 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Arithmetic Overflow and Underflow",
+            "invariant": "count >= 0",
+            "expression": "count >= 0",
+            "security_relevance": "high",
+            "description": "Ensures that the `count` variable does not underflow to a negative value, which would be incorrect in the context of unsigned integers and could expose unintended behavior."
+        },
+        {
+            "vulnerability": "Integer Value Bounds",
+            "invariant": "count - input <= count",
+            "expression": "count - input <= count",
+            "security_relevance": "high",
+            "description": "Checks that subtracting `input` from `count` will not result in an integer overflow. This prevents the count from wrapping around to a large number due to underflow."
+        },
+        {
+            "vulnerability": "Access Control",
+            "invariant": "msg.sender != address(0)",
+            "expression": "msg.sender != 0x0",
+            "security_relevance": "medium",
+            "description": "Ensures that the caller of the `run` function is a valid Ethereum address and not a null address. While not specific to arithmetic, this invariant helps protect the function call integrity."
+        }
+    ]
+}
