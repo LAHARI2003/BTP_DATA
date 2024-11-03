@@ -1,0 +1,10 @@
+{
+  "CrossContractPoints": {
+    "CrossContractDependencies": [
+      "The contract does not directly rely on external contracts but assumes certain blocks are accessible for hash calculations."
+    ],
+    "InterContractConsistencyConditions": [
+      "If any external dependency on block hashes changes, lottery outcomes and dividends may be affected."
+    ]
+  }
+}
