@@ -1,0 +1,18 @@
+{
+  "ExecutionPathsAndCriticalProgramPoints": {
+    "FunctionLevelAnalysis": {
+      "run": {
+        "Description": "Multiplies the count variable by an input value, potentially causing overflow.",
+        "ArithmeticVulnerability": "If the input is large enough, the multiplication will overflow, storing an incorrect result in count."
+      }
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        "No specific require statements, making it possible to input any integer, including values that will cause overflow."
+      ],
+      "StateTransitionPoints": [
+        "Update to count in the run function, potentially storing a significantly incorrect value due to overflow."
+      ]
+    }
+  }
+}
