@@ -1,0 +1,59 @@
+{
+  "invariants": [
+    {
+      "vulnerability_category": "Access Control",
+      "invariants": [
+        {
+          "template": "msg.sender == tx.origin",
+          "expression": "msg.sender == tx.origin",
+          "security_relevance": "medium"
+        }
+      ]
+    },
+    {
+      "vulnerability_category": "Denial of Service",
+      "invariants": [
+        {
+          "template": "Transaction Reordering Protection",
+          "expression": "assert(tx.gasprice <= maxGasPriceForOrder)",
+          "security_relevance": "high"
+        },
+        {
+          "template": "Revert Check in Loop",
+          "expression": "∀x ∈ refundAddresses: require(refundAddresses[x].send(refunds[refundAddresses[x]]))",
+          "security_relevance": "high"
+        },
+        {
+          "template": "Function Execution Rate Limiter",
+          "expression": "funcExecutionRate ≤ maxRate",
+          "security_relevance": "medium"
+        }
+      ]
+    },
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariants": [
+        {
+          "template": "nonReEntrant",
+          "expression": "xlock == true",
+          "security_relevance": "high"
+        }
+      ]
+    },
+    {
+      "vulnerability_category": "Gas Control",
+      "invariants": [
+        {
+          "template": "GasStartUpperBound",
+          "expression": "gasStart ≤ gas?",
+          "security_relevance": "high"
+        },
+        {
+          "template": "Gas Cap Consistency Check",
+          "expression": "assert(gasLimit(func) == updatedFuncLogicGas)",
+          "security_relevance": "high"
+        }
+      ]
+    }
+  ]
+}
