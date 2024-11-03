@@ -1,0 +1,38 @@
+{
+  "contract": "GuessTheRandomNumberChallenge",
+  "source": "https://capturetheether.com/challenges/lotteries/guess-the-random-number/",
+  "nonVulnerableTags": {
+    "Access Control": {
+      "description": "Proper validation of guess function requirements, ensuring that the function can only be accessed with an ether payment of exactly 1 ether.",
+      "lines": [19]
+    },
+    "Money Flow Integrity": {
+      "description": "The contract ensures money flow integrity by validating that if a guess is correct, only the exact amount (2 ether) is transferred back to the winner.",
+      "lines": [22]
+    },
+    "Invariant Validation": {
+      "description": "The isComplete function provides an accurate and consistent check on whether the contract balance has been fully depleted, offering an invariant to determine game completion.",
+      "lines": [16]
+    }
+  },
+  "potentiallyRiskyFeatures": {
+    "Weak Randomness": {
+      "description": "The use of block.blockhash and now for randomness is insecure as these values are predictable, allowing attackers to guess the random number with relative ease.",
+      "lines": [13],
+      "risk": "High",
+      "impact": "Predictable randomness allows attackers to reliably guess the answer, leading to potential loss of contract funds."
+    },
+    "Lack of Access Control": {
+      "description": "No restriction on who can call the guess function allows attackers or bots to repeatedly attempt to guess without any limitations.",
+      "lines": [18],
+      "risk": "Moderate",
+      "impact": "This could enable brute force attempts to guess the correct answer, especially since the answer is based on weak randomness."
+    },
+    "Ether Requirement without Fallback": {
+      "description": "The contract requires 1 ether to call the constructor and guess function but does not implement a fallback function, making it less flexible for future updates.",
+      "lines": [9, 18],
+      "risk": "Low",
+      "impact": "If there is a need for contract upgrades or modifications, lack of a fallback function limits contract extensibility and adaptability."
+    }
+  }
+}
