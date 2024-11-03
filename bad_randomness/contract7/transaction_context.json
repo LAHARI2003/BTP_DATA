@@ -1,0 +1,15 @@
+{
+  "TransactionStateContext": {
+    "State": [
+      {
+        "Name": "Random Number Generation",
+        "Description": "State where the contract calculates a random number based on the function `random`."
+      }
+    ],
+    "ExternalInteractions": [
+      {
+        "Description": "The contract does not transfer or interact with other contracts directly. It relies on internal values and block properties (e.g., block timestamp, block number) to generate a random number."
+      }
+    ]
+  }
+}
