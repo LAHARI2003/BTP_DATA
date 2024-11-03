@@ -1,0 +1,28 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Integer Overflow/Underflow",
+      "expression": "map[k] >= 0",
+      "security_relevance": "High",
+      "description": "Ensures no underflow occurs when decreasing map[k] by v, avoiding unintended large values due to underflow."
+    },
+    {
+      "vulnerability": "Data Flow",
+      "expression": "map[k] <= maxUint256",
+      "security_relevance": "High",
+      "description": "Checks that values in the mapping do not exceed maximum permissible values for uint256."
+    },
+    {
+      "vulnerability": "Data Flow",
+      "expression": "isInitialized(map[k])",
+      "security_relevance": "Medium",
+      "description": "Ensures the mapping value is initialized before being manipulated to avoid unexpected behavior or manipulation."
+    },
+    {
+      "vulnerability": "Access Control",
+      "expression": "msg.sender == owner",
+      "security_relevance": "Medium",
+      "description": "Restricts the init function access to only authorized entities to prevent unauthorized manipulation of mappings."
+    }
+  ]
+}
