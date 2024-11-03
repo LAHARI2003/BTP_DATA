@@ -1,0 +1,39 @@
+{
+  "invariants": [
+    {
+      "invariant": "msg.value == numTokens * PRICE_PER_TOKEN",
+      "vulnerability_category": "Arithmetic",
+      "security_relevance": "High",
+      "description": "Ensures the buyer sends enough Ether to purchase the specified number of tokens.",
+      "expression": "msg.value == numTokens * PRICE_PER_TOKEN"
+    },
+    {
+      "invariant": "balanceOf[msg.sender] >= numTokens",
+      "vulnerability_category": "Access Control",
+      "security_relevance": "Medium",
+      "description": "Prevents a user from selling more tokens than they own.",
+      "expression": "balanceOf[msg.sender] >= numTokens"
+    },
+    {
+      "invariant": "balanceOf[msg.sender] += numTokens",
+      "vulnerability_category": "Arithmetic",
+      "security_relevance": "Medium",
+      "description": "Accurately updates the user's balance after token purchase.",
+      "expression": "balanceOf[msg.sender] += numTokens"
+    },
+    {
+      "invariant": "address(this).balance < 1 ether",
+      "vulnerability_category": "Money Flow",
+      "security_relevance": "High",
+      "description": "Indicates contract completion condition, requiring balance to fall below 1 ether.",
+      "expression": "address(this).balance < 1 ether"
+    },
+    {
+      "invariant": "msg.sender.transfer(numTokens * PRICE_PER_TOKEN)",
+      "vulnerability_category": "Arithmetic",
+      "security_relevance": "High",
+      "description": "Ensures proper Ether transfer during token sale by calculating Ether based on token count.",
+      "expression": "msg.sender.transfer(numTokens * PRICE_PER_TOKEN)"
+    }
+  ]
+}
