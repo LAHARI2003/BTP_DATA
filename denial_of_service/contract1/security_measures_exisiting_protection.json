@@ -1,0 +1,8 @@
+{
+  "ImplementedSecurityControls": [
+    {
+      "require(msg.value > currentBid)": "Prevents lower or equal bids from proceeding, ensuring only higher bids are accepted."
+    }
+  ],
+  "FallbackFunctionality": "The contract does not have a fallback function itself but interacts with the fallback functions of other contracts or addresses when sending refunds."
+}
