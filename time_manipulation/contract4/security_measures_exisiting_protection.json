@@ -1,0 +1,7 @@
+{
+    "Implemented Security Controls": [
+        "Bet Amount Check": "require(msg.value == 10 ether) enforces a fixed bet amount.",
+        "Time Manipulation Prevention": "require(now != pastBlockTime) ensures only one bet per block."
+    ],
+    "Fallback Functionality": "A fallback function handles the bet transactions."
+}
