@@ -1,0 +1,28 @@
+{
+    "EdgeCaseAnnotations": [
+        {
+            "EdgeCase": "Overflow during addition in overflowaddtostate",
+            "Function": "overflowaddtostate",
+            "Description": "If input is large enough, count could overflow."
+        },
+        {
+            "EdgeCase": "Overflow during multiplication in overflowmultostate",
+            "Function": "overflowmultostate",
+            "Description": "If input is large, count could overflow due to multiplication."
+        },
+        {
+            "EdgeCase": "Underflow in subtraction in underflowtostate",
+            "Function": "underflowtostate",
+            "Description": "If input is greater than count, underflow occurs."
+        }
+    ],
+    "CommonAttackPatterns": [
+        {
+            "Vulnerability": "Arithmetic Overflow/Underflow",
+            "Description": "Since Solidity 0.4.23 does not check for overflows, high or low values can wrap around the uint boundary, resulting in unexpected state changes."
+        }
+    ],
+    "RecoveryMechanisms": {
+        "Description": "No specific recovery mechanisms in this contract."
+    }
+}
