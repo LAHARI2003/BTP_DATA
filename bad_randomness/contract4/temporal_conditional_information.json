@@ -1,0 +1,9 @@
+{
+    "Time-Sensitive Logic": {
+        "makeBet": "The outcome of each bet is determined by the block number's parity, making it vulnerable to timing attacks and predictable outcomes."
+    },
+    "Conditional Logic Paths": {
+        "Condition for Winning": "The makeBet function checks (block.number % 2) to determine if a user has won the bet.",
+        "Organizer Only Access": "getBets and destroy functions check if msg.sender is the organizer, enforcing access control."
+    }
+}
