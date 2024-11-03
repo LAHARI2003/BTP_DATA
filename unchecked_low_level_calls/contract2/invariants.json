@@ -1,0 +1,34 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "invariant": "msg.sender == owner",
+            "expression": "require(msg.sender == owner)",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "xlock == true",
+            "expression": "require(!externalCall)",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "callDepth <= maxDepth?",
+            "expression": "assert(callDepth <= maxDepth)",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "invariant": "validStateTransition(func, state)",
+            "expression": "assert(validStateTransition(func, state))",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "invariant": "funcIntegrityPreserved(proxy)",
+            "expression": "assert(funcIntegrityPreserved(proxy))",
+            "security_relevance": "Medium"
+        }
+    ]
+}
