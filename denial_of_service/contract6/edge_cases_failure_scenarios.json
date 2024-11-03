@@ -1,0 +1,19 @@
+{
+  "Edge Case Annotations": [
+    {
+      "Case": "Single address fails",
+      "Description": "If refunding fails for any single address in refundAddresses, the entire refund process stops."
+    },
+    {
+      "Case": "No addresses in refundAddresses",
+      "Description": "If refundAddresses is empty, refundAll will not process any refunds but will still execute."
+    }
+  ],
+  "Common Attack Patterns": [
+    {
+      "Pattern": "Denial of Service",
+      "Description": "A failure on any single address refund in refundAll will halt the process, preventing other addresses from receiving refunds."
+    }
+  ],
+  "Recovery Mechanisms": "None in place. Adding mechanisms to handle failures individually would allow refunds to continue for valid addresses."
+}
