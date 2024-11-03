@@ -1,0 +1,16 @@
+{
+  "EdgeCaseAnnotations": [
+    {
+      "ZeroValueBids": "If a zero or low-value bid is submitted, it does not affect the contract due to the require(msg.value > currentBid) check."
+    },
+    {
+      "FrontrunnerRevertsRefund": "If the frontrunner’s address has a fallback function that reverts or causes the send operation to fail, the contract may be unable to continue processing bids, resulting in a Denial of Service."
+    }
+  ],
+  "CommonAttackPatterns": [
+    {
+      "DenialOfService": "A frontrunner can implement a fallback function that reverts on receiving Ether, preventing any other users from outbidding them."
+    }
+  ],
+  "RecoveryMechanisms": "No explicit recovery mechanisms exist in this contract to handle Denial of Service scenarios."
+}
