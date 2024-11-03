@@ -1,0 +1,9 @@
+{
+  "CrossContractDependencies": {
+    "Dependencies": []
+  },
+  "InterContractConsistencyConditions": {
+    "Conditions": []
+  },
+  "Notes": "The IntegerOverflowAdd contract does not interact with any external contracts. Therefore, there are no cross-contract dependencies or consistency conditions."
+}
