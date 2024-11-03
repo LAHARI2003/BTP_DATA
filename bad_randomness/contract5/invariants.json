@@ -1,0 +1,58 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "expression": "msg.sender == owner",
+      "description": "Only the owner can perform certain management functions like changing the fee and multiplier.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "expression": "msg.value == 1 ether",
+      "description": "Deposits are limited to exactly 1 ETH per transaction, ensuring control over the amount each participant can deposit.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "expression": "balance >= payout",
+      "description": "Contract's balance must be greater than or equal to the payout amount before any payout is processed to avoid underflow.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Gas Control",
+      "expression": "gasUsed(func) <= maxGasPerFunc",
+      "description": "Ensures the functions do not exceed a maximum gas limit to avoid re-entrancy and transaction failure risks due to excessive gas consumption.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Bad Randomness",
+      "expression": "rand(max) <= max",
+      "description": "Ensures that the random function output is bounded by the specified maximum, reducing unpredictability and potential manipulation.",
+      "security_relevance": "Low"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "expression": "xlock == true",
+      "description": "A lock variable would ideally prevent multiple entries (re-entrancy) in payout functions.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Oracle Slippage",
+      "expression": "|balance - contractBalance| <= fee",
+      "description": "The contract's balance difference should not exceed the set fee to maintain expected behavior and avoid slippage.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Access Control",
+      "expression": "users[msg.sender].id != address(0) -> users[msg.sender].deposits++",
+      "description": "A user must exist in the contract storage before incrementing their deposit count.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "expression": "immutable(balance)",
+      "description": "Balance should only be updated through authorized functions, ensuring integrity of fund management.",
+      "security_relevance": "High"
+    }
+  ]
+}
