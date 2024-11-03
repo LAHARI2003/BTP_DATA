@@ -1,0 +1,32 @@
+{
+    "EdgeCaseAnnotations": {
+        "ZeroValueDeposits": {
+            "Function": "Deposit",
+            "Condition": "msg.value > MinDeposit",
+            "Description": "Prevents deposit if Ether amount does not meet the minimum required."
+        },
+        "InsufficientBalanceWithdrawals": {
+            "Function": "WithdrawToHolder",
+            "Conditions": [
+                "Holders[_addr] >= _wei",
+                "Holders[msg.sender] > 0"
+            ],
+            "Description": "Prevents withdrawal if either the specified or caller’s balance is insufficient."
+        }
+    },
+    "CommonAttackPatterns": [
+        {
+            "Pattern": "Unchecked low-level calls",
+            "Function": "WithdrawToken, WithdrawToHolder",
+            "Description": "Potential vulnerability due to the lack of return value checks for call() and call.value()."
+        },
+        {
+            "Pattern": "Access control",
+            "Function": "onlyOwner",
+            "Description": "Protects critical functions, but any bypass of onlyOwner could allow unauthorized access."
+        }
+    ],
+    "RecoveryMechanisms": {
+        "Recommendation": "Consider adding emergency stop or pause functions to allow the contract owner to temporarily halt operations if vulnerabilities are detected."
+    }
+}
