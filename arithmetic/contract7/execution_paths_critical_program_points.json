@@ -1,0 +1,19 @@
+{
+  "FunctionLevelAnalysis": {
+    "run": {
+      "Description": "Handles input manipulation of 'count' by subtracting the provided input from it."
+    }
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      {
+        "Decision": "No specific conditional statements in this contract."
+      }
+    ],
+    "StateTransitionPoints": [
+      {
+        "Transition": "The 'count' state is updated when 'run' is executed."
+      }
+    ]
+  }
+}
