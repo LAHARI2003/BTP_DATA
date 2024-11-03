@@ -1,0 +1,60 @@
+{
+    "WellImplementedFeatures": [
+        {
+            "feature": "Access Control",
+            "description": "The contract uses a `gameIsGoingOn` modifier to ensure that certain actions like 'hit' and 'stand' are only executed when a game is ongoing, reducing unintended actions."
+        },
+        {
+            "feature": "Input Validation",
+            "description": "The `deal` function checks for minimum and maximum bet amounts to prevent undesirable betting values."
+        },
+        {
+            "feature": "Invariant Maintenance",
+            "description": "The `checkGameResult` function maintains invariants by checking both player and house scores before updating the game state, ensuring consistent and fair outcomes."
+        },
+        {
+            "feature": "Event Logging",
+            "description": "Key events such as card deals (`Deal`), game statuses (`GameStatus`), and intermediate log values (`Log`) are emitted, supporting transparency and ease of debugging."
+        }
+    ],
+    "InvariantValidations": [
+        {
+            "function": "deal",
+            "description": "The `deal` function initializes player and house cards and sets up a new game only if a game is not already ongoing for the user, enforcing state consistency."
+        },
+        {
+            "function": "stand",
+            "description": "The `stand` function performs continuous checks to ensure the house's score is maintained below 21, according to Blackjack rules, before updating the game result."
+        },
+        {
+            "function": "checkGameResult",
+            "description": "Ensures that both the player's and house's scores remain consistent with the game state before any transfer of funds, preventing unexpected payouts."
+        },
+        {
+            "function": "calculateScore",
+            "description": "Calculates scores by considering Aces as either 1 or 11, maintaining invariant checks for potential winning or losing conditions."
+        }
+    ],
+    "RiskyFeatures": [
+        {
+            "feature": "Randomness",
+            "description": "The randomness relies on `block.timestamp` and `block.blockhash`, which are vulnerable to manipulation, especially in the context of gambling applications. This could allow attackers to predict or influence game outcomes.",
+            "risk": "Potentially exploitable by miners or other privileged actors who can influence the block timestamp or selectively include transactions."
+        },
+        {
+            "feature": "Direct Use of `throw`",
+            "description": "The contract uses `throw` for error handling, which is deprecated in newer Solidity versions. Using `revert` with error messages is more informative and recommended for better error handling.",
+            "risk": "May lead to unexpected failures and makes debugging difficult for users and developers."
+        },
+        {
+            "feature": "Implicit Send Usage",
+            "description": "The contract uses `send` to transfer funds back to the user without checking the return value or error handling, which could fail if the receiving address has a complex fallback or runs out of gas.",
+            "risk": "Could lead to fund loss if the transfer fails, particularly on addresses with complex contract logic."
+        },
+        {
+            "feature": "Public Mapping Accessibility",
+            "description": "The `games` mapping is declared public, allowing anyone to view ongoing game data for any address, which could potentially leak user strategies or reveal game-specific data to adversaries.",
+            "risk": "Could compromise player privacy and reveal data that might benefit an opponent in certain scenarios."
+        }
+    ]
+}
