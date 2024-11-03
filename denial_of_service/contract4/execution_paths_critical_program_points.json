@@ -1,0 +1,18 @@
+{
+  "ExecutionPathsAndCriticalPoints": {
+    "FunctionLevelAnalysis": {
+      "ifillArray": {
+        "Description": "This function adds the caller’s address multiple times to the array until it reaches a specified length. When the length exceeds a threshold, the array is cleared."
+      }
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        "if(listAddresses.length<1500) - Determines whether to fill the array or reset it."
+      ],
+      "StateTransitionPoints": [
+        "Updates to listAddresses array - Appends addresses to the list when filling.",
+        "Resetting listAddresses array - Clears the list when the length threshold is reached."
+      ]
+    }
+  }
+}
