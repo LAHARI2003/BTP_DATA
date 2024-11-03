@@ -1,0 +1,26 @@
+{
+  "FunctionLevelAnalysis": [
+    {
+      "Function": "bid",
+      "Description": "Manages bid placement and attempts to refund the previous frontrunner."
+    }
+  ],
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      {
+        "require(msg.value > currentBid)": "Ensures the new bid is higher than the current bid before proceeding."
+      },
+      {
+        "require(currentFrontrunner.send(currentBid))": "Attempts to refund the previous frontrunner; failure results in a revert."
+      }
+    ],
+    "StateTransitionPoints": [
+      {
+        "currentFrontrunner": "Updated when a new higher bid is successfully placed."
+      },
+      {
+        "currentBid": "Updated to reflect the value of the new higher bid."
+      }
+    ]
+  }
+}
