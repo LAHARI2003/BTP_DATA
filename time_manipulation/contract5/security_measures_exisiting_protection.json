@@ -1,0 +1,14 @@
+{
+  "ImplementedSecurityControls": {
+    "Controls": [
+      {
+        "Control": "Time-dependent condition",
+        "Description": "The contract uses a hardcoded timestamp to define the end of the sale."
+      }
+    ]
+  },
+  "FallbackFunctionality": {
+    "FallbackFunction": "None",
+    "Description": "There is no fallback function in this contract."
+  }
+}
