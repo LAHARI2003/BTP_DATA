@@ -1,0 +1,18 @@
+{
+  "TimeSensitiveLogic": {
+    "Logic": [
+      {
+        "TimeDependency": "block.timestamp",
+        "Description": "The function's return value depends on the current block timestamp, as it compares this to a fixed sale end time."
+      }
+    ]
+  },
+  "ConditionalLogicPaths": {
+    "Paths": [
+      {
+        "Condition": "block.timestamp >= 1546300800",
+        "Description": "If the current timestamp is on or after January 1, 2019, the sale is considered finished."
+      }
+    ]
+  }
+}
