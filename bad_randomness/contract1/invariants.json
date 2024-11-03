@@ -1,0 +1,64 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == games[player].player",
+      "description": "Only the player who started the game can interact with their game instance.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "games[msg.sender].state != GameState.Ongoing -> throw",
+      "description": "The game must be ongoing for certain functions to execute.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.value >= minBet && msg.value <= maxBet",
+      "description": "The bet amount must be within defined minimum and maximum limits.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.sender.send(game.bet * 2) if playerScore == BLACKJACK",
+      "description": "Player wins twice the bet amount if they achieve a Blackjack.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "games[msg.sender].state != GameState.Ongoing -> throw",
+      "description": "Re-entrancy is prevented by ensuring the game state must be ongoing for certain functions.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Gas Control",
+      "invariant": "gasLeft >= 2300",
+      "description": "Ensures that sufficient gas remains for critical operations.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Randomness",
+      "invariant": "Deck.deal() -> uniform distribution across 52 values",
+      "description": "Card dealing should yield an approximately uniform distribution across 52 possible values.",
+      "security_relevance": "Low"
+    },
+    {
+      "vulnerability": "Oracle Slippage (Price Manipulation)",
+      "invariant": "block.timestamp % specific_range == expected_value",
+      "description": "Reliance on block.timestamp and block.number for randomness may lead to manipulation in certain environments.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "games[msg.sender].player != 0",
+      "description": "Ensures that the game structure is properly initialized before performing actions.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "sum(games[msg.sender].playerCards) <= BLACKJACK",
+      "description": "Player's card total must remain within permissible limits (<= 21) for a valid game state.",
+      "security_relevance": "High"
+    }
+  ]
+}
