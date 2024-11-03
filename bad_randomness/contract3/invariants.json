@@ -1,0 +1,34 @@
+{
+    "invariants": [
+        {
+            "expression": "msg.value == 1 ether",
+            "vulnerability": "Access Control",
+            "security_relevance": "High",
+            "description": "Ensures that only transactions with exactly 1 ether can interact with specific functions of the contract."
+        },
+        {
+            "expression": "address(this).balance == 0 || address(this).balance == 1 ether || address(this).balance == 2 ether",
+            "vulnerability": "Access Control",
+            "security_relevance": "Medium",
+            "description": "Ensures that the contract balance is either 0, 1, or 2 ethers at any point, indicating controlled access to funds."
+        },
+        {
+            "expression": "keccak256(block.blockhash(block.number - 1), now) == answer",
+            "vulnerability": "Bad Randomness",
+            "security_relevance": "High",
+            "description": "Relies on predictable block data for randomness, allowing attackers to predict the `answer` and win the game."
+        },
+        {
+            "expression": "msg.sender.balance >= 1 ether",
+            "vulnerability": "Money Flow",
+            "security_relevance": "Low",
+            "description": "Assumes that players have sufficient balance to participate, although this does not impact the contract’s security directly."
+        },
+        {
+            "expression": "msg.sender.transfer(amount) <= address(this).balance",
+            "vulnerability": "Money Flow",
+            "security_relevance": "High",
+            "description": "Ensures that the contract only transfers funds if it has sufficient balance, preventing re-entrancy and overdraw."
+        }
+    ]
+}
