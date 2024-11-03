@@ -1,0 +1,9 @@
+{
+  "TransactionStateContext": {
+    "DepositState": "When users deposit Ether, increasing their balance and setting a lock time.",
+    "WithdrawalState": "When users withdraw Ether, balance is set to zero and transferred to the user."
+  },
+  "ExternalInteractions": {
+    "EtherTransfer": "Ether is transferred from the user to the contract during deposit and back to the user during withdrawal."
+  }
+}
