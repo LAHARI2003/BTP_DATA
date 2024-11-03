@@ -1,0 +1,11 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": {
+      "onlyOwner": "Restricts certain functions to the owner."
+    }
+  },
+  "KnownVulnerabilities": {
+    "UncheckedLowLevelCalls": "Token and Ether transfers via call lack proper return value handling, posing security risks.",
+    "ReentrancyPotential": "The Deposit and Withdraw functions do not employ reentrancy guards, potentially exposing the contract to reentrancy attacks."
+  }
+}
