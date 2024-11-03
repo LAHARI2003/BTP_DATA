@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "DepositState": "Triggered when users send Ether to the contract or call Deposit().",
+    "WithdrawalState": "Activated when users withdraw tokens or Ether using WitdrawTokenToHolder or WithdrawToHolder."
+  },
+  "ExternalInteractions": {
+    "Description": "The contract performs external token transfers and sends Ether to specified addresses. These interactions happen within WithdrawToken and WithdrawToHolder functions.",
+    "Vulnerabilities": ["Unchecked low-level calls during token transfers and Ether transfers pose a security risk."]
+  }
+}
