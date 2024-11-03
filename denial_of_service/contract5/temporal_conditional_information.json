@@ -1,0 +1,8 @@
+{
+    "Time-Sensitive Logic": {
+        "Breakdown Check": "lendGovernmentMoney depends on block.timestamp to determine if 12 hours have passed for breakdown condition."
+    },
+    "Conditional Logic Paths": {
+        "Different Paths": "Execution varies based on whether amount is sufficient, 12-hour breakdown condition is met, or buddy is eligible for a reward."
+    }
+}
