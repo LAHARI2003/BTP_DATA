@@ -1,0 +1,23 @@
+{
+  "EdgeCaseAnnotations": {
+    "Cases": [
+      {
+        "Case": "Large Input Value",
+        "Function": "run",
+        "Description": "Passing a large input value can cause count to overflow."
+      }
+    ]
+  },
+  "CommonAttackPatterns": {
+    "Patterns": [
+      {
+        "Pattern": "Integer Overflow",
+        "Location": "Line 17 in run function",
+        "Description": "Adding a sufficiently large number to count can cause it to overflow, wrapping around to a smaller value."
+      }
+    ]
+  },
+  "RecoveryMechanisms": {
+    "Mechanisms": []
+  }
+}

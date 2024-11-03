@@ -1,0 +1,9 @@
+{
+    "TimeSensitiveLogic": "None. The contract has no time-dependent features.",
+    "ConditionalLogicPaths": [
+        {
+            "condition": "msg.sender == owner",
+            "description": "The withdraw function checks if the caller is the owner before proceeding."
+        }
+    ]
+}

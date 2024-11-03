@@ -1,0 +1,4 @@
+{
+    "CrossContractDependencies": "No direct cross-contract dependencies, but relies on the Deck library for card handling and score evaluation.",
+    "InterContractConsistencyConditions": "Not applicable. The Deck library only influences card generation and scoring within this contract."
+}

@@ -1,0 +1,9 @@
+{
+  "TransactionStateContext": {
+    "InitializationState": "When the contract is created, and 1 ether is sent along with it. Sets the answer variable based on the blockhash and timestamp.",
+    "GuessingState": "When users attempt to guess the number and call the guess function."
+  },
+  "ExternalInteractions": {
+    "EtherTransfers": "The contract requires 1 ether for entry in both the constructor and the guess function. If the guess is correct, it transfers 2 ether back to the sender."
+  }
+}

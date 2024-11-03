@@ -1,0 +1,6 @@
+{
+  "ImplementedSecurityControls": {
+    "Controls": []
+  },
+  "Notes": "The IntegerOverflowAdd contract does not implement any security controls to prevent integer overflow. There are no access control modifiers or input validations present."
+}

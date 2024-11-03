@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract14",
+    "contract_metadata": {
+        "contract_type": "MultiplicatorX3 Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [29]
+    }
+}

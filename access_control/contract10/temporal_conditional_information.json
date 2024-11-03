@@ -1,0 +1,11 @@
+{
+  "Time_Sensitive_Logic": {
+    "Daily_Limit_Reset": "Resets daily limit based on `today` function"
+  },
+  "Conditional_Logic_Paths": {
+    "Condition_Paths": [
+      "Path for transactions under daily limit (`underLimit`)",
+      "Multi-sig confirmation path (`onlymanyowners`)"
+    ]
+  }
+}

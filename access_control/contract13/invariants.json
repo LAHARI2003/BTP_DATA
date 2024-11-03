@@ -1,0 +1,62 @@
+[
+    {
+        "invariant": "msg.sender == creator",
+        "vulnerability": "Access Control",
+        "security_relevance": "High",
+        "description": "Ensures that only the contract creator can execute certain functions."
+    },
+    {
+        "invariant": "collectedFees >= 0",
+        "vulnerability": "Special Storage",
+        "security_relevance": "Medium",
+        "description": "The collected fees should never be negative."
+    },
+    {
+        "invariant": "balance >= 0",
+        "vulnerability": "Special Storage",
+        "security_relevance": "Medium",
+        "description": "The contract balance should never be negative, preventing potential overflows."
+    },
+    {
+        "invariant": "msg.value >= 1 ether ⇒ msg.value * (100 - feePercent) / 100 + collectedFees >= 0",
+        "vulnerability": "Money Flow",
+        "security_relevance": "High",
+        "description": "The transaction amount and the calculated fees are managed appropriately for values 1 ether or greater."
+    },
+    {
+        "invariant": "msg.value < 1 ether ⇒ collectedFees += msg.value",
+        "vulnerability": "Money Flow",
+        "security_relevance": "Medium",
+        "description": "Ensures collected fees are updated correctly when transactions are less than 1 ether."
+    },
+    {
+        "invariant": "pyramidMultiplier <= 300 ∧ pyramidMultiplier >= 120",
+        "vulnerability": "Data Flow & Business Logic",
+        "security_relevance": "Medium",
+        "description": "Maintains the allowed range for the pyramid multiplier, protecting against improper payout calculations."
+    },
+    {
+        "invariant": "feePercent <= 10",
+        "vulnerability": "Data Flow & Business Logic",
+        "security_relevance": "High",
+        "description": "Ensures fee percentage does not exceed the maximum limit, preventing excessive fees."
+    },
+    {
+        "invariant": "participants[payoutOrder].payout <= balance",
+        "vulnerability": "Data Flow & Business Logic",
+        "security_relevance": "High",
+        "description": "Verifies that the current payout does not exceed the available balance, ensuring proper fund management."
+    },
+    {
+        "invariant": "participants.length - payoutOrder >= 0",
+        "vulnerability": "Data Flow & Business Logic",
+        "security_relevance": "Low",
+        "description": "The number of participants waiting for payout should not be negative."
+    },
+    {
+        "invariant": "msg.value >= 50 ether ⇒ feePercent = feePercent / 2",
+        "vulnerability": "Data Flow & Business Logic",
+        "security_relevance": "Medium",
+        "description": "Applies a reduced fee rate for transactions of 50 ethers or more."
+    }
+]

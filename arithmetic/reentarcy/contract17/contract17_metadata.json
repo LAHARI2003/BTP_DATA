@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract17",
+    "contract_metadata": {
+      "contract_type": "Vault contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy"
+      ]
+    }
+  }
+  

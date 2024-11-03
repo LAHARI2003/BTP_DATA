@@ -1,0 +1,22 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Integer Overflow",
+      "expression": "sellerBalance + value >= sellerBalance",
+      "security_relevance": "High",
+      "description": "Ensures that adding value to sellerBalance does not result in overflow."
+    },
+    {
+      "vulnerability": "Data Flow",
+      "expression": "sellerBalance >= 0",
+      "security_relevance": "Medium",
+      "description": "Ensures that sellerBalance remains non-negative as it is an unsigned integer."
+    },
+    {
+      "vulnerability": "Access Control",
+      "expression": "msg.sender == contract_owner",
+      "security_relevance": "High",
+      "description": "Ensures that only authorized accounts can call sensitive functions to modify sellerBalance."
+    }
+  ]
+}

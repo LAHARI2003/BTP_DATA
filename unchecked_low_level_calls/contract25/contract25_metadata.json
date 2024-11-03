@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract25",
+    "contract_metadata": {
+        "contract_type": "Token Bank Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [44, 97]
+    }
+}

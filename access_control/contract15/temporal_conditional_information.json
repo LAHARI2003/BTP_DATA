@@ -1,0 +1,8 @@
+{
+  "TimeSensitiveLogic": "None",
+  "ConditionalLogicPaths": [
+    {
+      "Path": "Without the onlyowner modifier, the contract does not differentiate between authorized and unauthorized users calling changeOwner"
+    }
+  ]
+}

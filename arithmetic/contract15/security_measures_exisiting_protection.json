@@ -1,0 +1,16 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "No specific owner access controls in this contract; functions are publicly accessible."
+  },
+  "ArithmeticChecks": {
+    "buy": {
+      "Condition": "require(msg.value == numTokens * PRICE_PER_TOKEN)",
+      "Purpose": "Attempts to verify the user sent correct ether but lacks overflow protection."
+    },
+    "sell": {
+      "Condition": "require(balanceOf[msg.sender] >= numTokens)",
+      "Purpose": "Checks user’s balance to prevent overdraws but lacks overflow protection."
+    }
+  },
+  "FallbackFunctionality": "No fallback function included for ether receipt or emergency situations."
+}

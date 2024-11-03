@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "BiddingState": "When a user places a bid and the bid function is called."
+  },
+  "ExternalInteractions": [
+    {
+      "Interaction": "The contract interacts externally when attempting to send a refund to the previous frontrunner during a new bid."
+    }
+  ]
+}

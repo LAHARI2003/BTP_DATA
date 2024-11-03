@@ -1,0 +1,4 @@
+{
+  "CrossContractDependencies": "None",
+  "InterContractConsistencyConditions": "Not applicable as there are no external contract interactions in this code"
+}

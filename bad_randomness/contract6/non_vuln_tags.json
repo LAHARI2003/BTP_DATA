@@ -1,0 +1,50 @@
+{
+  "NonVulnerableTags": {
+    "Well-Implemented Features": [
+      {
+        "Feature": "Access Control",
+        "Description": "The `lockInGuess` function ensures that only new guesses can be made by checking that the `guesses[msg.sender].block` is 0. This prevents users from reusing their guesses."
+      },
+      {
+        "Feature": "Value Transfer Requirement",
+        "Description": "The constructor and `lockInGuess` function require an exact value of 1 ether to be sent with the transaction. This ensures that only participants with the required stake can interact with the contract, helping to prevent misuse."
+      },
+      {
+        "Feature": "Conditional Prize Distribution",
+        "Description": "The `settle` function checks the `block.number` to ensure that the guess was made for a past block, and only transfers funds if the guess was correct. This conditional transfer improves the integrity of the prize distribution logic."
+      }
+    ],
+    "Invariant Validation Examples": [
+      {
+        "Function": "lockInGuess",
+        "Description": "Validates that `msg.sender` has not previously made a guess by requiring `guesses[msg.sender].block == 0`, ensuring that only a single guess can be locked in at a time."
+      },
+      {
+        "Function": "settle",
+        "Description": "Validates that the `block.number` is greater than `guesses[msg.sender].block`, ensuring that guesses are settled only after the guessed block has passed."
+      }
+    ]
+  },
+  "RiskyFeatures": {
+    "Potentially Risky Feature": [
+      {
+        "Feature": "Dependence on Block Hash",
+        "Description": "The contract relies on `blockhash` for randomness, specifically in the `settle` function. However, `blockhash` for blocks more than 256 blocks old returns zero, allowing potential exploitation where an attacker can guess zero and settle after 256 blocks to guarantee a match.",
+        "RiskType": "Predictable Randomness",
+        "RiskMitigationSuggestion": "Consider using a more secure source of randomness, such as a VRF (Verifiable Random Function) or an external oracle, to prevent attackers from predicting or exploiting the block hash."
+      },
+      {
+        "Feature": "Lack of Access Restriction on `settle`",
+        "Description": "The `settle` function does not restrict access, meaning anyone can call it to settle a guess, not just the user who locked in the guess. This could lead to unintended outcomes where others settle guesses prematurely or maliciously.",
+        "RiskType": "Open Access",
+        "RiskMitigationSuggestion": "Restrict `settle` function access to only the original guesser by checking that `msg.sender` matches the guess owner to prevent unauthorized settlement attempts."
+      },
+      {
+        "Feature": "Unreset State in `settle` Function",
+        "Description": "Although `guesses[msg.sender].block` is set to 0 after settlement, `guesses[msg.sender].guess` is not cleared, leaving it potentially vulnerable if the state were to be reused or altered unintentionally.",
+        "RiskType": "Inconsistent State Reset",
+        "RiskMitigationSuggestion": "Consider resetting `guesses[msg.sender].guess` to ensure all guess-related data is cleared after settlement."
+      }
+    ]
+  }
+}

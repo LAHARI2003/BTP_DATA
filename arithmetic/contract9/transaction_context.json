@@ -1,0 +1,7 @@
+{
+    "TransactionStateContext": {
+        "InitializationState": "The contract has an uninitialized state until the init function is called.",
+        "ExecutionState": "The contract can execute the run function if initialized is set to 1."
+    },
+    "ExternalInteractions": "The contract allows external users to call the init and run functions, which can alter the state of the count variable."
+}

@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "CreditorsState": "Users are added to the creditorAddresses array when addCreditors is called.",
+    "EmptyState": "The creditorAddresses array is emptied if it exceeds a length of 1500 through the emptyCreditors function."
+  },
+  "ExternalInteractions": {
+    "CreditorAddressesArray": "Users interact with the contract to add themselves to the creditorAddresses array using addCreditors.",
+    "EmptyArrayCondition": "The array can only be emptied under the conditional check in emptyCreditors if its length exceeds 1500."
+  }
+}

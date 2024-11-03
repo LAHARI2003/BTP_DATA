@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract51",
+    "contract_metadata": {
+        "contract_type": "Withdrawal",
+        "complexity_level": "Low",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [14]
+    }
+}

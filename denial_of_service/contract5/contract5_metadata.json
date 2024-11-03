@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract5",
+    "contract_metadata": {
+        "contract_type": "Government",
+        "complexity_level": "Advanced",
+        "vulnerability_category": [
+            "Denial of Service"
+        ],
+        "vulnerable_at_lines": [46, 48]
+    }
+}

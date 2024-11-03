@@ -1,0 +1,40 @@
+{
+    "invariants": [
+        {
+            "expression": "balances[msg.sender] >= 0",
+            "vulnerability": "Data Integrity",
+            "description": "User balance should always be non-negative.",
+            "relevance": "High"
+        },
+        {
+            "expression": "balances[msg.sender] + msg.value > balances[msg.sender]",
+            "vulnerability": "Integer Overflow",
+            "description": "Prevents overflow on deposit.",
+            "relevance": "High"
+        },
+        {
+            "expression": "balances[msg.sender] >= amount",
+            "vulnerability": "Access Control",
+            "description": "Withdrawal amount should not exceed user's balance.",
+            "relevance": "High"
+        },
+        {
+            "expression": "msg.sender == creator",
+            "vulnerability": "Access Control",
+            "description": "Only the contract creator can initiate migration.",
+            "relevance": "High"
+        },
+        {
+            "expression": "balances[msg.sender] -= amount",
+            "vulnerability": "Access Control",
+            "description": "User's balance should decrease by the withdrawal amount.",
+            "relevance": "Medium"
+        },
+        {
+            "expression": "address(this).balance >= 0",
+            "vulnerability": "Data Integrity",
+            "description": "Contract balance should always be non-negative.",
+            "relevance": "Medium"
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Denial of Service (DOS) via Gas Limit",
+            "invariant": "numElements <= array.length",
+            "security_relevance": "High",
+            "expression_representation": "numElements ≤ length(array)"
+        },
+        {
+            "vulnerability": "Denial of Service (DOS) via Gas Limit",
+            "invariant": "numElements <= 1500",
+            "security_relevance": "Medium",
+            "expression_representation": "numElements ≤ 1500"
+        },
+        {
+            "vulnerability": "Array Length Consistency",
+            "invariant": "array.length = numElements or array.length = numElements + 1",
+            "security_relevance": "Medium",
+            "expression_representation": "length(array) == numElements ∨ length(array) == numElements + 1"
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "invariant": "numElements >= 0",
+            "security_relevance": "Low",
+            "expression_representation": "numElements ≥ 0"
+        },
+        {
+            "vulnerability": "Array Overflow Protection",
+            "invariant": "length(array) ≥ 0",
+            "security_relevance": "Low",
+            "expression_representation": "length(array) ≥ 0"
+        }
+    ]
+}

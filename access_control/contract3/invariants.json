@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "expression": "msg.sender == owner",
+      "security_relevance": "High",
+      "description": "Ensures that only the contract owner can perform restricted actions."
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "expression": "xlock == true",
+      "security_relevance": "Medium",
+      "description": "A placeholder invariant assuming no re-entrant calls allowed, ensuring state remains consistent."
+    },
+    {
+      "vulnerability": "Special Storage",
+      "expression": "xtotSup ≤ totSup?",
+      "security_relevance": "Low",
+      "description": "Ensures the total supply cap is respected if relevant variables are initialized in future expansions."
+    },
+    {
+      "vulnerability": "Time Lock",
+      "expression": "xentrySdrBlk ≠ rexitSdrBlk",
+      "security_relevance": "Medium",
+      "description": "Ensures function calls within the same block do not overlap from the same sender."
+    },
+    {
+      "vulnerability": "Gas Control",
+      "expression": "gasUsed(func) ≤ maxGasPerFunc?",
+      "security_relevance": "Low",
+      "description": "Limits the maximum gas usage per function to prevent gas exhaustion."
+    }
+  ]
+}

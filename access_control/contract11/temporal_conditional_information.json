@@ -1,0 +1,6 @@
+{
+  "TimeSensitiveLogic": "No explicit time-dependent logic is used in this contract.",
+  "ConditionalLogicPaths": {
+    "OwnershipCheck": "Withdrawals are only allowed if tx.origin matches the owner address, which restricts usage to transactions originating directly from the owner’s wallet."
+  }
+}

@@ -1,0 +1,26 @@
+[
+    {
+        "vulnerability_category": "Access Control",
+        "invariant": "msg.sender == owner",
+        "expression": "require(msg.sender == owner)",
+        "security_relevance": "high"
+    },
+    {
+        "vulnerability_category": "Access Control",
+        "invariant": "msg.sender == tx.origin",
+        "expression": "msg.sender == tx.origin",
+        "security_relevance": "medium"
+    },
+    {
+        "vulnerability_category": "Access Control",
+        "invariant": "EOA only (only external accounts)",
+        "expression": "msg.sender == tx.origin",
+        "security_relevance": "medium"
+    },
+    {
+        "vulnerability_category": "Access Control",
+        "invariant": "Access Control Consistency Audit",
+        "expression": "logAccessChanges(tx.origin, role)",
+        "security_relevance": "low"
+    }
+]

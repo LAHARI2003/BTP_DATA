@@ -1,0 +1,10 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": "None; this contract does not contain time-dependent functionality.",
+    "ConditionalLogicPaths": {
+      "PathVariations": [
+        "The contract’s behavior only varies based on input values to the run function, specifically whether the input causes an overflow or not."
+      ]
+    }
+  }
+}

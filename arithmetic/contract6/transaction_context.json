@@ -1,0 +1,12 @@
+{
+  "TransactionStateContext": {
+    "MappingState": {
+      "Description": "This contract manages a mapping called 'map' where values are set through the 'init' function.",
+      "States": ["Value Mapping", "Arithmetic Operation on Mapped Values"]
+    }
+  },
+  "ExternalInteractions": {
+    "Description": "The contract does not interact with any other external contracts or addresses. Only internal updates to the 'map' are conducted.",
+    "InteractionType": "Internal Mapping Updates"
+  }
+}

@@ -1,0 +1,46 @@
+{
+    "invariants": [
+        {
+            "invariant": "msg.sender == tx.origin",
+            "related_vulnerability": "Access Control",
+            "security_relevance": "High",
+            "description": "Ensures that only external accounts (EOAs) can initiate certain functions to prevent contract reentrancy."
+        },
+        {
+            "invariant": "fibonacciLibrary != address(0)",
+            "related_vulnerability": "Access Control",
+            "security_relevance": "High",
+            "description": "Verifies that the library address is set to a valid contract to avoid null delegate calls."
+        },
+        {
+            "invariant": "msg.sender.transfer(calculatedFibNumber * 1 ether) <= address(this).balance",
+            "related_vulnerability": "Money Flow",
+            "security_relevance": "High",
+            "description": "Prevents over-withdrawal by ensuring enough balance exists for the transfer."
+        },
+        {
+            "invariant": "withdrawalCounter >= 0",
+            "related_vulnerability": "Data Flow",
+            "security_relevance": "Medium",
+            "description": "Ensures withdrawalCounter is non-negative to avoid incorrect state behavior."
+        },
+        {
+            "invariant": "calculatedFibNumber >= start",
+            "related_vulnerability": "Special Storage",
+            "security_relevance": "Medium",
+            "description": "Ensures that calculatedFibNumber is at least equal to the start value, respecting Fibonacci sequence properties."
+        },
+        {
+            "invariant": "fibonacciLibrary.delegatecall(fibSig, withdrawalCounter) == true",
+            "related_vulnerability": "Re-entrancy",
+            "security_relevance": "High",
+            "description": "Ensures delegatecall succeeds to set `calculatedFibNumber` correctly."
+        },
+        {
+            "invariant": "msg.data == fibSig || msg.data.length == 4",
+            "related_vulnerability": "Access Control",
+            "security_relevance": "Medium",
+            "description": "Limits function execution to specific calls only if msg.data matches the correct selector."
+        }
+    ]
+}

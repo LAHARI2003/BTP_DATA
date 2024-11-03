@@ -1,0 +1,28 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": {
+      "StateInitialization": {
+        "Description": "The `win` state variable is initialized to `false` at the time of contract deployment, providing a clear initial state."
+      },
+      "Controlled State Reset": {
+        "Description": "The function `emptyCreditors` is intended to reset the creditorAddresses list under specific conditions (length > 1500), providing a mechanism to avoid unlimited memory usage by creditors."
+      }
+    },
+    "InvariantValidationExamples": {
+      "CreditorsLengthCheck": {
+        "Description": "The `emptyCreditors` function enforces an invariant that only if `creditorAddresses.length` exceeds 1500, the list is cleared, preventing unchecked list growth."
+      }
+    }
+  },
+  "RiskyFeatures": {
+    "GasLimitRisk": {
+      "Description": "The `addCreditors` function adds up to 350 entries to `creditorAddresses` in one transaction, which could potentially reach the gas limit depending on the state. If not handled properly, this could result in Denial of Service (DoS) issues if `creditorAddresses` becomes too large."
+    },
+    "DenialOfServiceInEmptyCreditors": {
+      "Description": "The `emptyCreditors` function resets the `creditorAddresses` array only if it exceeds 1500 addresses. Once the array reaches this threshold, users may face increased gas costs or a complete denial of service for functions that iterate over or manipulate `creditorAddresses`."
+    },
+    "CentralizedControlRisk": {
+      "Description": "The contract allows any user to call `emptyCreditors` and `addCreditors`, which could potentially be exploited by attackers to manipulate the `creditorAddresses` array and potentially cause performance issues for other users."
+    }
+  }
+}

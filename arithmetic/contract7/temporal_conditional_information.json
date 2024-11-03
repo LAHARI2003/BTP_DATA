@@ -1,0 +1,8 @@
+{
+  "TimeSensitiveLogic": "Not applicable. No time-dependent conditions.",
+  "ConditionalLogicPaths": [
+    {
+      "Condition": "No conditional logic in this contract. Only subtraction operation without checks."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Arithmetic Overflow",
+            "invariant": "count + input >= count",
+            "description": "Ensures that the addition of 'count' and 'input' does not overflow.",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Arithmetic Overflow",
+            "invariant": "input <= MAX_UINT - count",
+            "description": "Ensures that the input does not exceed the maximum allowable uint value when added to 'count'.",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Data Integrity",
+            "invariant": "count >= 0",
+            "description": "Ensures that the variable 'count' remains a valid positive integer as per unsigned integer type.",
+            "security_relevance": "medium"
+        },
+        {
+            "vulnerability": "Data Flow",
+            "invariant": "input >= 0",
+            "description": "Ensures the input value remains a valid unsigned integer.",
+            "security_relevance": "medium"
+        }
+    ]
+}

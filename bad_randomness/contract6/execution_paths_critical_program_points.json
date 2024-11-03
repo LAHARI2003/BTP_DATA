@@ -1,0 +1,17 @@
+{
+    "Function-Level Analysis": {
+        "lockInGuess": "Locks in a user's guess by recording their guessed hash and target block.",
+        "settle": "Checks if the guess is correct by comparing the guessed hash with the block hash and settles the transaction by either transferring Ether or resetting the guess."
+    },
+    "Execution Path Tags": {
+        "Decision Points": [
+            "require(guesses[msg.sender].block == 0) in lockInGuess to ensure a user hasn't already placed a guess.",
+            "require(msg.value == 1 ether) in lockInGuess to enforce a 1 Ether guess amount.",
+            "require(block.number > guesses[msg.sender].block) in settle to ensure the block number has passed."
+        ],
+        "State Transition Points": [
+            "Updates guesses[msg.sender] struct when a guess is locked in.",
+            "Resets guesses[msg.sender].block to 0 after the settlement process is complete."
+        ]
+    }
+}

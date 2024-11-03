@@ -1,0 +1,11 @@
+{
+    "TimeSensitiveLogic": {
+        "Deck.deal Randomness": "Relies on block.timestamp and block.number for card generation, making the randomization time-dependent and predictable."
+    },
+    "ConditionalLogicPaths": {
+        "GameProgression": [
+            "Game state transitions occur based on the player and house scores in checkGameResult.",
+            "Conditional outcomes: game continues, ends in a tie, or results in a win/loss based on scores in checkGameResult."
+        ]
+    }
+}

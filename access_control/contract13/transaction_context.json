@@ -1,0 +1,10 @@
+{
+    "TransactionStateContext": {
+        "PyramidState": "Participants join the pyramid by sending Ether to the contract, which adds them to the participants array.",
+        "FeeCollectionState": "The contract accumulates fees from transactions, which the creator can collect."
+    },
+    "ExternalInteractions": {
+        "EtherTransfers": "Ether transfers occur when participants send Ether to the contract to join the pyramid and during payouts.",
+        "FeeTransfers": "The creator can withdraw collected fees."
+    }
+}

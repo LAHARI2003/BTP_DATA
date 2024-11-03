@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract49",
+    "contract_metadata": {
+        "contract_type": "Chain Game",
+        "complexity_level": "High",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [110, 118, 132, 174]
+    }
+}

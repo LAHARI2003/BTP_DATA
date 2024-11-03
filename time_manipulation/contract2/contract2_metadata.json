@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract2",
+    "contract_metadata": {
+        "contract_type": "Investment and Jackpot Contract",
+        "complexity_level": "Medium",
+        "vulnerability_category": [
+            "Time Manipulation"
+        ],
+        "vulnerable_at_lines": [27]
+    }
+}

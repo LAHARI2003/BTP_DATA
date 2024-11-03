@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract6",
+    "contract_metadata": {
+        "contract_type": "Refunder",
+        "complexity_level": "Moderate",
+        "vulnerability_category": [
+            "Denial of Service (DoS)"
+        ],
+        "vulnerable_at_lines": [24]
+    }
+}

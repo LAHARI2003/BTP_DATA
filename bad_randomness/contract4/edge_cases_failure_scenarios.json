@@ -1,0 +1,12 @@
+{
+    "Edge Case Annotations": {
+        "Non-organizer getBets Access": "The getBets function throws an error if a non-organizer attempts to call it.",
+        "Block Number Based Randomness": "The makeBet function uses block.number % 2 for randomness, which is predictable and thus insecure.",
+        "Fallback Function": "The fallback function throws if ether is sent to the contract directly, preventing unintended ether deposits."
+    },
+    "Common Attack Patterns": {
+        "Predictable Randomness": "Due to block.number % 2 being predictable, a user could time transactions to ensure a 'win,' exploiting the randomness vulnerability.",
+        "Access Control": "If getBets or destroy did not verify the sender as the organizer, unauthorized access would be possible."
+    },
+    "Recovery Mechanisms": "No specific recovery mechanism for situations such as contract compromise or draining ether from bets."
+}

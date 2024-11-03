@@ -1,0 +1,11 @@
+{
+  "Edge Case Annotations": {
+    "Empty Data": "The forward function does not verify if the _data argument is non-empty, which may cause unintended behavior.",
+    "Untrusted Callee": "delegatecall allows the callee to execute code with the storage and context of the proxy. If the callee is malicious or untrusted, it could result in security issues."
+  },
+  "Common Attack Patterns": {
+    "Access Control Vulnerability": "If the owner restriction is removed or bypassed, any user could call forward with malicious code.",
+    "Execution Control Vulnerability": "Delegatecall is vulnerable if used without strict control over the callee address."
+  },
+  "Recovery Mechanisms": "Adding a mechanism to restrict calls only to specific addresses or to revert in case of failure would mitigate some risks."
+}

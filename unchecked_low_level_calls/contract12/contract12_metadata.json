@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract12",
+    "contract_metadata": {
+        "contract_type": "Centra4 Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [21]
+    }
+}

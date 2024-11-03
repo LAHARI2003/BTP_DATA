@@ -1,0 +1,6 @@
+{
+    "ImplementedSecurityControls": {
+        "InitializationCheck": "The run function checks if the contract is initialized before allowing any decrement operation on count."
+    },
+    "FallbackFunctionality": "None provided in this contract."
+}

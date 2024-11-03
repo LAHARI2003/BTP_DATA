@@ -1,0 +1,28 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "security_relevance": "Medium",
+      "description": "Ensures that the transaction origin is the same as the message sender, limiting access to only external accounts."
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "initialized == 1",
+      "security_relevance": "High",
+      "description": "Ensures that the contract is initialized before any function that affects state is executed."
+    },
+    {
+      "vulnerability": "Arithmetic",
+      "invariant": "count >= 0",
+      "security_relevance": "High",
+      "description": "Ensures that the value of 'count' does not go below zero, preventing an underflow."
+    },
+    {
+      "vulnerability": "Arithmetic",
+      "invariant": "count -= input, where input <= count",
+      "security_relevance": "High",
+      "description": "Ensures that 'input' is less than or equal to 'count' before subtraction, preventing integer underflow in 'count -= input'."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "Implemented_Security_Controls": {
+    "Access_Control": "None implemented",
+    "Arithmetic_Check": "No checks to prevent arithmetic overflow are implemented in add."
+  },
+  "Fallback_Functionality": {
+    "Description": "No fallback function is present in this contract."
+  }
+}

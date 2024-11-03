@@ -1,0 +1,14 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "Relies on tx.origin to enforce ownership, but this is insecure as it is vulnerable to phishing attacks."
+  },
+  "PotentialVulnerabilities": [
+    {
+      "Type": "AccessControl",
+      "Description": "The use of tx.origin instead of msg.sender in withdrawAll could allow phishing attacks."
+    }
+  ],
+  "FallbackFunctionality": {
+    "EtherCollection": "The fallback function accepts Ether with no restrictions and does not reject any incoming transfers."
+  }
+}

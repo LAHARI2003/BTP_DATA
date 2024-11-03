@@ -1,0 +1,33 @@
+{
+  "Contract": "IntegerOverflowMappingSym1",
+  "Source": "https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/integer_overflow_and_underflow/integer_overflow_mapping_sym_1.sol",
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Feature": "Mapping Structure",
+        "Description": "The use of a mapping to store key-value pairs is efficient for storage and retrieval, allowing constant-time complexity for accessing elements."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "Function": "init",
+        "Invariant": "Key existence",
+        "Description": "The `init` function allows modification of a specific key in the mapping, which can facilitate dynamic state management if used responsibly with proper validation mechanisms."
+      }
+    ]
+  },
+  "PotentiallyRiskyFeatures": [
+    {
+      "Risk": "Arithmetic Underflow",
+      "Description": "The `init` function includes a subtraction operation `map[k] -= v` without checking that `map[k]` is greater than or equal to `v`, which could cause an arithmetic underflow. This could lead to a highly inflated value in the mapping, posing a risk of unexpected behavior or vulnerabilities."
+    },
+    {
+      "Risk": "Lack of Access Control",
+      "Description": "The `init` function is public and allows anyone to modify values in the mapping by specifying arbitrary keys and values. This could lead to unauthorized manipulation of data and potential misuse."
+    },
+    {
+      "Risk": "Absence of Value Checks",
+      "Description": "The `init` function does not validate the input values `k` and `v`, which may allow erroneous or malicious inputs to affect the contract state. Ensuring positive values or enforcing minimum constraints on `v` could mitigate potential issues."
+    }
+  ]
+}

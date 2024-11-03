@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "BAD_RANDOMNESS",
+      "invariant": "block.timestamp remains constant across multiple function calls without external interaction",
+      "expression": "salt == initial_block_timestamp",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "BAD_RANDOMNESS",
+      "invariant": "block.number remains predictable over short function call sequences",
+      "expression": "block.number == predictable_number",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "BAD_RANDOMNESS",
+      "invariant": "blockhash relies on a fixed seed",
+      "expression": "blockhash(seed) == deterministic_hash(seed)",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "BAD_RANDOMNESS",
+      "invariant": "salt modulo operations yield a small predictable range",
+      "expression": "salt % 5 < 5",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability": "BAD_RANDOMNESS",
+      "invariant": "the result of random() function is bounded by max and predictable inputs",
+      "expression": "result ≤ max",
+      "security_relevance": "medium"
+    }
+  ]
+}

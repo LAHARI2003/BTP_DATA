@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract48",
+    "contract_metadata": {
+        "contract_type": "Lottery",
+        "complexity_level": "High",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [109, 141]
+    }
+}

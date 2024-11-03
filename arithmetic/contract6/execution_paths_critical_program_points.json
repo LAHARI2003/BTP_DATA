@@ -1,0 +1,23 @@
+{
+  "FunctionLevelAnalysis": {
+    "init": {
+      "Description": "The function applies a subtraction operation on a mapping entry without validation.",
+      "CriticalPoints": ["Potential for underflow if the subtraction exceeds the current value of 'map[k]'."]
+    }
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": {
+      "SubtractionOperation": {
+        "Description": "Potential arithmetic error if 'v' is greater than 'map[k]', leading to integer underflow.",
+        "Location": "Line 16",
+        "VulnerabilityType": "Arithmetic Underflow"
+      }
+    },
+    "StateTransitionPoints": {
+      "MapUpdate": {
+        "Description": "Updates the mapping value for a given key after performing an unchecked arithmetic operation.",
+        "Impact": "Direct modification to the internal mapping without bounds checking."
+      }
+    }
+  }
+}

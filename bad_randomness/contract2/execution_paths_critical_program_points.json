@@ -1,0 +1,22 @@
+{
+  "FunctionLevelAnalysis": {
+    "buyTickets": "Handles Ether deposits and ticket allocations for each participant.",
+    "chooseWinner": "Calculates a random winner when all tickets are sold.",
+    "getRefund": "Allows contestants to get refunds before the raffle outcome is determined.",
+    "endRaffle": "Refunds participants, resets raffle state, and pauses the contract if called by the owner.",
+    "togglePause": "Allows the contract owner to toggle the paused state.",
+    "kill": "Self-destructs the contract if called by the fee address."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "if (paused) to prevent ticket purchases when paused.",
+      "if (moneySent >= pricePerTicket && nextTicket < totalTickets) to handle ticket allocation.",
+      "if (nextTicket == totalTickets) to trigger chooseWinner after all tickets are sold.",
+      "if (refund > 0) to send refunds in getRefund."
+    ],
+    "StateTransitionPoints": [
+      "Updates to nextTicket, raffleId, and gaps during ticket purchase, refunds, and raffle end.",
+      "Resets raffleId, nextTicket, and gaps in endRaffle and chooseWinner."
+    ]
+  }
+}

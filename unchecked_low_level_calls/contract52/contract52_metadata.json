@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract52",
+    "contract_metadata": {
+        "contract_type": "Function Call",
+        "complexity_level": "Low",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [17]
+    }
+}

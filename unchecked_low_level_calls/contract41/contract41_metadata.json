@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract41",
+    "contract_metadata": {
+        "contract_type": "Free Ether Distribution",
+        "complexity_level": "Low",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [44]
+    }
+}

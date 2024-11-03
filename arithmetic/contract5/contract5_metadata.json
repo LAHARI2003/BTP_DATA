@@ -1,0 +1,12 @@
+{
+    "contract_name": "contract5",
+    "contract_metadata": {
+        "contract_type": "Integer Overflow Benign Example",
+        "complexity_level": "Basic",
+        "vulnerability_category": [
+            "Arithmetic",
+            "Integer Overflow"
+        ],
+        "vulnerable_at_lines": [17]
+    }
+}

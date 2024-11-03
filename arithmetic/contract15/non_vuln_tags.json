@@ -1,0 +1,54 @@
+{
+  "NonVulnerableTags": {
+    "AccessControl": {
+      "Description": "Correctly checks ownership requirements in the constructor to limit initial contract setup to authorized address.",
+      "Implementation": "Constructor checks that msg.value is equal to 1 ether, establishing the initial balance requirement securely."
+    },
+    "MoneyFlowIntegrity": {
+      "Description": "The balanceOf mapping is used effectively to maintain individual user token balances.",
+      "Implementation": "The buy and sell functions correctly update balanceOf[msg.sender] to track tokens bought and sold by each user."
+    },
+    "InvariantValidation": {
+      "Description": "Ensures balance consistency when users buy or sell tokens.",
+      "Examples": [
+        {
+          "Function": "buy",
+          "Invariant": "The numTokens is multiplied by PRICE_PER_TOKEN to ensure the correct ether is sent before updating balanceOf.",
+          "Validation": "Uses require(msg.value == numTokens * PRICE_PER_TOKEN) to enforce payment before updating balance."
+        },
+        {
+          "Function": "sell",
+          "Invariant": "balanceOf[msg.sender] is decreased by numTokens sold, and ether transferred matches the number of tokens sold.",
+          "Validation": "Ensures consistency by using require(balanceOf[msg.sender] >= numTokens) to validate sufficient balance before allowing a sale."
+        }
+      ]
+    }
+  },
+  "PotentialRiskyFeatures": {
+    "ArithmeticOverflow": {
+      "Description": "The contract does not handle potential arithmetic overflow/underflow on token calculations.",
+      "Details": [
+        {
+          "Function": "buy",
+          "Risk": "In the require statement, numTokens * PRICE_PER_TOKEN could overflow if numTokens is set to a very high value, bypassing the check.",
+          "Recommendation": "Use SafeMath library or Solidity >= 0.8 for automatic overflow checks."
+        },
+        {
+          "Function": "sell",
+          "Risk": "numTokens * PRICE_PER_TOKEN could overflow during transfer to msg.sender, causing unexpected behavior or loss of funds.",
+          "Recommendation": "Implement SafeMath or Solidity >= 0.8 overflow protection for all arithmetic operations."
+        }
+      ]
+    },
+    "LackOfReentrancyGuard": {
+      "Description": "No reentrancy guard implemented in the sell function, making the contract potentially vulnerable to reentrancy attacks.",
+      "Details": [
+        {
+          "Function": "sell",
+          "Risk": "A reentrancy attack could potentially exploit the sell function, repeatedly calling it to drain ether before balance updates.",
+          "Recommendation": "Implement a reentrancy guard (using mutex or OpenZeppelin's ReentrancyGuard) to prevent this vulnerability."
+        }
+      ]
+    }
+  }
+}

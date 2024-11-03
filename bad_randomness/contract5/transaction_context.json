@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "StakingState": "When users deposit exactly 1 ETH to participate, the join function is called.",
+    "PayoutState": "When entries reach the payout threshold, payments are issued."
+  },
+  "ExternalInteractions": {
+    "TokenTransfers": "Transfers of ether occur between users and the contract address during deposits and payouts.",
+    "FeeCollection": "The contract collects fees from each deposit, sent to the owner's address."
+  }
+}

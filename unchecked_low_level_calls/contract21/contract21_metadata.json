@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract21",
+    "contract_metadata": {
+        "contract_type": "PoCGame Contract",
+        "complexity_level": "Advanced",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [198, 210]
+    }
+}

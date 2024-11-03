@@ -1,0 +1,14 @@
+{
+  "TimeSensitiveLogic": [
+    {
+      "Condition": "block.timestamp",
+      "Explanation": "Randomness depends on time-based properties (`block.timestamp`), which could be manipulated by miners."
+    }
+  ],
+  "ConditionalLogicPaths": [
+    {
+      "Path": "Execution of random function",
+      "Condition": "Depends on the value of `max`, which influences the calculations in generating randomness."
+    }
+  ]
+}

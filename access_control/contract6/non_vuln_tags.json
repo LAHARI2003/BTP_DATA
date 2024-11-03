@@ -1,0 +1,28 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "AccessControl": "The withdraw function correctly restricts access by ensuring that only the owner can execute the transfer, using require(msg.sender == owner)."
+      },
+      {
+        "StorageIntegrity": "The set function correctly resizes the map array before assigning a value to ensure storage integrity, preventing out-of-bounds issues."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "ArraySizeConsistency": "The set function maintains the invariant that the array length is always sufficient to accommodate the specified key. By resizing map when key is out of bounds, it ensures consistent state updates."
+      }
+    ]
+  },
+  "RiskyFeatures": [
+    {
+      "AccessControlMisuse": "The set function lacks access control. Currently, anyone can modify the map storage, leading to potential tampering with data that could be sensitive in some contexts."
+    },
+    {
+      "UnrestrictedArraySizeGrowth": "The map array grows dynamically based on the key input, allowing arbitrary increase in storage size. Unrestricted growth may lead to out-of-gas errors or excessive storage costs, potentially impacting contract efficiency and usability."
+    },
+    {
+      "UnrestrictedWithdrawal": "The withdraw function allows the owner to transfer the contract’s entire balance. Without additional checks or restrictions, this could enable the owner to drain all contract funds, which may be risky depending on the use case."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "Time_Sensitive_Logic": "Not applicable",
+  "Conditional_Logic_Paths": [
+    {
+      "PopBonusCode": {
+        "Description": "Condition 0 <= bonusCodes.length is always true but may lead to underflow."
+      },
+      {
+        "UpdateBonusCodeAt": {
+          "Description": "Ensures idx is within bounds before updating bonusCodes array."
+      },
+      {
+        "Destroy": {
+          "Description": "Conditional on msg.sender being the contract owner to self-destruct."
+        }
+      }
+    }
+  ]
+}

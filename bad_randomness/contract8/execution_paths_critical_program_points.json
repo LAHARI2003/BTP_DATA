@@ -1,0 +1,23 @@
+{
+  "ExecutionPaths": {
+    "FunctionLevelAnalysis": {
+      "transfer": "Transfers tokens to a specified address and updates balances.",
+      "walletBalanceOf": "Returns the balance of a specified wallet.",
+      "setInvestStart": "Sets the start block for ICO investment.",
+      "changeOwner": "Changes the contract owner, maintaining dividend commitments.",
+      "playSystem": "Allows players to place a bet in the lottery system."
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        "require(msg.value <= 1 ether) in playSystem to cap the betting amount.",
+        "require(block.number > player.blockNum) in won to validate the block number.",
+        "assert(_who != address(0)) in changeOwner to prevent address zero assignments."
+      ],
+      "StateTransitionPoints": [
+        "Updates to balances during transfers.",
+        "Changes in investBalance during token purchases.",
+        "Updates to wallets[_owner].balance during dividend commitments."
+      ]
+    }
+  }
+}

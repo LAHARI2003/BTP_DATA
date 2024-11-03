@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract3",
+    "contract_metadata": {
+        "contract_type": "Hash Preimage Guessing (FindThisHash)",
+        "complexity_level": "Medium",
+        "vulnerability_category": [
+            "Front Running"
+        ],
+        "vulnerable_at_lines": [17]
+    }
+}

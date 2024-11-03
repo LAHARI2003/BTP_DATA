@@ -1,0 +1,41 @@
+{
+  "FunctionLevelAnalysis": {
+    "emptyCreditors": {
+      "description": "Checks the length of creditorAddresses and empties the array if the length exceeds 1500.",
+      "criticalLines": [16, 17],
+      "tags": ["Denial of Service"]
+    },
+    "addCreditors": {
+      "description": "Adds the caller's address to creditorAddresses 350 times.",
+      "criticalLines": [22],
+      "tags": ["Potential Gas Limit Risk"]
+    },
+    "iWin": {
+      "description": "Returns the win state, which is set to true if the emptyCreditors function is triggered."
+    },
+    "numberCreditors": {
+      "description": "Returns the length of creditorAddresses."
+    }
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      {
+        "condition": "creditorAddresses.length > 1500",
+        "function": "emptyCreditors",
+        "description": "Determines if the array should be cleared and win set to true."
+      }
+    ],
+    "StateTransitionPoints": [
+      {
+        "variable": "creditorAddresses",
+        "function": "emptyCreditors",
+        "description": "Array is emptied when the conditional check is met."
+      },
+      {
+        "variable": "creditorAddresses",
+        "function": "addCreditors",
+        "description": "Caller address is added 350 times, modifying array state."
+      }
+    ]
+  }
+}

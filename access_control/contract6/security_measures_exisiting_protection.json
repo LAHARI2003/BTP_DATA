@@ -1,0 +1,9 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": {
+            "Location": "withdraw function",
+            "Description": "Requires msg.sender to be the contract owner to proceed with the withdrawal."
+        }
+    },
+    "FallbackFunctionality": "Not present - the contract lacks a fallback or receive function to handle incoming ether."
+}

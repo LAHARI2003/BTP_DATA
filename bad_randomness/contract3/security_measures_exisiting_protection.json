@@ -1,0 +1,7 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "No owner or role-based access control as any user can participate by paying 1 ether.",
+    "EtherRequirement": "1 ether entry fee acts as a basic control against spam or unnecessary guesses."
+  },
+  "FallbackFunctionality": "There is no fallback function in this contract, so it does not accept ether directly outside the intended function calls."
+}

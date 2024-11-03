@@ -1,0 +1,11 @@
+{
+  "EdgeCaseAnnotations": {
+    "UnrestrictedOwnerAddition": "The `newOwner` function lacks the `onlyOwner` modifier, allowing any user to become an owner.",
+    "DeletingNonRootOwner": "The deleteOwner function may allow a parent owner to delete their child owner, which could affect trust among owners."
+  },
+  "CommonAttackPatterns": {
+    "AccessControlVulnerability": "The `newOwner` function does not restrict addition to only owners, making the contract susceptible to unauthorized access.",
+    "UnauthorizedBalanceWithdrawal": "If ownership is improperly granted, an unauthorized owner could withdraw the entire contract balance."
+  },
+  "RecoveryMechanisms": "No specific recovery mechanisms (e.g., pausing or emergency stop) are present in the contract."
+}

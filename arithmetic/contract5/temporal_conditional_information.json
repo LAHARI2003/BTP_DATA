@@ -1,0 +1,14 @@
+{
+  "TemporalConditionalInformation": {
+    "TimeSensitiveLogic": {
+      "Description": "No time-sensitive logic exists; operations are purely arithmetic."
+    },
+    "ConditionalLogicPaths": {
+      "Paths": [
+        {
+          "Description": "There are no conditional paths as the function `run` performs a straightforward subtraction without checks."
+        }
+      ]
+    }
+  }
+}

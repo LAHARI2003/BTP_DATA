@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract1",
+    "contract_metadata": {
+        "contract_type": "Lottery Game Contract",
+        "complexity_level": "Low to Medium",
+        "vulnerability_category": [
+            "Time Manipulation"
+        ],
+        "vulnerable_at_lines": [43]
+    }
+}

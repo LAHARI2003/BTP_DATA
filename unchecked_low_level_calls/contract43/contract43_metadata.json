@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract43",
+    "contract_metadata": {
+        "contract_type": "Airdrop Distribution",
+        "complexity_level": "Medium",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [17]
+    }
+}

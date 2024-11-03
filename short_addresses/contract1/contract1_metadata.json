@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract1",
+    "contract_metadata": {
+        "contract_type": "ERC20 Token",
+        "complexity_level": "Medium",
+        "vulnerability_category": [
+            "Short Address Attack"
+        ],
+        "vulnerable_at_lines": [18]
+    }
+}

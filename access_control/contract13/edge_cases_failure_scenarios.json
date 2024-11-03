@@ -1,0 +1,12 @@
+{
+    "EdgeCaseAnnotations": {
+        "IncorrectConstructor": "The constructor is misnamed as 'DynamicPyramid', which allows any user to call it and set themselves as the creator.",
+        "SmallValueTransactions": "The init function handles transactions below 1 ether by collecting fees without adding participants.",
+        "HighValueTransactions": "Transactions of 50 ether or more qualify for a 50% fee reduction."
+    },
+    "CommonAttackPatterns": {
+        "AccessControlVulnerability": "The misnamed constructor function 'DynamicPyramid' can be called by any user to set themselves as the contract owner, causing a potential access control vulnerability.",
+        "DenialOfServiceInPayout": "The payout process in the addPayout function could lead to gas exhaustion if there are too many participants."
+    },
+    "RecoveryMechanisms": "No emergency stop or pause mechanism is included to halt the contract in case of an attack or vulnerability."
+}

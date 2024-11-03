@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract29",
+    "contract_metadata": {
+        "contract_type": "Token Transfer Contract",
+        "complexity_level": "Basic",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [16]
+    }
+}

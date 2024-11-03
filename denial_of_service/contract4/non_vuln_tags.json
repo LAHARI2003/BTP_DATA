@@ -1,0 +1,24 @@
+{
+  "NonVulnerableTags": {
+    "Efficient Array Clearing": {
+      "Description": "The contract efficiently resets the array by assigning it to a new empty array, which can prevent gas-related issues if the array grows too large."
+    }
+  },
+  "PotentiallyRiskyFeatures": {
+    "Gas Limit Vulnerability": {
+      "Description": "The function `ifillArray` can potentially exceed the gas limit when adding multiple addresses to `listAddresses` in a loop, which may result in a denial of service for users calling this function after the array becomes too large.",
+      "RiskType": "Denial of Service",
+      "RiskDetails": "The function `ifillArray` runs a loop that adds multiple addresses to `listAddresses`, potentially causing out-of-gas issues when the array becomes too large to process within a single transaction."
+    },
+    "Looped Array Insertion": {
+      "Description": "The `for` loop in `ifillArray` is potentially risky because it runs 350 iterations, which can be gas-intensive, especially as the array grows.",
+      "RiskType": "Performance",
+      "RiskDetails": "Each call to `ifillArray` with an array close to the size limit could lead to high gas costs or even fail to complete if the gas limit is reached."
+    },
+    "Unrestricted Array Growth": {
+      "Description": "There is no upper limit on the growth of the `listAddresses` array, potentially leading to high gas costs or denial of service when the array becomes too large.",
+      "RiskType": "Denial of Service",
+      "RiskDetails": "An ever-growing array may reach a size that prevents successful execution of functions accessing or modifying it due to gas constraints."
+    }
+  }
+}

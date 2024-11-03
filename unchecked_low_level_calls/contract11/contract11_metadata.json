@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract11",
+    "contract_metadata": {
+        "contract_type": "airPort Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [17]
+    }
+}

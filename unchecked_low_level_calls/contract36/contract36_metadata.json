@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract36",
+    "contract_metadata": {
+        "contract_type": "Proxy Vault",
+        "complexity_level": "Medium",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [14]
+    }
+}

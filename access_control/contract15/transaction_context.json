@@ -1,0 +1,8 @@
+{
+  "TransactionStateContext": {
+    "OwnerChangeState": "When the changeOwner function is called to change the contract owner"
+  },
+  "ExternalInteractions": {
+    "OwnerChange": "The changeOwner function allows changing the owner without any access control, which is an external interaction that could lead to unauthorized ownership transfers"
+  }
+}

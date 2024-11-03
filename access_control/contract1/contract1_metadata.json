@@ -1,0 +1,12 @@
+{
+    "contract_name": "contract1",
+    "contract_metadata": {
+        "contract_type": "Wallet Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Access Control",
+            "Integer Underflow"
+        ],
+        "vulnerable_at_lines": [27]
+    }
+}

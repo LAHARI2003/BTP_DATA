@@ -1,0 +1,50 @@
+[
+    {
+        "vulnerability": "Access Control",
+        "invariant": "msg.sender == feeAddress",
+        "description": "Only the feeAddress should be allowed to toggle pause, end raffle, and kill contract",
+        "security_relevance": "High"
+    },
+    {
+        "vulnerability": "Access Control",
+        "invariant": "role(msg.sender) ∈ {feeAddress}",
+        "description": "Only the designated feeAddress has special permissions in the contract",
+        "security_relevance": "High"
+    },
+    {
+        "vulnerability": "Time Lock",
+        "invariant": "block.number ≥ blockNumber",
+        "description": "The block number should be updated to the latest after each raffle to prevent rollback exploits",
+        "security_relevance": "Medium"
+    },
+    {
+        "vulnerability": "Re-entrancy",
+        "invariant": "xlock == true during refund",
+        "description": "Re-entrant calls should not be allowed during the getRefund and endRaffle functions",
+        "security_relevance": "High"
+    },
+    {
+        "vulnerability": "Bad Randomness",
+        "invariant": "seed1 ∈ contestants, seed2 ∈ contestants, seed3 ∈ {block.difficulty}",
+        "description": "Randomness should not rely on easily predictable values like msg.sender, block difficulty, or block.coinbase",
+        "security_relevance": "High"
+    },
+    {
+        "vulnerability": "Money Flow",
+        "invariant": "totalTransferred <= totalTickets * pricePerTicket",
+        "description": "Total money transferred should not exceed the maximum number of tickets times the price per ticket",
+        "security_relevance": "Medium"
+    },
+    {
+        "vulnerability": "Money Flow",
+        "invariant": "refund <= totalTickets * pricePerTicket",
+        "description": "Refund amounts should not exceed the total value of tickets sold",
+        "security_relevance": "High"
+    },
+    {
+        "vulnerability": "Special Storage",
+        "invariant": "contestants[i].raffleId == raffleId for all i",
+        "description": "Contestants should be recorded under the current raffle ID to maintain data consistency",
+        "security_relevance": "Medium"
+    }
+]

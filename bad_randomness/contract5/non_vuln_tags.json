@@ -1,0 +1,58 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Feature": "Access Control",
+        "Details": "Usage of onlyowner modifier for functions changeOwner, changeMultiplier, and changeFee to restrict access only to the contract owner, ensuring restricted management control."
+      },
+      {
+        "Feature": "Money Flow Integrity",
+        "Details": "Balance integrity is maintained by updating the contract’s internal balance state variable (balance) during deposits and payouts, reflecting accurate contract state and total contract-held funds."
+      },
+      {
+        "Feature": "Fee Collection",
+        "Details": "The fee is consistently calculated and deducted from deposits, and any excess ether from fee collections is securely transferred to the owner without affecting the primary contract balance."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "Function": "init",
+        "Details": "The function ensures that deposits below 1 ETH are immediately refunded, preventing unintended user deposits below the contract's minimum threshold."
+      },
+      {
+        "Function": "join",
+        "Details": "Ensures that users cannot deposit more than 1 ETH by refunding any excess amount to the sender. This maintains the deposit cap and avoids unintended large deposits."
+      },
+      {
+        "Function": "rand",
+        "Details": "The rand function verifies that generated random numbers are constrained within a range specified by the max parameter, limiting randomness scope to contract requirements."
+      },
+      {
+        "Function": "withdrawTokens",
+        "Details": "Ensures that the staked balance is decreased before transferring tokens, keeping state updates consistent and accurate."
+      }
+    ],
+    "RiskyFeatures": [
+      {
+        "Feature": "Randomness Generation",
+        "Details": "The rand function uses block hashes from recent blocks for randomness, which is predictable and manipulable by miners, exposing the contract to possible bias in random outcomes (e.g., during user payout selection).",
+        "PotentialRisk": "BAD_RANDOMNESS"
+      },
+      {
+        "Feature": "Fallback Function",
+        "Details": "The fallback function automatically calls init, which performs actions based on received msg.value, potentially allowing inadvertent or exploitative calls that could affect contract flow.",
+        "PotentialRisk": "UNINTENTIONAL_EXECUTION"
+      },
+      {
+        "Feature": "Balance Tracking",
+        "Details": "The contract has a separate balance variable distinct from this.balance, which might cause inconsistencies or logic errors if not handled carefully.",
+        "PotentialRisk": "BALANCE_MISMATCH"
+      },
+      {
+        "Feature": "Fees Handling",
+        "Details": "While fees are collected and transferred to the owner, this logic may cause unexpected behavior if the balance of the contract does not align perfectly with its internal balance variable, particularly if re-entrancy or unexpected behavior occurs.",
+        "PotentialRisk": "INACCURATE_FEE_CALCULATION"
+      }
+    ]
+  }
+}

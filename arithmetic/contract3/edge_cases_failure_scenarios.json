@@ -1,0 +1,17 @@
+{
+  "Edge_Case_Annotations": [
+    {
+      "Condition": "Overflow scenario",
+      "Details": "When value added exceeds uint capacity, causing overflow in sellerBalance."
+    }
+  ],
+  "Common_Attack_Patterns": [
+    {
+      "Vulnerability": "Arithmetic overflow",
+      "Details": "If a large enough value is passed to add, sellerBalance could overflow, potentially allowing unintended or malicious behavior."
+    }
+  ],
+  "Recovery_Mechanisms": {
+    "Description": "No recovery mechanisms are implemented in this contract to prevent or handle overflow."
+  }
+}

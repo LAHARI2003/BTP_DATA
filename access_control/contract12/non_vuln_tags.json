@@ -1,0 +1,15 @@
+{
+  "NonVulnerableTags": {
+    "AccessControl": {
+      "Description": "The contract correctly sets the owner variable to the address that deploys the contract in the constructor, ensuring only the deployer has initial control."
+    }
+  },
+  "RiskyFeatures": {
+    "DelegatecallUsage": {
+      "Description": "The `forward` function uses `delegatecall`, which is known to be potentially dangerous when calling external contracts. If `callee` is an untrusted contract, it can execute code in the context of the `Proxy` contract, leading to state modification or malicious actions."
+    },
+    "AccessControlInForwardFunction": {
+      "Description": "The `forward` function lacks access control checks, allowing any caller to execute it. This may enable arbitrary users to invoke the `delegatecall`, potentially opening security risks if `callee` points to a malicious contract."
+    }
+  }
+}

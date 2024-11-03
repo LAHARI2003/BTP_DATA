@@ -1,0 +1,9 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "None. All users can call the add function to modify the balance.",
+    "OverflowProtection": "None. Addition in add function is unchecked, making it vulnerable to overflow."
+  },
+  "FallbackFunctionality": {
+    "Functionality": "No fallback or receive function implemented as the contract operates on a simple balance update."
+  }
+}

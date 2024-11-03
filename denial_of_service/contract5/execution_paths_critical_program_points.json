@@ -1,0 +1,18 @@
+{
+    "Function-Level Analysis": {
+        "lendGovernmentMoney": "Handles lending of money, manages creditors, checks for breakdown conditions, and resets state if breakdown occurs.",
+        "totalDebt": "Calculates the total debt owed to creditors who have not yet been paid out.",
+        "totalPayedOut": "Calculates the total amount paid out to creditors.",
+        "investInTheSystem": "Allows for additional investments into profitFromCrash by external entities.",
+        "inheritToNextGeneration": "Allows corruptElite to assign a new elite."
+    },
+    "Execution Path Tags": {
+        "Decision Points": [
+            "require(lastTimeOfNewCredit + TWELVE_HOURS < block.timestamp) in lendGovernmentMoney to check system breakdown condition.",
+            "amount >= 10 ** 18 in lendGovernmentMoney to ensure minimum lending amount."
+        ],
+        "State Transition Points": [
+            "Updates to creditorAddresses, creditorAmounts, lastCreditorPayedOut, lastTimeOfNewCredit, profitFromCrash, and corruptElite in lendGovernmentMoney."
+        ]
+    }
+}

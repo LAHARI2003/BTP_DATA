@@ -1,0 +1,12 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "The onlyowner modifier is applied to owner functions to restrict their usage.",
+    "DepositLimit": "Deposits are limited to 1 ETH to standardize participation."
+  },
+  "FallbackFunctionality": {
+    "FallbackFunction": "The fallback function calls init() to start the deposit process if the contract receives ether."
+  },
+  "TimeSensitiveLogic": {
+    "FeeCollection": "Fees are transferred to the owner's address at the end of each join transaction."
+  }
+}

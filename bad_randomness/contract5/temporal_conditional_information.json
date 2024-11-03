@@ -1,0 +1,14 @@
+{
+  "TimeSensitiveLogic": {
+    "Randomness": "The rand function relies on block.blockhash of the previous block, making it time-sensitive and predictable."
+  },
+  "ConditionalLogicPaths": {
+    "joinFunctionPaths": {
+      "MinimumDepositCheck": "init verifies msg.value >= 1 ether.",
+      "PayoutEligibility": "A check ensures balance is sufficient to process the selected unpaid entry's payout."
+    },
+    "FeeDistributionCondition": {
+      "fees > 0": "If fees are available, they are transferred to the owner after processing payouts."
+    }
+  }
+}

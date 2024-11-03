@@ -1,0 +1,19 @@
+{
+  "TransactionStateContext": {
+    "States": [
+      {
+        "State": "Addition State",
+        "Description": "When users call the run function to add a value to count."
+      }
+    ]
+  },
+  "ExternalInteractions": {
+    "Interactions": [
+      {
+        "Type": "Public Function Call",
+        "Function": "run",
+        "Description": "Users interact with the run function to perform an addition that updates the count state variable."
+      }
+    ]
+  }
+}

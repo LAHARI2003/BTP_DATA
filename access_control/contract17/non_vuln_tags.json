@@ -1,0 +1,36 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": {
+      "MoneyFlowIntegrity": "The contract ensures that balances[msg.sender] correctly reflects the amount deposited by each user and updates correctly when withdrawals are made.",
+      "InvariantValidationExamples": [
+        {
+          "Function": "withdraw",
+          "Description": "The withdraw function validates that the balance of msg.sender must be reduced by amount after the transfer, ensuring integrity of balance tracking."
+        },
+        {
+          "Function": "deposit",
+          "Description": "The deposit function includes an assert statement to verify that the user's balance does not overflow, preserving consistency in the deposit logic."
+        }
+      ]
+    },
+    "RiskyFeatures": {
+      "AccessControlRisk": [
+        {
+          "Function": "initWallet",
+          "RiskDescription": "The initWallet function sets the creator, but since it's not a constructor, anyone can call it to overwrite the creator address, effectively taking control of the contract."
+        },
+        {
+          "Function": "migrateTo",
+          "RiskDescription": "The migrateTo function allows the creator to transfer the entire contract balance to another address. If initWallet has been exploited to reset the creator, an attacker could drain all funds."
+        }
+      ],
+      "LackOfConstructorProtection": {
+        "Description": "The contract lacks a correctly named constructor in Solidity 0.4.24, making it possible for anyone to call initWallet and become the creator."
+      },
+      "ReentrancyRisk": {
+        "Function": "withdraw",
+        "RiskDescription": "The withdraw function transfers Ether before updating balances, making it potentially vulnerable to reentrancy attacks. Although no fallback functions are defined here, this could still be exploited if interacting with other contracts."
+      }
+    }
+  }
+}

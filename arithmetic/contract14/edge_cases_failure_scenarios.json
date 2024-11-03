@@ -1,0 +1,18 @@
+{
+  "EdgeCaseAnnotations": {
+    "ZeroBalanceTransfer": {
+      "Description": "If the sender's balance is zero or less than the transfer amount, the transaction fails."
+    },
+    "InsufficientBalanceTransfer": {
+      "Description": "The require check in the transfer function prevents transferring more tokens than the sender owns."
+    }
+  },
+  "CommonAttackPatterns": [
+    {
+      "Type": "Arithmetic Underflow",
+      "VulnerableLine": 20,
+      "Description": "Without SafeMath or similar checks, the line require(balances[msg.sender] - _value >= 0) is vulnerable to underflows."
+    }
+  ],
+  "RecoveryMechanisms": "No explicit recovery mechanism; an emergency stop could improve safety."
+}

@@ -1,0 +1,22 @@
+{
+    "invariants": [
+        {
+            "vulnerability_category": "Arithmetic Overflow/Underflow",
+            "invariant": "count >= input",
+            "expression_representation": "count - input >= 0",
+            "security_relevance_level": "High"
+        },
+        {
+            "vulnerability_category": "Special Storage",
+            "invariant": "count <= max(uint)",
+            "expression_representation": "count ≤ max_uint",
+            "security_relevance_level": "Medium"
+        },
+        {
+            "vulnerability_category": "Data Flow & Business Logic",
+            "invariant": "input > 0",
+            "expression_representation": "input > 0",
+            "security_relevance_level": "Low"
+        }
+    ]
+}

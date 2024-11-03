@@ -1,0 +1,16 @@
+{
+  "CrossContractDependencies": {
+    "WalletLibrary": {
+      "FunctionsDelegated": [
+        "initWallet - for initial contract setup",
+        "isOwner, hasConfirmed - ownership checks",
+        "setDailyLimit - daily spending limit"
+      ],
+      "DelegationMethod": "delegatecall used to call WalletLibrary functions"
+    }
+  },
+  "InterContractConsistencyConditions": {
+    "DelegatecallSecurity": "Calls to WalletLibrary are unrestricted, creating a need to verify the contract address is reliable.",
+    "StateConsistency": "Changes in ownership and spending limits in WalletLibrary must be reflected in the Wallet contract."
+  }
+}

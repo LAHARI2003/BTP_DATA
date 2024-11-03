@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract7",
+    "contract_metadata": {
+        "contract_type": "RandomNumberGenerator",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Bad Randomness"
+        ],
+        "vulnerable_at_lines": [12, 18, 20, 22]
+    }
+}

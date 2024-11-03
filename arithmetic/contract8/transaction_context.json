@@ -1,0 +1,10 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "OverflowState": "Occurs when the run function is called with a high enough input to cause an overflow in the count variable."
+    },
+    "ExternalInteractions": {
+      "ReadAndWrite": "The contract interacts with public storage (count) which can be accessed externally for reading, making overflow visible to users."
+    }
+  }
+}

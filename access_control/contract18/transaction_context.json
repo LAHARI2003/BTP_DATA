@@ -1,0 +1,9 @@
+{
+    "Transaction State Context": {
+        "Deposit State": "When users send Ether to the contract, calling the deposit function.",
+        "Withdrawal State": "When users withdraw Ether from the contract via the withdraw function."
+    },
+    "External Interactions": {
+        "Ether Transfer": "The contract facilitates Ether transfers to and from users based on deposit and withdrawal transactions."
+    }
+}

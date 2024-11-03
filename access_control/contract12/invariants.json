@@ -1,0 +1,53 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == owner",
+      "expression": "msg.sender == owner",
+      "security_relevance": "high",
+      "description": "Ensures that only the owner can invoke privileged functions."
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "expression": "msg.sender == tx.origin",
+      "security_relevance": "medium",
+      "description": "Verifies that the direct caller (origin) is the sender to avoid external manipulation through delegate calls."
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "require(msg.sender == owner)",
+      "expression": "require(msg.sender == owner)",
+      "security_relevance": "high",
+      "description": "Validates that sensitive functions are executed only by the contract owner."
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "role(msg.sender) ∈ allowed_roles",
+      "expression": "role(msg.sender) ∈ allowed_roles",
+      "security_relevance": "high",
+      "description": "Restricts access to critical functions based on role verification."
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "xlock == true",
+      "expression": "xlock == true",
+      "security_relevance": "high",
+      "description": "Ensures non-reentrant behavior to prevent malicious recursive calls."
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "!externalCall",
+      "expression": "require(!externalCall)",
+      "security_relevance": "high",
+      "description": "Protects against re-entrancy by restricting external calls during function execution."
+    },
+    {
+      "vulnerability": "Gas Control",
+      "invariant": "gasUsed(func) ≤ maxGasPerFunc?",
+      "expression": "gasUsed(func) ≤ maxGasPerFunc?",
+      "security_relevance": "medium",
+      "description": "Limits gas usage for individual function calls to ensure they don't exceed a predefined threshold."
+    }
+  ]
+}

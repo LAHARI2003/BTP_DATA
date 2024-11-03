@@ -1,0 +1,12 @@
+{
+    "EdgeCaseAnnotations": {
+        "ZeroOrInvalidBets": "The deal function requires msg.value within the minBet and maxBet range to avoid invalid bets.",
+        "ReplayingGame": "The gameIsGoingOn modifier checks if a game is ongoing to prevent re-initializing an already active game.",
+        "PredictableRandomness": "The Deck.deal function uses block data for randomness, making it vulnerable to prediction attacks."
+    },
+    "CommonAttackPatterns": {
+        "AccessControlVulnerabilities": "If functions like deal, hit, and stand lacked gameIsGoingOn validation, players could initiate or interact with multiple games improperly.",
+        "PredictableRandomness": "The use of block.number and block.timestamp in Deck.deal could lead to randomness prediction, a potential security flaw."
+    },
+    "RecoveryMechanisms": "No explicit recovery mechanisms, such as pausing or emergency stops, are implemented in the contract."
+}

@@ -1,0 +1,11 @@
+{
+  "TimeSensitiveLogic": {
+    "RandomnessDependence": "The answer relies on block.blockhash and now, making it predictable over time, especially in controlled environments like private or test nets."
+  },
+  "ConditionalLogicPaths": {
+    "GuessOutcomePaths": [
+      "If the guess matches the answer, the user wins and receives 2 ether.",
+      "If the guess does not match, the ether is retained in the contract."
+    ]
+  }
+}

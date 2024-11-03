@@ -1,0 +1,15 @@
+{
+  "EdgeCaseAnnotations": [
+    {
+      "Case": "Weak Randomness",
+      "Description": "The contract relies on predictable block properties (`block.timestamp`, `block.number`), leading to weak randomness that can be exploited."
+    }
+  ],
+  "CommonAttackPatterns": [
+    {
+      "Pattern": "Randomness Manipulation",
+      "Explanation": "Miners or validators could potentially influence block properties used to generate 'random' numbers."
+    }
+  ],
+  "RecoveryMechanisms": []
+}

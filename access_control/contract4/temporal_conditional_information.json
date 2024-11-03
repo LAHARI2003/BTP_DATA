@@ -1,0 +1,6 @@
+{
+    "Time-Sensitive Logic": "Not applicable, as this contract does not have time-based restrictions or conditions.",
+    "Conditional Logic Paths": {
+        "onlyowner Modifier": "If the caller is not the owner, the 'withdraw' function reverts due to the 'onlyowner' modifier check."
+    }
+}

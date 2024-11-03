@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract38",
+    "contract_metadata": {
+        "contract_type": "Demo",
+        "complexity_level": "Low",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [16]
+    }
+}

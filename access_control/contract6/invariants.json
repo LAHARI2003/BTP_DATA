@@ -1,0 +1,25 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == owner",
+      "expression_representation": "require(msg.sender == owner)",
+      "security_relevance_level": "High",
+      "description": "Ensures only the contract owner can withdraw funds."
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "map[key] is defined for all key < map.length",
+      "expression_representation": "∀ key < map.length, map[key] ∈ uint256",
+      "security_relevance_level": "Medium",
+      "description": "Ensures that the mapping array does not allow out-of-bounds access."
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "map.length ≥ key + 1 when map[key] is set",
+      "expression_representation": "if map.length ≤ key then map.length = key + 1",
+      "security_relevance_level": "Low",
+      "description": "Expands the array size dynamically to accommodate new keys, preventing key overflow."
+    }
+  ]
+}

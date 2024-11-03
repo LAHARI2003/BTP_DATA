@@ -1,0 +1,19 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "State": [
+        {
+          "Initial": {
+            "Description": "Contract is deployed, and the variable `count` is initialized to 1."
+          },
+          "Execution": {
+            "Description": "The `run` function is executed, modifying the `res` variable based on the `input`."
+          }
+        }
+      ]
+    },
+    "ExternalInteractions": {
+      "Description": "No tokens or assets are transferred in or out of the contract. The function `run` only performs an internal arithmetic operation and does not interact with external contracts or addresses."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "EdgeCaseAnnotations": {
+    "LowDeposits": "The init function checks for msg.value < 1 ether, refunding the user if the deposit is insufficient.",
+    "OverDepositHandling": "If msg.value exceeds 1 ether, the excess is refunded to the user in join."
+  },
+  "CommonAttackPatterns": {
+    "AccessControl": "If onlyowner modifier was removed from owner functions, unauthorized users could alter key parameters.",
+    "RandomnessManipulation": "The rand function relies on block.blockhash, which is predictable and susceptible to manipulation.",
+    "DenialOfService": "Unpaid entries could pile up without a mechanism to handle or remove them efficiently."
+  },
+  "RecoveryMechanisms": "This contract does not contain any emergency stop or recovery functions to pause operations."
+}

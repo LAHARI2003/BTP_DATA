@@ -1,0 +1,12 @@
+{
+    "contract_name": "contract3",
+    "contract_metadata": {
+      "contract_type": "Deposit contract",
+      "complexity_level": "Intermediate",
+      "vulnerability_category": [
+        "Reentrancy",
+        "Money flow"
+      ]
+    }
+  }
+  

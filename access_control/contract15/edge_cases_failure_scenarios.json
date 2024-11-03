@@ -1,0 +1,9 @@
+{
+  "EdgeCaseAnnotations": {
+    "UnauthorizedOwnerChange": "The lack of the onlyowner modifier allows any caller to change the contract ownership, making it susceptible to unauthorized changes"
+  },
+  "CommonAttackPatterns": {
+    "AccessControlVulnerability": "The missing onlyowner modifier on changeOwner introduces an access control vulnerability, making the contract susceptible to unauthorized ownership transfers"
+  },
+  "RecoveryMechanisms": "None implemented"
+}

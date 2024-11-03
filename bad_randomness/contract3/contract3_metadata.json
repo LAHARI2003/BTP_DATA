@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract3",
+    "contract_metadata": {
+        "contract_type": "Guess the Random Number Challenge",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Bad Randomness"
+        ],
+        "vulnerable_at_lines": [15]
+    }
+}

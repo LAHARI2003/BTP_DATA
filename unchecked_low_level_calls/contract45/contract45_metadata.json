@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract45",
+    "contract_metadata": {
+        "contract_type": "Old Reward Distribution",
+        "complexity_level": "Medium",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [18]
+    }
+}

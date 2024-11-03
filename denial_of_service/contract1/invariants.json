@@ -1,0 +1,38 @@
+[
+  {
+    "vulnerability_category": "Access Control",
+    "invariant": "msg.sender == currentFrontrunner",
+    "description": "Ensures that only the current frontrunner can make changes affecting their bid state.",
+    "security_relevance": "High"
+  },
+  {
+    "vulnerability_category": "Access Control",
+    "invariant": "require(msg.sender != 0)",
+    "description": "Ensures that the frontrunner's address is a valid non-zero address.",
+    "security_relevance": "High"
+  },
+  {
+    "vulnerability_category": "Money Flow",
+    "invariant": "msg.value > currentBid",
+    "description": "Only allows bids that are greater than the current highest bid.",
+    "security_relevance": "High"
+  },
+  {
+    "vulnerability_category": "Money Flow",
+    "invariant": "currentBid >= 0",
+    "description": "The bid amount should always be non-negative.",
+    "security_relevance": "Medium"
+  },
+  {
+    "vulnerability_category": "Re-entrancy",
+    "invariant": "currentFrontrunner.send(currentBid)",
+    "description": "Ensures that a re-entrancy attack does not succeed if the recipient's fallback function reverts.",
+    "security_relevance": "High"
+  },
+  {
+    "vulnerability_category": "Re-entrancy",
+    "invariant": "require(!externalCall)",
+    "description": "Guarantees that critical sections (like updating the frontrunner) do not invoke external contract calls that could re-enter.",
+    "security_relevance": "High"
+  }
+]

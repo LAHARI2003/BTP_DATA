@@ -1,0 +1,9 @@
+{
+    "Implemented Security Controls": {
+        "Access Control": "corruptElite is the only address that can call inheritToNextGeneration to change elite.",
+        "Breakdown Check": "lendGovernmentMoney function enforces a 12-hour check to determine if system breakdown should occur."
+    },
+    "Fallback Functionality": {
+        "Fallback Function": "Default fallback function calls lendGovernmentMoney, allowing continued operation of lending."
+    }
+}

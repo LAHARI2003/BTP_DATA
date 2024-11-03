@@ -1,0 +1,6 @@
+{
+  "TimeSensitiveLogic": "No time-sensitive logic exists in this contract.",
+  "ConditionalLogicPaths": {
+    "sendTo Function": "If tx.origin == owner, the transfer to the receiver proceeds; otherwise, it reverts."
+  }
+}

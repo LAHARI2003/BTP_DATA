@@ -1,0 +1,82 @@
+[
+  {
+    "vulnerability_category": "Access Control",
+    "invariants": [
+      {
+        "expression": "msg.sender ∈ m_owners",
+        "description": "Sender must be an owner to perform restricted actions",
+        "security_relevance": "high"
+      },
+      {
+        "expression": "m_ownerIndex[msg.sender] > 0",
+        "description": "Only addresses in m_ownerIndex have privileges",
+        "security_relevance": "high"
+      },
+      {
+        "expression": "m_ownerIndex[m_owners[i]] = i for all i ∈ {1, ..., m_numOwners}",
+        "description": "Owner index consistency check",
+        "security_relevance": "medium"
+      }
+    ]
+  },
+  {
+    "vulnerability_category": "Re-entrancy",
+    "invariants": [
+      {
+        "expression": "msg.sender ∉ externalCalls",
+        "description": "No external calls during sensitive operations",
+        "security_relevance": "high"
+      },
+      {
+        "expression": "msg.sender ∉ m_pending",
+        "description": "Avoid re-entrant modifications in pending operations",
+        "security_relevance": "medium"
+      }
+    ]
+  },
+  {
+    "vulnerability_category": "Gas Control",
+    "invariants": [
+      {
+        "expression": "gasleft() ≥ minGasRequired",
+        "description": "Ensure adequate gas remains for critical operations",
+        "security_relevance": "medium"
+      }
+    ]
+  },
+  {
+    "vulnerability_category": "Oracle Slippage (Price Manipulation)",
+    "invariants": [
+      {
+        "expression": "oraclePrice(newPrice) - oraclePrice(oldPrice) ≤ maxAllowedSlippage",
+        "description": "Ensure price changes are within allowable limits",
+        "security_relevance": "high"
+      }
+    ]
+  },
+  {
+    "vulnerability_category": "Money Flow",
+    "invariants": [
+      {
+        "expression": "m_spentToday + value ≤ m_dailyLimit",
+        "description": "Daily spend limit must not be exceeded",
+        "security_relevance": "high"
+      },
+      {
+        "expression": "m_dailyLimit > 0",
+        "description": "Daily limit must be positive to enable spending restrictions",
+        "security_relevance": "medium"
+      }
+    ]
+  },
+  {
+    "vulnerability_category": "Time Lock",
+    "invariants": [
+      {
+        "expression": "m_lastDay ≤ today()",
+        "description": "Ensure daily limit resets for new day",
+        "security_relevance": "medium"
+      }
+    ]
+  }
+]

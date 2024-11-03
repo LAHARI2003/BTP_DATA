@@ -1,0 +1,76 @@
+{
+  "invariants": [
+    {
+      "expression": "msg.sender == owner",
+      "vulnerability": "Access Control",
+      "description": "Ensures that only the contract owner can execute specific functions, such as pausing/unpausing the contract and transferring ownership.",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "paused == false",
+      "vulnerability": "Access Control",
+      "description": "Requires the contract to be unpaused for certain actions, preventing transactions during emergencies.",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "balances[msg.sender] >= amount",
+      "vulnerability": "Money Flow",
+      "description": "Ensures the sender has enough balance to complete the transfer, preventing overdrafts.",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "balances[msg.sender] >= cnt * _value",
+      "vulnerability": "Arithmetic",
+      "description": "Guarantees that the sender has enough tokens for batch transfers, preventing arithmetic overflows.",
+      "security_relevance": "Medium"
+    },
+    {
+      "expression": "totalSupply == 7000000000 * (10 ** uint256(decimals))",
+      "vulnerability": "Special Storage",
+      "description": "Sets the total token supply during contract creation to prevent unauthorized minting.",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "balances[msg.sender] >= amount",
+      "vulnerability": "Access Control",
+      "description": "Ensures only those with sufficient balance can transfer tokens, enforcing correct token ownership.",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "totalSupply >= balances[_to] + _value",
+      "vulnerability": "Money Flow",
+      "description": "Maintains the invariant that token transfers do not exceed the total supply.",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "allowed[_from][msg.sender] >= _value",
+      "vulnerability": "Access Control",
+      "description": "Ensures that only the approved amount of tokens can be transferred from one account by another.",
+      "security_relevance": "Medium"
+    },
+    {
+      "expression": "balances[_from] >= _value",
+      "vulnerability": "Money Flow",
+      "description": "Ensures the sender has sufficient balance for the transfer.",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "balances[_to] + _value >= balances[_to]",
+      "vulnerability": "Arithmetic",
+      "description": "Prevents overflow in recipient’s balance by checking the balance will not exceed storage limits.",
+      "security_relevance": "Medium"
+    },
+    {
+      "expression": "totalSupply >= sum(balances[address])",
+      "vulnerability": "Special Storage",
+      "description": "Ensures that the total supply is correctly reflected in all account balances.",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "allowed[msg.sender][_spender] >= 0",
+      "vulnerability": "Access Control",
+      "description": "Ensures that allowances are non-negative and correctly assigned.",
+      "security_relevance": "Low"
+    }
+  ]
+}

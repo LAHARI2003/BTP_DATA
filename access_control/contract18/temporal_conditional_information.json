@@ -1,0 +1,6 @@
+{
+    "Time-Sensitive Logic": "None in this contract, as no functions depend on time-based restrictions.",
+    "Conditional Logic Paths": {
+        "withdraw": "Different paths exist based on the balance condition; the function either allows withdrawal or reverts."
+    }
+}

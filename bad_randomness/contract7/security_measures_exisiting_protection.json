@@ -1,0 +1,9 @@
+{
+  "ImplementedSecurityControls": [
+    {
+      "Control": "Private Salt Variable",
+      "Explanation": "Using a private variable for salt; however, this control is insufficient due to the predictable nature of `block.timestamp`."
+    }
+  ],
+  "FallbackFunctionality": []
+}

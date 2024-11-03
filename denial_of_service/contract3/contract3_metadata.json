@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract3",
+    "contract_metadata": {
+        "contract_type": "DosNumber",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Denial of Service"
+        ],
+        "vulnerable_at_lines": [18, 19, 20, 21, 22]
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "EdgeCaseAnnotations": [
+    {
+      "Case": "Very large deposit values.",
+      "Description": "Due to lack of overflow protection, a large enough deposit may cause the balance to wrap around."
+    }
+  ],
+  "CommonAttackPatterns": [
+    {
+      "Pattern": "Arithmetic overflow vulnerability.",
+      "Vulnerability": "Lack of safe math causes an overflow if deposit value is high enough to exceed maximum uint256."
+    }
+  ],
+  "RecoveryMechanisms": {
+    "Mechanism": "No recovery mechanisms implemented in this contract to handle overflow or emergency stops."
+  }
+}

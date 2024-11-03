@@ -1,0 +1,25 @@
+{
+  "Function_Level_Analysis": {
+    "initMultiowned": "Initializes multi-ownership structure with owner addresses and required confirmations",
+    "revoke": "Allows an owner to revoke a prior confirmation",
+    "changeOwner": "Replaces an existing owner address with a new one",
+    "addOwner": "Adds a new owner to the wallet",
+    "removeOwner": "Removes an existing owner from the wallet",
+    "changeRequirement": "Changes the required confirmations for multi-sig transactions",
+    "execute": "Executes transactions immediately if within the daily limit or with sufficient confirmations",
+    "confirm": "Confirms a pending transaction",
+    "underLimit": "Checks and manages the daily limit"
+  },
+  "Execution_Path_Tags": {
+    "Decision_Points": [
+      "require(m_required <= m_numOwners) in changeRequirement to ensure valid confirmations",
+      "require(msg.sender is an owner) in revoke, changeOwner, etc.",
+      "require(transaction is under daily limit) in underLimit"
+    ],
+    "State_Transition_Points": [
+      "Update m_owners, m_ownerIndex, m_required upon owner changes",
+      "Update m_dailyLimit, m_spentToday upon spending",
+      "Reset m_pending for transaction finalization"
+    ]
+  }
+}

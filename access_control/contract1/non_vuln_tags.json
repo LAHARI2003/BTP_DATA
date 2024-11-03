@@ -1,0 +1,53 @@
+{
+    "NonVulnerableTags": {
+        "AccessControl": {
+            "WellImplementedFeatures": [
+                {
+                    "Description": "The Destroy function restricts access by checking that msg.sender is the contract owner before allowing self-destruct. This ensures only the contract owner can destroy the contract.",
+                    "Implementation": "require(msg.sender == owner)"
+                }
+            ]
+        },
+        "DataManagement": {
+            "WellImplementedFeatures": [
+                {
+                    "Description": "The contract maintains a private array, bonusCodes, where values can be added or modified by external functions. The initial empty state of this array is correctly handled within the constructor.",
+                    "Implementation": "bonusCodes = new uint               }
+            ]
+        },
+        "MoneyFlowIntegrity": {
+            "WellImplementedFeatures": [
+                {
+                    "Description": "Fallback function allows contract to receive Ether without altering any contract state or logic. It ensures funds can be deposited safely without interference with other functionalities.",
+                    "Implementation": "function () public payable {}"
+                }
+            ]
+        },
+        "InvariantValidation": {
+            "WellImplementedFeatures": [
+                {
+                    "Description": "The UpdateBonusCodeAt function validates the index (idx) against the array length to prevent out-of-bounds access before updating a value, ensuring array integrity is maintained.",
+                    "Implementation": "require(idx < bonusCodes.length);"
+                }
+            ]
+        }
+    },
+    "PotentialRiskyFeatures": {
+        "ArrayManipulation": {
+            "RiskyFeatures": [
+                {
+                    "Description": "The PopBonusCode function reduces the length of the bonusCodes array without verifying its state, which can cause an underflow if misused. This could lead to array data corruption or errors if improperly handled.",
+                    "Implementation": "bonusCodes.length--;"
+                }
+            ]
+        },
+        "AccessControl": {
+            "RiskyFeatures": [
+                {
+                    "Description": "No restriction is applied on the PushBonusCode or UpdateBonusCodeAt functions, allowing any user to add or modify bonus codes without ownership verification. This could lead to unintended data manipulation.",
+                    "Implementation": "No owner or permissions check on PushBonusCode and UpdateBonusCodeAt"
+                }
+            ]
+        }
+    }
+}

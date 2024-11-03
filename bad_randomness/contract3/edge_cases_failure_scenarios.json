@@ -1,0 +1,11 @@
+{
+  "EdgeCaseAnnotations": {
+    "ZeroEtherDeposits": "Both the constructor and guess functions require exactly 1 ether, so attempts to send zero or other amounts would revert.",
+    "InvalidGuesses": "If the guess does not match the answer, funds are retained by the contract."
+  },
+  "CommonAttackPatterns": {
+    "BadRandomness": "The use of blockhash and now for randomness is predictable, as both can be known or influenced by miners, making the answer vulnerable to guessing.",
+    "Replay or Reentrancy": "There are no mechanisms to prevent reentrancy attacks, though reentrancy is unlikely in the current setup."
+  },
+  "RecoveryMechanisms": "No specific recovery mechanisms are implemented, as the contract is intended to be a challenge with potential vulnerabilities."
+}

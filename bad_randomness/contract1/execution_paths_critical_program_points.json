@@ -1,0 +1,20 @@
+{
+    "FunctionLevelAnalysis": {
+        "deal": "Starts a new game by dealing initial cards to the player and house.",
+        "hit": "Deals additional cards to the player if they choose to continue.",
+        "stand": "Finalizes the game, dealing cards to the house as necessary to determine the winner.",
+        "checkGameResult": "Evaluates the game state and determines the winner, triggering appropriate payments if applicable.",
+        "calculateScore": "Calculates potential scores, accounting for Ace card values."
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            "require(msg.value >= minBet && msg.value <= maxBet) in deal to ensure valid bet amounts.",
+            "require(player has an ongoing game) in hit and stand to prevent invalid actions.",
+            "require(blockhash, player, cardNumber, timestamp) in Deck.deal for card randomness."
+        ],
+        "StateTransitionPoints": [
+            "Update game state (Ongoing, Player, House, Tie) based on checkGameResult.",
+            "Bet placement and winnings transfers (if applicable) at game completion."
+        ]
+    }
+}

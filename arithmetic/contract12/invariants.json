@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Arithmetic Overflow (Addition)",
+      "invariant": "count + input < MAX_UINT256",
+      "description": "Ensures that addition does not cause overflow in the state variable count",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Arithmetic Overflow (Multiplication)",
+      "invariant": "count * input < MAX_UINT256",
+      "description": "Ensures that multiplication does not cause overflow in the state variable count",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Arithmetic Underflow (Subtraction)",
+      "invariant": "count - input >= 0",
+      "description": "Ensures that subtraction does not cause underflow in the state variable count",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Local Arithmetic Overflow (Addition)",
+      "invariant": "count + input < MAX_UINT256",
+      "description": "Ensures that addition in local scope does not cause overflow",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Local Arithmetic Overflow (Multiplication)",
+      "invariant": "count * input < MAX_UINT256",
+      "description": "Ensures that multiplication in local scope does not cause overflow",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Local Arithmetic Underflow (Subtraction)",
+      "invariant": "count - input >= 0",
+      "description": "Ensures that subtraction in local scope does not cause underflow",
+      "security_relevance": "Medium"
+    }
+  ]
+}

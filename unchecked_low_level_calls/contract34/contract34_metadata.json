@@ -1,0 +1,12 @@
+{
+    "contract_name": "contract34",
+    "contract_metadata": {
+        "contract_type": "Insecure Ether Storage",
+        "complexity_level": "Low",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls",
+            "Reentrancy"
+        ],
+        "vulnerable_at_lines": [25]
+    }
+}

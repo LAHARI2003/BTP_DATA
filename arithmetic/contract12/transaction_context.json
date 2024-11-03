@@ -1,0 +1,22 @@
+{
+    "TransactionStateContext": {
+        "StateVariables": ["count"],
+        "PrimaryStateOperations": [
+            {
+                "Function": "overflowaddtostate",
+                "Operation": "Addition with potential overflow"
+            },
+            {
+                "Function": "overflowmultostate",
+                "Operation": "Multiplication with potential overflow"
+            },
+            {
+                "Function": "underflowtostate",
+                "Operation": "Subtraction with potential underflow"
+            }
+        ]
+    },
+    "ExternalInteractions": {
+        "InteractionsDescription": "This contract operates with a single state variable 'count' which is publicly accessible. No token transfers or external contract calls."
+    }
+}

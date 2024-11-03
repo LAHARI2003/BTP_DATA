@@ -1,0 +1,28 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Arithmetic Overflow",
+            "expression": "balance >= 0",
+            "description": "Balance should remain non-negative.",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Arithmetic Overflow",
+            "expression": "balance + deposit >= balance",
+            "description": "Sum of balance and deposit should not overflow.",
+            "security_relevance": "high"
+        },
+        {
+            "vulnerability": "Access Control",
+            "expression": "msg.sender != address(0)",
+            "description": "Only valid addresses should be allowed to interact.",
+            "security_relevance": "medium"
+        },
+        {
+            "vulnerability": "Money Flow",
+            "expression": "balance + deposit <= maxUint256",
+            "description": "Ensure balance does not exceed maximum allowed value.",
+            "security_relevance": "high"
+        }
+    ]
+}

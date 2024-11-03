@@ -1,0 +1,12 @@
+{
+  "TimeSensitiveLogic": {
+    "Description": "There is no time-sensitive logic in this contract."
+  },
+  "ConditionalLogicPaths": {
+    "ArithmeticUnderflowCondition": {
+      "Description": "The path followed depends on whether 'v' is greater than 'map[k]', potentially leading to an underflow.",
+      "Condition": "If 'v' > 'map[k]', underflow occurs.",
+      "MitigationRecommendation": "Add a conditional check to ensure 'map[k]' is greater than or equal to 'v' before subtraction."
+    }
+  }
+}

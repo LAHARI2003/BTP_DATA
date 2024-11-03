@@ -1,0 +1,47 @@
+{
+    "FunctionLevelAnalysis": [
+        {
+            "Function": "overflowaddtostate",
+            "Purpose": "Add input to count with potential overflow."
+        },
+        {
+            "Function": "overflowmultostate",
+            "Purpose": "Multiply count by input with potential overflow."
+        },
+        {
+            "Function": "underflowtostate",
+            "Purpose": "Subtract input from count with potential underflow."
+        },
+        {
+            "Function": "overflowlocalonly",
+            "Purpose": "Addition with local variable only, no state impact."
+        },
+        {
+            "Function": "overflowmulocalonly",
+            "Purpose": "Multiplication with local variable only, no state impact."
+        },
+        {
+            "Function": "underflowlocalonly",
+            "Purpose": "Subtraction with local variable only, no state impact."
+        }
+    ],
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            "No specific decision points based on conditional logic."
+        ],
+        "StateTransitionPoints": [
+            {
+                "Function": "overflowaddtostate",
+                "Impact": "Updates count based on addition result."
+            },
+            {
+                "Function": "overflowmultostate",
+                "Impact": "Updates count based on multiplication result."
+            },
+            {
+                "Function": "underflowtostate",
+                "Impact": "Updates count based on subtraction result."
+            }
+        ]
+    }
+}

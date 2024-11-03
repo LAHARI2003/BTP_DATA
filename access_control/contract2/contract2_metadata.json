@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract2",
+    "contract_metadata": {
+        "contract_type": "Fibonacci Balance Contract",
+        "complexity_level": "Advanced",
+        "vulnerability_category": [
+            "Access Control"
+        ],
+        "vulnerable_at_lines": [31, 38]
+    }
+}

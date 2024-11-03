@@ -1,0 +1,15 @@
+{
+  "SecurityMeasures": {
+    "AccessControl": [
+      "onlyOwner modifier restricts access to sensitive functions like setInvestStart and coldStore.",
+      "onlyAnimator modifier restricts access to changeAnimator."
+    ],
+    "DataProtection": [
+      "SafeMath library is used to prevent overflows and underflows in basic arithmetic operations."
+    ],
+    "FallbackFunctionality": [
+      "payWallet handles wallet balance payouts when certain conditions are met.",
+      "payDividends allows users to receive their dividend share when available."
+    ]
+  }
+}

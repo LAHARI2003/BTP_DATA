@@ -1,0 +1,37 @@
+{
+    "FunctionLevelAnalysis": {
+        "set": {
+            "Purpose": "Manages storage in the map array by setting values at specific indices.",
+            "KeyPoints": [
+                "Adjusts map length if needed to accommodate the specified key."
+            ]
+        },
+        "get": {
+            "Purpose": "Retrieves values from the map array using the specified key."
+        },
+        "withdraw": {
+            "Purpose": "Allows the owner to withdraw all ether held by the contract."
+        }
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            {
+                "Decision": "Array Length Check",
+                "Location": "set function",
+                "Description": "Expands the map array to ensure the specified key index can be accessed."
+            },
+            {
+                "Decision": "Owner Verification",
+                "Location": "withdraw function",
+                "Description": "Ensures that only the owner can withdraw ether from the contract."
+            }
+        ],
+        "StateTransitionPoints": [
+            {
+                "Variable": "map",
+                "Location": "set function",
+                "Description": "Modified when adding or updating values at a specific key index."
+            }
+        ]
+    }
+}

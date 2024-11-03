@@ -1,0 +1,11 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "StateOne": "Array Filling - Adding addresses to the list.",
+      "StateTwo": "Array Reset - Clearing the list when a certain length is reached."
+    },
+    "ExternalInteractions": {
+      "Description": "The contract stores addresses of users in an array when `ifillArray` is called."
+    }
+  }
+}

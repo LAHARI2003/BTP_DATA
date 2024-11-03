@@ -1,0 +1,30 @@
+{
+    "FunctionLevelAnalysis": {
+        "init": {
+            "Purpose": "Sets the initialized variable to 1, allowing the contract to execute the run function.",
+            "Requirements": "Only sets initialized to 1; has no other checks."
+        },
+        "run": {
+            "Purpose": "Decrements count by the input value if initialized is set to 1.",
+            "Requirements": "The initialized variable must be set to 1 to proceed; otherwise, the function returns immediately."
+        }
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            {
+                "Condition": "initialized == 0",
+                "Description": "Ensures that the run function executes only if the contract is initialized."
+            }
+        ],
+        "StateTransitionPoints": [
+            {
+                "Variable": "count",
+                "Transition": "Decrements based on input if the initialized variable is set to 1."
+            },
+            {
+                "Variable": "initialized",
+                "Transition": "Changes from 0 to 1 when init is called."
+            }
+        ]
+    }
+}

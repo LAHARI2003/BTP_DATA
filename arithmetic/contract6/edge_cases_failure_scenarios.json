@@ -1,0 +1,17 @@
+{
+  "EdgeCaseAnnotations": {
+    "SubtractionUnderflow": {
+      "Description": "When 'v' is greater than 'map[k]', the subtraction will cause an integer underflow.",
+      "Mitigation": "Introduce a check to ensure 'v' is not greater than 'map[k]' before performing the subtraction."
+    }
+  },
+  "CommonAttackPatterns": {
+    "IntegerUnderflowAttack": {
+      "Description": "An attacker can exploit unchecked arithmetic operations by providing large values to cause underflow, resulting in unexpected large values in 'map'.",
+      "Location": "Function 'init'"
+    }
+  },
+  "RecoveryMechanisms": {
+    "Description": "No recovery mechanism implemented. Recommended: adding checks or a safe arithmetic library like SafeMath to prevent underflow errors."
+  }
+}

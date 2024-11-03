@@ -1,0 +1,37 @@
+{
+  "nonVulnerableTags": {
+    "Access Control": {
+      "description": "The contract assigns the initial token supply to the contract creator, ensuring the ownership of initial tokens is with the deployer.",
+      "implementation": "Correct usage of initial token allocation to msg.sender in the constructor."
+    },
+    "Money Flow Integrity": {
+      "description": "The contract updates user balances consistently, ensuring that the transfer function reduces the sender's balance by the transferred amount and increases the receiver's balance by the same amount.",
+      "implementation": "Proper decrement and increment of balances in the transfer function."
+    },
+    "Invariant Validation": {
+      "description": "The contract ensures the invariant that balances always reflect accurate token holdings for each address after a transfer.",
+      "example": "The balanceOf function directly reads the balances mapping, maintaining an accurate state of each user's balance."
+    }
+  },
+  "riskyFeatures": {
+    "Arithmetic Underflow/Overflow": {
+      "description": "The contract does not use SafeMath or equivalent checks for arithmetic operations, which can lead to overflow or underflow issues.",
+      "potentialRisk": "In Solidity versions prior to 0.8.0, integer underflows or overflows can result in unexpected behavior, potentially enabling exploits.",
+      "location": "Lines 20 and 22 in the transfer function."
+    },
+    "Lack of Access Control on transfer": {
+      "description": "The transfer function is publicly accessible to any user, and there is no additional access control beyond the balance check.",
+      "potentialRisk": "Without restrictions or controls, tokens can be freely transferred by any address, which could lead to unintended usage in certain applications."
+    },
+    "Lack of Event Emission for Transfers": {
+      "description": "The contract does not emit an event after a transfer, making it difficult to track token movements on-chain.",
+      "potentialRisk": "Absence of event emission reduces transparency and hinders efficient tracking of token transfers by off-chain applications.",
+      "suggestedImprovement": "Consider adding an event like Transfer to log token movements, enhancing traceability and monitoring."
+    },
+    "Outdated Solidity Version": {
+      "description": "The contract is written in Solidity version 0.4.18, which is outdated and lacks modern safety features like automatic checks for overflows and underflows.",
+      "potentialRisk": "Older Solidity versions have limited compiler optimizations and lack recent security enhancements.",
+      "suggestedImprovement": "Consider updating to Solidity version 0.8.x or higher to benefit from newer security features."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "Time-Sensitive Logic": {
+    "Description": "The `withdrawalCounter` increases with each call, potentially affecting Fibonacci calculations over time."
+  },
+  "Conditional Logic Paths": {
+    "Condition": "delegatecall",
+    "Description": "If delegatecall fails in `withdraw`, the transaction reverts, protecting against incorrect state changes."
+  }
+}

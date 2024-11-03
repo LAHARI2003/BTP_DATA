@@ -1,0 +1,24 @@
+{
+  "Function-Level Analysis": [
+    {
+      "Function": "refundAll",
+      "Purpose": "Iterates over refundAddresses to send refunds."
+    }
+  ],
+  "Execution Path Tags": {
+    "Decision Points": [
+      {
+        "Location": "refundAll",
+        "Condition": "require(refundAddresses[x].send(refunds[refundAddresses[x]]))",
+        "Description": "Ensures that refunds are successfully sent to each address in refundAddresses. A failure at any address stops the entire refund process."
+      }
+    ],
+    "State Transition Points": [
+      {
+        "Variable": "refunds",
+        "Operation": "Send",
+        "Description": "Refunds are sent to addresses in refundAddresses, which reduces the Ether balance associated with each address in refunds."
+      }
+    ]
+  }
+}

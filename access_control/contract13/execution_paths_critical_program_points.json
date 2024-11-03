@@ -1,0 +1,22 @@
+{
+    "FunctionLevelAnalysis": {
+        "DynamicPyramid": "Sets the creator address but is vulnerable due to the improper use of the constructor name.",
+        "init": "Handles incoming transactions to the contract. It validates the value and calculates fees.",
+        "addPayout": "Adds participants to the pyramid and distributes Ether to earlier participants if the balance allows.",
+        "collectAllFees": "Allows the creator to withdraw all collected fees.",
+        "collectFeesInEther": "Allows the creator to withdraw a specified amount of collected fees.",
+        "collectPercentOfFees": "Allows the creator to withdraw a specified percentage of collected fees.",
+        "changeOwner": "Allows the creator to change the contract owner.",
+        "changeMultiplier": "Allows the creator to set a new pyramid multiplier within certain bounds.",
+        "changeFeePercentage": "Allows the creator to adjust the fee percentage up to a cap."
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            "Check that the transaction value is at least 1 ether in the init function.",
+            "Reduce the fee by 50% if the transaction value is 50 ether or more in the init function."
+        ],
+        "StateTransitionPoints": [
+            "Updates to participants array, balance, collectedFees, and pyramidMultiplier based on transactions and payouts."
+        ]
+    }
+}

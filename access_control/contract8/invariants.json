@@ -1,0 +1,14 @@
+[
+    {
+        "vulnerability_category": "Access Control",
+        "invariant": "msg.sender == tx.origin",
+        "expression": "msg.sender == tx.origin",
+        "security_relevance_level": "High"
+    },
+    {
+        "vulnerability_category": "Access Control",
+        "invariant": "msg.sender == owner?",
+        "expression": "msg.sender == owner",
+        "security_relevance_level": "High"
+    }
+]

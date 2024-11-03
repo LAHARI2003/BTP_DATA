@@ -1,0 +1,29 @@
+{
+  "Contract": "IntegerOverflowMultiTxOneFuncFeasible",
+  "Source": "https://github.com/ConsenSys/evm-analyzer-benchmark-suite",
+  "Author": "Suhabe Bugrara",
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Feature": "Initialization Guard",
+        "Description": "The function run() uses an initialization check (initialized == 0) to ensure that certain actions only occur on the first call, preventing unintended re-initialization of the state."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "Invariant": "Count Initialization Consistency",
+        "Description": "The initialized variable ensures that the contract performs a one-time setup, so the value of count is only adjusted on subsequent calls when initialized != 0."
+      }
+    ]
+  },
+  "PotentialRisks": [
+    {
+      "Risk": "Arithmetic Underflow",
+      "Description": "The contract subtracts input from count without checking if count >= input. This could lead to an integer underflow if input > count, potentially resulting in a very high count value. It is advisable to add a check to prevent count from going below zero."
+    },
+    {
+      "Risk": "Lack of Access Control",
+      "Description": "The run() function is publicly accessible, allowing any user to modify the count variable once initialized is set to 1. This could lead to unintended state changes, as any user could call run() with a large input to trigger an underflow."
+    }
+  ]
+}

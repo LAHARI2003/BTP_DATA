@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract24",
+    "contract_metadata": {
+        "contract_type": "Town Crier Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [162, 175, 180, 192]
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "BuyingState": "When users purchase tokens and 'buy' function is called.",
+    "SellingState": "When users sell tokens via the 'sell' function."
+  },
+  "ExternalInteractions": {
+    "BuyingTokens": "Transfers ether from users to contract address when tokens are purchased.",
+    "SellingTokens": "Transfers ether from contract to user when tokens are sold, if balance allows."
+  }
+}

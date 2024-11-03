@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract23",
+    "contract_metadata": {
+        "contract_type": "WedIndex Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [56]
+    }
+}

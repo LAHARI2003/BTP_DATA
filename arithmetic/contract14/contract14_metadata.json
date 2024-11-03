@@ -1,0 +1,12 @@
+{
+    "contract_name": "contract14",
+    "contract_metadata": {
+        "contract_type": "Token Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Arithmetic",
+            "Integer Underflow"
+        ],
+        "vulnerable_at_lines": [20, 22]
+    }
+}

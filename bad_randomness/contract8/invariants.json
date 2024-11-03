@@ -1,0 +1,92 @@
+[
+    {
+        "invariant": "msg.sender == owner",
+        "vulnerability": "Access Control",
+        "expression": "require(msg.sender == owner)",
+        "security_relevance": "High"
+    },
+    {
+        "invariant": "msg.sender == animator",
+        "vulnerability": "Access Control",
+        "expression": "require(msg.sender == animator)",
+        "security_relevance": "Medium"
+    },
+    {
+        "invariant": "balances[msg.sender] >= _value",
+        "vulnerability": "Data Integrity",
+        "expression": "assert(balances[msg.sender] >= _value)",
+        "security_relevance": "High"
+    },
+    {
+        "invariant": "msg.data.length >= size + 4",
+        "vulnerability": "Payload Size Validation",
+        "expression": "assert(msg.data.length >= size + 4)",
+        "security_relevance": "Low"
+    },
+    {
+        "invariant": "block.number >= investStart + (hashesSize * 5)",
+        "vulnerability": "Time Lock",
+        "expression": "require(block.number >= investStart + (hashesSize * 5))",
+        "security_relevance": "Medium"
+    },
+    {
+        "invariant": "investBalance <= investBalanceMax",
+        "vulnerability": "Money Flow",
+        "expression": "assert(investBalance <= investBalanceMax)",
+        "security_relevance": "High"
+    },
+    {
+        "invariant": "msg.value <= 1 ether && msg.value < hashBetMax",
+        "vulnerability": "Money Flow",
+        "expression": "require(msg.value <= 1 ether && msg.value < hashBetMax)",
+        "security_relevance": "High"
+    },
+    {
+        "invariant": "hashes.length <= hashesSize",
+        "vulnerability": "Special Storage",
+        "expression": "assert(hashes.length <= hashesSize)",
+        "security_relevance": "Medium"
+    },
+    {
+        "invariant": "coldStoreLast + 4 * 60 * 24 * 7 <= block.number",
+        "vulnerability": "Time Lock",
+        "expression": "require(coldStoreLast + 4 * 60 * 24 * 7 <= block.number)",
+        "security_relevance": "Medium"
+    },
+    {
+        "invariant": "this.balance >= investBalance + walletBalance",
+        "vulnerability": "Money Flow",
+        "expression": "assert(this.balance >= investBalance + walletBalance)",
+        "security_relevance": "High"
+    },
+    {
+        "invariant": "allowed[msg.sender][_spender] == 0 || _value == 0",
+        "vulnerability": "Access Control",
+        "expression": "require(allowed[msg.sender][_spender] == 0 || _value == 0)",
+        "security_relevance": "Low"
+    },
+    {
+        "invariant": "wallets[msg.sender].balance == 0 || wallets[msg.sender].nextWithdrawBlock <= block.number",
+        "vulnerability": "Time Lock",
+        "expression": "require(wallets[msg.sender].balance == 0 || wallets[msg.sender].nextWithdrawBlock <= block.number)",
+        "security_relevance": "High"
+    },
+    {
+        "invariant": "dividends[dividendPeriod] += msg.value / 20",
+        "vulnerability": "Dividend Distribution Integrity",
+        "expression": "dividends[dividendPeriod] == dividends[dividendPeriod] + (msg.value / 20)",
+        "security_relevance": "Medium"
+    },
+    {
+        "invariant": "walletBalance >= 0",
+        "vulnerability": "Money Flow",
+        "expression": "assert(walletBalance >= 0)",
+        "security_relevance": "High"
+    },
+    {
+        "invariant": "dividendPeriod < dividends.length",
+        "vulnerability": "Special Storage",
+        "expression": "require(dividendPeriod < dividends.length)",
+        "security_relevance": "Low"
+    }
+]

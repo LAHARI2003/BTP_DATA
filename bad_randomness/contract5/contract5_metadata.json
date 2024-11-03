@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract5",
+    "contract_metadata": {
+        "contract_type": "LuckyDoubler",
+        "complexity_level": "Advanced",
+        "vulnerability_category": [
+            "Bad Randomness"
+        ],
+        "vulnerable_at_lines": [127, 128, 129, 130, 132]
+    }
+}

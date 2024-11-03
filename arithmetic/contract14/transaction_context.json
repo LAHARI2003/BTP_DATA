@@ -1,0 +1,8 @@
+{
+  "TransactionStateContext": {
+    "TokenState": "When the contract is created with initial supply allocation to the creator and tokens are transferred through the transfer function."
+  },
+  "ExternalInteractions": {
+    "Description": "The contract manages token balances and allows for token transfers between user addresses, updating the balances of sender and receiver in each transfer."
+  }
+}

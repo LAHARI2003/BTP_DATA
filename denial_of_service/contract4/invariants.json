@@ -1,0 +1,28 @@
+{
+  "invariants": [
+    {
+      "vulnerability_category": "Access Control",
+      "invariant_template": "isSenderOwner",
+      "expression": "msg.sender == owner",
+      "security_relevance_level": "low"
+    },
+    {
+      "vulnerability_category": "Gas Control",
+      "invariant_template": "GasConsumedUpperBound",
+      "expression": "gasUsed(func) ≤ maxGasPerFunc?",
+      "security_relevance_level": "high"
+    },
+    {
+      "vulnerability_category": "Data Flow & Business Logic",
+      "invariant_template": "ArrayUpperBound",
+      "expression": "listAddresses.length ≤ 1500",
+      "security_relevance_level": "high"
+    },
+    {
+      "vulnerability_category": "Denial of Service",
+      "invariant_template": "FunctionExecutionRateLimiter",
+      "expression": "funcExecutionRate ≤ maxRate",
+      "security_relevance_level": "medium"
+    }
+  ]
+}

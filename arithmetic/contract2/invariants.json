@@ -1,0 +1,44 @@
+[
+  {
+    "vulnerability_category": "Access Control",
+    "invariant": "msg.sender == tx.origin",
+    "expression": "msg.sender == tx.origin",
+    "security_relevance": "High"
+  },
+  {
+    "vulnerability_category": "Money Flow",
+    "invariant": "balanceOf[msg.sender] >= _value",
+    "expression": "balanceOf[msg.sender] >= _value",
+    "security_relevance": "High"
+  },
+  {
+    "vulnerability_category": "Money Flow",
+    "invariant": "balanceOf[_to] = balanceOf[_to] + _value",
+    "expression": "balanceOf[_to] += _value",
+    "security_relevance": "Medium"
+  },
+  {
+    "vulnerability_category": "Data Flow & Business Logic",
+    "invariant": "balanceOf[msg.sender] >= 0",
+    "expression": "balanceOf[msg.sender] >= 0",
+    "security_relevance": "High"
+  },
+  {
+    "vulnerability_category": "Data Flow & Business Logic",
+    "invariant": "balanceOf[_to] >= 0",
+    "expression": "balanceOf[_to] >= 0",
+    "security_relevance": "High"
+  },
+  {
+    "vulnerability_category": "Data Flow & Business Logic",
+    "invariant": "balanceOf[msg.sender] + balanceOf[_to] = constant (pre-transfer balance conservation)",
+    "expression": "balanceOf[msg.sender] + balanceOf[_to] = constant",
+    "security_relevance": "High"
+  },
+  {
+    "vulnerability_category": "Arithmetic",
+    "invariant": "balanceOf[_to] + _value does not overflow",
+    "expression": "balanceOf[_to] + _value < 2^256",
+    "security_relevance": "High"
+  }
+]

@@ -1,0 +1,19 @@
+{
+    "ImplementedSecurityControls": {
+        "Description": "No specific controls to prevent overflow/underflow."
+    },
+    "KnownVulnerabilities": [
+        {
+            "Type": "Arithmetic Overflow/Underflow",
+            "Functions": [
+                "overflowaddtostate",
+                "overflowmultostate",
+                "underflowtostate",
+                "overflowlocalonly",
+                "overflowmulocalonly",
+                "underflowlocalonly"
+            ],
+            "Impact": "Potential unintended state changes due to unchecked arithmetic operations."
+        }
+    ]
+}

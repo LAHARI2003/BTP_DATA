@@ -1,0 +1,14 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "InvestmentState": "Users can invest funds to buy tokens.",
+      "BettingState": "Users place bets in the lottery and funds are processed.",
+      "WithdrawalState": "Users can withdraw funds or tokens under certain conditions."
+    },
+    "ExternalInteractions": [
+      "Transfer tokens during investment and betting operations.",
+      "Dividend payouts based on accumulated investments and betting results.",
+      "Ether transfers to external addresses, especially during the coldStore operation."
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "contract_name": "contract22",
+    "contract_metadata": {
+        "contract_type": "Pie Contract",
+        "complexity_level": "Intermediate",
+        "vulnerability_category": [
+            "Unchecked Low-Level Calls"
+        ],
+        "vulnerable_at_lines": [44]
+    }
+}

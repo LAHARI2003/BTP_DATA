@@ -1,0 +1,38 @@
+{
+  "NonVulnerableTags": [
+    {
+      "Category": "Access Control",
+      "Description": "Correct use of onlyOwner in deleteOwner and withdrawAll functions to ensure only designated owners can delete other owners or withdraw balance."
+    },
+    {
+      "Category": "Money Flow Integrity",
+      "Description": "The withdrawAll function transfers the contract's balance to the msg.sender, ensuring all withdrawals happen through authorized owners only."
+    },
+    {
+      "Category": "Ownership Management",
+      "Description": "The MultiOwnable contract uses a root owner and allows parent-child ownership relationships, facilitating hierarchical control."
+    },
+    {
+      "Category": "Invariant Validation",
+      "Description": "The deleteOwner function validates that the owner's mapping is properly set to zero after deletion, ensuring accurate owner state representation."
+    }
+  ],
+  "RiskyFeatures": [
+    {
+      "Category": "Access Control",
+      "Description": "The newOwner function is missing the onlyOwner modifier, allowing any external address to add a new owner. This could lead to unauthorized ownership escalation."
+    },
+    {
+      "Category": "Unprotected Critical Function",
+      "Description": "newOwner function is public and lacks restrictions, enabling any address to be assigned as an owner by any other address without control."
+    },
+    {
+      "Category": "Centralized Control Risk",
+      "Description": "The root owner has broad permissions, creating a central point of control. If the root account is compromised, the security of the entire contract is jeopardized."
+    },
+    {
+      "Category": "Fallback Function",
+      "Description": "The contract contains a fallback function that allows it to receive Ether but has no access control, potentially leading to unintended Ether deposits."
+    }
+  ]
+}
