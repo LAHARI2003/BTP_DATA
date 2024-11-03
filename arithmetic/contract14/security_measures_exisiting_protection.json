@@ -1,0 +1,14 @@
+{
+  "ImplementedSecurityControls": {
+    "BalanceCheck": {
+      "Description": "The transfer function uses require to check if the sender has enough balance."
+    }
+  },
+  "PotentialVulnerabilities": [
+    {
+      "Issue": "Arithmetic Underflow",
+      "Description": "Possible in the subtraction operation in transfer function due to lack of SafeMath or overflow/underflow checks."
+    }
+  ],
+  "FallbackFunctionality": "No fallback function provided in this contract."
+}
