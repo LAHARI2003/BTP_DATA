@@ -1,0 +1,7 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "None; any user can call deposit, increaseLockTime, or withdraw.",
+    "TimeLock": "The withdraw function includes a time lock by checking if now > lockTime[msg.sender]."
+  },
+  "FallbackFunctionality": "None included; contract does not define a fallback function."
+}
