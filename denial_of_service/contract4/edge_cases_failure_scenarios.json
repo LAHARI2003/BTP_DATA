@@ -1,0 +1,14 @@
+{
+  "EdgeCasesAndFailureScenarios": {
+    "EdgeCaseAnnotations": {
+      "HighVolumeArrayFilling": "The loop inside ifillArray adds multiple entries per call. Exceeding the gas limit is possible when listAddresses becomes large, potentially leading to denial of service.",
+      "ExcessiveArrayClearing": "The array is reset when it reaches 1500 elements, which may happen frequently, especially in high-traffic scenarios."
+    },
+    "CommonAttackPatterns": [
+      "Denial of Service due to gas limit - The ifillArray function could run out of gas when listAddresses becomes excessively large."
+    ],
+    "RecoveryMechanisms": {
+      "Description": "No specific recovery mechanisms implemented in the contract."
+    }
+  }
+}
