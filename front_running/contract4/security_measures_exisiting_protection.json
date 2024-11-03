@@ -1,0 +1,10 @@
+{
+  "SecurityMeasuresAndExistingProtections": {
+    "ImplementedSecurityControls": [
+      {
+        "AccessControl": "The getProfit function restricts access to the contract owner."
+      }
+    ],
+    "FallbackFunctionality": "No fallback function is implemented."
+  }
+}
