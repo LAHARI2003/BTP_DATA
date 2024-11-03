@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == Owner",
+      "description": "Ensures only the Owner can withdraw or execute commands.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "balance(Owner) >= 0",
+      "description": "Prevents the contract from allowing recursive withdrawal calls.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "balance(this) ≥ 0",
+      "description": "Contract's balance should never fall below zero.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "balance(this) >= msg.value",
+      "description": "Ensures that transfers only happen if sufficient funds are available.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Unchecked Low-Level Calls",
+      "invariant": "adr.call.value(msg.value)(data) succeeds or fails",
+      "description": "Calls to external addresses should ideally check for success or failure to prevent loss of funds.",
+      "security_relevance": "Medium"
+    }
+  ]
+}
