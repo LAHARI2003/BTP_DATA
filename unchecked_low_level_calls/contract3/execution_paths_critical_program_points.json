@@ -1,0 +1,19 @@
+{
+  "FunctionLevelAnalysis": {
+    "createDaoPOLSKAtokens": "Manages Ether contributions and assigns tokens to users during ICO.",
+    "setSupply": "Sets a supply limit, restricted to the owner and only if not previously set.",
+    "burn": "Burns a specified amount of tokens from sender's balance.",
+    "approveAndCall": "Sets allowance for spender and triggers a contract call."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "require(msg.value > 0) in createDaoPOLSKAtokens to ensure non-zero contributions.",
+      "require(balances[msg.sender] >= _value) in burn to validate sufficient balance.",
+      "require(allowed[_from][msg.sender] >= _value) in burnFrom to validate allowance."
+    ],
+    "StateTransitionPoints": [
+      "Updates balances and totalSupply when tokens are created or burnt.",
+      "Sets or toggles funding, refund, and migration states based on conditions."
+    ]
+  }
+}
