@@ -1,0 +1,12 @@
+{
+    "TransactionContext": {
+        "TransactionStateContext": {
+            "TransferState": {
+                "Description": "Users transfer tokens from their balance to another user's address by calling the transfer function."
+            }
+        },
+        "ExternalInteractions": {
+            "Description": "The contract updates internal mappings to record balances, but no external token transfer is conducted, meaning it only adjusts balances within its own state."
+        }
+    }
+}
