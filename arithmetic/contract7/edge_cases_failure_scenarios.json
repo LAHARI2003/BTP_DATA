@@ -1,0 +1,18 @@
+{
+  "EdgeCaseAnnotations": {
+    "IntegerOverflow": {
+      "Vulnerability": "If 'input' is large enough, it causes an underflow in 'count'.",
+      "Location": "The 'count -= input' line, which lacks checks for underflow.",
+      "PreventativeMeasure": "In later Solidity versions, SafeMath library or Solidity's built-in overflow checks can prevent this."
+    }
+  },
+  "CommonAttackPatterns": [
+    {
+      "Pattern": "Arithmetic overflow/underflow",
+      "Description": "Large 'input' value can cause an underflow, leading to unintended state manipulation."
+    }
+  ],
+  "RecoveryMechanisms": {
+    "Mechanisms": "None provided in this contract. A check on 'count' could be added to mitigate overflow/underflow."
+  }
+}
