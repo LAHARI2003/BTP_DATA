@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Arithmetic Underflow/Overflow",
+      "invariant": "balances[msg.sender] - _value >= 0",
+      "expression": "balances[msg.sender] - _value >= 0",
+      "relevance": "high"
+    },
+    {
+      "vulnerability": "Balance Consistency",
+      "invariant": "totalSupply >= sum(balances[addr] for addr in all_addresses)",
+      "expression": "totalSupply ≥ Σ(balances[addr] ∀ addr)",
+      "relevance": "high"
+    },
+    {
+      "vulnerability": "Token Transfer Limits",
+      "invariant": "_value <= balances[msg.sender]",
+      "expression": "_value ≤ balances[msg.sender]",
+      "relevance": "high"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "balanceOf(msg.sender) == balances[msg.sender]",
+      "expression": "balanceOf(msg.sender) = balances[msg.sender]",
+      "relevance": "medium"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "expression": "msg.sender == tx.origin",
+      "relevance": "low"
+    }
+  ]
+}
