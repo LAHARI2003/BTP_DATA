@@ -1,0 +1,15 @@
+{
+    "Implemented Security Controls": {
+        "Access Control": "The organizer is the only one allowed to call getBets and destroy functions.",
+        "Fallback Function": "The fallback function throws, protecting against accidental ether transfers to the contract."
+    },
+    "Identified Vulnerabilities": [
+        {
+            "BAD_RANDOMNESS": "Randomness based on block number is easily predictable, exposing the contract to potential exploitation."
+        },
+        {
+            "Unsafe Ether Transfer": "If msg.sender.send(msg.value) fails in makeBet, it throws an error, reverting the transaction."
+        }
+    ],
+    "Fallback Functionality": "The fallback function ensures that unintended ether deposits are reverted."
+}
