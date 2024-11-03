@@ -1,0 +1,9 @@
+{
+    "Transaction State Context": {
+        "Lottery State": "When users send ether and `play` is called, increasing the pot and potentially winning the jackpot.",
+        "Fee State": "A portion of the pot (FEE_AMOUNT) is transferred to the bank each time a participant wins."
+    },
+    "External Interactions": {
+        "Ether Transfers": "Ether is transferred between participants, the bank, and the contract address. Specifically, ether is received by the contract in `play`, a fee is transferred to the bank, and the remaining pot is transferred to the winner."
+    }
+}
