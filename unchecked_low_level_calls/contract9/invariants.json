@@ -1,0 +1,52 @@
+{
+    "invariants": [
+        {
+            "category": "Access Control",
+            "invariant": "msg.sender == tx.origin",
+            "description": "Ensures that the transaction initiator is the original sender, preventing unauthorized access.",
+            "relevance_level": "High"
+        },
+        {
+            "category": "Access Control",
+            "invariant": "require(msg.sender == owner)",
+            "description": "Checks if the function caller has sufficient privileges (i.e., owner), mitigating unauthorized access.",
+            "relevance_level": "High"
+        },
+        {
+            "category": "Re-entrancy",
+            "invariant": "xlock == true",
+            "description": "Ensures that re-entrancy is prevented within the function execution, reducing vulnerability to repeated calls.",
+            "relevance_level": "High"
+        },
+        {
+            "category": "Re-entrancy",
+            "invariant": "callDepth <= maxDepth",
+            "description": "Limits the depth of calls to prevent excessive recursive calls and re-entrancy attacks.",
+            "relevance_level": "Medium"
+        },
+        {
+            "category": "Data Flow",
+            "invariant": "map[index] ≤ maxValue",
+            "description": "Checks that the mapping index values are within a defined upper bound, protecting against overflow.",
+            "relevance_level": "Medium"
+        },
+        {
+            "category": "Money Flow",
+            "invariant": "rtokenOut ≤ maxAmount",
+            "description": "Ensures the transferred token amount is capped, reducing potential for excessive funds transfer.",
+            "relevance_level": "High"
+        },
+        {
+            "category": "Gas Control",
+            "invariant": "gasUsed(func) ≤ maxGasPerFunc",
+            "description": "Limits gas used per function call to avoid excessive resource consumption and denial-of-service attacks.",
+            "relevance_level": "High"
+        },
+        {
+            "category": "Time Lock",
+            "invariant": "block.timestamp - lastTxTimestamp ≥ minTimeGap",
+            "description": "Ensures a minimum time gap between transactions, reducing susceptibility to time-based attacks.",
+            "relevance_level": "Medium"
+        }
+    ]
+}
