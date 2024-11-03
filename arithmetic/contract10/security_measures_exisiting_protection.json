@@ -1,0 +1,12 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": "No access control measures in place; any user can call the 'run' function."
+    },
+    "KnownVulnerabilities": [
+        {
+            "type": "Integer Underflow",
+            "description": "The contract lacks protections against underflow in the 'count -= input' line."
+        }
+    ],
+    "FallbackFunctionality": "Not implemented"
+}
