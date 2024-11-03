@@ -1,0 +1,23 @@
+{
+  "ExecutionPaths": {
+    "FunctionLevelAnalysis": {
+      "run": {
+        "Purpose": "Accepts an unsigned integer input and subtracts it from the count variable.",
+        "Effect": "Modifies the value of `res`, potentially causing an underflow if input is greater than `count`.",
+        "Vulnerability": "Arithmetic underflow can occur if `input` > `count`."
+      }
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        {
+          "Description": "No decision points with `require` or `if` statements. Direct subtraction without checks introduces underflow risk."
+        }
+      ],
+      "StateTransitionPoints": [
+        {
+          "Description": "No persistent state change; `res` is a local variable, so the state does not reflect any changes."
+        }
+      ]
+    }
+  }
+}
