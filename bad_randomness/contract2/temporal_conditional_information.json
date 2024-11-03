@@ -1,0 +1,11 @@
+{
+  "TimeSensitiveLogic": {
+    "BlockTimestampDependence": "Randomness relies on block.coinbase and block.difficulty, creating time-sensitive randomness generation.",
+    "RaffleEndCondition": "Raffle resets when all tickets are sold, after which chooseWinner is called."
+  },
+  "ConditionalLogicPaths": {
+    "PausedCondition": "If paused, buyTickets immediately refunds any Ether sent.",
+    "TicketPurchaseConditions": "buyTickets iterates to assign tickets if moneySent >= pricePerTicket and nextTicket < totalTickets.",
+    "RefundConditions": "getRefund only processes refunds if msg.sender has tickets in the current raffle."
+  }
+}
