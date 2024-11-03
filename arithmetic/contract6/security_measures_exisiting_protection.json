@@ -1,0 +1,14 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": {
+      "Description": "No access control is applied, allowing any address to call the 'init' function."
+    },
+    "ArithmeticCheck": {
+      "Description": "No arithmetic checks are in place to prevent underflows, making the contract vulnerable to integer underflow exploits.",
+      "Vulnerability": "Unchecked subtraction leads to potential underflow."
+    }
+  },
+  "FallbackFunctionality": {
+    "Description": "No fallback function exists, meaning the contract does not handle unexpected Ether transfers or function calls."
+  }
+}
