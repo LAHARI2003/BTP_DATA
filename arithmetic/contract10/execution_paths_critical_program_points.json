@@ -1,0 +1,28 @@
+{
+    "Function-LevelAnalysis": {
+        "run": {
+            "Purpose": "Manages the reduction of 'count' based on an external input after initialization.",
+            "CriticalCheck": "Initialized state is checked to control the reduction process."
+        }
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            {
+                "condition": "if (initialized == 0)",
+                "description": "Determines if the contract is in its initial state and should set initialized to 1."
+            }
+        ],
+        "StateTransitionPoints": [
+            {
+                "variable": "initialized",
+                "transition": "0 to 1",
+                "description": "Indicates the contract has been initialized."
+            },
+            {
+                "variable": "count",
+                "transition": "count - input",
+                "description": "Potential underflow if 'input' is greater than 'count'."
+            }
+        ]
+    }
+}
