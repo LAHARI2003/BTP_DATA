@@ -1,0 +1,58 @@
+{
+  "contract": "DosNumber",
+  "nonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "feature": "Array Resize Logic",
+        "description": "The contract uses conditional checks to resize the array only when necessary, ensuring that elements are added efficiently when space is available."
+      },
+      {
+        "feature": "Array Length Getter",
+        "description": "The getLengthArray function provides a reliable way to retrieve the logical length of the array, allowing for safe external monitoring of the number of elements."
+      },
+      {
+        "feature": "Data Clearing Check",
+        "description": "In the clear and clearDOS functions, a require statement is used to prevent data clearance unless numElements exceeds a specified threshold, reducing unintended state resets."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "function": "insertNnumbers",
+        "invariant": "numElements Increment",
+        "description": "The function updates numElements to reflect the number of elements added, ensuring that the state correctly represents the current array contents after each insertion."
+      },
+      {
+        "function": "clear",
+        "invariant": "Non-Empty Condition",
+        "description": "The clear function requires numElements > 1500 before clearing, which maintains a logical threshold for when clearance is permissible."
+      },
+      {
+        "function": "clearDOS",
+        "invariant": "Non-Empty Condition",
+        "description": "The clearDOS function checks for numElements > 1500 before performing a full reset, safeguarding against unnecessary memory operations and ensuring the array is only cleared under specific conditions."
+      }
+    ]
+  },
+  "riskyFeatures": {
+    "DenialOfServicePotential": [
+      {
+        "feature": "Gas Limit for Looping in insertNnumbers",
+        "description": "The insertNnumbers function can hit the block gas limit if the input parameter numbers is excessively large, potentially causing the function to fail and creating a denial of service situation for large inputs."
+      },
+      {
+        "feature": "Clear Functions on Gas-Heavy Arrays",
+        "description": "The clearDOS function clears the entire array in one call, which may exceed gas limits if numElements is large. This can cause denial of service if the array becomes too large to clear within a single transaction."
+      }
+    ],
+    "ResourceConsumptionRisks": [
+      {
+        "feature": "Dynamic Array Resizing in insertNnumbers",
+        "description": "The array length is increased dynamically within a loop, which can be resource-intensive and may pose a risk of running out of gas if repeated excessively."
+      },
+      {
+        "feature": "Unbounded Array Growth",
+        "description": "Without limits on the array size, the insertNnumbers function can lead to unbounded growth of array length and numElements, potentially leading to storage or gas issues."
+      }
+    ]
+  }
+}
