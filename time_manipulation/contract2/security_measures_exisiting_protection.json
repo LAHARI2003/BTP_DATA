@@ -1,0 +1,19 @@
+{
+  "ImplementedSecurityControls": [
+    {
+      "Control": "Access Control",
+      "Description": "Owner variable is used for identifying the contract owner for certain operations."
+    },
+    {
+      "Control": "Minimum Investment",
+      "Description": "The invest function requires a minimum investment of half the current jackpot."
+    },
+    {
+      "Control": "Time Lock",
+      "Description": "The resetInvestment function checks block.timestamp >= lastInvestmentTimestamp + ONE_MINUTE."
+    }
+  ],
+  "FallbackFunctionality": {
+    "Description": "No explicit fallback function implemented, which can avoid accidental ether transfer to the contract."
+  }
+}
