@@ -1,0 +1,76 @@
+{
+  "Access Control": [
+    {
+      "invariant": "msg.sender == corruptElite ? true : false",
+      "expression": "Only corruptElite can call inheritToNextGeneration",
+      "security_relevance": "High"
+    },
+    {
+      "invariant": "buddies[buddy] >= amount ? buddy.send(amount * 5/100) : 0",
+      "expression": "Buddy gets 5% of credit if in buddy list and meets amount threshold",
+      "security_relevance": "Medium"
+    }
+  ],
+  "Time Lock": [
+    {
+      "invariant": "lastTimeOfNewCredit + 43200 >= block.timestamp",
+      "expression": "Contract remains active if a new credit is added within 12 hours",
+      "security_relevance": "High"
+    }
+  ],
+  "Gas Control": [
+    {
+      "invariant": "creditorAddresses.length == creditorAmounts.length",
+      "expression": "Lengths of creditorAddresses and creditorAmounts arrays are consistent",
+      "security_relevance": "Medium"
+    },
+    {
+      "invariant": "creditorAmounts[lastCreditorPayedOut] <= address(this).balance - profitFromCrash",
+      "expression": "Contract has sufficient funds to pay out the next creditor",
+      "security_relevance": "High"
+    }
+  ],
+  "Re-entrancy": [
+    {
+      "invariant": "lastCreditorPayedOut == 0 ? creditorAddresses = new addressreditorAddresses",
+      "expression": "creditorAddresses array resets to empty if lastCreditorPayedOut is zero",
+      "security_relevance": "High"
+    },
+    {
+      "invariant": "lastCreditorPayedOut == 0 ? creditorAmounts = new uint  : torAmounts",
+      "expression": "creditorAmounts array resets to empty if lastCreditorPayedOut is zero",
+      "security_relevance": "High"
+    }
+  ],
+  "Special Storage": [
+    {
+      "invariant": "profitFromCrash >= 0",
+      "expression": "profitFromCrash is non-negative",
+      "security_relevance": "Low"
+    }
+  ],
+  "Money Flow": [
+    {
+      "invariant": "msg.value >= 10 ** 18 ? lastTimeOfNewCredit = block.timestamp : lastTimeOfNewCredit",
+      "expression": "lastTimeOfNewCredit is updated only when msg.value meets minimum requirement",
+      "security_relevance": "Medium"
+    },
+    {
+      "invariant": "profitFromCrash <= 10000 * 10**18",
+      "expression": "profitFromCrash does not exceed upper limit",
+      "security_relevance": "Medium"
+    }
+  ],
+  "Data Flow & Business Logic": [
+    {
+      "invariant": "buddies[msg.sender] += amount * 110 / 100",
+      "expression": "Creditors' buddy balances increase by 110% of the loan amount",
+      "security_relevance": "Low"
+    },
+    {
+      "invariant": "corruptElite.send(amount * 5/100)",
+      "expression": "corruptElite receives 5% of each new loan amount",
+      "security_relevance": "Medium"
+    }
+  ]
+}
