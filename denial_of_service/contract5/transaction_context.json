@@ -1,0 +1,10 @@
+{
+    "Transaction State Context": {
+        "Credit Lending State": "When users lend money via lendGovernmentMoney function.",
+        "System Reset State": "When system breaks down due to a lack of new credit within 12 hours."
+    },
+    "External Interactions": {
+        "Creditor Transactions": "The contract transfers money between the contract and creditors during lending and payout operations.",
+        "Elite Transactions": "Transfers 5% of funds to corruptElite during lending."
+    }
+}
