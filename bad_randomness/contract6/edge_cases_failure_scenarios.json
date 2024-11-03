@@ -1,0 +1,11 @@
+{
+    "Edge Case Annotations": {
+        "Zero Guess Prevention": "The lockInGuess function ensures that users do not re-use guesses by checking guesses[msg.sender].block == 0.",
+        "Stale Block Guess": "The blockhash function returns zero if the target block is older than 256 blocks, leading to predictable results if users wait for 256 blocks."
+    },
+    "Common Attack Patterns": {
+        "Bad Randomness": "The use of blockhash for randomness is weak since it becomes predictable after 256 blocks.",
+        "Guess Reuse": "Users may be able to predict outcomes if they place guesses based on block age or zero values."
+    },
+    "Recovery Mechanisms": "None implemented in the contract. An emergency stop could be added to disable further guesses or settlements if an attack is detected."
+}
