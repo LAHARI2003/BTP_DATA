@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Time Manipulation",
+      "invariant": "block.timestamp == randomGen()",
+      "security_relevance": "High",
+      "explanation": "Ensures that the timestamp used for random number generation is the current block timestamp, which can be manipulated by miners."
+    },
+    {
+      "vulnerability": "Time Lock",
+      "invariant": "now - rand > 24 hours",
+      "security_relevance": "High",
+      "explanation": "Prevents payout if the random number (interpreted as a timestamp) is not older than 24 hours, attempting to prevent exploitation based on recent block time."
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == leader",
+      "security_relevance": "Medium",
+      "explanation": "Ensures that only the leader (current highest contributor) is assigned when the conditions are met."
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.value >= 1 ether",
+      "security_relevance": "Medium",
+      "explanation": "Ensures that the transaction meets the minimum Ether requirement to update the leader, thus controlling participation in the lottery."
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "this.balance >= 0",
+      "security_relevance": "Low",
+      "explanation": "Maintains that the contract's balance cannot be negative, ensuring the stability of storage values in the contract."
+    }
+  ]
+}
