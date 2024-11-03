@@ -1,0 +1,36 @@
+{
+  "Contract": "FindThisHash",
+  "Source": "https://github.com/sigp/solidity-security-blog",
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Access Control": {
+          "Description": "The contract does not restrict who can call the `solve` function, which could be intended for a public puzzle challenge."
+        },
+        "Immutability": {
+          "Description": "The `hash` variable is declared as a `constant` and `public`, ensuring that it remains fixed and cannot be altered once deployed. This provides transparency and immutability."
+        }
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "solve Function Check": {
+          "Description": "The `solve` function requires that the `solution` provided matches the `hash`, validating the integrity of the solution prior to executing the transfer. This prevents any solution other than the correct one from transferring funds."
+        }
+      }
+    ],
+    "RiskyFeatures": [
+      {
+        "MoneyFlowRisk": {
+          "Description": "The `solve` function transfers 1000 ether to `msg.sender` if the hash requirement is met, which is a significant amount. If 1000 ether is available, this could lead to a rapid depletion of contract funds, especially if multiple people call it successfully in rapid succession. Implementing a reentrancy guard or limiting the transferred amount could help mitigate this."
+        },
+        "Lack of Access Control": {
+          "Description": "The `solve` function is accessible to any caller. While this may be intentional for a puzzle contract, unrestricted access could lead to front-running issues if the solution is close to being solved by multiple parties. Adding a time delay or implementing access restrictions could reduce potential front-running risks."
+        },
+        "Potential Replay Attack": {
+          "Description": "The contract does not appear to prevent a replay attack if the solution is rediscovered or called by multiple parties. Adding a record of past solutions and restricting the prize to only the first solver could mitigate repeated claims on the reward."
+        }
+      }
+    ]
+  }
+}
