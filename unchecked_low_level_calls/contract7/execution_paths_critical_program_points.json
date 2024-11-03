@@ -1,0 +1,29 @@
+{
+    "Function_Level_Analysis": {
+        "fallback": "Accepts incoming payments with no specific logic.",
+        "withdraw": "Transfers the contract balance to the owner after verifying ownership.",
+        "Command": "Executes an external call with unchecked status, passing msg.value and arbitrary data.",
+        "multiplicate": "Transfers contract balance and msg.value to the specified address if msg.value is greater than or equal to contract balance."
+    },
+    "Execution_Path_Tags": {
+        "Decision_Points": [
+            {
+                "Function": "withdraw",
+                "Condition": "require(msg.sender == Owner)"
+            },
+            {
+                "Function": "Command",
+                "Condition": "require(msg.sender == Owner)"
+            },
+            {
+                "Function": "multiplicate",
+                "Condition": "msg.value >= this.balance"
+            }
+        ],
+        "State_Transition_Points": [
+            "Transfer of contract balance to Owner in withdraw.",
+            "Potential external call with adr.call.value(msg.value)(data) in Command.",
+            "Balance transfer to adr in multiplicate if condition is met."
+        ]
+    }
+}
