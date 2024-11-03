@@ -1,0 +1,9 @@
+{
+  "TransactionStateContext": {
+    "StakingState": "The only state here is the balance which is manipulated when add is called.",
+    "WithdrawalState": "Not applicable as there is no withdrawal functionality."
+  },
+  "ExternalInteractions": {
+    "ContractToUser": "There is no token transfer mechanism. The balance update does not involve any real token transfers, only a balance increment."
+  }
+}
