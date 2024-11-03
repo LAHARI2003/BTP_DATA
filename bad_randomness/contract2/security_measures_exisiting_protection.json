@@ -1,0 +1,9 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "feeAddress controls functions like endRaffle, togglePause, and kill to restrict unauthorized access.",
+    "RandomnessCheck": "Attempts randomness with block parameters but is vulnerable as block data can be influenced."
+  },
+  "FallbackFunctionality": {
+    "EtherReception": "Fallback function triggers buyTickets to handle received Ether automatically."
+  }
+}
