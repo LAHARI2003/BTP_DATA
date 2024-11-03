@@ -1,0 +1,37 @@
+{
+  "nonVulnerableTags": {
+    "AccessControl": {
+      "description": "The contract restricts access to leader-related actions by assigning the leader variable only to specific conditions when msg.value >= 1 ether, ensuring that only certain transactions influence the leader."
+    },
+    "MoneyFlowIntegrity": {
+      "description": "The contract ensures that only specific conditions trigger a payout, and checks if there is a balance before sending it to the leader, maintaining balance integrity."
+    }
+  },
+  "wellImplementedFeatures": [
+    {
+      "feature": "Conditional Payout",
+      "description": "The payOut function ensures that a payout is conditional on specific criteria, such as the time difference with the timestamp and a minimum transaction value, avoiding arbitrary payouts."
+    },
+    {
+      "feature": "Random Number Generation Function",
+      "description": "The randomGen function provides a source of randomness by utilizing block.timestamp as a base for generating a number. Although it uses block properties, the function itself follows a clear pattern for generating values."
+    }
+  ],
+  "riskyFeatures": [
+    {
+      "feature": "Time Manipulation in payOut",
+      "description": "The use of now - rand > 24 hours in the payOut function can lead to potential time manipulation vulnerabilities, as miners could adjust the block timestamp to alter the result, especially in scenarios with competitive payouts.",
+      "suggestion": "Consider using an external trusted time source or using an alternative mechanism to limit reliance on block.timestamp."
+    },
+    {
+      "feature": "Use of Block Timestamp in randomGen",
+      "description": "The block.timestamp is used as a source of randomness, which can be manipulated by miners to a certain extent. This can be problematic in cases where the randomness directly impacts user payouts or leader assignment.",
+      "suggestion": "Consider using a more secure source of randomness, such as Chainlink VRF, to ensure fair and unmanipulable random number generation."
+    },
+    {
+      "feature": "Potential Reentrancy in payOut",
+      "description": "The payOut function transfers funds to msg.sender and leader without reentrancy protection. This could allow reentrant calls that disrupt the contract’s balance state.",
+      "suggestion": "Consider using the checks-effects-interactions pattern to secure this function or implement reentrancy guards."
+    }
+  ]
+}
