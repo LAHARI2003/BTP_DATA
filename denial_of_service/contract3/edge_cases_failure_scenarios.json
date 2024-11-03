@@ -1,0 +1,10 @@
+{
+    "Edge Case Annotations": [
+        "Large `numbers` input in `insertNnumbers` can exhaust gas, resulting in a denial of service if the loop exceeds the gas limit.",
+        "`numElements` exceeding 1500 is required for the `clear` and `clearDOS` functions to reset, potentially blocking these functions for smaller arrays."
+    ],
+    "Common Attack Patterns": [
+        "Denial of Service via Gas Limit: `insertNnumbers` and `clearDOS` both contain logic that can lead to gas exhaustion if the array size is too large or if the loop iteration limit is exceeded."
+    ],
+    "Recovery Mechanisms": "No specific recovery mechanisms are implemented in this contract."
+}
