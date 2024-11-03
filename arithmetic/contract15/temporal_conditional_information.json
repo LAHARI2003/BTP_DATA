@@ -1,0 +1,13 @@
+{
+  "TimeSensitiveLogic": "No explicit time-sensitive logic in this contract; functions are executable anytime.",
+  "ConditionalLogicPaths": [
+    {
+      "Condition": "msg.value == numTokens * PRICE_PER_TOKEN in 'buy' function",
+      "Path": "Either purchase completes if condition holds, or reverts if ether amount is incorrect."
+    },
+    {
+      "Condition": "balanceOf[msg.sender] >= numTokens in 'sell' function",
+      "Path": "Either sale proceeds if condition holds, or reverts if balance is insufficient."
+    }
+  ]
+}
