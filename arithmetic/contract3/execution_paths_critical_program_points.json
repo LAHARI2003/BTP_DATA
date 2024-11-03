@@ -1,0 +1,22 @@
+{
+  "Function_Level_Analysis": {
+    "add": {
+      "Description": "Updates sellerBalance by adding the specified value, with a risk of overflow.",
+      "Critical_Point": "Possible overflow if value exceeds the capacity of uint"
+    }
+  },
+  "Execution_Path_Tags": {
+    "Decision_Points": [
+      {
+        "Condition": "None",
+        "Description": "The add function lacks checks to validate arithmetic safety."
+      }
+    ],
+    "State_Transition_Points": [
+      {
+        "Variable": "sellerBalance",
+        "Action": "Updated by adding value without overflow protection"
+      }
+    ]
+  }
+}
