@@ -1,0 +1,10 @@
+{
+  "EdgeCaseAnnotations": {
+    "ZeroValueDeposits": "Not specifically handled; depositing zero Ether is not explicitly restricted.",
+    "BalanceOverflowInIncreaseLockTime": "The increaseLockTime function could cause a lock time overflow if too high a value is provided, causing a wrap-around."
+  },
+  "CommonAttackPatterns": {
+    "ArithmeticOverflow": "Without safe math, increaseLockTime could lead to an overflow if an extremely large value is provided, resetting the lock time."
+  },
+  "RecoveryMechanisms": "None implemented; no emergency function to pause or reverse deposits or withdrawals."
+}
