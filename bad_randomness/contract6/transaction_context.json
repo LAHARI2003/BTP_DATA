@@ -1,0 +1,13 @@
+{
+    "Transaction State Context": {
+        "Guessing State": "When users lock in a guess using the lockInGuess function.",
+        "Settlement State": "When users attempt to settle their guess using the settle function."
+    },
+    "External Interactions": {
+        "Description": "The contract interacts with block data and transfers Ether to users based on their predictions.",
+        "Details": [
+            "The contract accepts a 1 Ether deposit when a guess is locked in.",
+            "If a user's guess is correct, 2 Ether is transferred back to the user."
+        ]
+    }
+}
