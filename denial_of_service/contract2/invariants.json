@@ -1,0 +1,39 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Denial of Service",
+            "invariant": "creditorAddresses.length <= 1500",
+            "expression_representation": "len(creditorAddresses) ≤ maxCreditors",
+            "security_relevance": "High",
+            "explanation": "Ensures that the contract doesn't exceed manageable creditor addresses, avoiding gas limit issues in emptyCreditors()."
+        },
+        {
+            "vulnerability": "Denial of Service",
+            "invariant": "creditorAddresses.length > 1500 => creditorAddresses = []",
+            "expression_representation": "if(len(creditorAddresses) > maxCreditors) then creditorAddresses := []",
+            "security_relevance": "High",
+            "explanation": "Prevents gas overflow by resetting creditorAddresses when length exceeds a threshold of 1500."
+        },
+        {
+            "vulnerability": "Data Flow",
+            "invariant": "creditorAddresses[i] == msg.sender for 0 <= i < len(creditorAddresses)",
+            "expression_representation": "∀i ∈ [0, len(creditorAddresses)), creditorAddresses[i] == msg.sender",
+            "security_relevance": "Medium",
+            "explanation": "Ensures that addCreditors() adds only the caller's address, preventing unintended addresses from being added."
+        },
+        {
+            "vulnerability": "Access Control",
+            "invariant": "win == true => creditorAddresses == []",
+            "expression_representation": "win == true ⟹ creditorAddresses == []",
+            "security_relevance": "Medium",
+            "explanation": "Ensures that win is only set to true when creditorAddresses is emptied, maintaining logical consistency of contract state."
+        },
+        {
+            "vulnerability": "Special Storage",
+            "invariant": "creditorAddresses.length >= 0",
+            "expression_representation": "len(creditorAddresses) ≥ 0",
+            "security_relevance": "Low",
+            "explanation": "Guarantees that creditorAddresses length cannot be negative, preserving contract integrity."
+        }
+    ]
+}
