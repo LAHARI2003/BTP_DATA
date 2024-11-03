@@ -1,0 +1,14 @@
+{
+  "Implemented_Security_Controls": {
+    "None": "No specific security controls are implemented in this contract."
+  },
+  "Known_Vulnerabilities": {
+    "Unchecked_Call_Vulnerability": {
+      "Description": "The contract performs a low-level call without checking the result, which can lead to unexpected behavior if the call fails or reverts.",
+      "Location": "Line 12, in the callAddress function."
+    }
+  },
+  "Fallback_Functionality": {
+    "None": "This contract does not implement a fallback function."
+  }
+}
