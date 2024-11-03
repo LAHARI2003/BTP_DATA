@@ -1,0 +1,10 @@
+{
+    "Edge Case Annotations": [
+        "Invalid Bet Amount": "require(msg.value == 10 ether) prevents bets with amounts other than 10 ether.",
+        "Multiple Bets Per Block": "require(now != pastBlockTime) prevents multiple bets from the same block."
+    ],
+    "Common Attack Patterns": [
+        "Time Manipulation": "now % 15 check can potentially be influenced if the miner manipulates block timestamp."
+    ],
+    "Recovery Mechanisms": "No specific recovery mechanisms, such as an emergency stop, are implemented in this contract."
+}
