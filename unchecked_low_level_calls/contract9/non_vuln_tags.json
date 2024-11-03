@@ -1,0 +1,39 @@
+{
+  "ContractName": "airdrop",
+  "Source": "etherscan.io",
+  "NonVulnerableTags": {
+    "Correct Usage of External Call Pattern": {
+      "Description": "The contract makes use of low-level `call` to execute an external transfer function, allowing flexibility in interacting with different token contracts."
+    },
+    "Loop with Condition Check": {
+      "Description": "The function checks `_tos.length > 0` to ensure there is at least one recipient before initiating the transfer loop, preventing unnecessary gas consumption."
+    }
+  },
+  "WellImplementedFeatures": {
+    "Function Return Consistency": {
+      "Description": "The `transfer` function returns a boolean indicating success, maintaining a standardized response for external calls."
+    },
+    "Eventual Completion": {
+      "Description": "The contract does not use unbounded data structures or persistent state changes within the loop, which avoids scenarios of running out of gas or indefinite looping."
+    }
+  },
+  "InvariantValidationExamples": {
+    "Validation of Recipients Array": {
+      "Description": "The `_tos` array is validated for non-zero length before initiating the transfer, ensuring that no calls are made without intended recipients."
+    }
+  },
+  "PotentiallyRiskyFeatures": {
+    "Unchecked Low-Level Call": {
+      "Description": "The contract uses a low-level `call` without checking the return value. This can result in undetected failed transfers, potentially misleading users or creating discrepancies in the intended fund distribution.",
+      "Line": 16
+    },
+    "Lack of Access Control": {
+      "Description": "There is no access control on the `transfer` function, allowing anyone to call this function with any parameters. This can enable unauthorized users to initiate transfers on behalf of other accounts, leading to potential misuse.",
+      "Lines": [7]
+    },
+    "Potential Reentrancy": {
+      "Description": "If any recipient in `_tos` executes a contract with a fallback function, there is a reentrancy risk. Since the function does not use `transfer` or `send`, which limit gas, it may enable complex reentrant calls.",
+      "Lines": [11-15]
+    }
+  }
+}
