@@ -1,0 +1,10 @@
+{
+  "TimeSensitiveLogic": {
+    "FundingPeriod": "Funding lasts until fundingEndBlock, after which funding is disabled.",
+    "MigrationStateToggle": "Migration can be toggled by migrationMaster to transition tokens to a new contract."
+  },
+  "ConditionalLogicPaths": [
+    "Conditions on msg.sender for owner-only or migrationMaster-only functions.",
+    "Conditions on funding, refund, and migration states that control function execution paths."
+  ]
+}
