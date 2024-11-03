@@ -1,0 +1,13 @@
+{
+    "TimeSensitiveLogic": "None",
+    "ConditionalLogicPaths": [
+        {
+            "condition": "if (initialized == 0)",
+            "path": "Sets 'initialized' to 1 and exits function without altering 'count'."
+        },
+        {
+            "condition": "initialized == 1",
+            "path": "Decreases 'count' by 'input' without any safety checks, allowing potential underflow."
+        }
+    ]
+}
