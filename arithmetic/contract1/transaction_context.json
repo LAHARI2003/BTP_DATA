@@ -1,0 +1,9 @@
+{
+    "TransactionContext": {
+        "TransactionStateContext": {
+            "TransferState": "When users transfer tokens to another address using the transfer function.",
+            "ApprovalState": "When users approve a spender to transfer a certain amount on their behalf."
+        },
+        "ExternalInteractions": "The contract interacts with addresses through transfers of tokens, which occurs during direct transfers and allowance-based transfers."
+    }
+}
