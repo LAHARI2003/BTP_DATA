@@ -1,0 +1,39 @@
+{
+  "invariants": [
+    {
+      "invariant": "msg.sender == owner",
+      "category": "Access Control",
+      "security_relevance": "High",
+      "description": "Ensures that only the owner can execute the function.",
+      "holds": true
+    },
+    {
+      "invariant": "caddress.call(id, from, _tos[i], v[i] * 10**18)",
+      "category": "Unchecked Low-Level Calls",
+      "security_relevance": "High",
+      "description": "Unchecked low-level call to an external contract.",
+      "holds": true
+    },
+    {
+      "invariant": "_tos.length > 0",
+      "category": "Input Validation",
+      "security_relevance": "Medium",
+      "description": "Ensures that there is at least one recipient in the transfer array.",
+      "holds": true
+    },
+    {
+      "invariant": "v.length == _tos.length",
+      "category": "Data Consistency",
+      "security_relevance": "High",
+      "description": "Ensures consistency in the number of addresses and transfer values.",
+      "holds": true
+    },
+    {
+      "invariant": "balanceOf(from) >= sum(v[i] * 10**18)",
+      "category": "Money Flow",
+      "security_relevance": "High",
+      "description": "Ensures that 'from' address has sufficient balance for all transfers in the batch.",
+      "holds": true
+    }
+  ]
+}
