@@ -1,0 +1,17 @@
+{
+  "EdgeCaseAnnotations": {
+    "ZeroValuePurchases": "Not directly prevented; however, users would need to send ether for token purchase to succeed.",
+    "OverflowVulnerability": "Potential overflow in the multiplication operation (numTokens * PRICE_PER_TOKEN) in 'buy' function, leading to an arithmetic vulnerability if values exceed uint256."
+  },
+  "CommonAttackPatterns": [
+    {
+      "AttackType": "Arithmetic Overflow",
+      "Description": "Arithmetic overflow in 'buy' and 'sell' functions due to lack of SafeMath checks could lead to unintended results or contract exploitation."
+    },
+    {
+      "AttackType": "Denial of Service",
+      "Description": "Unrestricted ether withdrawal from 'sell' function may drain contract funds if attackers bypass expected balances."
+    }
+  ],
+  "RecoveryMechanisms": "No emergency stop or fallback functionality to handle unexpected scenarios or attacks."
+}
