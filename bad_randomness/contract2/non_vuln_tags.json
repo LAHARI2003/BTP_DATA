@@ -1,0 +1,58 @@
+{
+    "NonVulnerableTags": {
+        "WellImplementedFeatures": {
+            "AccessControl": [
+                {
+                    "description": "The only functions with access control are endRaffle, togglePause, and kill, which restrict their usage to feeAddress, the contract owner. This ensures only the designated owner can perform administrative actions.",
+                    "lines": ["159", "188", "194"]
+                }
+            ],
+            "MoneyFlowIntegrity": [
+                {
+                    "description": "The contract maintains an accurate accounting of ticket purchases and refunds, tracking each purchase and ensuring refunds are processed correctly by adding released ticket numbers to a gaps array for reuse.",
+                    "lines": ["87-92", "143-155"]
+                }
+            ],
+            "InvariantValidationExamples": [
+                {
+                    "description": "The buyTickets function only permits ticket purchases if the contract is not paused, ensuring that no funds are accepted when the raffle is not actively running.",
+                    "lines": ["78-80"]
+                },
+                {
+                    "description": "The getRefund function verifies that a contestant requesting a refund has a valid ticket in the current raffle, ensuring refunds are only issued to participants in the active raffle.",
+                    "lines": ["132-142"]
+                }
+            ]
+        },
+        "PotentiallyRiskyFeatures": {
+            "RandomnessUsage": [
+                {
+                    "description": "The randomness used in chooseWinner relies on block data and addresses, making it potentially predictable and exploitable.",
+                    "vulnerable_lines": ["98-103"],
+                    "recommendation": "Consider integrating an external oracle for true randomness."
+                }
+            ],
+            "FallbackFunctionUsage": [
+                {
+                    "description": "The fallback function automatically triggers buyTickets when Ether is sent to the contract, potentially leading to unexpected or unintentional ticket purchases.",
+                    "lines": ["74-75"],
+                    "recommendation": "Explicitly require users to call buyTickets rather than relying on the fallback function."
+                }
+            ],
+            "LackOfWithdrawalLimit": [
+                {
+                    "description": "The getRefund function does not limit the number of tickets a user can refund, potentially leading to a large loop that could cause out-of-gas errors or revert the transaction in case of high ticket counts.",
+                    "lines": ["132-142"],
+                    "recommendation": "Implement a per-user limit or iterative refund mechanism to prevent excessive gas consumption."
+                }
+            ],
+            "OwnerPrivilege": [
+                {
+                    "description": "The owner can arbitrarily end a raffle, pause operations, and transfer funds without user approval, creating potential for misuse if ownership is compromised.",
+                    "lines": ["159", "188-194"],
+                    "recommendation": "Consider limiting some owner privileges or introducing a multi-signature approval mechanism."
+                }
+            ]
+        }
+    }
+}
