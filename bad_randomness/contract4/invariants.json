@@ -1,0 +1,38 @@
+[
+    {
+        "invariant": "block.number % 2 == 0 ? won == true : won == false",
+        "vulnerability": "BAD_RANDOMNESS",
+        "security_relevance": "high",
+        "description": "The outcome of winning is directly influenced by the block number's parity, which is predictable and not secure."
+    },
+    {
+        "invariant": "msg.sender == organizer",
+        "vulnerability": "ACCESS_CONTROL",
+        "security_relevance": "high",
+        "description": "Only the organizer can access specific functions like `getBets` and `destroy` to ensure restricted access to contract-sensitive operations."
+    },
+    {
+        "invariant": "msg.value > 0",
+        "vulnerability": "FUND_MANAGEMENT",
+        "security_relevance": "medium",
+        "description": "The bet amount (`msg.value`) should always be greater than zero to make the bet valid and prevent potential DoS through zero-value bets."
+    },
+    {
+        "invariant": "msg.sender.send(msg.value) == true || throw",
+        "vulnerability": "FUND_MANAGEMENT",
+        "security_relevance": "medium",
+        "description": "If the user wins, the contract attempts to send back the bet amount. If sending fails, the contract should revert the transaction to prevent loss of funds."
+    },
+    {
+        "invariant": "msg.sender != organizer || throw",
+        "vulnerability": "ACCESS_CONTROL",
+        "security_relevance": "high",
+        "description": "Only the organizer can call the `destroy` function to delete the contract. This is essential to prevent unauthorized destruction of the contract."
+    },
+    {
+        "invariant": "balance(organizer) >= totalBetAmount",
+        "vulnerability": "FUND_MANAGEMENT",
+        "security_relevance": "medium",
+        "description": "The contract should ideally hold enough funds to pay out all potential winning bets. This is essential to avoid insolvency within the contract."
+    }
+]
