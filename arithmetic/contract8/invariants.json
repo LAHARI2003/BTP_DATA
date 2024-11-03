@@ -1,0 +1,28 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Arithmetic Overflow",
+      "invariant": "count <= MAX_UINT256",
+      "description": "Ensures that 'count' does not exceed the maximum allowable uint256 value to prevent overflow.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "count == Old(count) * input",
+      "description": "Tracks that 'count' accurately reflects the product of its old value and the input, ensuring logical consistency.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.value == 0",
+      "description": "Confirms that no Ether is sent with the transaction to this contract.",
+      "security_relevance": "Low"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "description": "Checks that the function caller is an external account, not a contract, to reduce potential re-entrancy risks.",
+      "security_relevance": "Medium"
+    }
+  ]
+}
