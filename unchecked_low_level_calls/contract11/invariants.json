@@ -1,0 +1,52 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "invariant": "msg.sender == tx.origin",
+            "description": "Ensures that only external accounts, not contracts, can initiate certain actions to prevent malicious calls.",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Access Control",
+            "invariant": "role(msg.sender) ∈ allowed_roles",
+            "description": "Checks that msg.sender has a valid role in allowed roles to perform the transfer operation.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Access Control",
+            "invariant": "require(validRole(msg.sender, tx.origin, func))",
+            "description": "Verifies that msg.sender and tx.origin have a legitimate role to execute the transfer function.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Money Flow",
+            "invariant": "tokenTransferAmount ≤ maxAmount",
+            "description": "Limits the transfer amount to a maximum allowed value per transaction to avoid large transfers in a single call.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "callDepth ≤ maxDepth",
+            "description": "Restricts the depth of calls to avoid recursive calls that can lead to re-entrancy vulnerabilities.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "xlock == true",
+            "description": "Enforces a lock to prevent re-entrant calls in critical sections of the code.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Gas Control",
+            "invariant": "gasStart ≤ gas",
+            "description": "Ensures that there is sufficient gas before executing the loop to prevent out-of-gas exceptions.",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Gas Control",
+            "invariant": "gasStart - gasEnd ≤ gas",
+            "description": "Checks the gas usage to ensure the loop or call does not consume excessive gas.",
+            "security_relevance": "Medium"
+        }
+    ]
+}
