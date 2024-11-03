@@ -1,0 +1,10 @@
+{
+  "Time-Sensitive Logic": {
+    "Play Function": "Requires that the block number in timestamps[msg.sender] is less than the current block number, ensuring play eligibility."
+  },
+  "Conditional Logic Paths": {
+    "Winning Path": "If the generated winningNumber meets the difficulty threshold, the player wins.",
+    "Losing Path": "If the winningNumber does not meet the threshold, the player loses.",
+    "Donation Path": "If a user calls donate, funds are transferred directly to the whale address."
+  }
+}
