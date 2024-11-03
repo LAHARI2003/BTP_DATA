@@ -1,0 +1,28 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "security_relevance": "medium",
+      "description": "Ensures that the function is called directly by an external account, mitigating potential reentrancy risks."
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "initialized == 0 || initialized == 1",
+      "security_relevance": "high",
+      "description": "Ensures the 'initialized' variable can only be 0 or 1, preventing it from being reset improperly."
+    },
+    {
+      "vulnerability": "Arithmetic",
+      "invariant": "count ≥ 0",
+      "security_relevance": "high",
+      "description": "Ensures that 'count' does not underflow, preventing potential exploitation through integer underflow."
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "count > 0",
+      "security_relevance": "high",
+      "description": "Prevents decrement operations from causing 'count' to become non-positive, ensuring business logic consistency."
+    }
+  ]
+}
