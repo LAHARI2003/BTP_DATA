@@ -1,0 +1,17 @@
+{
+    "Edge Case Annotations": {
+        "Zero Value Lending": "Handled by checking amount >= 10 ** 18 in lendGovernmentMoney.",
+        "System Breakdown": "If 12 hours pass without new lending, system resets, and funds are redistributed."
+    },
+    "Common Attack Patterns": [
+        {
+            "Denial of Service": "If contract state reset in lendGovernmentMoney fails, could lead to potential denial of service."
+        },
+        {
+            "Access Control Vulnerability": "The inheritToNextGeneration function allows only corruptElite to assign a new elite."
+        }
+    ],
+    "Recovery Mechanisms": {
+        "System Reset": "System resets creditor data and profitFromCrash when breakdown conditions are met in lendGovernmentMoney."
+    }
+}
