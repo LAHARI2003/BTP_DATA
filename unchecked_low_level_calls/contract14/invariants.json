@@ -1,0 +1,32 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == Owner",
+      "description": "Ensures that only the Owner can call privileged functions.",
+      "security_relevance": "High",
+      "expression": "msg.sender == Owner"
+    },
+    {
+      "vulnerability": "Unchecked Low-Level Calls",
+      "invariant": "adr.call.value(msg.value)(data) should handle return value",
+      "description": "Ensures that the low-level call's success status is verified.",
+      "security_relevance": "High",
+      "expression": "result = adr.call.value(msg.value)(data); require(result)"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.value >= this.balance",
+      "description": "In multiplicate function, ensures that msg.value is at least the current balance to avoid unexpected behaviors.",
+      "security_relevance": "Medium",
+      "expression": "msg.value >= this.balance"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "Owner.transfer(this.balance) only callable by Owner",
+      "description": "Ensures the withdrawal of contract balance can only be executed by the Owner.",
+      "security_relevance": "High",
+      "expression": "msg.sender == Owner"
+    }
+  ]
+}
