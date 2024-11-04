@@ -1,0 +1,49 @@
+{
+  "ContractName": "HomeyJar",
+  "NonVulnerableTags": {
+    "AccessControl": [
+      {
+        "Feature": "Owner Restriction in withdraw and Command Functions",
+        "Description": "The withdraw and Command functions are restricted to the contract owner, enforcing access control by verifying that the caller is the owner."
+      }
+    ],
+    "MoneyFlowIntegrity": [
+      {
+        "Feature": "Owner Transfer of Contract Balance",
+        "Description": "Ensures that only the owner can transfer the contract balance, maintaining control over fund flows within the contract."
+      }
+    ],
+    "InvariantValidation": [
+      {
+        "Feature": "Condition on GetHoneyFromJar",
+        "Description": "Requires that the msg.value must exceed 1 ether before initiating the balance transfer, implementing a condition for large transactions."
+      }
+    ]
+  },
+  "PotentiallyRiskyFeatures": {
+    "UncheckedBalanceTransfer": [
+      {
+        "Feature": "Transfer of Contract Balance in GetHoneyFromJar",
+        "Description": "This function sends the entire contract balance to the owner, followed by transferring the balance to the msg.sender without validation of the balance status between transfers. This could lead to unexpected fund distribution if not handled with caution."
+      }
+    ],
+    "Fallback Function": [
+      {
+        "Feature": "Payable Fallback Function",
+        "Description": "The contract contains a fallback function that accepts Ether without restrictions, which can lead to unintended Ether accumulation if not monitored."
+      }
+    ],
+    "Unchecked External Call": [
+      {
+        "Feature": "adr.call.value(msg.value)(data) in Command Function",
+        "Description": "The Command function uses an unchecked external call (adr.call), which does not verify if the call was successful. This can introduce reentrancy risks if the target contract is untrusted or malicious."
+      }
+    ],
+    "Owner Change on Specific Address": [
+      {
+        "Feature": "Automatic Owner Update to Specific Address in withdraw Function",
+        "Description": "The withdraw function automatically updates the Owner to a specific address if msg.sender matches it. This hardcoded condition could be exploited if not carefully managed, especially if the address is no longer trusted."
+      }
+    ]
+  }
+}
