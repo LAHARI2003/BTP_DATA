@@ -1,0 +1,9 @@
+{
+  "TimeSensitiveLogic": {
+    "writeIndex": "Uses `now` to timestamp each entry, making event data creation time-sensitive."
+  },
+  "ConditionalLogicPaths": [
+    "Ownership Condition": "Requires `msg.sender == owner` to proceed with `changeOwner`, `execute`, and other owner-only functions.",
+    "Acceptance Condition": "Requires `msg.sender == newOwner` in `acceptOwnership` to finalize ownership transfer."
+  ]
+}
