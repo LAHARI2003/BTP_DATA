@@ -1,0 +1,52 @@
+{
+    "invariants": [
+        {
+            "invariant": "msg.sender == owner",
+            "related_vulnerability": "Access Control",
+            "security_relevance": "high",
+            "description": "Only the owner can perform certain functions, ensuring restricted access."
+        },
+        {
+            "invariant": "msg.sender == newOwner -> owner == newOwner",
+            "related_vulnerability": "Access Control",
+            "security_relevance": "high",
+            "description": "Ensures ownership transfer only if the new owner accepts ownership."
+        },
+        {
+            "invariant": "_dst.call.value(_value)(_data) -> onlyOwner",
+            "related_vulnerability": "Unchecked Low-Level Calls",
+            "security_relevance": "high",
+            "description": "Owner-only call execution without checks on success or failure; potential security risk if `_dst` fails or is malicious."
+        },
+        {
+            "invariant": "newOwner != address(0)",
+            "related_vulnerability": "Access Control",
+            "security_relevance": "medium",
+            "description": "Ownership transfer to a valid, non-zero address only."
+        },
+        {
+            "invariant": "numberOfIndex() == indexarray.length",
+            "related_vulnerability": "Data Consistency",
+            "security_relevance": "medium",
+            "description": "Ensures accurate indexing count, matching the actual number of entries."
+        },
+        {
+            "invariant": "indexarray.push -> indexarray.length ≥ previous_indexarray.length",
+            "related_vulnerability": "Data Integrity",
+            "security_relevance": "low",
+            "description": "Data array grows with each write to maintain consistency in data entries."
+        },
+        {
+            "invariant": "IndexWritten(time, wedaddress, partnernames, weddingdate, displaymultisig) <=> indexarray.push(IndexArray(now, wedaddress, partnernames, weddingdate, displaymultisig))",
+            "related_vulnerability": "Event Logging",
+            "security_relevance": "medium",
+            "description": "Ensures event logs accurately reflect each addition to the index."
+        },
+        {
+            "invariant": "writeIndex -> now ≥ indexdate",
+            "related_vulnerability": "Time Lock",
+            "security_relevance": "low",
+            "description": "Enforces a logical progression in indexing times for entries."
+        }
+    ]
+}
