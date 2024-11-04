@@ -1,0 +1,46 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == Owner",
+      "expression": "require(msg.sender == Owner)",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "EOA only (only external accounts)",
+      "expression": "msg.sender == tx.origin",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "Ownership consistency",
+      "expression": "Owner == 0x7a617c2B05d2A74Ff9bABC9d81E5225C1e01004b",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Time Lock",
+      "invariant": "minEligibility",
+      "expression": "msg.value >= minEligibility",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "nonReEntrant",
+      "expression": "msg.sender.transfer(this.balance)",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Unchecked Low-Level Calls",
+      "invariant": "unchecked external call",
+      "expression": "adr.call.value(msg.value)(data)",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Gas Control",
+      "invariant": "Gas Limit for external call",
+      "expression": "gasStart ≤ gas",
+      "security_relevance": "Medium"
+    }
+  ]
+}
