@@ -1,0 +1,19 @@
+{
+  "Function-Level Analysis": {
+    "createMarriage": "Initializes the marriage contract, storing partner details, marriage date, vows, and status.",
+    "setStatus": "Updates the marriage status with a new status and logs it as a major event.",
+    "setMajorEvent": "Adds a new major event to the marriage's history with details, provided the partners are still married.",
+    "sendMessage": "Handles incoming messages with an optional ether value transfer to the contract owner."
+  },
+  "Execution Path Tags": {
+    "Decision Points": {
+      "createMarriage": "require(majorEvents.length == 0) ensures marriage can only be created once.",
+      "setMajorEvent": "require(sha3(marriageStatus) == sha3('Married')) in areMarried modifier ensures only married partners can add events."
+    },
+    "State Transition Points": {
+      "Marriage Initialization": "partner1, partner2, vows, and marriageStatus are set in createMarriage.",
+      "Status Update": "marriageStatus and majorEvents are updated in setStatus.",
+      "Messaging": "The messages array and the contract balance are updated in sendMessage."
+    }
+  }
+}
