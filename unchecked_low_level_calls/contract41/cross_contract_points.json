@@ -1,0 +1,13 @@
+{
+    "CrossContractDependencies": [
+        {
+            "description": "Command function allows interaction with external contracts, but has no specific interdependencies."
+        }
+    ],
+    "InterContractConsistencyConditions": [
+        {
+            "condition": "Not applicable",
+            "description": "No direct interaction with other staking or external state-changing contracts."
+        }
+    ]
+}
