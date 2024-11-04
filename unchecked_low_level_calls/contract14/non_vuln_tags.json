@@ -1,0 +1,36 @@
+{
+  "NonVulnerableTags": {
+    "Access Control": [
+      {
+        "Description": "Only the Owner can invoke the withdraw and Command functions, ensuring restricted access.",
+        "Implementation": "require(msg.sender == Owner) in withdraw and Command functions."
+      }
+    ],
+    "Money Flow Integrity": [
+      {
+        "Description": "Ensures that only the Owner can withdraw the contract's entire balance, maintaining flow control.",
+        "Implementation": "Balance transfer controlled by Owner-only access in withdraw function."
+      }
+    ]
+  },
+  "RiskyFeatures": {
+    "Unchecked Low-Level Call": [
+      {
+        "Description": "The Command function uses an unchecked low-level call (adr.call), which could be exploited if the external address behaves unexpectedly.",
+        "Risk": "adr.call.value(msg.value)(data) can lead to re-entrancy or unexpected behaviors, as the called contract's logic is not verified."
+      }
+    ],
+    "Lack of Input Validation in multiplicate": [
+      {
+        "Description": "The multiplicate function allows transferring the entire contract balance plus the sent value if msg.value exceeds the contract's balance.",
+        "Risk": "Potential for misaligned logic, as it does not restrict value thresholds, allowing excessive transfer if msg.value is large. This could drain funds inadvertently or allow misuse."
+      }
+    ],
+    "Insecure Fallback Function": [
+      {
+        "Description": "Fallback function allows receiving Ether but lacks additional control, making it always payable without limits.",
+        "Risk": "Contract can be sent Ether by any address at any time, potentially affecting accounting if not intended. In future versions of Solidity, having uncontrolled fallback functions is discouraged."
+      }
+    ]
+  }
+}
