@@ -1,0 +1,28 @@
+{
+  "FunctionLevelAnalysis": {
+    "claimThrone": {
+      "Description": "Agents pay to claim the throne and dethrone the current monarch. If the claim price is exceeded, excess funds are refunded.",
+      "KeyTasks": ["Handle throne claims", "Update monarch information", "Calculate new claim price"],
+      "Event": "ThroneClaimed"
+    },
+    "sweepCommission": {
+      "Description": "Allows the wizard to collect accumulated commissions.",
+      "AccessControl": "onlywizard"
+    },
+    "transferOwnership": {
+      "Description": "Transfers wizard ownership to a new address.",
+      "AccessControl": "onlywizard"
+    }
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "valuePaid < currentClaimPrice in claimThrone - Ensures required payment to claim the throne.",
+      "currentMonarch.etherAddress != wizardAddress in claimThrone - Sends compensation if throne is occupied by a non-wizard."
+    ],
+    "StateTransitionPoints": [
+      "Updates to currentMonarch, pastMonarchs, and currentClaimPrice in claimThrone function",
+      "Wizard commission sweep in sweepCommission function",
+      "Wizard ownership change in transferOwnership function"
+    ]
+  }
+}
