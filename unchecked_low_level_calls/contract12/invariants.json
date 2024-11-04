@@ -1,0 +1,65 @@
+[
+    {
+        "invariant": "msg.sender == tx.origin",
+        "vulnerability": "Access Control",
+        "security_relevance_level": "High",
+        "expression": "msg.sender == tx.origin",
+        "description": "Ensures that the transaction is initiated by an external account, not another contract, which is relevant to prevent unintended contract interactions."
+    },
+    {
+        "invariant": "require(validRole(msg.sender, tx.origin, func))",
+        "vulnerability": "Access Control",
+        "security_relevance_level": "High",
+        "expression": "validRole(msg.sender, tx.origin, func)",
+        "description": "Checks that the caller has the appropriate role or privileges to invoke specific functions."
+    },
+    {
+        "invariant": "callDepth ≤ maxDepth?",
+        "vulnerability": "Re-entrancy",
+        "security_relevance_level": "High",
+        "expression": "callDepth <= maxDepth",
+        "description": "Prevents the contract from engaging in excessive call depth, mitigating re-entrancy vulnerabilities."
+    },
+    {
+        "invariant": "assert(!externalCallInCriticalFuncs)",
+        "vulnerability": "Re-entrancy",
+        "security_relevance_level": "Medium",
+        "expression": "!externalCallInCriticalFuncs",
+        "description": "Ensures that there is no external call within critical functions, reducing re-entrancy risk."
+    },
+    {
+        "invariant": "xlock == true",
+        "vulnerability": "Re-entrancy",
+        "security_relevance_level": "High",
+        "expression": "xlock == true",
+        "description": "Locks the function during execution to prevent re-entrant calls, which is critical for functions with state changes."
+    },
+    {
+        "invariant": "role(msg.sender) ∈ allowed_roles",
+        "vulnerability": "Access Control",
+        "security_relevance_level": "Medium",
+        "expression": "role(msg.sender) ∈ allowed_roles",
+        "description": "Restricts function access to allowed roles only, ensuring role-based access control."
+    },
+    {
+        "invariant": "tx.origin == owner?",
+        "vulnerability": "Access Control",
+        "security_relevance_level": "Medium",
+        "expression": "tx.origin == owner",
+        "description": "Checks that the transaction originates from the owner, ensuring only the owner can perform certain actions."
+    },
+    {
+        "invariant": "require(msg.sender == owner)",
+        "vulnerability": "Access Control",
+        "security_relevance_level": "High",
+        "expression": "msg.sender == owner",
+        "description": "Verifies that only the owner of the contract can execute specific actions, enforcing ownership control."
+    },
+    {
+        "invariant": "assert(!externalCall)",
+        "vulnerability": "Unchecked Low-Level Calls",
+        "security_relevance_level": "High",
+        "expression": "!externalCall",
+        "description": "Ensures there is no external call within untrusted functions, which can be exploited if not checked properly."
+    }
+]
