@@ -1,0 +1,11 @@
+{
+  "ImplementedSecurityControls": {
+    "CheckedCall": {
+      "Function": "callchecked",
+      "Description": "Implements a call to an external contract address with a check to ensure the call succeeds."
+    }
+  },
+  "FallbackFunctionality": {
+    "Description": "No fallback functionality is defined in this contract."
+  }
+}
