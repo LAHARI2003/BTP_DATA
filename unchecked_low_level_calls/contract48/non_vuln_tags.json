@@ -1,0 +1,47 @@
+{
+  "contract": "Lotto",
+  "well_implemented_features": [
+    {
+      "feature": "Access Control",
+      "description": "Usage of constants for blocksPerRound and ticketPrice values ensures these parameters cannot be modified within the contract, providing clear, static definitions for ticket cost and round duration."
+    },
+    {
+      "feature": "Money Flow Integrity",
+      "description": "The contract maintains total pot and ticket counts per round, ensuring an accurate reflection of ticket purchases and pot values throughout the contract's execution."
+    },
+    {
+      "feature": "Round Management",
+      "description": "The contract uses a round-based structure where each round is identified by an index derived from block numbers, allowing clear tracking of different lottery rounds and associated ticket purchases and pots."
+    },
+    {
+      "feature": "Invariant Validation",
+      "description": "The `cash` function prevents double payouts by setting `isCashed` to true after payout and validating payout eligibility by checking block numbers, ensuring that rounds cannot be re-cashed or cashed prematurely."
+    },
+    {
+      "feature": "Accessors for Constants",
+      "description": "The `getBlocksPerRound` and `getTicketPrice` functions provide read-only access to constants, supporting transparency without modifying state."
+    },
+    {
+      "feature": "Decision Block Calculation",
+      "description": "The `getDecisionBlockNumber` function reliably determines the block number at which the winner is decided, allowing consistent and predictable winner selection timing based on round completion."
+    }
+  ],
+  "risky_features": [
+    {
+      "feature": "Unchecked External Call",
+      "description": "The `winner.send(subpot)` in the `cash` function is an unchecked external call, which could lead to vulnerabilities if the call fails (e.g., due to a receiver contract without fallback). This may cause funds to be lost or locked in the contract."
+    },
+    {
+      "feature": "Unchecked Refund Mechanism",
+      "description": "The fallback function includes `msg.sender.send(msg.value-value)` for refunds without checking for successful transaction completion. This could lead to partial fund losses if the refund fails."
+    },
+    {
+      "feature": "Fixed Block Usage",
+      "description": "The contract relies on block properties (e.g., block number and hash) to determine round indices and winners. This dependency on block hash introduces a minor risk of miner manipulation in low-value contexts, as future blocks could potentially be manipulated."
+    },
+    {
+      "feature": "Centralized BlockReward Value",
+      "description": "The `blockReward` constant value is fixed and does not adjust based on pot size or demand, potentially reducing long-term adaptability if the lottery’s structure changes or if the pot size varies significantly."
+    }
+  ]
+}
