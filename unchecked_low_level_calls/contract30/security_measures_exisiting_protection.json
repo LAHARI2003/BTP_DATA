@@ -1,0 +1,18 @@
+{
+  "SecurityMeasuresAndExistingProtections": {
+    "ImplementedSecurityControls": [
+      {
+        "Control": "Access Control",
+        "Description": "Functions withdraw and newPuppet require the caller to be the contract owner."
+      },
+      {
+        "Control": "Input Validation",
+        "Description": "setExtra function ensures addresses are not set to zero."
+      }
+    ],
+    "FallbackFunctionality": {
+      "Function": "Fallback",
+      "Description": "Enables contract to receive Ether directly."
+    }
+  }
+}
