@@ -1,0 +1,11 @@
+{
+    "TimeSensitiveLogic": {
+        "BetExpiration": "Bets expire if not resolved within BET_EXPIRATION_BLOCKS",
+        "TicketValidity": "Ticket is checked against block.number to ensure it's within the allowed range"
+    },
+    "ConditionalLogicPaths": {
+        "ResultDetermination": "play function differentiates outcome paths based on maskRes and jackpotRes",
+        "RefundCondition": "refund function enables refunds for expired bets only",
+        "DonationValidation": "withdrawDonation checks if donation amount is available before withdrawal"
+    }
+}
