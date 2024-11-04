@@ -1,0 +1,46 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == Owner",
+      "expression": "msg.sender == Owner",
+      "description": "Ensures that only the Owner can call restricted functions.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "msg.sender.transfer(this.balance) is last in execution order",
+      "expression": "msg.sender.transfer(this.balance)",
+      "description": "Avoids re-entrancy by transferring funds to the sender at the end of execution.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Unchecked Call Risk",
+      "invariant": "adr.call.value(msg.value)(data) should check for call success",
+      "expression": "require(adr.call.value(msg.value)(data) == true)",
+      "description": "Ensures external call success is checked to prevent unintended errors.",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Gas Control",
+      "invariant": "gasConsumed <= maxGasPerFunc",
+      "expression": "gasUsed(Command) <= maxGasPerFunc",
+      "description": "Ensures gas usage does not exceed limits, preventing potential denial of service (DoS).",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Ownership Consistency",
+      "invariant": "Owner is valid address",
+      "expression": "Owner != 0x0",
+      "description": "Ensures Owner is not set to the zero address, preventing ownership loss.",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.value > 1 ether for GetFreebie",
+      "expression": "msg.value > 1 ether",
+      "description": "Requires a minimum ether deposit to call GetFreebie, ensuring only valid transactions are processed.",
+      "security_relevance": "Low"
+    }
+  ]
+}
