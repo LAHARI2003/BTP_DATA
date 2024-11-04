@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == owner",
+      "security_relevance": "High",
+      "description": "Ensures that only the owner can invoke sensitive functions."
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "require(msg.sender == owner)",
+      "security_relevance": "High",
+      "description": "Restricts access to functions to the contract owner only, ensuring authorized control."
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.value >= 0",
+      "security_relevance": "Low",
+      "description": "Guarantees that the transaction value is non-negative, applicable for deposit tracking."
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "address(this).balance >= 0",
+      "security_relevance": "Medium",
+      "description": "Ensures that the contract balance is non-negative, useful for preventing underflow."
+    },
+    {
+      "vulnerability": "Unchecked Low-Level Call",
+      "invariant": "_target.call.value(_value)()",
+      "security_relevance": "High",
+      "description": "Calls external contracts without verifying success, vulnerable to re-entrancy attacks if external contract is malicious."
+    }
+  ]
+}
