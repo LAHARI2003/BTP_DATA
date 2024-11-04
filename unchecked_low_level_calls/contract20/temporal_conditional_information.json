@@ -1,0 +1,11 @@
+{
+    "TimeSensitiveLogic": {
+        "GetFreebie": "Depends on the value of `msg.value` for the conditional transfer execution."
+    },
+    "ConditionalLogicPaths": {
+        "Paths": [
+            "If `msg.value > 1 ether`, `GetFreebie` triggers a double transfer, first to the Owner and then to `msg.sender`.",
+            "In `withdraw`, only the Owner can execute balance withdrawal, conditional on `msg.sender == Owner`."
+        ]
+    }
+}
