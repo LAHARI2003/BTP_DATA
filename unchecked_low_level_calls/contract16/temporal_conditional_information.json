@@ -1,0 +1,12 @@
+{
+    "TimeSensitiveLogic": {
+        "OwnershipChange": "The confirmOwner function depends on the timing of address assignments and confirmations.",
+        "EtherDeposit": "Ether deposits rely on the fallback function being called on direct transfers."
+    },
+    "ConditionalLogicPaths": [
+        "In confirmOwner, ownership only changes if msg.sender matches newOwner.",
+        "In Deposit, deposits proceed only if msg.value is greater than MinDeposit.",
+        "In WitdrawTokenToHolder, tokens are withdrawn only if the holder has a balance.",
+        "In WithdrawToHolder, Ether is withdrawn only if the holder has a balance."
+    ]
+}
