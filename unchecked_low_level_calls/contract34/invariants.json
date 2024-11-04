@@ -1,0 +1,37 @@
+[
+    {
+        "vulnerability": "Access Control",
+        "invariants": [
+            {
+                "description": "Sender balance check before withdrawal",
+                "expression": "balances[msg.sender] >= 0",
+                "security_relevance": "medium"
+            }
+        ]
+    },
+    {
+        "vulnerability": "Money Flow",
+        "invariants": [
+            {
+                "description": "Ensure msg.sender balance equals or exceeds withdrawn amount",
+                "expression": "balances[msg.sender] >= msg.value",
+                "security_relevance": "high"
+            },
+            {
+                "description": "Balance of sender after withdrawal is zero",
+                "expression": "balances[msg.sender] = 0",
+                "security_relevance": "high"
+            }
+        ]
+    },
+    {
+        "vulnerability": "Re-entrancy",
+        "invariants": [
+            {
+                "description": "Ensure that balance is set to zero before external call",
+                "expression": "balances[msg.sender] = 0",
+                "security_relevance": "high"
+            }
+        ]
+    }
+]
