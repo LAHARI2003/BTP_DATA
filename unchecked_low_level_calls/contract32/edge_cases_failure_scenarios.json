@@ -1,0 +1,18 @@
+{
+    "Edge Case Annotations": {
+        "Zero Value Withdrawals": "If the withdraw function is called with _value set to zero, it will still execute but transfer no funds.",
+        "Unchecked Calls": "The sendMoney function performs an unchecked call, potentially causing errors or re-entrancy vulnerabilities in certain scenarios.",
+        "Unauthorized Access": "The require checks in withdraw and sendMoney prevent unauthorized access, but any failure here can expose the contract to misuse by non-owners."
+    },
+    "Common Attack Patterns": [
+        {
+            "Re-Entrancy Attack": "The unchecked call in sendMoney could allow for re-entrancy attacks if the target contract is malicious."
+        },
+        {
+            "Unchecked Call Vulnerability": "Using call.value in sendMoney without checking for success can lead to lost funds if the transfer fails."
+        }
+    ],
+    "Recovery Mechanisms": {
+        "None": "The contract does not include emergency stop mechanisms or owner change capabilities in case of compromise."
+    }
+}
