@@ -1,0 +1,63 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": {
+      "AccessControl": [
+        {
+          "description": "The 'onlyOwner' pattern is used effectively in withdraw(), newPuppet(), setExtra(), and fundPuppets() functions to ensure only the owner can call these critical functions."
+        }
+      ],
+      "MoneyFlowIntegrity": [
+        {
+          "description": "The getPuppetCount() function returns the length of the puppets array, ensuring an accurate count of deployed puppets."
+        }
+      ]
+    },
+    "InvariantValidationExamples": [
+      {
+        "function": "newPuppet()",
+        "description": "The function ensures that only the owner can create new Puppet contracts, maintaining control over deployed puppet instances and protecting against unauthorized contract instantiation."
+      },
+      {
+        "function": "setExtra()",
+        "description": "The function validates that the address passed (_newExtra) is not a zero address, preventing invalid or empty addresses in the extra mapping, thereby ensuring data integrity."
+      },
+      {
+        "function": "SafeMath",
+        "description": "All arithmetic operations are handled with SafeMath, ensuring safe addition, subtraction, multiplication, and division and protecting against overflow and underflow errors."
+      }
+    ]
+  },
+  "RiskyFeatures": {
+    "UncheckedExternalCalls": [
+      {
+        "function": "fundPuppets()",
+        "description": "The function uses low-level .call() with no checks on success. This could result in potential re-entrancy issues or unexpected failures if the called address (extra) does not handle the transaction correctly. This applies to calls for each extra index (0 through 3)."
+      },
+      {
+        "function": "Puppet fallback function",
+        "description": "The fallback function in Puppet calls target[0] with .call() without verifying the success of the call, which can potentially lead to issues if the call fails or behaves unexpectedly."
+      }
+    ],
+    "DependenceOnOwnerForCriticalOperations": [
+      {
+        "functions": [
+          "newPuppet()",
+          "fundPuppets()",
+          "setExtra()",
+          "withdraw()"
+        ],
+        "description": "The contract heavily depends on the owner for managing funds, setting extra mappings, and creating new puppets. If ownership is transferred or compromised, the contract’s integrity and intended functionality could be at risk."
+      }
+    ],
+    "LackOfReentrancyProtection": [
+      {
+        "function": "withdraw() in Splitter",
+        "description": "Although this function requires msg.sender == owner, reentrancy protection is absent, which may lead to vulnerabilities if combined with complex external calls."
+      },
+      {
+        "function": "withdraw() in Puppet",
+        "description": "This function also lacks reentrancy protection, which could be exploited by the master to repeatedly drain the balance."
+      }
+    ]
+  }
+}
