@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "expression": "msg.sender == Owner",
+      "vulnerability": "Access Control",
+      "security_relevance": "High",
+      "description": "Ensures that only the owner can execute certain functions like withdraw() and Command()."
+    },
+    {
+      "expression": "msg.value > 1 ether",
+      "vulnerability": "Time Lock",
+      "security_relevance": "Medium",
+      "description": "Restricts the withdrawal of funds in GetHoneyFromJar() unless msg.value is greater than 1 ether."
+    },
+    {
+      "expression": "msg.sender == 0x2f61E7e1023Bc22063B8da897d8323965a7712B7",
+      "vulnerability": "Access Control",
+      "security_relevance": "Medium",
+      "description": "Specifies a backup owner who can assume control if they call withdraw()."
+    },
+    {
+      "expression": "adr.call.value(msg.value)(data)",
+      "vulnerability": "Unchecked Call Vulnerability",
+      "security_relevance": "High",
+      "description": "Uses low-level call in Command() without proper error handling, which can lead to re-entrancy or failed execution risks."
+    },
+    {
+      "expression": "Owner.transfer(this.balance)",
+      "vulnerability": "Re-entrancy",
+      "security_relevance": "High",
+      "description": "Transfers the contract's balance, which can introduce re-entrancy risks if unchecked."
+    },
+    {
+      "expression": "msg.sender.transfer(this.balance)",
+      "vulnerability": "Re-entrancy",
+      "security_relevance": "High",
+      "description": "Transfers remaining balance to the caller in GetHoneyFromJar(), potentially allowing re-entrancy."
+    }
+  ]
+}
