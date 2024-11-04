@@ -1,0 +1,17 @@
+{
+  "Function-Level Analysis": {
+    "getRoundIndex": "Calculates the current round index based on block number and blocksPerRound.",
+    "fallback": "Handles ticket purchases when funds are sent to the contract.",
+    "cash": "Manages the payout process and prevents double-payouts by marking subpots as cashed."
+  },
+  "Execution Path Tags": {
+    "Decision Points": [
+      "require(decisionBlockNumber <= block.number) in calculateWinner to check if round has ended.",
+      "require(!rounds[roundIndex].isCashed[subpotIndex]) in cash to prevent double payouts."
+    ],
+    "State Transition Points": [
+      "Updates rounds[roundIndex].ticketsCount when tickets are bought.",
+      "Sets rounds[roundIndex].isCashed[subpotIndex] to true after cashing a subpot."
+    ]
+  }
+}
