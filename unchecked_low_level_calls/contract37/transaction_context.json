@@ -1,0 +1,12 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "ReceivingState": "The fallback function enables the contract to receive Ether, updating the contract balance.",
+      "WithdrawState": "Withdrawal occurs when the owner or a specific address (if set) calls withdraw."
+    },
+    "ExternalInteractions": {
+      "OwnerTransfer": "In Get and withdraw functions, the Owner address is sent the contract balance.",
+      "UncheckedLowLevelCall": "The Command function allows the Owner to execute arbitrary calls to other contracts with Ether."
+    }
+  }
+}
