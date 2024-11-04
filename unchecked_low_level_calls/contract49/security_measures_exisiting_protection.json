@@ -1,0 +1,9 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "The onlywizard modifier restricts critical functions like sweepCommission and transferOwnership.",
+    "MonetaryThresholds": "Checks in claimThrone ensure only sufficient funds allow throne claims, preventing partial payments."
+  },
+  "FallbackFunctionality": {
+    "FallbackFunction": "claimThrone is called via fallback function with the name embedded in msg.data, allowing default throne claims on transactions."
+  }
+}
