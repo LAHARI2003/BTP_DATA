@@ -1,0 +1,45 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": {
+      "AccessControl": {
+        "Description": "The contract uses the onlyOwner modifier in changeOwner and execute functions to ensure that only the owner can call these functions, preserving control over sensitive operations."
+      },
+      "OwnershipTransfer": {
+        "Description": "The contract implements a two-step ownership transfer process where the new owner must explicitly accept ownership through acceptOwnership function, reducing the risk of accidental or unconfirmed transfers."
+      },
+      "DataConsistency": {
+        "Description": "The writeIndex function correctly pushes a new IndexArray struct into the indexarray array, ensuring that index entries are stored consistently and accessible by users."
+      }
+    },
+    "InvariantValidationExamples": {
+      "OwnershipInvariant": {
+        "Description": "The onlyOwner modifier in critical functions ensures the invariant that only the owner has authority over restricted actions, preserving the integrity of contract control."
+      },
+      "ArrayLengthInvariant": {
+        "Description": "The numberOfIndex function returns the correct length of indexarray, preserving data integrity by accurately reflecting the number of entries within the array."
+      }
+    },
+    "EventEmission": {
+      "IndexWrittenEvent": {
+        "Description": "The IndexWritten event emits details each time a new index entry is created, providing an auditable trail of contract activity, which enhances transparency for users."
+      }
+    }
+  },
+  "PotentiallyRiskyFeatures": {
+    "UncheckedCallRisk": {
+      "executeFunction": {
+        "Description": "The execute function in the Owned contract uses a low-level call without error checking, which could lead to silent failures or unintended behaviors if the call fails. It is recommended to check the return value of the call or use a safer alternative such as function calls with proper exception handling."
+      }
+    },
+    "DataIntegrityRisk": {
+      "writeIndexFunction": {
+        "Description": "The writeIndex function allows free-form input for wedaddress, partnernames, and weddingdate. If inputs are not validated, there is potential for inconsistent or inaccurate data entries. Input validation on these fields would help improve data integrity."
+      }
+    },
+    "UnsecuredNewOwnerAssignment": {
+      "changeOwnerFunction": {
+        "Description": "The changeOwner function does not check if the _newOwner address is valid (e.g., non-zero). An unintentional transfer to a zero address could cause the contract to become ownerless, potentially leading to loss of control over critical functions."
+      }
+    }
+  }
+}
