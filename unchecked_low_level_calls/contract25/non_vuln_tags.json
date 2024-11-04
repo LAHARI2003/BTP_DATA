@@ -1,0 +1,34 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "AccessControl": "The `onlyOwner` modifier restricts sensitive functions such as `changeOwner`, `WithdrawToken`, `WitdrawTokenToHolder`, and `WithdrawToHolder`, ensuring only the contract owner can call these functions, reducing unauthorized access risks."
+      },
+      {
+        "StateInitialization": "The `initTokenBank` function reinitializes `owner` and sets `MinDeposit` to a reasonable initial value, enforcing setup consistency."
+      },
+      {
+        "InvariantValidation": "The `WithdrawToHolder` function ensures that `Holders[_addr]` balance is reduced by `_wei` amount after successful fund transfer, maintaining a consistent state with respect to account balances."
+      }
+    ],
+    "PotentiallyRiskyFeatures": [
+      {
+        "UncheckedExternalCall": "In `WithdrawToken`, the contract calls `token.call` without checking for a return value, which can lead to silent failures or unintended behavior if the external token contract does not implement the `transfer` function as expected. This approach could make the function prone to reentrancy attacks if not carefully audited."
+      },
+      {
+        "ReentrancyRisk": "The use of `call` in `WithdrawToHolder` to send `_wei` to `_addr` without checking for a return value may pose a reentrancy risk, as the fallback function on `_addr` is capable of calling back into the contract. Implementing the Checks-Effects-Interactions pattern or using `transfer` with sufficient gas limits could mitigate this risk."
+      },
+      {
+        "OwnerPrivilegeRisk": "All withdrawal functions (`WithdrawToken`, `WitdrawTokenToHolder`, `WithdrawToHolder`) are heavily privileged to `onlyOwner`, which concentrates authority and, if the owner's key is compromised, poses a security risk for user funds. Multi-signature control or a timelock mechanism could add additional safeguards."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "BalanceConsistency": "In `WithdrawToHolder`, the function validates that `Holders[_addr]` is reduced by `_wei` after the withdrawal, ensuring the on-chain state remains accurate with respect to user balances."
+      },
+      {
+        "MinimumDepositEnforcement": "The `Deposit` function enforces a minimum deposit threshold by verifying `msg.value >= MinDeposit` before updating `Holders` balances, preventing small and potentially meaningless deposits from cluttering state."
+      }
+    ]
+  }
+}
