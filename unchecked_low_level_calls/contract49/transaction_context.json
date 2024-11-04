@@ -1,0 +1,13 @@
+{
+  "TransactionStateContext": {
+    "ClaimingState": "When an agent pays to claim the throne using the claimThrone function or fallback function.",
+    "CommissionState": "When the wizard collects commissions using the sweepCommission function.",
+    "OwnershipState": "When the wizard transfers ownership using the transferOwnership function."
+  },
+  "ExternalInteractions": {
+    "MonetaryTransfers": [
+      "Funds are transferred to the current monarch or the wizard when the throne is claimed or commission is collected.",
+      "Refunds to usurper if excess value is sent in claimThrone function."
+    ]
+  }
+}

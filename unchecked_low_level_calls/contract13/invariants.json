@@ -1,0 +1,58 @@
+{
+    "Access Control": [
+        {
+            "invariant": "msg.sender == owner",
+            "expression": "msg.sender == owner",
+            "security_relevance": "high",
+            "description": "Ensures only the contract owner can execute specific functions, such as withdrawTokens and withdrawEther."
+        }
+    ],
+    "Re-entrancy": [
+        {
+            "invariant": "nonReEntrant",
+            "expression": "xlock == true",
+            "security_relevance": "high",
+            "description": "Prevents re-entrant calls that could lead to multiple withdrawals. Since there's no nonReentrant guard in the contract, it's prone to re-entrancy vulnerabilities, particularly in withdrawTokens and withdrawEther."
+        }
+    ],
+    "Unchecked Low-Level Calls": [
+        {
+            "invariant": "unchecked_call(addr)",
+            "expression": "addr.call.value(0 wei)()",
+            "security_relevance": "high",
+            "description": "Uses an unchecked call in getTokens without validating success, making it vulnerable to call failures and potential gas-related issues."
+        }
+    ],
+    "Oracle Slippage (Price Manipulation)": [
+        {
+            "invariant": "priceLB ≤ price ≤ priceUB",
+            "expression": "assert(price1 == price2 == price3)",
+            "security_relevance": "medium",
+            "description": "Although not directly applicable here, contracts with external dependencies or balances (like Ether or tokens) should enforce checks on asset consistency across multiple calls or oracles."
+        }
+    ],
+    "Special Storage": [
+        {
+            "invariant": "totalSupply ≤ maxSupply",
+            "expression": "xtotSup ≤ totSup?",
+            "security_relevance": "medium",
+            "description": "Relevant to prevent excessive token transfers or Ether amounts, though not enforced here."
+        }
+    ],
+    "Money Flow": [
+        {
+            "invariant": "TokenInUpperBound",
+            "expression": "rtokenIn ≤ v",
+            "security_relevance": "medium",
+            "description": "Restricts token inflows to a defined upper limit, preventing unexpected deposits or large flows into the contract."
+        }
+    ],
+    "Gas Control": [
+        {
+            "invariant": "gasConsumedUpperBound",
+            "expression": "gasStart - gasEnd ≤ gas?",
+            "security_relevance": "low",
+            "description": "In absence of gas management, large for-loops in getTokens could exceed gas limits."
+        }
+    ]
+}

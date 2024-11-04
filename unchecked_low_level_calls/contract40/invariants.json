@@ -1,0 +1,98 @@
+[
+    {
+        "invariant": "Collateral Sufficient for Bets",
+        "vulnerability": "Access Control",
+        "expression": "address(this).balance >= lockedInBets + jackpotSize + devFeeSize",
+        "security_relevance": "high"
+    },
+    {
+        "invariant": "Minimum Bet Amount",
+        "vulnerability": "Business Logic",
+        "expression": "msg.value >= MIN_BET",
+        "security_relevance": "high"
+    },
+    {
+        "invariant": "Maximum Bet Amount",
+        "vulnerability": "Business Logic",
+        "expression": "msg.value <= MAX_BET",
+        "security_relevance": "high"
+    },
+    {
+        "invariant": "Ticket Validity (New Ticket)",
+        "vulnerability": "Access Control",
+        "expression": "bets[ticketID].player == address(0)",
+        "security_relevance": "medium"
+    },
+    {
+        "invariant": "Valid Ticket Expiration",
+        "vulnerability": "Business Logic",
+        "expression": "block.number <= ticketLastBlock",
+        "security_relevance": "medium"
+    },
+    {
+        "invariant": "Signature Validity",
+        "vulnerability": "Access Control",
+        "expression": "secretSigner == ecrecover(signatureHash, v, r, s)",
+        "security_relevance": "high"
+    },
+    {
+        "invariant": "Valid Jackpot and Dev Fee Allocation",
+        "vulnerability": "Money Flow",
+        "expression": "jackpotSize += amount * JACKPOT_FEE / 1000; devFeeSize += amount * DEV_FEE / 1000",
+        "security_relevance": "medium"
+    },
+    {
+        "invariant": "Bet Locked Amount Consistency",
+        "vulnerability": "Special Storage",
+        "expression": "lockedInBets += amount * WIN_X / 1000",
+        "security_relevance": "high"
+    },
+    {
+        "invariant": "Collateral Balance for New Bet",
+        "vulnerability": "Special Storage",
+        "expression": "getCollateralBalance() >= 2 * amount",
+        "security_relevance": "high"
+    },
+    {
+        "invariant": "Bet Expiration Check",
+        "vulnerability": "Business Logic",
+        "expression": "block.number > bet.blockNumber + BET_EXPIRATION_BLOCKS",
+        "security_relevance": "medium"
+    },
+    {
+        "invariant": "Contract Health for Withdrawal",
+        "vulnerability": "Gas Control",
+        "expression": "address(this).balance >= lockedInBets + jackpotSize + devFeeSize",
+        "security_relevance": "high"
+    },
+    {
+        "invariant": "Donation Withdrawal Consistency",
+        "vulnerability": "Access Control",
+        "expression": "donateAmount[msg.sender] >= amount",
+        "security_relevance": "low"
+    },
+    {
+        "invariant": "Clear Bet after Expiration",
+        "vulnerability": "Re-entrancy",
+        "expression": "bet.amount == 0 || block.number > bet.blockNumber + BET_EXPIRATION_BLOCKS",
+        "security_relevance": "low"
+    },
+    {
+        "invariant": "Jackpot Reset after Win",
+        "vulnerability": "Special Storage",
+        "expression": "jackpotSize = 0 if jackpotRes == 0",
+        "security_relevance": "medium"
+    },
+    {
+        "invariant": "Total Bet Amount Non-negative",
+        "vulnerability": "Special Storage",
+        "expression": "lockedInBets >= 0",
+        "security_relevance": "high"
+    },
+    {
+        "invariant": "Transfer Successful before State Update",
+        "vulnerability": "Re-entrancy",
+        "expression": "emit Payment(paidUser, amount) if success",
+        "security_relevance": "high"
+    }
+]

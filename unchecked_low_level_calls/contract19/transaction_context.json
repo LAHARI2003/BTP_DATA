@@ -1,0 +1,9 @@
+{
+  "TransactionStateContext": {
+    "RedeemState": "Users send ether to the contract to redeem if eligibility requirements are met.",
+    "WithdrawalState": "Owner withdraws the balance of the contract to their address."
+  },
+  "ExternalInteractions": {
+    "EtherTransfers": "The contract allows transfers of ether from the contract balance to the Owner or redeeming user."
+  }
+}

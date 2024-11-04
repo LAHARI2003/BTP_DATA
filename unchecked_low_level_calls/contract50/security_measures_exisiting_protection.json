@@ -1,0 +1,12 @@
+{
+    "Implemented Security Controls": {
+        "State Check": {
+            "sendToWinner": "require(!payedOut) - Ensures winnings have not been paid out yet",
+            "withdrawLeftOver": "require(payedOut) - Ensures winnings have already been paid out"
+        }
+    },
+    "Missing Security Controls": {
+        "Reentrancy Guard": "No reentrancy protection mechanism in place for sendToWinner and withdrawLeftOver"
+    },
+    "Fallback Functionality": "None present"
+}

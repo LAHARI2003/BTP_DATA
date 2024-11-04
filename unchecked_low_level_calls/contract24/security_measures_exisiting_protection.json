@@ -1,0 +1,17 @@
+{
+  "SecurityMeasuresAndProtections": {
+    "ImplementedSecurityControls": [
+      {
+        "Control": "Killswitch",
+        "Description": "Allows the requester to suspend or restart the contract."
+      },
+      {
+        "Control": "Fee Minimum",
+        "Description": "Ensures all requests meet a minimum fee requirement."
+      }
+    ],
+    "FallbackFunctionality": {
+      "Description": "An empty fallback function is present to receive Ether."
+    }
+  }
+}

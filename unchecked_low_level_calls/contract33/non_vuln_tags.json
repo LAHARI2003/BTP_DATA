@@ -1,0 +1,43 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "AccessControl": "Correct usage of onlyOwner in setSecret and winPrize functions, ensuring only the contract owner can execute sensitive operations."
+      },
+      {
+        "AccessControl": "Correct usage of onlyWinner in claimPrize, allowing only the designated winner to withdraw the prize."
+      },
+      {
+        "PlayerValidation": "Usage of onlyPlayers modifier ensures only approved players can execute certain functions, adding a layer of player validation."
+      },
+      {
+        "PlayerEnrollment": "The becomePlayer function requires a minimum ether contribution to register as a player, ensuring only interested participants join."
+      },
+      {
+        "WinnerSelection": "The unlockSecret function uses a random hash modulus check to select a winner, adding a pseudo-random mechanism."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "SeedManipulationIntegrity": "The setSeed function requires onlyPlayers to set specific seed indices, ensuring only approved players can alter seed values, maintaining controlled access to seed manipulation."
+      },
+      {
+        "PlayerCountConsistency": "The getPlayerCount function accurately returns the length of the players array, maintaining consistency with the actual number of registered players."
+      }
+    ],
+    "PotentiallyRiskyFeatures": [
+      {
+        "UncheckedLowLevelCalls": "The contract uses low-level .call() without checking for return success in functions like callFirstTarget, callSecondTarget, and winPrize, which could lead to unexpected behavior or fund loss if calls fail."
+      },
+      {
+        "LackOfStateUpdateChecks": "The guessSeed function changes the owner to the winner if a secret condition is met without validating if the calculation succeeds, potentially causing unintended ownership changes."
+      },
+      {
+        "TransferToWinner": "The claimPrize function transfers the entire contract balance to the winner without checks or limits, potentially draining the contract if misused."
+      },
+      {
+        "RedundantFallbackFunction": "The fallback function is payable but does not perform any actions. This could lead to unexpected ether being stored in the contract without any utility or tracking mechanism."
+      }
+    ]
+  }
+}

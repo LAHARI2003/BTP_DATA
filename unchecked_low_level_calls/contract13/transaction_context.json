@@ -1,0 +1,11 @@
+{
+    "TransactionStateContext": {
+        "Withdraw State": "Allows owner to withdraw tokens or Ether from the contract balance.",
+        "External Interaction State": "Transfers tokens from external token contracts to the owner, and potentially executes code in external contracts."
+    },
+    "ExternalInteractions": {
+        "withdrawTokens": "Transfers tokens from a specified token contract to the contract owner.",
+        "withdrawEther": "Transfers Ether from the contract balance to the owner.",
+        "getTokens": "Executes arbitrary code on a specified address 'addr' without transferring value."
+    }
+}

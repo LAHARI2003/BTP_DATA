@@ -1,0 +1,46 @@
+{
+  "ExecutionPathsAndCriticalProgramPoints": {
+    "FunctionAnalysis": [
+      {
+        "Function": "request",
+        "Description": "Handles user requests, logs details, and processes fees.",
+        "DecisionPoints": [
+          {
+            "Condition": "killswitch",
+            "Description": "Checks if the contract is in kill mode; refunds user if true."
+          },
+          {
+            "Condition": "msg.value < MIN_FEE",
+            "Description": "Ensures user has paid at least the minimum fee; refunds if below threshold."
+          }
+        ],
+        "StateTransitions": [
+          {
+            "Variable": "requestCnt",
+            "Description": "Increments request count for each new request."
+          },
+          {
+            "Variable": "unrespondedCnt",
+            "Description": "Increases count of unresponded requests."
+          }
+        ]
+      },
+      {
+        "Function": "cancel",
+        "Description": "Allows user to cancel a request; refunds fees after deducting cancellation fee.",
+        "DecisionPoints": [
+          {
+            "Condition": "requests[requestId].requester == msg.sender && fee >= CANCELLATION_FEE",
+            "Description": "Ensures only requester can cancel their own request if fee is sufficient."
+          }
+        ],
+        "StateTransitions": [
+          {
+            "Variable": "requests[requestId].fee",
+            "Description": "Updates fee flag upon successful cancellation."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "TransactionStateContext": {
+        "DepositState": "Allows users to send Ether to the contract by calling the fallback function.",
+        "WithdrawalState": "Allows users to attempt withdrawal through `GetFreebie`, conditional upon sending more than 1 ether, and `withdraw`, accessible only by the Owner."
+    },
+    "ExternalInteractions": [
+        "The contract receives Ether sent by users.",
+        "In `GetFreebie`, conditional transfers of the entire contract balance are attempted first to the Owner and then to the user.",
+        "In `withdraw` and `Command`, only the Owner can transfer the balance or interact with other contracts, respectively."
+    ]
+}

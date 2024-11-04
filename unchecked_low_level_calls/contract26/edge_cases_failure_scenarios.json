@@ -1,0 +1,15 @@
+{
+  "Edge Case Annotations": {
+    "Single Marriage Restriction": "The createMarriage function includes a check for majorEvents.length == 0 to restrict marriage creation to a single event.",
+    "Status Update Restriction": "Only married partners can add major events (checked via the areMarried modifier).",
+    "Owner Transfer Logic": "sendMessage checks for msg.value > 0 and then transfers ether to the owner."
+  },
+  "Common Attack Patterns": {
+    "Unchecked Call": "The execute function calls _dst.call.value(_value)(_data) without checking for success, making it vulnerable to potential reentrancy attacks.",
+    "Access Control Vulnerability": "Functions such as changeOwner and setStatus require the onlyOwner modifier to prevent unauthorized access, reducing access control risks."
+  },
+  "Recovery Mechanisms": {
+    "Owner-Focused Execution": "The execute function can help the owner recover funds or control in emergencies by allowing contract calls on behalf of the contract."
+  }
+}
+

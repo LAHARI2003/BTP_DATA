@@ -1,0 +1,11 @@
+{
+  "Transaction State Context": {
+    "Initialization State": "When the contract is deployed, the 'owner' is set, and the initial marriage can be created with 'createMarriage'.",
+    "Marriage Status State": "When 'setStatus' is called to update the marriage status.",
+    "Messaging State": "When messages are sent between partners with 'sendMessage'."
+  },
+  "External Interactions": {
+    "Token Transfers": "The contract transfers ether to the owner when a message is sent with a value (msg.value > 0) in 'sendMessage'.",
+    "IPFS Interactions": "The contract stores IPFS URLs to reference images and events."
+  }
+}

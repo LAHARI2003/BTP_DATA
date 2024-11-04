@@ -1,0 +1,44 @@
+[
+    {
+        "invariant": "msg.sender == owner",
+        "expression": "msg.sender == owner",
+        "related_vulnerability": "Access Control",
+        "security_relevance": "High",
+        "description": "Only the owner should be able to call functions restricted by the onlyOwner modifier."
+    },
+    {
+        "invariant": "tokens_buy > 0",
+        "expression": "msg.value >= token_price && tokens_buy = (msg.value * 10**18) / token_price > 0",
+        "related_vulnerability": "Unchecked Low-Level Calls",
+        "security_relevance": "High",
+        "description": "Only non-zero token purchases are valid. Ensures msg.value is high enough to purchase tokens based on token_price."
+    },
+    {
+        "invariant": "active > 0",
+        "expression": "active > 0",
+        "related_vulnerability": "Access Control",
+        "security_relevance": "Medium",
+        "description": "Contract should be active to proceed with token purchases. This limits functionality if the contract is paused."
+    },
+    {
+        "invariant": "owner2.send(sum2)",
+        "expression": "0 < sum2 <= msg.value",
+        "related_vulnerability": "Unchecked Low-Level Calls",
+        "security_relevance": "High",
+        "description": "Ensures transfer to owner2 does not exceed the original msg.value to prevent excess withdrawals."
+    },
+    {
+        "invariant": "balance >= _amount",
+        "expression": "balance = this.balance; _amount > 0 ? balance >= _amount : true",
+        "related_vulnerability": "Unchecked Low-Level Calls",
+        "security_relevance": "High",
+        "description": "Withdrawals should not exceed available contract balance to avoid overdrafts."
+    },
+    {
+        "invariant": "c.call(bytes4(sha3(\"transferFrom(address,address,uint256)\")), owner, msg.sender, tokens_buy)",
+        "expression": "c.call(bytes4(sha3(\"transferFrom(address,address,uint256)\")), owner, msg.sender, tokens_buy) == true",
+        "related_vulnerability": "Unchecked Low-Level Calls",
+        "security_relevance": "High",
+        "description": "Ensures token transfer succeeds before proceeding with further operations to avoid inconsistent state."
+    }
+]

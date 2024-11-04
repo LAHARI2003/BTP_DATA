@@ -1,0 +1,12 @@
+{
+  "CrossContractDependencies": [
+    {
+      "Description": "The contract relies on the presence of an external contract (referred to by `caddress`) that implements a `transferFrom` function to execute the intended transfers."
+    }
+  ],
+  "InterContractConsistencyConditions": [
+    {
+      "Description": "The `transfer` function assumes that `caddress` is a valid contract with a `transferFrom` function and that each call to `transferFrom` will execute correctly for each address in `_tos`."
+    }
+  ]
+}

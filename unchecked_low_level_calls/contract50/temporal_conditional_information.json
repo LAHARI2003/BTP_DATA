@@ -1,0 +1,7 @@
+{
+    "Time-Sensitive Logic": "Not explicitly time-based but is condition-based on payedOut status for both sendToWinner and withdrawLeftOver functions",
+    "Conditional Logic Paths": {
+        "sendToWinner": "Conditionally transfers funds to winner only if payedOut is false",
+        "withdrawLeftOver": "Transfers remaining contract balance if payedOut is true"
+    }
+}

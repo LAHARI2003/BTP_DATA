@@ -1,0 +1,11 @@
+{
+    "Time-Sensitive Logic": {
+        "EOA Check in Vault": "The `msg.sender == tx.origin` check ensures the `Vault` function is called by an EOA, which is critical during initialization."
+    },
+    "Conditional Logic Paths": {
+        "Conditional Execution": {
+            "Deposit Condition": "The `deposit` function only updates balances if `msg.value > 0.5 ether`.",
+            "Withdraw Condition": "The `withdraw` function only transfers Ether if the `amount` is valid and the balance is sufficient."
+        }
+    }
+}

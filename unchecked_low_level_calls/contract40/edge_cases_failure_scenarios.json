@@ -1,0 +1,17 @@
+{
+    "EdgeCaseAnnotations": {
+        "MinimumBetRequirement": "wager requires amount >= MIN_BET to avoid underflows",
+        "MaximumBetRequirement": "wager requires amount <= MAX_BET to prevent overflow",
+        "ExpiredTicket": "Checks if ticket has exceeded allowed blocks for play",
+        "InvalidSignature": "Verifies signature to prevent unauthorized bets"
+    },
+    "CommonAttackPatterns": {
+        "UncheckedLowLevelCalls": "The whale.call function is unchecked, making it susceptible to potential failures",
+        "AccessControl": "OnlyOwner and OnlyBot restrict access to key functions",
+        "UnderfundedContract": "Contract health check ensures funds are available for payouts"
+    },
+    "RecoveryMechanisms": {
+        "DonationForContractHealth": "Allows users to donate to maintain contract balance",
+        "WithdrawDonation": "Allows users to reclaim their donations"
+    }
+}

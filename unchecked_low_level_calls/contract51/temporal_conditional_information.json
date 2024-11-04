@@ -1,0 +1,8 @@
+{
+  "TimeSensitiveLogic": {
+    "Description": "Not applicable; no time-based conditions are applied to any function."
+  },
+  "ConditionalLogicPaths": {
+    "Paths": "Single conditional path based on userBalances[msg.sender] existing or being set."
+  }
+}

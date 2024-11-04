@@ -1,0 +1,52 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == owner",
+      "description": "Ensures that only the contract owner can execute payout functions.",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "!externalCallInCriticalFuncs",
+      "expression": "require(!externalCall)",
+      "description": "Prevents re-entrancy by ensuring no external calls occur in critical functions like `sendToWinner`.",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "payedOut == false during function execution",
+      "expression": "payedOut == false",
+      "description": "Ensures that the `payedOut` state is set only after successful payout to prevent re-entrancy issues.",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "winAmount <= this.balance",
+      "expression": "winAmount ≤ contractBalance",
+      "description": "Ensures the contract has sufficient balance to cover the payout to the winner.",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "winner != address(0)",
+      "expression": "winner ≠ null",
+      "description": "Ensures that a valid winner address is set before attempting to send winnings.",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability": "Data Flow",
+      "invariant": "payedOut consistency check",
+      "expression": "payedOut == true only after successful send(winner)",
+      "description": "Ensures the `payedOut` flag is only set to true if the winner was successfully paid.",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "balance after payout is correct",
+      "expression": "contractBalance == contractBalance - winAmount",
+      "description": "Ensures that the contract balance reflects the deduction of the winner's payout.",
+      "security_relevance": "medium"
+    }
+  ]
+}

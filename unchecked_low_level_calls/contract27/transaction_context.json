@@ -1,0 +1,16 @@
+{
+    "TransactionContext": {
+        "TransactionStateContext": {
+            "BuyTokensState": "When users send Ether and the fallback function calls `tokens_buy`.",
+            "WithdrawState": "When the owner withdraws funds from the contract using `withdraw`."
+        },
+        "ExternalInteractions": [
+            {
+                "Description": "Transfers tokens from the specified address `owner` to `msg.sender` using the `transferFrom` function on the contract `c`."
+            },
+            {
+                "Description": "Transfers a portion of the transaction's Ether to `owner2`."
+            }
+        ]
+    }
+}

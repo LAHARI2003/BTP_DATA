@@ -1,0 +1,9 @@
+{
+    "Transaction State Context": {
+        "Staking State": "When users deposit Ether and `deposit` is called, Ether is stored in the `Deposits` mapping for each user.",
+        "Withdrawal State": "When the owner calls `withdraw`, Ether is transferred back to the owner."
+    },
+    "External Interactions": {
+        "Ether Transfer": "The contract transfers Ether between users and itself in the `deposit` function, and transfers Ether back to the owner in the `withdraw` function."
+    }
+}

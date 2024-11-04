@@ -1,0 +1,16 @@
+{
+    "EdgeCaseAnnotations": {
+        "ZeroValueDeposits": "The Deposit function checks msg.value > MinDeposit to handle deposits that do not meet the minimum amount.",
+        "InsufficientHolderBalance": [
+            "The WitdrawTokenToHolder function checks Holders[_to] > 0 to prevent withdrawals for non-holders.",
+            "The WithdrawToHolder function checks Holders[_addr] > 0 to prevent Ether withdrawals for non-holders."
+        ]
+    },
+    "CommonAttackPatterns": {
+        "UncheckedLowLevelCalls": "Use of token.call and _addr.call.value could allow funds to be locked or lost if the calls fail silently.",
+        "OwnershipConfirmationFlaw": "Ownership changes could be confirmed without adequate checks, leading to potential access control issues."
+    },
+    "RecoveryMechanisms": {
+        "EmergencyStop": "Adding a circuit breaker or emergency stop function could prevent further withdrawals in case of an attack or vulnerability discovery."
+    }
+}

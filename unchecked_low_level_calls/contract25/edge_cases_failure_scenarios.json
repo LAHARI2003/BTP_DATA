@@ -1,0 +1,13 @@
+{
+    "EdgeCases": {
+        "ZeroValueDeposits": "Deposit function requires msg.value >= MinDeposit to handle this case.",
+        "NoBalanceWithdrawals": "WithdrawToHolder and WitdrawTokenToHolder functions check Holders balance before withdrawal."
+    },
+    "CommonAttackPatterns": {
+        "UncheckedLowLevelCalls": "Both WithdrawToken and WithdrawToHolder use low-level calls without checking if the call succeeded.",
+        "AccessControlVulnerability": "Potential vulnerability if onlyOwner modifier is bypassed or removed."
+    },
+    "RecoveryMechanisms": {
+        "EmergencyStop": "An emergency stop function would help prevent withdrawals in case of an attack."
+    }
+}

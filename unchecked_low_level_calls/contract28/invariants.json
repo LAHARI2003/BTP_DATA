@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "invariant": "contract_address != 0x0",
+      "vulnerability": "Access Control",
+      "security_relevance": "High",
+      "expression": "contract_address != address(0x0)"
+    },
+    {
+      "invariant": "contract_address != this",
+      "vulnerability": "Access Control",
+      "security_relevance": "High",
+      "expression": "contract_address != address(this)"
+    },
+    {
+      "invariant": "tos.length > 0 && vs.length > 0",
+      "vulnerability": "Data Flow",
+      "security_relevance": "Medium",
+      "expression": "len(tos) > 0 && len(vs) > 0"
+    },
+    {
+      "invariant": "len(tos) == len(vs)",
+      "vulnerability": "Data Flow",
+      "security_relevance": "Medium",
+      "expression": "len(tos) == len(vs)"
+    },
+    {
+      "invariant": "contract_address.call(id, msg.sender, tos[i], vs[i]) executes correctly",
+      "vulnerability": "Unchecked Low-Level Calls",
+      "security_relevance": "High",
+      "expression": "contract_address.call(id, msg.sender, tos[i], vs[i]) == true"
+    }
+  ]
+}

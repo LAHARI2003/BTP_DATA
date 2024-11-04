@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "invariant": "userBalances[msg.sender] >= 0",
+      "vulnerability": "Money Flow",
+      "expression": "userBalances[msg.sender] >= 0",
+      "relevance": "High"
+    },
+    {
+      "invariant": "amountToWithdraw <= userBalances[msg.sender]",
+      "vulnerability": "Money Flow",
+      "expression": "amountToWithdraw <= userBalances[msg.sender]",
+      "relevance": "High"
+    },
+    {
+      "invariant": "userBalances[msg.sender] = 0 after withdraw",
+      "vulnerability": "Access Control",
+      "expression": "userBalances[msg.sender] = 0",
+      "relevance": "Medium"
+    },
+    {
+      "invariant": "amountToWithdraw >= 0",
+      "vulnerability": "Data Flow & Business Logic",
+      "expression": "amountToWithdraw >= 0",
+      "relevance": "Medium"
+    },
+    {
+      "invariant": "msg.sender.call(amountToWithdraw) → bool",
+      "vulnerability": "Unchecked Low-Level Calls",
+      "expression": "msg.sender.call(amountToWithdraw) → bool",
+      "relevance": "High"
+    }
+  ]
+}

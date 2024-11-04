@@ -1,0 +1,32 @@
+{
+  "SecurityMeasures": {
+    "ImplementedSecurityControls": [
+      {
+        "AccessControl": {
+          "Function": "withdraw and Command",
+          "Description": "Both functions use require(msg.sender == Owner) to ensure only the Owner can execute them."
+        }
+      },
+      {
+        "MinimumBalanceCheck": {
+          "Function": "GetPie",
+          "Description": "The require(msg.value > 1 ether) check limits this function to deposits over 1 Ether."
+        }
+      }
+    ],
+    "PotentialVulnerabilities": [
+      {
+        "UncheckedLowLevelCall": {
+          "Function": "Command",
+          "Description": "The adr.call.value(msg.value)(data) uses a low-level call without return value verification, leaving potential unchecked errors."
+        }
+      },
+      {
+        "ReentrancyRisk": {
+          "Function": "GetPie",
+          "Description": "Reentrancy vulnerability due to msg.sender.transfer(this.balance) following the Owner transfer."
+        }
+      }
+    ]
+  }
+}

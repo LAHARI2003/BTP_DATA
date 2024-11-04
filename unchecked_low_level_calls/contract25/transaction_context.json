@@ -1,0 +1,10 @@
+{
+    "TransactionStateContext": {
+        "DepositState": "Occurs when users send Ether to the contract, triggering the Deposit function.",
+        "WithdrawalState": "Occurs when tokens or Ether are withdrawn via WitdrawTokenToHolder or WithdrawToHolder functions."
+    },
+    "ExternalInteractions": {
+        "TokenTransfer": "The contract makes external token transfer calls, such as transferring tokens from the contract to a user.",
+        "EtherTransfer": "Direct Ether transfers are made to user addresses."
+    }
+}

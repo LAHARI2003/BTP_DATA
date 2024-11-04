@@ -1,0 +1,34 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "AccessControl": "Correct usage of onlyOwner in changeOwner, acceptOwnership, and setMajorEvent functions, restricting access to specific owner actions."
+      },
+      {
+        "OwnershipTransfer": "The contract enforces ownership transfer by requiring the new owner to explicitly accept ownership in acceptOwnership, providing an additional layer of validation."
+      },
+      {
+        "Functionality": "The contract uses structured events (MajorEvent and MessageSent) for logging major actions, ensuring transaction transparency and traceability."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "MarriageStatusCheck": "The setMajorEvent and sendMessage functions validate the invariant that marriageStatus must be 'Married' (checked by areMarried modifier), ensuring specific actions only occur when the parties are still married."
+      },
+      {
+        "MessageBalanceTransfer": "The sendMessage function validates that any funds sent with the message are transferred to the owner's address immediately, ensuring no funds are left idle in the contract balance."
+      }
+    ],
+    "PotentiallyRiskyFeatures": [
+      {
+        "UncheckedLowLevelCalls": "The execute function uses _dst.call.value(_value)(_data) without verifying the success of the external call, which could lead to unhandled errors or reentrancy issues. The call should validate the return status to avoid potential security risks."
+      },
+      {
+        "MarriageStatusStringComparison": "The areMarried modifier relies on sha3(marriageStatus) == sha3('Married') for string comparison. Direct string comparison can be error-prone, and hash collisions may theoretically arise. Consider using enums for predefined status values."
+      },
+      {
+        "UnrestrictedExecuteFunction": "The execute function allows the owner to execute arbitrary code, which could lead to unintended behavior if misused or compromised. Consider restricting its use or including additional validation."
+      }
+    ]
+  }
+}

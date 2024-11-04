@@ -1,0 +1,12 @@
+{
+    "TemporalAndConditionalInformation": {
+        "TimeSensitiveLogic": {
+            "None": "No explicit time constraints in this contract"
+        },
+        "ConditionalLogicPaths": [
+            "msg.value > 1 ether check in GetHoneyFromJar to determine balance transfer",
+            "Hardcoded address check to potentially change Owner",
+            "require(msg.sender == Owner) to ensure only Owner can withdraw or execute Command"
+        ]
+    }
+}

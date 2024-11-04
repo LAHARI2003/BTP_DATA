@@ -1,0 +1,13 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": [
+            "The onlyOwner modifier is applied to functions changeOwner, WitdrawTokenToHolder, and WithdrawToHolder to restrict usage to the contract owner."
+        ]
+    },
+    "CriticalVulnerabilities": {
+        "UncheckedLowLevelCalls": "The WithdrawToken and WithdrawToHolder functions use low-level calls, which may fail without reverting, leading to silent failure scenarios."
+    },
+    "FallbackFunctionality": {
+        "FallbackFunction": "The fallback function is present and redirects to the Deposit function for direct Ether deposits."
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": {
+            "onlyOwnerModifier": "Used in the withdraw and transferOwner functions to restrict access to the contract owner."
+        },
+        "MinimumDepositRequirement": {
+            "Description": "The deposit function requires a minimum deposit of 0.25 ether, which may reduce spam deposits."
+        }
+    },
+    "PotentialSecurityRisks": [
+        {
+            "UncheckedCall": "The proxy function performs a low-level call without verifying the result, making it prone to unintended outcomes if the target contract misbehaves."
+        },
+        {
+            "ReentrancyRisk": "The withdraw function's usage of msg.sender.transfer may lead to reentrancy if called by a contract with malicious fallback logic."
+        }
+    ],
+    "FallbackFunctionality": {
+        "FallbackFunction": "The contract accepts ether directly via the fallback function, enabling users to deposit funds without explicitly calling the deposit function."
+    }
+}

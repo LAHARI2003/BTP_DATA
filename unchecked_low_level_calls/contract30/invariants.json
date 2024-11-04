@@ -1,0 +1,46 @@
+{
+    "invariants": [
+        {
+            "vulnerability_category": "Access Control",
+            "invariant": "msg.sender == owner",
+            "expression": "require(msg.sender == owner)",
+            "security_relevance": "high",
+            "description": "Ensures only the owner can perform certain actions, preventing unauthorized access to sensitive functions."
+        },
+        {
+            "vulnerability_category": "Money Flow",
+            "invariant": "msg.value == _share * 4",
+            "expression": "msg.value == 4 * SafeMath.div(msg.value, 4)",
+            "security_relevance": "medium",
+            "description": "Ensures funds are divided equally across the four addresses, preventing incorrect fund distribution."
+        },
+        {
+            "vulnerability_category": "Re-entrancy",
+            "invariant": "balance(msg.sender) >= 0",
+            "expression": "assert(address(this).balance >= 0)",
+            "security_relevance": "high",
+            "description": "Prevents unexpected state changes by ensuring that the balance is not negative due to unchecked external calls."
+        },
+        {
+            "vulnerability_category": "Unchecked Low-Level Calls",
+            "invariant": "call.success == true",
+            "expression": "assert(extra[0].call.value(_share).gas(800000)().success)",
+            "security_relevance": "high",
+            "description": "Validates that calls to external addresses are successful to prevent fund loss in case of failure."
+        },
+        {
+            "vulnerability_category": "Gas Control",
+            "invariant": "gasUsage <= maxGasLimit",
+            "expression": "assert(gasleft() >= 800000)",
+            "security_relevance": "medium",
+            "description": "Limits gas usage per external call to prevent excessive gas consumption."
+        },
+        {
+            "vulnerability_category": "Oracle Slippage (Price Manipulation)",
+            "invariant": "msg.value == SafeMath.div(msg.value, 4) * 4",
+            "expression": "assert(msg.value == SafeMath.mul(SafeMath.div(msg.value, 4), 4))",
+            "security_relevance": "medium",
+            "description": "Prevents rounding errors in division operations to ensure accurate fund distribution."
+        }
+    ]
+}

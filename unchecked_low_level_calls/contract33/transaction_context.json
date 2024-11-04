@@ -1,0 +1,26 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "ParticipationState": "When users call becomePlayer and deposit 0.02 ether to join the game, they enter the 'players' list.",
+      "ManipulationState": "When players call manipulateSecret and provide 0.01 ether, attempting to unlock the secret."
+    },
+    "ExternalInteractions": [
+      {
+        "function": "callFirstTarget",
+        "description": "Sends ether to an external address, firstTarget."
+      },
+      {
+        "function": "callSecondTarget",
+        "description": "Sends ether to an external address, secondTarget."
+      },
+      {
+        "function": "claimPrize",
+        "description": "Transfers the contract's entire balance to the winner address."
+      },
+      {
+        "function": "winPrize",
+        "description": "Sends a small amount of ether (1 wei) to the owner using call."
+      }
+    ]
+  }
+}

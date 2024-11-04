@@ -1,0 +1,10 @@
+{
+  "CrossContractDependencies": [
+    "GeneScienceInterface dependency for genetic functions in breeding.",
+    "Siring and Sale Auction Contracts to handle ERC721-compliant auctions."
+  ],
+  "InterContractConsistencyConditions": [
+    "Panda ownership changes are managed by ERC721 rules to ensure consistency between contracts.",
+    "All interactions with GeneScienceInterface check for valid genes as expected for breeding."
+  ]
+}

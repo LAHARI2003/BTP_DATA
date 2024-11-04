@@ -1,0 +1,34 @@
+{
+  "EdgeCasesAndFailureScenarios": {
+    "EdgeCaseAnnotations": [
+      {
+        "Condition": "killswitch",
+        "Description": "If killswitch is active, all requests return with refunds."
+      },
+      {
+        "Condition": "msg.value < MIN_FEE",
+        "Description": "Refund user if request payment is below minimum fee."
+      },
+      {
+        "Condition": "requests[requestId].paramsHash != paramsHash",
+        "Description": "Abort if callback parameters do not match stored request hash."
+      }
+    ],
+    "CommonAttackPatterns": [
+      {
+        "Type": "Unchecked Call",
+        "Vulnerability": "SGX_ADDRESS.send and requester.call have unchecked responses, allowing funds to be lost."
+      },
+      {
+        "Type": "Reentrancy Attack",
+        "Vulnerability": "Unchecked calls in deliver and cancel functions could enable reentrancy risks."
+      }
+    ],
+    "RecoveryMechanisms": [
+      {
+        "Function": "suspend",
+        "Description": "Killswitch can suspend the contract to prevent further requests."
+      }
+    ]
+  }
+}

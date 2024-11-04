@@ -1,0 +1,19 @@
+{
+    "Function-Level Analysis": {
+        "proxy": "Calls the target contract's function using a low-level call with data and Ether. No checks on the call success.",
+        "Vault": "Sets the owner if called from an externally owned account (EOA) and calls `deposit` to add funds.",
+        "deposit": "Allows users to deposit Ether if it exceeds 0.5 Ether, updating the `Deposits` mapping.",
+        "withdraw": "Transfers Ether to the owner if the requested amount is valid and the user has sufficient balance."
+    },
+    "Execution Path Tags": {
+        "Decision Points": {
+            "msg.sender == tx.origin": "Ensures that `Vault` function is called by an EOA.",
+            "msg.value > 0.5 ether": "Requires a minimum deposit amount in `deposit`.",
+            "amount > 0 && Deposits[msg.sender] >= amount": "Verifies the amount requested is valid and within balance in `withdraw`."
+        },
+        "State Transition Points": {
+            "Owner": "Updated by `transferOwner` and in the `Vault` function upon initialization.",
+            "Deposits": "Updated when funds are deposited in `deposit` or withdrawn in `withdraw`."
+        }
+    }
+}

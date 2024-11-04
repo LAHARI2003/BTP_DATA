@@ -1,0 +1,16 @@
+{
+    "TimeSensitiveLogic": {
+        "FallbackCondition": "The Vault function checks that the call originates from an external account (tx.origin == msg.sender) before setting the Owner, which is a time-sensitive condition during contract deployment or initialization."
+    },
+    "ConditionalLogicPaths": {
+        "ConditionBranches": [
+            {
+                "VaultFunctionCondition": "If tx.origin == msg.sender, the owner is set, otherwise it fails to initialize.",
+                "DepositAmountCondition": "If msg.value > 0.25 ether, deposits are accepted; otherwise, they are ignored."
+            },
+            {
+                "WithdrawCondition": "If msg.sender is the owner and has sufficient balance, withdraw proceeds; otherwise, it fails."
+            }
+        ]
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "invariant": "msg.sender == Owner",
+            "expression": "require(msg.sender == Owner)",
+            "relevance": "High"
+        },
+        {
+            "vulnerability": "Access Control",
+            "invariant": "Owner == 0x0C76802158F13aBa9D892EE066233827424c5aAB",
+            "expression": "Owner == 0x0C76802158F13aBa9D892EE066233827424c5aAB",
+            "relevance": "Medium"
+        },
+        {
+            "vulnerability": "Money Flow",
+            "invariant": "msg.value > 1 ether implies Owner.transfer(this.balance)",
+            "expression": "if (msg.value > 1 ether) { Owner.transfer(this.balance); }",
+            "relevance": "High"
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "nonReEntrant",
+            "expression": "xlock == true",
+            "relevance": "High"
+        },
+        {
+            "vulnerability": "Unchecked Low-Level Calls",
+            "invariant": "Unchecked call to external contract",
+            "expression": "adr.call.value(msg.value)(data)",
+            "relevance": "High"
+        },
+        {
+            "vulnerability": "Special Storage",
+            "invariant": "Immutable Owner Value",
+            "expression": "Owner = constant_address",
+            "relevance": "Low"
+        },
+        {
+            "vulnerability": "Gas Control",
+            "invariant": "Gas Limit not checked for adr.call",
+            "expression": "adr.call.value(msg.value)(data)",
+            "relevance": "Medium"
+        }
+    ]
+}

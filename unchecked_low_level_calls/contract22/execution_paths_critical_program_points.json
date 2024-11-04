@@ -1,0 +1,53 @@
+{
+  "ExecutionPaths": {
+    "FunctionAnalysis": {
+      "fallback": {
+        "Description": "Allows the contract to receive Ether passively when sent to the contract's address.",
+        "Behavior": "No specific action is taken other than receiving Ether."
+      },
+      "GetPie": {
+        "Description": "Allows a user to withdraw the contract's entire balance if they send more than 1 Ether.",
+        "CriticalPoints": [
+          {
+            "Decision": "require(msg.value > 1 ether)",
+            "Impact": "Ensures only transactions with more than 1 Ether trigger the withdrawal."
+          },
+          {
+            "StateTransition": "Owner.transfer(this.balance)",
+            "Impact": "Owner receives all contract funds."
+          },
+          {
+            "StateTransition": "msg.sender.transfer(this.balance)",
+            "Impact": "Caller receives any remaining funds, potentially reentrancy vulnerable."
+          }
+        ]
+      },
+      "withdraw": {
+        "Description": "Allows the Owner to transfer the contract's entire balance to themselves if conditions are met.",
+        "CriticalPoints": [
+          {
+            "Decision": "require(msg.sender == Owner)",
+            "Impact": "Ensures only the Owner can withdraw funds."
+          },
+          {
+            "StateTransition": "Owner.transfer(this.balance)",
+            "Impact": "Owner withdraws entire contract balance."
+          }
+        ]
+      },
+      "Command": {
+        "Description": "Allows the Owner to send Ether and execute arbitrary data calls on an external address.",
+        "CriticalPoints": [
+          {
+            "Decision": "require(msg.sender == Owner)",
+            "Impact": "Restricts arbitrary command functionality to the Owner."
+          },
+          {
+            "StateTransition": "adr.call.value(msg.value)(data)",
+            "Impact": "Transfers Ether and executes function calls on an external address without verification."
+          }
+        ]
+      }
+    }
+  }
+}

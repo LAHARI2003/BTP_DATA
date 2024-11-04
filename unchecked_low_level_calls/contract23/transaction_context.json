@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "OwnershipManagement": "The `Owned` contract allows for the transfer of ownership from the current owner to a new owner, who must accept ownership.",
+    "IndexManagement": "The `WedIndex` contract enables the addition of index entries for smart wedding contracts, with storage of contract addresses, partner names, and dates."
+  },
+  "ExternalInteractions": {
+    "OwnerActions": "The `execute` function allows the owner to interact with external contracts by making arbitrary calls with specified data and value.",
+    "IndexManagement": "The contract interacts with the `indexarray` state variable to manage an array of index entries."
+  }
+}

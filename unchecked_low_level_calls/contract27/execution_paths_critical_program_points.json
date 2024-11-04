@@ -1,0 +1,42 @@
+{
+    "ExecutionPathsAndCriticalProgramPoints": {
+        "FunctionLevelAnalysis": {
+            "tokens_buy": {
+                "Description": "Handles token purchases, updates balance, and distributes payment.",
+                "Checks": [
+                    "require(active > 0): Ensures the contract is active.",
+                    "require(msg.value >= token_price): Ensures the sent Ether is sufficient for token purchase.",
+                    "require(tokens_buy > 0): Checks that calculated token amount is valid."
+                ]
+            },
+            "withdraw": {
+                "Description": "Allows the owner to withdraw contract balance.",
+                "Checks": [
+                    "Ensures that only the owner can call this function (onlyOwner modifier)."
+                ]
+            },
+            "change_token_price": {
+                "Description": "Allows the owner to set the token price.",
+                "Checks": [
+                    "onlyOwner modifier to restrict access to the contract owner."
+                ]
+            },
+            "change_active": {
+                "Description": "Allows the owner to enable or disable the contract.",
+                "Checks": [
+                    "onlyOwner modifier to restrict access to the contract owner."
+                ]
+            }
+        },
+        "ExecutionPathTags": {
+            "DecisionPoints": [
+                "require(active > 0): Ensures contract is active before proceeding with token purchase.",
+                "require(msg.value >= token_price): Checks for minimum Ether value to purchase tokens.",
+                "require(tokens_buy > 0): Validates non-zero token amount for purchase."
+            ],
+            "StateTransitionPoints": [
+                "Updates to token_price and active through functions change_token_price and change_active respectively."
+            ]
+        }
+    }
+}

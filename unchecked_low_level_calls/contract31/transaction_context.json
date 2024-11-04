@@ -1,0 +1,20 @@
+{
+    "Transaction_State_Context": {
+        "Staking_State": "When users deposit more than 0.5 ether in the deposit function.",
+        "Withdrawal_State": "When the owner calls the withdraw function and withdraws ether from the user's deposit balance."
+    },
+    "External_Interactions": [
+        {
+            "Function": "proxy",
+            "Interaction": "Transfers value and calls arbitrary data on a target address without validation."
+        },
+        {
+            "Function": "withdraw",
+            "Interaction": "Transfers ether from the contract balance to the message sender if they meet conditions."
+        },
+        {
+            "Function": "Vault",
+            "Interaction": "Sets the Owner if the sender is the origin and initiates a deposit."
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+{
+  "invariants": [
+    {
+      "expression": "msg.sender == owner",
+      "vulnerability": "Access Control",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "msg.sender == winner",
+      "vulnerability": "Access Control",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "msg.value >= 0.02 ether",
+      "vulnerability": "Money Flow",
+      "security_relevance": "Medium"
+    },
+    {
+      "expression": "approvedPlayers[msg.sender] == true",
+      "vulnerability": "Access Control",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "players.length > 0",
+      "vulnerability": "Data Flow",
+      "security_relevance": "Low"
+    },
+    {
+      "expression": "balanceOfContract >= 0",
+      "vulnerability": "Money Flow",
+      "security_relevance": "Low"
+    },
+    {
+      "expression": "secret != 0",
+      "vulnerability": "Access Control",
+      "security_relevance": "Medium"
+    },
+    {
+      "expression": "address(this).balance > 0",
+      "vulnerability": "Special Storage",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "seed.length > 0",
+      "vulnerability": "Data Flow",
+      "security_relevance": "Low"
+    },
+    {
+      "expression": "callDepth ≤ maxDepth",
+      "vulnerability": "Re-entrancy",
+      "security_relevance": "High"
+    },
+    {
+      "expression": "block.timestamp - lastTxTimestamp ≥ minTimeGap",
+      "vulnerability": "Time Lock",
+      "security_relevance": "Medium"
+    }
+  ]
+}

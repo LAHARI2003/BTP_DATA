@@ -1,0 +1,12 @@
+{
+    "Transaction State Context": {
+        "Contract Function": "makeOldFucks",
+        "State": "Execution of multiple calls to an external contract function, iteratively invoked based on the input parameter."
+    },
+    "External Interactions": {
+        "Interaction Type": "Low-level call",
+        "Target Contract": "Address 0xc63e7b1DEcE63A77eD7E4Aeef5efb3b05C81438D",
+        "Function Invoked": "giveBlockReward",
+        "Description": "The contract performs unchecked low-level calls to another contract, repeatedly invoking the giveBlockReward function."
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "EdgeCasesAndFailureScenarios": {
+        "EdgeCaseAnnotations": {
+            "LowValueTransfers": "GetHoneyFromJar requires msg.value > 1 ether; lower values ignored",
+            "UnauthorizedWithdrawals": "withdraw and Command require msg.sender == Owner",
+            "UncheckedExternalCalls": "Command function does not verify call success"
+        },
+        "CommonAttackPatterns": [
+            "Ownership Manipulation": "Owner can be changed if msg.sender matches a specific hardcoded address",
+            "Reentrancy": "GetHoneyFromJar and withdraw are susceptible to reentrancy if external contract call is possible",
+            "Arbitrary Code Execution": "Command allows Owner to execute arbitrary data on any address"
+        ],
+        "RecoveryMechanisms": "No recovery mechanisms; lack of emergency stop or pause functions"
+    }
+}

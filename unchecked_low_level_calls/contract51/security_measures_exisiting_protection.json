@@ -1,0 +1,12 @@
+{
+  "ImplementedSecurityControls": [
+    {
+      "Control": "Balance reset to zero before send",
+      "Description": "userBalances[msg.sender] is reset to zero before send is called to minimize loss risk, though re-entrancy remains an issue."
+    }
+  ],
+  "FallbackFunctionality": {
+    "Fallback": "None implemented.",
+    "Recommendation": "Consider a failsafe or revert mechanism if send fails."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": [
+      {
+        "description": "The unlockSecret function uses block data (blockhash) to determine if a player wins, making it sensitive to blockchain timing and miner influence."
+      }
+    ],
+    "ConditionalLogicPaths": [
+      {
+        "description": "Different code paths in unlockSecret determine whether the player becomes the winner or not based on the hash condition."
+      },
+      {
+        "description": "Conditional transfers in manipulateSecret depend on the ownership and unlocking result of unlockSecret."
+      }
+    ]
+  }
+}

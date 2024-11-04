@@ -1,0 +1,46 @@
+{
+  "invariants": [
+    {
+      "vulnerability_category": "Access Control",
+      "invariant": "msg.sender == owner",
+      "description": "Ensures only the owner can initiate certain transfers",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability_category": "Access Control",
+      "invariant": "target == 0xC8A60C51967F4022BF9424C337e9c6F0bD220E1C",
+      "description": "Restricts the target address for fund transfer calls to a predefined address",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariant": "!externalCallInCriticalFuncs",
+      "description": "Prevents external calls during critical function execution to avoid re-entrancy attacks",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability_category": "Gas Control",
+      "invariant": "gasStart - gasEnd <= maxGas",
+      "description": "Limits gas consumption per function to prevent excessive gas usage",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability_category": "Data Flow & Business Logic",
+      "invariant": "msg.value == inputValue",
+      "description": "Ensures that the amount sent matches the expected input for consistency",
+      "security_relevance": "Low"
+    },
+    {
+      "vulnerability_category": "Special Storage",
+      "invariant": "balance <= maxBalance",
+      "description": "Ensures the balance in the contract does not exceed a set maximum limit",
+      "security_relevance": "Low"
+    },
+    {
+      "vulnerability_category": "Oracle Slippage",
+      "invariant": "tx.gasprice <= maxGasPriceForOrder",
+      "description": "Controls gas price for function calls to reduce risks related to reordering attacks",
+      "security_relevance": "Medium"
+    }
+  ]
+}

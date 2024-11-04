@@ -1,0 +1,30 @@
+{
+  "EdgeCasesAndFailureScenarios": {
+    "EdgeCaseAnnotations": [
+      {
+        "Condition": "Invalid address in setExtra",
+        "Description": "The setExtra function checks for a non-zero address to prevent invalid entries."
+      },
+      {
+        "Condition": "Insufficient contract balance",
+        "Description": "If the contract lacks sufficient funds, calls to fundPuppets may fail."
+      }
+    ],
+    "CommonAttackPatterns": [
+      {
+        "Pattern": "Unchecked external call",
+        "Description": "Unchecked calls in fundPuppets to the extra mappings pose a risk of reentrancy or failed transactions."
+      },
+      {
+        "Pattern": "Access control vulnerability",
+        "Description": "If ownership is compromised, fundPuppets could be manipulated."
+      }
+    ],
+    "RecoveryMechanisms": [
+      {
+        "Mechanism": "Emergency withdraw",
+        "Description": "The withdraw function allows the owner to secure all funds if necessary."
+      }
+    ]
+  }
+}

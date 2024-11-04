@@ -1,0 +1,44 @@
+{
+    "nonVulnerableTags": {
+        "WellImplementedFeatures": [
+            {
+                "Feature": "Access Control",
+                "Description": "The `onlyOwner` modifier is implemented to restrict access to certain functions, ensuring that only the contract owner can execute them. This is applied to critical functions like `WithdrawToken`, `WitdrawTokenToHolder`, and `WithdrawToHolder`."
+            },
+            {
+                "Feature": "Money Flow Integrity",
+                "Description": "The `Holders` mapping tracks deposits made by each address, ensuring that the balance of each holder is maintained accurately. This provides a reliable way to manage the balances of users within the contract."
+            }
+        ],
+        "InvariantValidationExamples": [
+            {
+                "Function": "WithdrawToHolder",
+                "Invariant": "The `WithdrawToHolder` function ensures that the `Holders[_addr]` balance is decremented by `_wei` only after confirming the address call succeeds in sending value, maintaining consistency in user balances."
+            },
+            {
+                "Function": "WitdrawTokenToHolder",
+                "Invariant": "In `WitdrawTokenToHolder`, the `Holders[_to]` balance is reset to zero before tokens are transferred, ensuring no double-spending or balance inconsistencies."
+            }
+        ]
+    },
+    "PotentialRisks": {
+        "RiskyFeatures": [
+            {
+                "Feature": "Unchecked Low-Level Call in WithdrawToken",
+                "Description": "The `WithdrawToken` function uses `token.call` to initiate the token transfer without verifying the call result. This could fail silently, causing a lack of fund transfer while the state remains updated, leading to potential inconsistencies or loss of funds."
+            },
+            {
+                "Feature": "Insecure Fallback Function",
+                "Description": "The contract includes a payable fallback function that automatically calls `Deposit()` whenever funds are sent directly to the contract. Without explicit gas limitations or checks, this may be misused or lead to reentrancy vulnerabilities if the `Deposit` function becomes more complex."
+            },
+            {
+                "Feature": "Potential Reentrancy in WithdrawToHolder",
+                "Description": "The `WithdrawToHolder` function uses a low-level `call` to send Ether to `_addr`. This could introduce reentrancy risks if `_addr` is a contract with a fallback function that interacts with `TokenBank`, potentially allowing re-entrant calls to drain funds."
+            },
+            {
+                "Feature": "Owner Privilege Risks",
+                "Description": "The contract owner has extensive control, including the ability to change ownership (`changeOwner`) and withdraw funds. While access is restricted via `onlyOwner`, the centralized privilege may present a single point of failure if the owner account is compromised."
+            }
+        ]
+    }
+}

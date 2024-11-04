@@ -1,0 +1,53 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "AccessControl": {
+          "Description": "The withdraw and Command functions require msg.sender to be the Owner, enforcing access control.",
+          "Functions": ["withdraw", "Command"],
+          "Mechanism": "require(msg.sender == Owner)"
+        },
+        "EligibilityControl": {
+          "Description": "The redeem function ensures that only users who meet a minimum eligibility criterion (minEligibility) can redeem rewards.",
+          "Function": "redeem",
+          "Condition": "msg.value >= minEligibility"
+        }
+      }
+    ],
+    "InvariantValidations": [
+      {
+        "BalanceIntegrity": {
+          "Description": "The withdraw function requires that only the Owner can access the contract balance, ensuring control over funds.",
+          "Function": "withdraw",
+          "Invariant": "require(msg.sender == Owner)"
+        }
+      }
+    ]
+  },
+  "RiskyFeatures": {
+    "UncheckedLowLevelCalls": [
+      {
+        "Description": "The Command function uses an unguarded low-level call to an external contract without verifying the result, which can lead to reentrancy attacks or unexpected behaviors.",
+        "Function": "Command",
+        "Vulnerability": "Unchecked call can lead to reentrancy or failed calls without feedback",
+        "Line": 48
+      }
+    ],
+    "OwnerReassignmentRisk": [
+      {
+        "Description": "The withdraw function contains a conditional that can potentially reassign the Owner to a specific hardcoded address, which could lead to a loss of control if triggered unintentionally or exploited.",
+        "Function": "withdraw",
+        "Risk": "Owner reassignment to a hardcoded address, leading to potential loss of contract control",
+        "Line": 31
+      }
+    ],
+    "FundsDrainageRisk": [
+      {
+        "Description": "In the redeem function, if msg.value meets the eligibility criteria, both the Owner and msg.sender receive the contract's balance, which could drain funds unintentionally if used improperly.",
+        "Function": "redeem",
+        "Risk": "Potential drainage of funds due to dual transfer calls within the redeem function",
+        "Line": 18
+      }
+    ]
+  }
+}

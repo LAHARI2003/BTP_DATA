@@ -1,0 +1,14 @@
+{
+  "FunctionLevelAnalysis": {
+    "fallbackFunction": "Manages Ether deposits and updates the user’s balance.",
+    "withdrawFunction": "Handles Ether withdrawals but contains an unchecked call vulnerability allowing reentrancy."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "fallback function checks if msg.value > 0 to handle deposits."
+    ],
+    "StateTransitionPoints": [
+      "Updates to balances mapping when Ether is deposited or withdrawn."
+    ]
+  }
+}

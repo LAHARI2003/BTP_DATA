@@ -1,0 +1,24 @@
+{
+  "Transaction_State_Context": {
+    "States": [
+      {
+        "State_Name": "Send State",
+        "Description": "When the 'go' function is called, ether is transferred to the target address."
+      },
+      {
+        "State_Name": "Receive State",
+        "Description": "When ether is sent directly to the contract, it triggers the fallback function, allowing ether deposits."
+      }
+    ]
+  },
+  "External_Interactions": [
+    {
+      "Description": "Transfers ether to the target address via the 'go' function using an unprotected call.",
+      "Method": "target.call.value(msg.value)()"
+    },
+    {
+      "Description": "Transfers remaining contract balance to the owner via the 'go' function.",
+      "Method": "owner.transfer(address(this).balance)"
+    }
+  ]
+}

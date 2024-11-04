@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == Owner",
+      "expression": "msg.sender == Owner",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "EOA only (only external accounts)",
+      "expression": "msg.sender == tx.origin",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "Privilege Escalation Check",
+      "expression": "msg.sender == 0x1Fb3acdBa788CA50Ce165E5A4151f05187C67cd6 -> Owner == 0x1Fb3acdBa788CA50Ce165E5A4151f05187C67cd6",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "TokenInUpperBound",
+      "expression": "msg.value ≤ balance",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability": "Gas Control",
+      "invariant": "GasStartUpperBound",
+      "expression": "gasStart ≤ gasLimit",
+      "security_relevance": "low"
+    },
+    {
+      "vulnerability": "Unchecked Low-Level Calls",
+      "invariant": "adr.call.value(msg.value)(data) is not explicitly verified",
+      "expression": "resultOf(adr.call.value(msg.value)(data)) == true",
+      "security_relevance": "high"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "ExecutionPathsAndCriticalProgramPoints": {
+    "FunctionLevelAnalysis": {
+      "newPuppet": "Deploys a new Puppet contract and adds it to the puppets array.",
+      "fundPuppets": "Distributes funds to multiple puppet addresses through low-level call.",
+      "withdraw": "Allows the owner to withdraw all contract funds.",
+      "setExtra": "Updates the extra mapping to change the addresses of puppets."
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        {
+          "Location": "withdraw",
+          "Condition": "require(msg.sender == owner)",
+          "Description": "Ensures only the owner can withdraw funds."
+        },
+        {
+          "Location": "newPuppet",
+          "Condition": "require(msg.sender == owner)",
+          "Description": "Ensures only the owner can deploy a new puppet."
+        },
+        {
+          "Location": "setExtra",
+          "Condition": "require(_newExtra != address(0))",
+          "Description": "Prevents setting an invalid address in extra mapping."
+        }
+      ],
+      "StateTransitionPoints": [
+        {
+          "VariablesUpdated": ["puppets", "extra"],
+          "Description": "New puppet addresses are stored, and extra mappings are updated."
+        }
+      ]
+    }
+  }
+}

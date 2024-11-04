@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "WagerState": "When users place a bet using the wager function, their balance and timestamp are updated.",
+    "PlayState": "When users play by invoking the play function, determining if they win or lose based on randomness and difficulty."
+  },
+  "ExternalInteractions": {
+    "WagerPlacement": "Transfers ETH from users to the contract when wagers are placed.",
+    "DonationToWhale": "Transfers ETH to the 'whale' address via an unchecked call in donateToWhale and loseWager functions."
+  }
+}

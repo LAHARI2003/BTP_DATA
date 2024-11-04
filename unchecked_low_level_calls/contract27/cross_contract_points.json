@@ -1,0 +1,10 @@
+{
+    "CrossContractPoints": {
+        "CrossContractDependencies": {
+            "Description": "This contract interacts with an external contract `c` through the `transferFrom` function, transferring tokens from the owner to the purchaser."
+        },
+        "InterContractConsistencyConditions": {
+            "Description": "If contract `c` has internal conditions, the function `transferFrom` must succeed for tokens to be transferred."
+        }
+    }
+}

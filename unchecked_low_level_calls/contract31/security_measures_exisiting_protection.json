@@ -1,0 +1,27 @@
+{
+    "Implemented_Security_Controls": [
+        {
+            "Control": "Access Control",
+            "Function": "onlyOwner modifier on withdraw and transferOwner functions",
+            "Purpose": "Restricts ownership transfers and withdrawals to the owner."
+        }
+    ],
+    "Vulnerabilities": [
+        {
+            "Type": "Unchecked low-level call",
+            "Location": "proxy function",
+            "Description": "Target call can lead to reentrancy or arbitrary code execution vulnerabilities."
+        },
+        {
+            "Type": "Improper ownership validation",
+            "Location": "Owner variable not properly initialized in DepositProxy",
+            "Description": "May allow unauthorized access to deposit and withdraw functions."
+        }
+    ],
+    "Fallback_Functionality": [
+        {
+            "Function": "Fallback function",
+            "Description": "Allows the contract to receive ether but does not perform any security checks."
+        }
+    ]
+}

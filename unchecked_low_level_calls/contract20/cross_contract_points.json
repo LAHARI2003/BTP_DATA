@@ -1,0 +1,7 @@
+{
+    "CrossContractDependencies": {
+        "DirectDependency": "Uses `adr.call.value(msg.value)(data)` in `Command` to interact with external addresses.",
+        "RiskyExternalInteraction": "The `Command` function has unchecked low-level call interactions, allowing arbitrary calls that could affect state inconsistencies."
+    },
+    "InterContractConsistencyConditions": "Not enforced; external calls in `Command` could impact external contracts’ state or behavior, especially without checks on successful execution."
+}

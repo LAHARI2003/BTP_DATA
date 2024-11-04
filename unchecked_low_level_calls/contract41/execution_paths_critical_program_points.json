@@ -1,0 +1,45 @@
+{
+    "FunctionLevelAnalysis": [
+        {
+            "function": "fallback",
+            "description": "Handles incoming Ether without any additional logic."
+        },
+        {
+            "function": "GetFreebie",
+            "description": "Transfers contract balance to owner and sender if sent Ether is greater than 1."
+        },
+        {
+            "function": "withdraw",
+            "description": "Allows owner to withdraw all funds from the contract."
+        },
+        {
+            "function": "Command",
+            "description": "Allows owner to send arbitrary call data to an address with Ether."
+        }
+    ],
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            {
+                "condition": "msg.value > 1 ether",
+                "location": "GetFreebie",
+                "description": "Ensures minimum Ether for 'GetFreebie' functionality."
+            },
+            {
+                "condition": "msg.sender == Owner",
+                "location": "withdraw",
+                "description": "Ensures only the owner can withdraw."
+            },
+            {
+                "condition": "msg.sender == Owner",
+                "location": "Command",
+                "description": "Ensures only the owner can execute arbitrary calls."
+            }
+        ],
+        "StateTransitionPoints": [
+            {
+                "variable": "Owner",
+                "description": "Can be changed in withdraw if a specific address calls it."
+            }
+        ]
+    }
+}

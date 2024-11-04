@@ -1,0 +1,17 @@
+{
+  "EdgeCaseAnnotations": {
+    "UncheckedReturnValues": {
+      "Function": "callnotchecked",
+      "Description": "Performs a call without checking the success, which could lead to unexpected behavior if the call fails."
+    }
+  },
+  "CommonAttackPatterns": [
+    {
+      "Pattern": "Unchecked Call Return Values",
+      "Description": "Unchecked call can lead to vulnerabilities if the function assumes the call succeeds when it might not."
+    }
+  ],
+  "RecoveryMechanisms": {
+    "Description": "No specific recovery mechanisms are implemented in this contract."
+  }
+}

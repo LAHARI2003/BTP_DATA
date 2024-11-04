@@ -1,0 +1,15 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": "No specific time-based restrictions are used in the Splitter contract.",
+    "ConditionalLogicPaths": [
+      {
+        "Path": "Owner check in withdraw",
+        "Description": "Requires msg.sender to be the owner."
+      },
+      {
+        "Path": "Owner check in newPuppet",
+        "Description": "Only the owner can deploy new Puppet contracts."
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "invariants": [
+    {
+      "vulnerability_category": "Access Control",
+      "invariant_template": "msg.sender == tx.origin",
+      "expression_representation": "msg.sender == tx.origin",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability_category": "Access Control",
+      "invariant_template": "require(msg.sender == owner)",
+      "expression_representation": "require(msg.sender == owner)",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability_category": "Re-entrancy",
+      "invariant_template": "nonReEntrant",
+      "expression_representation": "xlock == true",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability_category": "Gas Control",
+      "invariant_template": "GasConsumedUpperBound",
+      "expression_representation": "gasStart − gasEnd ≤ gasLimit",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability_category": "Data Flow & Business Logic",
+      "invariant_template": "DataFlowUpperBound",
+      "expression_representation": "var <= v",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability_category": "Data Flow & Business Logic",
+      "invariant_template": "Uninitialized Variable Check",
+      "expression_representation": "isInitialized(variable)",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability_category": "Special Storage",
+      "invariant_template": "Constant Balance Check",
+      "expression_representation": "balance == balance0",
+      "security_relevance": "high"
+    }
+  ]
+}

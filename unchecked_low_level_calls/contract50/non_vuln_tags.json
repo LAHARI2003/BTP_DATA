@@ -1,0 +1,30 @@
+{
+  "nonVulnerableTags": {
+    "Well-Implemented Features": {
+      "State Management": "The 'payedOut' variable serves as a state flag to prevent repeated execution of the 'sendToWinner' function, controlling the state of payouts effectively.",
+      "Access Control": "The 'sendToWinner' function uses 'require(!payedOut)' to ensure the function cannot be executed if funds have already been paid out, preventing double payout scenarios."
+    },
+    "Invariant Validation Examples": {
+      "Invariant in sendToWinner": "The function validates that 'payedOut' is false before proceeding, enforcing an invariant where funds are only sent once per win.",
+      "Invariant in withdrawLeftOver": "The function requires 'payedOut' to be true, maintaining the state consistency that withdraws can only happen after the winner has been paid."
+    }
+  },
+  "RiskyFeatures": {
+    "Unchecked External Calls": {
+      "sendToWinner": {
+        "Description": "The 'send' method for transferring funds to the 'winner' address is unchecked, which could lead to unexpected reentrancy or transaction failures if the transfer fails or if the recipient contract has code in its fallback function.",
+        "Risk": "Risk of unhandled failure or reentrancy vulnerability, as 'send' only forwards 2,300 gas and does not revert on failure."
+      },
+      "withdrawLeftOver": {
+        "Description": "The 'send' method is used to transfer the remaining balance to the caller, which could fail without notifying the contract. This may also pose risks similar to unchecked calls.",
+        "Risk": "Risk of unhandled failure in balance transfer, which could result in funds getting stuck in the contract if 'send' fails due to gas limitations."
+      }
+    },
+    "Boolean Flag Control": {
+      "payedOut Flag": {
+        "Description": "While 'payedOut' effectively controls access to fund distribution, it is managed by a boolean variable, which can be error-prone if any logic accidentally or intentionally resets it.",
+        "Risk": "Potential state inconsistency if 'payedOut' is altered unexpectedly, risking unintended fund transfers."
+      }
+    }
+  }
+}

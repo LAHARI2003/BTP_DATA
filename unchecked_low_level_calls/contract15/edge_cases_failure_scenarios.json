@@ -1,0 +1,13 @@
+{
+    "EdgeCasesFailureScenarios": {
+        "EdgeCaseAnnotations": {
+            "ZeroValueDeposits": "Fallback function allows deposits of any amount including zero",
+            "UncheckedLowLevelCalls": "sendMoney uses _target.call.value(_value)(_data) without checking for success"
+        },
+        "CommonAttackPatterns": {
+            "Reentrancy": "Potential reentrancy attack if _target is a contract in sendMoney",
+            "AccessControlVulnerability": "If onlyOwner modifier was removed, unauthorized users could withdraw funds"
+        },
+        "RecoveryMechanisms": "No emergency stop function or recovery mechanism present"
+    }
+}

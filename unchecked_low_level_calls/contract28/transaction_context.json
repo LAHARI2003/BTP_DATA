@@ -1,0 +1,14 @@
+{
+  "TransactionStateContext": {
+    "TransferState": {
+      "Description": "When users call the transfer function to transfer tokens to multiple addresses.",
+      "Function": "transfer"
+    }
+  },
+  "ExternalInteractions": {
+    "ContractAddress": {
+      "Description": "Transfers tokens by calling another contract's 'transferFrom' function.",
+      "InteractionPoint": "contract_address.call(id, msg.sender, tos[i], vs[i]);"
+    }
+  }
+}

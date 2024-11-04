@@ -1,0 +1,43 @@
+{
+    "NonVulnerableTags": {
+        "WellImplementedFeatures": [
+            {
+                "AccessControl": "Correct usage of msg.sender to restrict certain functions to only the contract deployer (requests[0].requester), such as in upgrade(), reset(), suspend(), and withdraw() functions."
+            },
+            {
+                "EventLogging": "Consistent logging of events (Upgrade, Reset, RequestInfo, DeliverInfo, Cancel) to maintain a record of contract activities and ensure transparency for critical actions."
+            },
+            {
+                "MoneyFlowIntegrity": "The contract maintains separate fees for request processing and cancellation, and also uses constants for fee flags (e.g., CANCELLED_FEE_FLAG, DELIVERED_FEE_FLAG), which helps to keep track of request status and money flow."
+            },
+            {
+                "KillswitchFunctionality": "Implements a killswitch to suspend contract operations, allowing the contract to be paused and ensuring better control in case of an emergency (e.g., in suspend() and restart())."
+            }
+        ],
+        "InvariantValidationExamples": [
+            {
+                "RequestValidation": "In request(), the function validates that msg.value meets the MIN_FEE requirement before proceeding with request recording, ensuring that only properly funded requests are accepted."
+            },
+            {
+                "ResponseValidation": "In deliver(), the function checks that the response comes from the designated SGX_ADDRESS, the request is valid, and the paramsHash matches, ensuring consistency and integrity of the response delivery."
+            },
+            {
+                "CancellationValidation": "In cancel(), verifies that the msg.sender is the requester and has a valid request with sufficient funds before canceling and refunding, helping to ensure that cancellations are handled properly and securely."
+            }
+        ],
+        "PotentialRiskFeatures": [
+            {
+                "UncheckedLowLevelCalls": "Several instances of unchecked low-level calls (e.g., .call and .send without verifying return values) could lead to reentrancy vulnerabilities or failed calls, which may lead to unexpected behavior. Examples include requests[0].requester.call in withdraw(), msg.sender.call in request() during killswitch, and SGX_ADDRESS.send in deliver()."
+            },
+            {
+                "ExternalCallFlag": "The contract relies on an externalCallFlag to prevent reentrancy; however, this is not a secure guard against reentrancy attacks and might be bypassed. A better approach would involve using the Checks-Effects-Interactions pattern or reentrancy guards."
+            },
+            {
+                "KillswitchDesign": "While the killswitch is useful for halting the contract, it might also pose a risk if invoked improperly, potentially locking user funds. Additional validation or access restrictions might help mitigate this risk."
+            },
+            {
+                "GasLimitManagement": "The callbackGas calculation in deliver() uses dynamic values based on tx.gasprice and msg.gas. This might create unpredictable behavior, potentially resulting in insufficient gas for critical operations or callbacks, especially as gas costs fluctuate."
+            }
+        ]
+    }
+}

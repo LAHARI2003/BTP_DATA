@@ -1,0 +1,56 @@
+{
+  "WellImplementedFeatures": {
+    "AccessControl": [
+      {
+        "Description": "Use of onlyOwner modifier in setBotAddress and setSecretSigner functions ensures only the owner can change key contract addresses."
+      },
+      {
+        "Description": "Usage of onlyBot modifier in withdrawBotFee function restricts bot fee withdrawals to the authorized bot address."
+      }
+    ],
+    "InvariantValidation": [
+      {
+        "Description": "The wager function checks multiple constraints, including minimum and maximum bet limits, contract balance sufficiency, and ticket expiration, to prevent unintended state changes or insufficient funds."
+      },
+      {
+        "Description": "The play function verifies bet expiration, requiring that bets must be processed within a specified block range, maintaining consistency in bet outcomes."
+      },
+      {
+        "Description": "The withdrawDevFee and withdrawBotFee functions include a checkContractHealth modifier to ensure sufficient contract balance before processing withdrawals."
+      },
+      {
+        "Description": "The donateForContractHealth function maintains a record of donations per user, allowing donors to withdraw their donation amount safely, enhancing integrity in donor contributions."
+      }
+    ],
+    "MoneyFlowIntegrity": [
+      {
+        "Description": "Total staked or locked funds (lockedInBets) are consistently updated to reflect the current contract balance requirements and avoid overdrawing."
+      },
+      {
+        "Description": "Jackpot and developer fee balances (jackpotSize, devFeeSize) are tracked separately, which allows for clear differentiation and safe distribution of funds within the contract."
+      }
+    ]
+  },
+  "PotentiallyRiskyFeatures": {
+    "UncheckedExternalCall": [
+      {
+        "Description": "In the wager function, the call to whale (whale.call.value(donate_amount)(bytes4(keccak256(\"donate()\"))) is an unguarded external call, which could lead to reentrancy risks if the whale contract is compromised or replaced with a malicious contract."
+      }
+    ],
+    "SignatureVerification": [
+      {
+        "Description": "The secretSigner validation in the wager function uses ecrecover with an arbitrary hash (37 characters, unsigned) without ensuring it is not reused elsewhere, which could expose the contract to potential replay attacks or signature manipulation."
+      }
+    ],
+    "ERC20TokenTrapdoor": [
+      {
+        "Description": "The transferAnyERC20Token function allows the owner to transfer any ERC20 tokens accidentally sent to the contract. While useful, it could pose a risk if the owner’s private key is compromised, allowing arbitrary token transfers."
+      }
+    ],
+    "SelfDestructUsage": [
+      {
+        "Description": "The kill function allows the contract owner to self-destruct the contract once all bets are processed. While the lockedInBets check is in place, this function could be risky if executed without thorough validation of the contract’s state, potentially locking funds if there are any outstanding bets."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": [
+      {
+        "State": "UpgradeState",
+        "Description": "Triggered when the contract is upgraded."
+      },
+      {
+        "State": "RequestState",
+        "Description": "Initiated when a request is made by a user."
+      },
+      {
+        "State": "CancellationState",
+        "Description": "Managed when a user cancels a previously made request."
+      },
+      {
+        "State": "DeliveryState",
+        "Description": "Executed when the response is delivered to the callback contract."
+      }
+    ],
+    "ExternalInteractions": [
+      {
+        "Interaction": "SGX_ADDRESS.send",
+        "Description": "Transfers fees to SGX address when request is successfully processed or cancelled."
+      },
+      {
+        "Interaction": "requests[requestId].callbackAddr.call",
+        "Description": "Calls the callback function in the external contract address with specified callback ID."
+      }
+    ]
+  }
+}

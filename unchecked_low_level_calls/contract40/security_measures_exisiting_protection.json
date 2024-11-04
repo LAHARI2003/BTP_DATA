@@ -1,0 +1,13 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": "Restricts certain functions to owner and bot via modifiers",
+        "SignatureVerification": "Checks signatures for authorized actions",
+        "BalanceChecks": "Ensures sufficient balance to cover bets, jackpot, and dev fees"
+    },
+    "FallbackFunctionality": {
+        "FallbackFunction": "Allows users to send Ether directly to the contract"
+    },
+    "KillSwitch": {
+        "SelfDestruct": "Permits contract destruction if no bets are active"
+    }
+}

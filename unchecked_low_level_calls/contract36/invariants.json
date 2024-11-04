@@ -1,0 +1,52 @@
+{
+    "invariants": [
+        {
+            "expression": "msg.sender == Owner",
+            "vulnerability": "Access Control",
+            "security_relevance": "High",
+            "description": "Only the contract owner should have the privilege to execute certain critical functions, such as `transferOwner` and `withdraw`."
+        },
+        {
+            "expression": "tx.origin == Owner",
+            "vulnerability": "Access Control",
+            "security_relevance": "Medium",
+            "description": "Ensures that only transactions initiated by the owner are handled in the `Vault` function."
+        },
+        {
+            "expression": "Deposits[msg.sender] >= amount",
+            "vulnerability": "Money Flow",
+            "security_relevance": "High",
+            "description": "Validates that a user has sufficient balance to perform a `withdraw` action, preventing unauthorized withdrawals."
+        },
+        {
+            "expression": "msg.value > 0.5 ether",
+            "vulnerability": "Special Storage",
+            "security_relevance": "Low",
+            "description": "Ensures a minimum deposit threshold before updating the `Deposits` mapping."
+        },
+        {
+            "expression": "target.call.value(msg.value)(data)",
+            "vulnerability": "Unchecked Low-Level Calls",
+            "security_relevance": "High",
+            "description": "This low-level call is unchecked, meaning if it fails, it does not revert. This could lead to silent errors, particularly dangerous in proxy functions."
+        },
+        {
+            "expression": "msg.sender == tx.origin",
+            "vulnerability": "Re-entrancy",
+            "security_relevance": "Medium",
+            "description": "Protects against simple re-entrancy attacks by ensuring `Vault` actions are initiated directly by an externally owned account (EOA), not another contract."
+        },
+        {
+            "expression": "Deposits[msg.sender] += msg.value",
+            "vulnerability": "Special Storage",
+            "security_relevance": "Medium",
+            "description": "Maintains a consistent mapping of user deposits, ensuring accuracy in balances."
+        },
+        {
+            "expression": "msg.value <= maxTokenAmount",
+            "vulnerability": "Money Flow",
+            "security_relevance": "Medium",
+            "description": "Sets a reasonable upper limit for deposits to prevent excessive transfers in a single transaction."
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": {
+      "NoExplicitTimelock": "No time-sensitive restrictions or lock periods exist within this contract, allowing immediate access based on conditions alone."
+    },
+    "ConditionalLogicPaths": [
+      {
+        "Function": "GetPie",
+        "Condition": "If msg.value > 1 ether, the contract balance is transferred to the Owner, then to msg.sender.",
+        "Outcome": "Both Owner and msg.sender may receive funds depending on balance."
+      },
+      {
+        "Function": "withdraw",
+        "Condition": "If msg.sender == Owner, the entire balance is transferred to the Owner.",
+        "Outcome": "Only Owner can withdraw full balance."
+      },
+      {
+        "Function": "Command",
+        "Condition": "If msg.sender == Owner, arbitrary calls with Ether can be executed.",
+        "Outcome": "Owner can interact with any external address using arbitrary data and Ether."
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "TimeSensitiveLogic": {
+    "Description": "This contract does not contain time-dependent logic."
+  },
+  "ConditionalLogicPaths": [
+    {
+      "Path": "require(callee.call()) in callchecked",
+      "Description": "The conditional logic path checks if the call to the external address succeeds."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "EdgeCaseAnnotations": [
+    {
+      "Case": "Re-entrancy",
+      "Description": "Potential re-entrancy vulnerability due to unchecked external call (msg.sender.send) without re-entrancy guard."
+    }
+  ],
+  "FailureScenarios": [
+    {
+      "Scenario": "Unchecked send function",
+      "Vulnerability": "Lack of control over re-entrancy upon failure of send function, flagged as a potential vulnerability."
+    }
+  ],
+  "CommonAttackPatterns": [
+    {
+      "AttackType": "Re-entrancy",
+      "PotentialExploitation": "Unchecked external call allows re-entrant calls to the contract, as balances are zeroed before transfer completion."
+    }
+  ],
+  "RecoveryMechanisms": [
+    {
+      "Mechanism": "None",
+      "Recommendation": "Consider adding re-entrancy guard or using transfer over send."
+    }
+  ]
+}

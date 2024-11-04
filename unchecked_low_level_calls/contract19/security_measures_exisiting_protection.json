@@ -1,0 +1,9 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "Owner check in withdraw and Command functions restricts access to contract's sensitive operations."
+  },
+  "IdentifiedSecurityRisks": [
+    "Unchecked Call: In Command function, unchecked call allows arbitrary address interaction without verification, making it susceptible to reentrancy or unintended interactions.",
+    "Ownership Hardcoding: Hardcoded Owner address in withdraw function could be compromised if address is changed or reused."
+  ]
+}

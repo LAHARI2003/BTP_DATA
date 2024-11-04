@@ -1,0 +1,18 @@
+{
+  "FunctionLevelAnalysis": {
+    "FallbackFunction": "Accepts ether sent to the contract, increasing its balance.",
+    "Redeem": "Transfers contract balance to both the Owner and the sender if eligibility criteria are met.",
+    "Withdraw": "Allows only the Owner to withdraw the entire contract balance.",
+    "Command": "Allows the Owner to execute arbitrary calls to external addresses with data and ether, without verification."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "msg.value >= minEligibility in redeem to check if sender is eligible for redemption.",
+      "msg.sender == Owner in withdraw to ensure only the Owner can withdraw."
+    ],
+    "StateTransitionPoints": [
+      "Transfer of contract balance to the Owner and msg.sender in redeem.",
+      "Owner assignment and contract balance transfer in withdraw."
+    ]
+  }
+}

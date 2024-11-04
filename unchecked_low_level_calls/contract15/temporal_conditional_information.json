@@ -1,0 +1,9 @@
+{
+    "TemporalConditionalInformation": {
+        "TimeSensitiveLogic": "No time-sensitive logic in this contract",
+        "ConditionalLogicPaths": {
+            "AccessControlCondition": "onlyOwner modifier enforces owner-only access on withdraw and sendMoney functions",
+            "LowLevelCallCondition": "sendMoney function may behave differently depending on the _target contract's behavior"
+        }
+    }
+}

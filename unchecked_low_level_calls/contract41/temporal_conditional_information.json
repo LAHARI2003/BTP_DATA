@@ -1,0 +1,19 @@
+{
+    "TimeSensitiveLogic": [
+        {
+            "description": "There are no time-based restrictions; functions are immediately executable without any delay or lock."
+        }
+    ],
+    "ConditionalLogicPaths": [
+        {
+            "condition": "msg.value > 1 ether",
+            "path": "Success path in 'GetFreebie'",
+            "description": "If condition is true, both owner and sender can withdraw the balance."
+        },
+        {
+            "condition": "msg.sender == Owner",
+            "path": "Success path in 'withdraw' and 'Command'",
+            "description": "If condition is true, owner can withdraw or call arbitrary addresses."
+        }
+    ]
+}

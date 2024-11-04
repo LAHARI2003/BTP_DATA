@@ -1,0 +1,54 @@
+{
+  "nonVulnerableTags": {
+    "wellImplementedFeatures": [
+      {
+        "feature": "Access Control",
+        "description": "Correct usage of onlyOwner modifier in withdraw, change_token_price, and change_active functions ensures that only the contract owner can execute these critical functions."
+      },
+      {
+        "feature": "State Management",
+        "description": "The active state variable controls token purchase functionality, allowing the owner to pause or resume token sales by setting it to non-zero or zero values, adding flexibility for the contract's operation."
+      },
+      {
+        "feature": "Token Price Update",
+        "description": "The change_token_price function enables the owner to update token pricing dynamically, providing flexibility for adjusting economic parameters."
+      }
+    ],
+    "invariantValidations": [
+      {
+        "function": "tokens_buy",
+        "description": "Validates that active > 0 and msg.value >= token_price before proceeding, ensuring the contract only allows token purchases when the sale is active and the user has sent enough Ether."
+      },
+      {
+        "function": "tokens_buy",
+        "description": "Ensures tokens_buy > 0 before proceeding with token transfer to prevent zero-value transactions, contributing to state consistency."
+      }
+    ]
+  },
+  "riskyFeatures": [
+    {
+      "feature": "Unchecked External Calls",
+      "description": "The call to c (token contract) for transferFrom is unchecked, meaning the contract does not verify the success of the external call. This may lead to potential re-entrancy vulnerabilities or state inconsistencies if the transferFrom call fails unexpectedly.",
+      "line": 48
+    },
+    {
+      "feature": "Unchecked Send Operations",
+      "description": "The owner.send and owner2.send calls do not check for a return value. This can lead to failed Ether transfers, resulting in unexpected contract behavior, especially if owner or owner2 addresses are contracts with complex fallback functions.",
+      "line": 54
+    },
+    {
+      "feature": "Potential Re-entrancy Risk",
+      "description": "The contract does not use the checks-effects-interactions pattern, particularly in the tokens_buy function, which may expose it to re-entrancy attacks in the external call to c for transferring tokens.",
+      "line": 48
+    },
+    {
+      "feature": "Fixed Token Price",
+      "description": "The token_price is initially set with a hardcoded calculation that may need regular updates to match market value. Failure to adjust the token price could lead to economic inefficiencies or manipulation opportunities for buyers.",
+      "line": 15
+    },
+    {
+      "feature": "No Circuit Breaker for Critical Failures",
+      "description": "The contract lacks a mechanism to disable functions in case of critical failure, which could limit owner control in scenarios where security vulnerabilities are discovered."
+    }
+  ]
+}

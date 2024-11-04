@@ -1,0 +1,10 @@
+{
+  "Time-Sensitive Logic": {
+    "Round Duration": "Each round lasts for blocksPerRound blocks, approximately one day.",
+    "Winner Decision Time": "The winner is determined based on the block hash after the round ends."
+  },
+  "Conditional Logic Paths": {
+    "Subpot Cashing": "Dependent on whether the round has ended, the subpot index is valid, and the subpot is not already cashed.",
+    "Ticket Purchase": "If funds sent are not enough for a full ticket, a partial refund is issued."
+  }
+}

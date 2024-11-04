@@ -1,0 +1,38 @@
+[
+    {
+        "vulnerability": "Access Control",
+        "invariant": "msg.sender == Owner",
+        "expression": "msg.sender == Owner",
+        "security_relevance": "high"
+    },
+    {
+        "vulnerability": "Access Control",
+        "invariant": "EOA only (only external accounts)",
+        "expression": "tx.origin == msg.sender",
+        "security_relevance": "medium"
+    },
+    {
+        "vulnerability": "Money Flow",
+        "invariant": "Max Token Transfer Amount",
+        "expression": "Deposits[msg.sender] >= amount",
+        "security_relevance": "high"
+    },
+    {
+        "vulnerability": "Access Control",
+        "invariant": "isSenderOwner (checks if the sender is the owner)",
+        "expression": "msg.sender == Owner",
+        "security_relevance": "high"
+    },
+    {
+        "vulnerability": "Data Flow & Business Logic",
+        "invariant": "MappingUpperBound",
+        "expression": "Deposits[msg.sender] >= 0",
+        "security_relevance": "low"
+    },
+    {
+        "vulnerability": "Re-entrancy",
+        "invariant": "nonReEntrant",
+        "expression": "msg.sender.call does not re-enter the contract",
+        "security_relevance": "high"
+    }
+]

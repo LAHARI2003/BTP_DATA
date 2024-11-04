@@ -1,0 +1,22 @@
+{
+  "FunctionLevelAnalysis": {
+    "wager": "Places a bet if the contract is open to the public, verifies if the sender is a real user, and logs the amount and timestamp.",
+    "play": "Determines if the player wins or loses, calculates the winning number based on block hashes and difficulty, and triggers payout or loseWager accordingly.",
+    "OpenToThePublic": "Allows the owner to open the game to the public.",
+    "AdjustBetAmounts": "Allows the owner to adjust the wager limit, emitting an event.",
+    "AdjustDifficulty": "Allows the owner to adjust the game difficulty, emitting an event."
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      "require(msg.value == betLimit) in wager to enforce the exact bet amount.",
+      "require(openToPublic) in wager and play to ensure only public access if allowed.",
+      "require(wagers[msg.sender] > 0) in play to validate if the player has placed a wager.",
+      "require(msg.sender == tx.origin) in onlyRealPeople modifier to block contracts from interacting."
+    ],
+    "StateTransitionPoints": [
+      "Updates to timestamps and wagers in wager.",
+      "Adjustments to betLimit and difficulty through AdjustBetAmounts and AdjustDifficulty.",
+      "ETH transfer and totalDonated updates when invoking payout and loseWager."
+    ]
+  }
+}

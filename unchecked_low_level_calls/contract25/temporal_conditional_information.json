@@ -1,0 +1,10 @@
+{
+    "TimeSensitiveLogic": {
+        "OwnershipConfirmation": "The confirmOwner function allows for time-sensitive confirmation of ownership transfer."
+    },
+    "ConditionalLogicPaths": {
+        "DepositCondition": "Executes only if msg.value >= MinDeposit.",
+        "WithdrawTokenCondition": "Executes only if Holders[_to] > 0 for WitdrawTokenToHolder.",
+        "WithdrawToHolderCondition": "Executes only if Holders[_addr] >= _wei and Holders[msg.sender] > 0."
+    }
+}

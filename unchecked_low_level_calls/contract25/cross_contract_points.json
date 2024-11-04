@@ -1,0 +1,8 @@
+{
+    "CrossContractDependencies": {
+        "TokenTransferDependency": "The WithdrawToken function interacts with an external token contract for transfers."
+    },
+    "InterContractConsistencyConditions": {
+        "TokenTransferSuccess": "Successful completion of WithdrawToken call to transfer tokens to a recipient."
+    }
+}

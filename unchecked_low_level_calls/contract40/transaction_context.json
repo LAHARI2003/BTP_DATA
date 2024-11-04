@@ -1,0 +1,11 @@
+{
+    "TransactionStateContext": {
+        "BettingState": "When users place a bet via the `wager` function",
+        "ResultState": "When the contract processes the bet result through the `play` function",
+        "DonationState": "When donations are sent to the contract via `donateForContractHealth`"
+    },
+    "ExternalInteractions": {
+        "TokenTransfers": "Transfers funds to players, owner, bot, and community fund",
+        "DonationInteraction": "Calls donate() function on the whale address"
+    }
+}

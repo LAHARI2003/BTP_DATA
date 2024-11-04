@@ -1,0 +1,14 @@
+{
+  "EdgeCases": {
+    "ZeroValueTransfers": "transfer function requires non-zero values for addresses.",
+    "InvalidBreedingPairs": "breedWithAuto checks gene types to ensure compatible mating pairs."
+  },
+  "CommonAttackPatterns": {
+    "AccessControlVulnerability": "Contract roles such as CEO, COO are strictly enforced to prevent unauthorized access.",
+    "Reentrancy": "Auction operations are managed without using SafeMath and could potentially be affected by underflow or overflow."
+  },
+  "RecoveryMechanisms": {
+    "EmergencyPause": "Contract can be paused by CEO in case of emergencies, halting all critical functions.",
+    "ControlledUpgrade": "setNewAddress allows migrating to a new contract address if a bug is detected."
+  }
+}

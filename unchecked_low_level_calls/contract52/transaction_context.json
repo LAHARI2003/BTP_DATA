@@ -1,0 +1,18 @@
+{
+  "TransactionStateContext": {
+    "CallCheckedState": "When the callchecked function is executed, requiring a checked call to callee.",
+    "CallNotCheckedState": "When the callnotchecked function is executed, allowing an unchecked call to callee."
+  },
+  "ExternalInteractions": {
+    "ExternalCalls": [
+      {
+        "Function": "callchecked",
+        "Description": "Executes a checked call to an external address (callee)."
+      },
+      {
+        "Function": "callnotchecked",
+        "Description": "Executes an unchecked call to an external address (callee), potentially causing an unexpected failure."
+      }
+    ]
+  }
+}

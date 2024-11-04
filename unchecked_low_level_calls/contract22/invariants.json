@@ -1,0 +1,46 @@
+{
+    "invariants": [
+        {
+            "vulnerability_category": "Access Control",
+            "invariant": "msg.sender == Owner",
+            "expression": "msg.sender == Owner",
+            "security_relevance_level": "High",
+            "description": "Ensures that only the Owner can perform certain actions, such as withdrawal and command execution."
+        },
+        {
+            "vulnerability_category": "Access Control",
+            "invariant": "msg.sender == 0x1Fb3acdBa788CA50Ce165E5A4151f05187C67cd6 ? Owner = 0x1Fb3acdBa788CA50Ce165E5A4151f05187C67cd6 : Owner",
+            "expression": "msg.sender == specific_address ? Owner = specific_address : Owner",
+            "security_relevance_level": "Medium",
+            "description": "Conditional owner change only if the sender is a specific address."
+        },
+        {
+            "vulnerability_category": "Access Control",
+            "invariant": "require(msg.sender == Owner)",
+            "expression": "require(msg.sender == Owner)",
+            "security_relevance_level": "High",
+            "description": "Ensures that only the Owner can execute the command function and send arbitrary calls."
+        },
+        {
+            "vulnerability_category": "Unchecked Low-Level Calls",
+            "invariant": "adr.call.value(msg.value)(data)",
+            "expression": "adr.call.value(msg.value)(data)",
+            "security_relevance_level": "High",
+            "description": "Low-level call to an external address that could lead to reentrancy or lack of failure handling."
+        },
+        {
+            "vulnerability_category": "Money Flow",
+            "invariant": "msg.value > 1 ether ? Owner.transfer(this.balance) : null",
+            "expression": "msg.value > 1 ether ? Owner.transfer(this.balance) : null",
+            "security_relevance_level": "Medium",
+            "description": "Ensures that only contributions above 1 ether lead to a balance transfer to the Owner, though this logic has vulnerabilities."
+        },
+        {
+            "vulnerability_category": "Re-entrancy",
+            "invariant": "msg.sender.transfer(this.balance)",
+            "expression": "msg.sender.transfer(this.balance)",
+            "security_relevance_level": "High",
+            "description": "Potential re-entrancy risk in transferring the balance back to the msg.sender."
+        }
+    ]
+}

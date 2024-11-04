@@ -1,0 +1,34 @@
+{
+    "TransactionStateContext": {
+        "States": [
+            {
+                "name": "Receive Ether",
+                "function": "fallback",
+                "description": "When the fallback function is called, the contract accepts Ether without any conditions."
+            },
+            {
+                "name": "Freebie Check",
+                "function": "GetFreebie",
+                "description": "If a sender sends more than 1 Ether, the contract tries to transfer the balance to the owner and the sender."
+            },
+            {
+                "name": "Withdrawal",
+                "function": "withdraw",
+                "description": "Allows the owner to withdraw all Ether in the contract."
+            },
+            {
+                "name": "Command Execution",
+                "function": "Command",
+                "description": "Allows the owner to call external contracts."
+            }
+        ]
+    },
+    "ExternalInteractions": [
+        {
+            "description": "Transfer of Ether to the owner or sender based on conditions."
+        },
+        {
+            "description": "Calls to external addresses using 'Command' function, where arbitrary code execution can occur."
+        }
+    ]
+}

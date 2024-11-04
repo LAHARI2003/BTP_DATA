@@ -1,0 +1,60 @@
+{
+  "invariants": [
+    {
+      "invariant": "msg.sender == owner",
+      "vulnerability": "Access Control",
+      "expression": "msg.sender == owner",
+      "security_relevance": "High",
+      "description": "Ensures that only the contract owner can execute critical functions. Violating this can lead to unauthorized access."
+    },
+    {
+      "invariant": "Holders[msg.sender] >= MinDeposit",
+      "vulnerability": "Special Storage",
+      "expression": "Holders[msg.sender] >= MinDeposit",
+      "security_relevance": "Medium",
+      "description": "Ensures that the minimum deposit requirement is met by the caller. Violating this may allow deposits less than the required minimum."
+    },
+    {
+      "invariant": "MinDeposit >= 1 ether",
+      "vulnerability": "Special Storage",
+      "expression": "MinDeposit >= 1 ether",
+      "security_relevance": "High",
+      "description": "Ensures that the contract's minimum deposit is always set to at least 1 ether, protecting the contract from insufficient deposits."
+    },
+    {
+      "invariant": "Holders[_to] == 0 after WitdrawTokenToHolder",
+      "vulnerability": "Money Flow",
+      "expression": "Holders[_to] == 0",
+      "security_relevance": "High",
+      "description": "Ensures that once tokens are withdrawn, the holder’s balance is set to zero, preventing double withdrawals."
+    },
+    {
+      "invariant": "this.balance >= 0",
+      "vulnerability": "Special Storage",
+      "expression": "this.balance >= 0",
+      "security_relevance": "Low",
+      "description": "Ensures that the contract balance is always non-negative, a basic check for the contract's financial integrity."
+    },
+    {
+      "invariant": "Holders[_addr] - _wei >= 0",
+      "vulnerability": "Money Flow",
+      "expression": "Holders[_addr] - _wei >= 0",
+      "security_relevance": "Medium",
+      "description": "Ensures that the holder's balance does not go below zero after a withdrawal, maintaining account consistency."
+    },
+    {
+      "invariant": "_addr.call.value(_wei).gas(gas) == true",
+      "vulnerability": "Unchecked Low-Level Calls",
+      "expression": "_addr.call.value(_wei)",
+      "security_relevance": "High",
+      "description": "Low-level call used for ether transfer should check for success. Failure to check this may lead to re-entrancy vulnerabilities."
+    },
+    {
+      "invariant": "token.call(bytes4(sha3('transfer(address,uint256)')), to, amount) == true",
+      "vulnerability": "Unchecked Low-Level Calls",
+      "expression": "token.call(bytes4(sha3('transfer(address,uint256)')), to, amount)",
+      "security_relevance": "High",
+      "description": "Low-level call used for token transfer should check for success. Failure to check may result in silent failures and loss of funds."
+    }
+  ]
+}

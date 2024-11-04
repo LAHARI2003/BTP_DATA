@@ -1,0 +1,31 @@
+{
+    "FunctionLevelAnalysis": {
+        "Vault": {
+            "Description": "Initializes the contract with the sender as the owner if called by an external account (not a contract) and triggers a deposit.",
+            "KeyAction": "Sets the Owner variable and initiates a deposit call."
+        },
+        "deposit": {
+            "Description": "Allows users to deposit ether if the amount is greater than 0.25 ether.",
+            "KeyAction": "Updates the Deposits mapping for the sender."
+        },
+        "withdraw": {
+            "Description": "Allows the owner to withdraw a specified amount of ether if the balance is sufficient.",
+            "KeyAction": "Transfers the requested amount to the owner's address if conditions are met."
+        },
+        "proxy": {
+            "Description": "Allows an arbitrary call to another contract's address with provided data and ether.",
+            "KeyAction": "Calls another contract, transferring ether if applicable."
+        }
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": [
+            "msg.sender == tx.origin in Vault to prevent proxy calls.",
+            "msg.value > 0.25 ether in deposit to restrict minimum deposit.",
+            "msg.sender == Owner in onlyOwner modifier to restrict access to withdraw and transferOwner."
+        ],
+        "StateTransitionPoints": [
+            "Updates to the Deposits mapping in deposit and withdraw functions.",
+            "Owner variable update in transferOwner and Vault functions."
+        ]
+    }
+}

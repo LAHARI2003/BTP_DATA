@@ -1,0 +1,11 @@
+{
+    "Edge Case Annotations": {
+        "sendToWinner without setting winner or winAmount": "Contract might fail or send zero value if winner or winAmount is not set",
+        "Reentrancy Risk": "Unchecked low-level calls can lead to reentrancy attacks in both sendToWinner and withdrawLeftOver functions"
+    },
+    "Common Attack Patterns": {
+        "Unchecked Low-Level Calls": "Potential reentrancy attack vulnerability due to use of send without reentrancy guard",
+        "Access Control": "No specific owner or authorized role is set, allowing any caller to call withdrawLeftOver"
+    },
+    "Recovery Mechanisms": "None present - Consider adding emergency stop or fallback functionality"
+}

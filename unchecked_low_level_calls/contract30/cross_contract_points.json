@@ -1,0 +1,15 @@
+{
+  "CrossContractPoints": {
+    "CrossContractDependencies": [
+      {
+        "Contract": "Puppet",
+        "Dependency": "fundPuppets function sends Ether to each puppet contract."
+      }
+    ],
+    "InterContractConsistencyConditions": [
+      {
+        "Condition": "The balance of each puppet contract should reflect the correct share of funds after fundPuppets is executed."
+      }
+    ]
+  }
+}

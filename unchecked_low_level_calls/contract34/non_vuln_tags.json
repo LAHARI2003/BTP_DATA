@@ -1,0 +1,37 @@
+{
+    "Contract": "keepMyEther",
+    "NonVulnerableTags": {
+        "InvariantValidation": [
+            {
+                "withdraw": "Ensures balances[msg.sender] is set to 0 after funds are sent, attempting to prevent re-entrancy issues by updating state immediately after the call."
+            }
+        ],
+        "DataIntegrity": [
+            {
+                "FallbackFunction": "Correctly adds msg.value to balances[msg.sender] to track deposits made by each user."
+            }
+        ],
+        "AccessControl": [
+            {
+                "WithdrawFunction": "Allows only the sender to withdraw their own balance, ensuring some level of access control on withdrawals."
+            }
+        ]
+    },
+    "RiskyFeatures": {
+        "UncheckedExternalCalls": [
+            {
+                "withdraw": "Uses msg.sender.call.value without a reentrancy guard or a success check, making it vulnerable to reentrancy attacks."
+            }
+        ],
+        "PotentialOverflow": [
+            {
+                "FallbackFunction": "Uses += to add msg.value to balances[msg.sender], which could potentially lead to overflow if the balance grows too large (although unlikely due to current Ether supply limits)."
+            }
+        ],
+        "LackOfEventLogging": [
+            {
+                "NoLogging": "No events are emitted on deposits or withdrawals, making it difficult to track or audit transactions, especially in case of unexpected behavior."
+            }
+        ]
+    }
+}

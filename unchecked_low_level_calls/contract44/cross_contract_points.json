@@ -1,0 +1,10 @@
+{
+  "Cross-Contract Points": {
+    "Cross-Contract Dependencies": {
+      "Token Contract Dependency": "The contract relies on an external token contract for transfer and balance management."
+    },
+    "Inter-Contract Consistency Conditions": [
+      "totalToDistribute should match the token balance within the TokenSender contract prior to executing transfers."
+    ]
+  }
+}

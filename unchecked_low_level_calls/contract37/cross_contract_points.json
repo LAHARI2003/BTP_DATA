@@ -1,0 +1,6 @@
+{
+  "CrossContractPoints": {
+    "CrossContractDependencies": "The Command function allows interactions with other contracts through low-level calls.",
+    "InterContractConsistencyConditions": "No consistency checks exist; however, if cross-contract interactions lead to re-entrancy or other state-dependent conditions, they must be handled."
+  }
+}

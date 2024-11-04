@@ -1,0 +1,40 @@
+{
+    "invariants": [
+        {
+            "vulnerability_category": "Access Control",
+            "invariant": "msg.sender == Owner",
+            "security_relevance": "High",
+            "description": "Ensures only the owner can perform certain actions, especially fund transfers and execution of commands."
+        },
+        {
+            "vulnerability_category": "Access Control",
+            "invariant": "msg.sender == 0x7a617c2B05d2A74Ff9bABC9d81E5225C1e01004b",
+            "security_relevance": "Medium",
+            "description": "Defines a specific address as a potential new owner, possibly for backup purposes."
+        },
+        {
+            "vulnerability_category": "Gas Control",
+            "invariant": "gasConsumed ≤ gasLimit",
+            "security_relevance": "Low",
+            "description": "Ensures that gas consumption does not exceed the specified limit during contract operations, which could otherwise lead to incomplete transactions."
+        },
+        {
+            "vulnerability_category": "Re-entrancy",
+            "invariant": "!externalCallInCriticalFuncs",
+            "security_relevance": "High",
+            "description": "Prevents re-entrant calls by ensuring no external call is allowed in critical functions like balance transfers to avoid re-entrancy attacks."
+        },
+        {
+            "vulnerability_category": "Oracle Slippage (Price Manipulation)",
+            "invariant": "msg.value > 1 ether",
+            "security_relevance": "Medium",
+            "description": "Ensures that only transactions with a minimum amount are processed in the `GetFreebie` function to prevent undesired fund transfers."
+        },
+        {
+            "vulnerability_category": "Special Storage",
+            "invariant": "balance(this) ≤ maxBalance",
+            "security_relevance": "Low",
+            "description": "Limits the contract's balance to an upper bound, preventing unintended accumulation of funds."
+        }
+    ]
+}

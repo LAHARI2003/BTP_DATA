@@ -1,0 +1,61 @@
+{
+  "ExecutionPathsAndCriticalProgramPoints": {
+    "FunctionLevelAnalysis": [
+      {
+        "function": "becomePlayer",
+        "description": "Registers a new player and updates approvedPlayers mapping with a minimum deposit requirement."
+      },
+      {
+        "function": "manipulateSecret",
+        "description": "Allows approved players to attempt unlocking the secret and transferring funds under specific conditions."
+      },
+      {
+        "function": "unlockSecret",
+        "description": "Uses block data to determine whether a secret is unlocked; if unlocked, updates the winner address."
+      },
+      {
+        "function": "callFirstTarget",
+        "description": "Calls an external target address (firstTarget) and sends ether without checking the call result."
+      },
+      {
+        "function": "callSecondTarget",
+        "description": "Calls an external target address (secondTarget) and sends ether without checking the call result."
+      },
+      {
+        "function": "claimPrize",
+        "description": "Transfers the entire contract balance to the winner address."
+      }
+    ],
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        {
+          "function": "becomePlayer",
+          "condition": "msg.value >= 0.02 ether",
+          "description": "Ensures a minimum amount of ether is sent to join."
+        },
+        {
+          "function": "manipulateSecret",
+          "condition": "msg.value >= 0.01 ether",
+          "description": "Ensures a minimum amount of ether is sent to attempt secret manipulation."
+        },
+        {
+          "function": "unlockSecret",
+          "condition": "secret % 5 == 0",
+          "description": "Determines if the caller is the winner based on the hash-derived secret value."
+        }
+      ],
+      "StateTransitionPoints": [
+        {
+          "function": "becomePlayer",
+          "variables": ["players", "approvedPlayers"],
+          "description": "Adds a new player and marks them as approved."
+        },
+        {
+          "function": "unlockSecret",
+          "variables": ["winner"],
+          "description": "Updates the winner address if secret is unlocked."
+        }
+      ]
+    }
+  }
+}

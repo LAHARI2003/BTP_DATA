@@ -1,0 +1,11 @@
+{
+    "SecurityMeasuresAndProtections": {
+        "ImplementedSecurityControls": {
+            "BasicValidation": "A require statement ensures there is at least one recipient in the _tos array."
+        },
+        "KnownVulnerabilities": {
+            "UncheckedLowLevelCall": "The use of caddress.call without verification is a potential security vulnerability as it does not check for success."
+        },
+        "FallbackFunctionality": "No fallback function implemented in this contract."
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "EdgeCaseAnnotations": {
+    "IncorrectBetAmount": "The wager function requires msg.value to be exactly equal to betLimit to handle incorrect deposits.",
+    "UnauthorizedPublicAccess": "The onlyOwner modifier ensures that functions like AdjustBetAmounts and AdjustDifficulty are protected.",
+    "RandomnessManipulation": "The block.number check in play is intended to prevent replay or prediction issues in randomness."
+  },
+  "CommonAttackPatterns": {
+    "UncheckedExternalCall": "Potential vulnerability in whale.call.value(amount) within donateToWhale and loseWager functions due to lack of return value verification.",
+    "Contract Interaction Prevention": "The onlyRealPeople modifier attempts to prevent contract-based interactions, a common security measure."
+  },
+  "RecoveryMechanisms": {
+    "EmergencyManagement": "No emergency stop mechanism exists, which could be added to pause game actions if necessary."
+  }
+}

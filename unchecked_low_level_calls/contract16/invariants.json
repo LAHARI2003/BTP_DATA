@@ -1,0 +1,53 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == owner",
+      "expression": "msg.sender == owner",
+      "security_relevance": "high",
+      "description": "Ensures that only the contract owner can perform restricted actions."
+    },
+    {
+      "vulnerability": "Unchecked Low-Level Calls",
+      "invariant": "successful_transfer == true",
+      "expression": "_addr.call.value(_wei)() == true",
+      "security_relevance": "high",
+      "description": "Ensures that the low-level call to transfer tokens is successful."
+    },
+    {
+      "vulnerability": "Unchecked Low-Level Calls",
+      "invariant": "successful_transfer_token == true",
+      "expression": "token.call(bytes4(sha3(\"transfer(address,uint256)\")), to, amount) == true",
+      "security_relevance": "high",
+      "description": "Ensures that the low-level call to transfer tokens to a specified address is successful."
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "Holders[_addr] >= 0",
+      "expression": "Holders[_addr] >= 0",
+      "security_relevance": "medium",
+      "description": "Ensures that the Holder's balance does not go negative after a withdrawal."
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "Deposit amount is greater than MinDeposit",
+      "expression": "msg.value >= MinDeposit",
+      "security_relevance": "medium",
+      "description": "Ensures that deposits meet the minimum requirement to be added to the Holder’s balance."
+    },
+    {
+      "vulnerability": "Data Flow & Business Logic",
+      "invariant": "Owner cannot change ownership without confirmation",
+      "expression": "newOwner != owner until confirmed",
+      "security_relevance": "medium",
+      "description": "Ensures that the owner change requires confirmation by the new owner, preventing unauthorized ownership transfer."
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "Holders[_to] == 0 after WitdrawTokenToHolder call",
+      "expression": "Holders[_to] = 0",
+      "security_relevance": "high",
+      "description": "Prevents re-entrancy by zeroing out the Holder's balance before token withdrawal."
+    }
+  ]
+}

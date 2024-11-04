@@ -1,0 +1,13 @@
+{
+    "TransactionContext": {
+        "TransactionStateContext": {
+            "TransferState": {
+                "Description": "When tokens are transferred using the transfer function"
+            }
+        },
+        "ExternalInteractions": {
+            "InteractionType": "External call",
+            "Details": "Transfers tokens from the specified sender (from) to multiple recipients (_tos array) through the caddress contract address"
+        }
+    }
+}

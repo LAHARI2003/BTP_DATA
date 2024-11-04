@@ -1,0 +1,9 @@
+{
+    "CrossContractDependencies": {
+        "withdrawTokens": "Depends on the external 'Token' contract interface, specifically the 'balanceOf' and 'transfer' functions.",
+        "getTokens": "Relies on the external address 'addr' to handle 'call' properly."
+    },
+    "InterContractConsistencyConditions": {
+        "withdrawTokens": "Assumes 'balanceOf' and 'transfer' are implemented as expected on the token contract."
+    }
+}

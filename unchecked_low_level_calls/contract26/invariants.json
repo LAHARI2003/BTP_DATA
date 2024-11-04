@@ -1,0 +1,52 @@
+{
+    "invariants": [
+        {
+            "vulnerability_category": "Access Control",
+            "invariant": "msg.sender == owner",
+            "expression": "msg.sender == owner",
+            "security_relevance_level": "High"
+        },
+        {
+            "vulnerability_category": "Access Control",
+            "invariant": "newOwner == msg.sender",
+            "expression": "msg.sender == newOwner",
+            "security_relevance_level": "Medium"
+        },
+        {
+            "vulnerability_category": "Access Control",
+            "invariant": "onlyOwner modifier",
+            "expression": "msg.sender == owner for function executions with onlyOwner modifier",
+            "security_relevance_level": "High"
+        },
+        {
+            "vulnerability_category": "Re-entrancy",
+            "invariant": "owner.transfer(this.balance)",
+            "expression": "this.balance == 0 after transfer in sendMessage()",
+            "security_relevance_level": "High"
+        },
+        {
+            "vulnerability_category": "Data Integrity",
+            "invariant": "majorEvents.length == 0 before createMarriage()",
+            "expression": "majorEvents.length == 0",
+            "security_relevance_level": "High"
+        },
+        {
+            "vulnerability_category": "Data Integrity",
+            "invariant": "marriageStatus == 'Married' for areMarried modifier",
+            "expression": "sha3(marriageStatus) == sha3('Married')",
+            "security_relevance_level": "High"
+        },
+        {
+            "vulnerability_category": "Oracle Slippage (Price Manipulation)",
+            "invariant": "timeliness of marriageDate",
+            "expression": "marriageDate <= now",
+            "security_relevance_level": "Low"
+        },
+        {
+            "vulnerability_category": "Data Flow & Business Logic",
+            "invariant": "message log integrity",
+            "expression": "messages.push(msg) appends correct Message struct with now, nameFrom, text, url, and msg.value",
+            "security_relevance_level": "Medium"
+        }
+    ]
+}

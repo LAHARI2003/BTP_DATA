@@ -1,0 +1,9 @@
+{
+    "TransactionStateContext": {
+        "DepositState": "When users send ether to the contract's fallback function or explicitly call deposit.",
+        "WithdrawState": "When the owner calls withdraw to retrieve deposited ether."
+    },
+    "ExternalInteractions": {
+        "DirectEtherTransfers": "Users can send ether directly to the contract, and ether can be transferred back to them if they call withdraw with owner privileges."
+    }
+}

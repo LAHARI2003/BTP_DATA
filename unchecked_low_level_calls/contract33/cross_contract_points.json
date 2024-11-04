@@ -1,0 +1,14 @@
+{
+  "CrossContractPoints": {
+    "CrossContractDependencies": [
+      {
+        "description": "The contract interacts with two external target contracts, firstTarget and secondTarget, through the callFirstTarget and callSecondTarget functions."
+      }
+    ],
+    "InterContractConsistencyConditions": [
+      {
+        "description": "Calls to firstTarget and secondTarget are unchecked and could potentially lead to inconsistent state if either of these external contracts does not handle received ether properly or reverts unexpectedly."
+      }
+    ]
+  }
+}
