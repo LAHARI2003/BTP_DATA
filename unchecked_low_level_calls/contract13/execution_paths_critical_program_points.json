@@ -1,0 +1,19 @@
+{
+    "FunctionLevelAnalysis": {
+        "withdrawTokens": "Transfers the full token balance of the contract from the specified token contract to the owner.",
+        "withdrawEther": "Transfers all Ether in the contract balance to the owner.",
+        "getTokens": "Loops over 'num' calls, executing a call on the specified address without transferring value."
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": {
+            "withdrawTokens": "Calls 'transfer' on the token contract, relying on the token contract to handle any errors.",
+            "withdrawEther": "No checks; transfers balance directly to the owner.",
+            "getTokens": "No checks; executes an external call on the specified address without any validation."
+        },
+        "StateTransitionPoints": {
+            "withdrawTokens": "Calls 'transfer' to update balances in the token contract.",
+            "withdrawEther": "Reduces contract Ether balance to zero by transferring it to the owner.",
+            "getTokens": "May alter state on the external contract via call; no internal state changes."
+        }
+    }
+}
