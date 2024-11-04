@@ -1,0 +1,10 @@
+{
+  "TransactionStateContext": {
+    "StakingState": null,
+    "WithdrawalState": "When users invoke the withdrawBalance function, balances are reset in the state and a send call is made to transfer ether to the user."
+  },
+  "ExternalInteractions": {
+    "Description": "The contract transfers ether back to the user address on withdrawal.",
+    "Type": "Ether Transfer via send function in withdrawBalance."
+  }
+}
