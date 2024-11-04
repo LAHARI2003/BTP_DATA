@@ -1,0 +1,4 @@
+{
+    "Cross-Contract Dependencies": "The `proxy` function can call arbitrary functions on external contracts, relying on those contracts' functionality.",
+    "Inter-Contract Consistency Conditions": "Consistency of the call success or failure is not enforced, which could lead to unexpected behavior if an external contract reverts."
+}
