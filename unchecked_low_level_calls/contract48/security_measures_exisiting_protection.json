@@ -1,0 +1,11 @@
+{
+  "Implemented Security Controls": {
+    "Payout Control": "cash function prevents double payouts by marking subpots as cashed.",
+    "Partial Refunds": "fallback function refunds excess funds for incomplete ticket purchases."
+  },
+  "Vulnerabilities": {
+    "Unchecked Low-Level Calls": "No validation on winner.send(subpot) and msg.sender.send(msg.value - value), potentially leading to Ether loss.",
+    "Predictable Randomness": "Block hash is used for winner selection, making the randomness potentially predictable."
+  },
+  "Fallback Functionality": "Handles incoming funds to allocate tickets or issue refunds."
+}
