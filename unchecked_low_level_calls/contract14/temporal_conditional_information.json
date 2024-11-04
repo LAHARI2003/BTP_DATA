@@ -1,0 +1,11 @@
+{
+  "TimeSensitiveLogic": {
+    "TimeBasedLogic": "No time-sensitive logic present; functions can be called at any time without restriction."
+  },
+  "ConditionalLogicPaths": {
+    "Conditions": [
+      "In withdraw and Command functions, require(msg.sender == Owner) to restrict usage.",
+      "In multiplicate function, if(msg.value >= this.balance) determines if a transfer should occur."
+    ]
+  }
+}
