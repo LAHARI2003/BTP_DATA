@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "expression": "msg.sender == Owner",
+      "security_relevance": "High",
+      "description": "Ensures only the contract owner can call certain functions, specifically in `withdraw()` and `Command()` functions where sensitive operations like transferring funds are involved."
+    },
+    {
+      "vulnerability": "Money Flow",
+      "expression": "msg.value > 1 ether",
+      "security_relevance": "Medium",
+      "description": "Requires a minimum amount of 1 ether to execute the `GetFreebie()` function, thus controlling the flow of Ether and preventing trivial access."
+    },
+    {
+      "vulnerability": "Unchecked Low-Level Calls",
+      "expression": "adr.call.value(msg.value)(data)",
+      "security_relevance": "High",
+      "description": "Direct call without checking return value, which may lead to unexpected reentrancy or failure in the `Command()` function. This is a high-risk pattern since errors in execution are not captured."
+    },
+    {
+      "vulnerability": "Ownership Check",
+      "expression": "msg.sender == 0x4E0d2f9AcECfE4DB764476C7A1DfB6d0288348af",
+      "security_relevance": "Medium",
+      "description": "The hardcoded address check sets the owner under specific conditions but does not ensure ongoing control over ownership, potentially impacting access control."
+    },
+    {
+      "vulnerability": "Special Storage",
+      "expression": "this.balance >= 0",
+      "security_relevance": "Low",
+      "description": "This invariant ensures that contract balance is non-negative, which is an implicit constraint within Ethereum but important for financial security."
+    }
+  ]
+}
