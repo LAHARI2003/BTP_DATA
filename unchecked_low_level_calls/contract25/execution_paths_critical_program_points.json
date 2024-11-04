@@ -1,0 +1,22 @@
+{
+    "FunctionLevelAnalysis": {
+        "changeOwner": "Updates the newOwner address when called by the current owner.",
+        "confirmOwner": "Finalizes the change of ownership if called by the new owner.",
+        "WithdrawToken": "Transfers tokens to a specified address by calling the token contract.",
+        "Deposit": "Allows Ether deposits, checking for a minimum deposit amount.",
+        "WitdrawTokenToHolder": "Withdraws tokens to a user if they hold a balance in Holders mapping.",
+        "WithdrawToHolder": "Withdraws Ether to a user if they have sufficient balance."
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": {
+            "MinimumDepositCheck": "Enforced by require(msg.value >= MinDeposit) in Deposit function.",
+            "TokenBalanceCheck": "Ensures Holders[_to] > 0 before allowing token withdrawal.",
+            "EtherBalanceCheck": "Ensures Holders[_addr] >= _wei before allowing Ether withdrawal."
+        },
+        "StateTransitionPoints": {
+            "OwnerUpdate": "Occurs in confirmOwner and initTokenBank functions.",
+            "BalanceUpdates": "Balance in Holders mapping is updated in Deposit and WithdrawToHolder functions.",
+            "TokenTransfer": "External call made in WithdrawToken function."
+        }
+    }
+}
