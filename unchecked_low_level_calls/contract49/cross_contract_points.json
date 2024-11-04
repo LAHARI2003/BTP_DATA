@@ -1,0 +1,8 @@
+{
+  "CrossContractDependencies": {
+    "Description": "No direct cross-contract dependencies in this example. However, if the throne interacted with an external leaderboard or royalty contract, cross-contract dependencies would be annotated here."
+  },
+  "InterContractConsistencyConditions": {
+    "Description": "No inter-contract consistency conditions apply. Consistency conditions would ensure accurate tracking of throne claims and commissions across related contracts, if any existed."
+  }
+}
