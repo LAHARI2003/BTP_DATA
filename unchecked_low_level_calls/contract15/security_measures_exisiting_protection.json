@@ -1,0 +1,11 @@
+{
+    "SecurityMeasuresExistingProtections": {
+        "ImplementedSecurityControls": {
+            "AccessControl": "onlyOwner modifier restricts certain functions to the owner",
+            "UncheckedLowLevelCallWarning": "sendMoney function uses a low-level call that may fail silently"
+        },
+        "FallbackFunctionality": {
+            "FallbackFunction": "Allows the contract to receive ether and increments depositsCount"
+        }
+    }
+}
