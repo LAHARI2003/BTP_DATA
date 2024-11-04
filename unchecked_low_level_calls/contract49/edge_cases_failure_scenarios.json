@@ -1,0 +1,16 @@
+{
+  "EdgeCaseAnnotations": {
+    "InsufficientClaimPayment": "If valuePaid < currentClaimPrice in claimThrone, the claim is rejected, and funds are refunded.",
+    "ExcessClaimPayment": "If valuePaid > currentClaimPrice, the excess is refunded to the sender.",
+    "EmptyThroneCompensation": "If the throne is unoccupied (held by wizard), claim fees are accumulated without compensation to a prior monarch."
+  },
+  "CommonAttackPatterns": {
+    "UncheckedSendCalls": "Unchecked msg.sender.send calls in claimThrone and sweepCommission functions could lead to reentrancy vulnerabilities.",
+    "AccessControlVulnerability": "If onlywizard modifier is removed from sweepCommission and transferOwnership functions, they would be flagged for potential unauthorized access."
+  },
+  "RecoveryMechanisms": {
+    "PossibleImprovements": [
+      "Emergency withdrawal feature could be added to halt throne claims if vulnerabilities are detected."
+    ]
+  }
+}
