@@ -1,0 +1,11 @@
+{
+  "Transaction State Context": {
+    "Round Creation": "New rounds begin every 6800 blocks.",
+    "Ticket Purchase": "Occurs when the fallback function is triggered by sending funds.",
+    "Winner Calculation": "The contract calculates the winner based on the block hash after each round.",
+    "Cash Payout": "Once the winner is determined, the payout is sent to the winner."
+  },
+  "External Interactions": {
+    "Ether Transfers": "Ether is transferred to the contract when tickets are purchased, and to the winner when cashed out."
+  }
+}
