@@ -1,0 +1,9 @@
+{
+    "TemporalAndConditionalInformation": {
+        "TimeSensitiveLogic": "The contract requires `active > 0` for purchases, which can be toggled by the owner, allowing conditional entry.",
+        "ConditionalLogicPaths": [
+            "If `active` is set to 0, `tokens_buy` cannot be executed, disabling token purchases.",
+            "The `onlyOwner` modifier conditionally restricts certain functions to the contract owner."
+        ]
+    }
+}
