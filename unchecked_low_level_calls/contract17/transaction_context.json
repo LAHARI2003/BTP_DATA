@@ -1,0 +1,11 @@
+{
+  "TransactionStateContext": {
+    "StakingState": "When users deposit pandas to the contract via various transfer and siring functions.",
+    "AuctionState": "When pandas are placed for auction through createAuction and related auction functions.",
+    "BreedingState": "When pandas are in gestation period or set to be bred."
+  },
+  "ExternalInteractions": [
+    "ERC721 transfers occur through _transfer function to transfer pandas between contract and users during auction or other exchanges.",
+    "GeneScienceInterface is used to interact with genetic functions, such as gene mixing in breeding."
+  ]
+}
