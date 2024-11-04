@@ -1,0 +1,19 @@
+{
+    "Time_Sensitive_Logic": [
+        {
+            "Function": "Vault",
+            "Condition": "Requires msg.sender == tx.origin for initial Owner assignment and deposit.",
+            "Purpose": "Prevents interactions from smart contracts, although it does not guarantee full security."
+        }
+    ],
+    "Conditional_Logic_Paths": [
+        {
+            "Path": "Different paths in deposit based on whether the value is greater than 0.5 ether.",
+            "Condition": "deposit proceeds if msg.value > 0.5 ether, else it does not add any deposits."
+        },
+        {
+            "Path": "Withdrawal condition in withdraw function",
+            "Condition": "The withdrawal succeeds only if amount > 0 and Deposits[msg.sender] >= amount."
+        }
+    ]
+}
