@@ -1,0 +1,10 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "The onlyOwner modifier restricts critical function access to the contract owner.",
+    "OpenToPublicCheck": "The isOpenToPublic modifier protects functions to ensure they are executed only when openToPublic is true.",
+    "RealUserVerification": "The onlyRealPeople modifier limits access to externally owned accounts."
+  },
+  "FallbackFunctionality": {
+    "FallbackFunction": "Allows receiving Ether directly through a payable fallback function without specific handling."
+  }
+}
