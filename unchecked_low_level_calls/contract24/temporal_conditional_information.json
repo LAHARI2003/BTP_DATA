@@ -1,0 +1,20 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": [
+      {
+        "Function": "deliver",
+        "Description": "Processes requests based on SGX callback delivery; time is implicit in external SGX interactions."
+      }
+    ],
+    "ConditionalLogicPaths": [
+      {
+        "Path": "killswitch check in request",
+        "Description": "Conditions alter request outcome based on kill status."
+      },
+      {
+        "Path": "Fee flag checks in deliver",
+        "Description": "Request fees processed differently based on status of request."
+      }
+    ]
+  }
+}
