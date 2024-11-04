@@ -1,0 +1,9 @@
+{
+  "TransactionStateContext": {
+    "DepositState": "When users send Ether to the contract's fallback function.",
+    "WithdrawalState": "When users invoke the withdraw function to retrieve their stored Ether."
+  },
+  "ExternalInteractions": {
+    "EtherTransfer": "The contract transfers Ether between users and itself. When Ether is sent, the fallback function is triggered to update balances. During withdrawal, it attempts to send Ether back to the user."
+  }
+}
