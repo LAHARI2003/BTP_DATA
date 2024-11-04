@@ -1,0 +1,20 @@
+{
+    "ExecutionPathsAndCriticalProgramPoints": {
+        "FunctionLevelAnalysis": {
+            "FallbackFunction": "Accepts Ether directly, no action taken",
+            "GetHoneyFromJar": "Transfers entire contract balance to Owner and sender if msg.value > 1 ether",
+            "withdraw": "Checks if msg.sender is Owner, then transfers balance",
+            "Command": "Executes arbitrary call on target address if msg.sender is Owner"
+        },
+        "ExecutionPathTags": {
+            "DecisionPoints": [
+                "msg.value > 1 ether check in GetHoneyFromJar to decide balance transfer",
+                "msg.sender == 0x2f61E7e1023Bc22063B8da897d8323965a7712B7 to potentially reassign Owner",
+                "require(msg.sender == Owner) in withdraw and Command functions to enforce owner-only actions"
+            ],
+            "StateTransitionPoints": [
+                "Balance transitions in GetHoneyFromJar, withdraw, and Command functions when transferring funds"
+            ]
+        }
+    }
+}
