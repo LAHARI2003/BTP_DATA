@@ -1,0 +1,64 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == owner",
+      "description": "Only the contract owner can execute certain functions.",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "description": "Only real accounts (EOAs) can interact, protecting against contract-based attacks.",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "xlock == true",
+      "description": "Re-entrancy guard to prevent recursive calls in critical functions.",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Gas Control",
+      "invariant": "gasStart ≤ gas",
+      "description": "Limit excessive gas consumption in key functions, managing operational costs.",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.value == betLimit",
+      "description": "Bet amount must match the predefined bet limit to ensure game consistency.",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "ethBalance >= betLimit",
+      "description": "The contract should hold sufficient ETH for processing payouts.",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Oracle Slippage (Price Manipulation)",
+      "invariant": "difficulty > 0",
+      "description": "Difficulty must be a positive non-zero value for game fairness.",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "totalDonated >= 0",
+      "description": "Total donations should be tracked without overflow.",
+      "security_relevance": "low"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "betLimit >= 0",
+      "description": "Bet limit should be non-negative, preventing unintended gameplay scenarios.",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability": "Special Storage",
+      "invariant": "timestamps[msg.sender] == 0 || timestamps[msg.sender] <= block.number",
+      "description": "Timestamps should reflect valid block numbers only.",
+      "security_relevance": "medium"
+    }
+  ]
+}
