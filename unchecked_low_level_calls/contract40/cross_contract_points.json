@@ -1,0 +1,10 @@
+{
+    "CrossContractDependencies": {
+        "WhaleDonation": "Calls the donate() function on the whale contract to allocate a portion of each bet",
+        "ERC20Transfers": "Uses an ERC20 transfer function to handle accidental ERC20 token transfers"
+    },
+    "InterContractConsistencyConditions": {
+        "JackpotIntegrity": "Ensures jackpot is correctly updated on each bet",
+        "BalanceCheck": "Validates that contract balance meets all locked, dev, and jackpot funds"
+    }
+}
