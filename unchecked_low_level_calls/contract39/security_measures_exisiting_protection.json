@@ -1,0 +1,9 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": "Owner restriction on withdraw and Command functions.",
+        "ConditionalTransfer": "GetFreebie requires msg.value > 1 ether before sending balance."
+    },
+    "FallbackFunctionality": {
+        "Description": "Fallback function allows receiving ether but lacks other functionality."
+    }
+}
