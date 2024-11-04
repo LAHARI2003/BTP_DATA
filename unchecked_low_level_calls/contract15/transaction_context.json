@@ -1,0 +1,11 @@
+{
+    "TransactionContext": {
+        "TransactionStateContext": {
+            "DepositState": "When ether is sent to the contract, increments depositsCount",
+            "WithdrawalState": "When the owner withdraws ether through withdraw or withdrawAll functions"
+        },
+        "ExternalInteractions": {
+            "EtherTransfers": "Transfers ether between contract and external addresses when deposits are made, and when the withdraw or sendMoney functions are called"
+        }
+    }
+}
