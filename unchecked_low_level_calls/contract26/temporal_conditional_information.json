@@ -1,0 +1,10 @@
+{
+  "Time-Sensitive Logic": {
+    "Marriage Creation": "Marriage can only be created once due to the majorEvents.length == 0 restriction in createMarriage.",
+    "Message Timestamps": "Each message and major event includes a timestamp, storing the time-sensitive nature of these entries."
+  },
+  "Conditional Logic Paths": {
+    "Marriage Status Condition": "areMarried modifier conditionally allows only married partners to send certain transactions.",
+    "Ether Transfer Condition": "sendMessage includes a conditional path for transferring ether only when msg.value > 0."
+  }
+}
