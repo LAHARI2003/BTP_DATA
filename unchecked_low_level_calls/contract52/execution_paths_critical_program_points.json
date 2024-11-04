@@ -1,0 +1,19 @@
+{
+  "FunctionLevelAnalysis": {
+    "callchecked": {
+      "Description": "Makes a call to an external address with a check to confirm success."
+    },
+    "callnotchecked": {
+      "Description": "Makes a call to an external address without checking if it succeeded."
+    }
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": [
+      {
+        "Location": "require(callee.call()) in callchecked",
+        "Description": "Ensures the call to the external contract succeeds."
+      }
+    ],
+    "StateTransitionPoints": []
+  }
+}
