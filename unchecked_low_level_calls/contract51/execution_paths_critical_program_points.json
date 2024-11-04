@@ -1,0 +1,17 @@
+{
+  "FunctionLevelAnalysis": {
+    "withdrawBalance": {
+      "Description": "Handles ether withdrawals and resets user balance to zero before sending ether.",
+      "Risks": ["Potential for re-entrancy if the send function fails or loops."]
+    }
+  },
+  "ExecutionPathTags": {
+    "DecisionPoints": ["None explicitly defined, relies on implicit execution path."],
+    "StateTransitionPoints": [
+      {
+        "Variable": "userBalances[msg.sender]",
+        "Transition": "Set to zero before ether transfer."
+      }
+    ]
+  }
+}
