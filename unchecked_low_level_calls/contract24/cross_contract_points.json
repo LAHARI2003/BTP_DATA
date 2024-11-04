@@ -1,0 +1,16 @@
+{
+  "CrossContractPoints": {
+    "CrossContractDependencies": [
+      {
+        "Interaction": "requests[requestId].callbackAddr.call",
+        "Description": "Calls external contract functions for callback delivery."
+      }
+    ],
+    "InterContractConsistencyConditions": [
+      {
+        "Condition": "SGX_ADDRESS.send(CANCELLATION_FEE)",
+        "Description": "Ensures SGX address receives cancellation fee during response delivery."
+      }
+    ]
+  }
+}
