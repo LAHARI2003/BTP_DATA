@@ -1,0 +1,9 @@
+{
+    "Time-Sensitive Logic": {
+        "None": "This contract does not contain time-sensitive logic, such as expiration or delay-based conditions."
+    },
+    "Conditional Logic Paths": {
+        "Owner Verification": "Functions withdraw, withdrawAll, and sendMoney rely on owner-only access checks before allowing operations.",
+        "Balance Availability": "The withdraw function implicitly depends on the contract's balance for successful operation, as msg.sender.transfer may fail if insufficient balance is available."
+    }
+}
