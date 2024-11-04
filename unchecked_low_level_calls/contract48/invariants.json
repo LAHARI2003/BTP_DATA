@@ -1,0 +1,54 @@
+{
+    "Access Control": [
+        {
+            "invariant": "msg.sender == tx.origin",
+            "description": "Ensures that only externally owned accounts can call certain functions, mitigating re-entrancy risks from other contracts.",
+            "vulnerability": "Re-entrancy",
+            "security_relevance": "High"
+        }
+    ],
+    "Money Flow": [
+        {
+            "invariant": "msg.value % ticketPrice == 0",
+            "description": "Ensures that only full tickets can be purchased, preventing partial refunds or unintended rounding issues.",
+            "vulnerability": "Unchecked Low-Level Calls",
+            "security_relevance": "Medium"
+        },
+        {
+            "invariant": "rounds[roundIndex].pot += msg.value - (msg.value % ticketPrice)",
+            "description": "Tracks the total pot accurately by adding only complete ticket purchases.",
+            "vulnerability": "Unchecked Low-Level Calls",
+            "security_relevance": "Medium"
+        }
+    ],
+    "Re-entrancy": [
+        {
+            "invariant": "!rounds[roundIndex].isCashed[subpotIndex]",
+            "description": "Ensures each subpot can only be cashed once, preventing double payouts.",
+            "vulnerability": "Re-entrancy",
+            "security_relevance": "High"
+        },
+        {
+            "invariant": "rounds[roundIndex].isCashed[subpotIndex] = true after subpot is paid",
+            "description": "After cashing out a subpot, marks it as cashed to avoid re-entrant attacks.",
+            "vulnerability": "Re-entrancy",
+            "security_relevance": "High"
+        }
+    ],
+    "Gas Control": [
+        {
+            "invariant": "block.number >= getDecisionBlockNumber(roundIndex, subpotIndex)",
+            "description": "Prevents actions from being performed before the expected block, reducing the risk of front-running or other timing attacks.",
+            "vulnerability": "Oracle Manipulation",
+            "security_relevance": "Medium"
+        }
+    ],
+    "Special Storage": [
+        {
+            "invariant": "rounds[roundIndex].ticketsCount == sum(rounds[roundIndex].ticketsCountByBuyer[address])",
+            "description": "Ensures the total tickets in each round match the sum of tickets purchased by each buyer.",
+            "vulnerability": "Data Integrity",
+            "security_relevance": "Low"
+        }
+    ]
+}
