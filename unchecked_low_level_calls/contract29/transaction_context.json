@@ -1,0 +1,11 @@
+{
+  "TransactionStateContext": {
+    "FunctionName": "transfer",
+    "StatesManaged": [
+      "Token Transfer State: This contract initiates a transfer process through an external call."
+    ],
+    "ExternalInteractions": [
+      "The contract interacts with an external contract by calling its `transferFrom` function. This is done for each address in the `_tos` array, using an unverified external call to transfer tokens from the specified `from` address to each recipient."
+    ]
+  }
+}
