@@ -1,0 +1,30 @@
+{
+  "NonVulnerableTags": {
+    "WellImplementedFeatures": [
+      {
+        "Feature": "Controlled External Calls",
+        "Description": "The callchecked function uses require to ensure that the external call to another contract is successful before proceeding. This helps avoid unintended code execution flow by only allowing transactions to proceed if the external call is successful."
+      }
+    ],
+    "RiskyFeatures": [
+      {
+        "Feature": "Unchecked External Call",
+        "Description": "The callnotchecked function performs an external call without checking if it was successful. This can lead to vulnerabilities where unexpected states are reached if the call fails silently, potentially causing loss of funds or execution of unintended logic.",
+        "RiskType": "Unchecked Return Value",
+        "RiskDescription": "Failing to check the return value of an external call is known as 'Unchecked Low-Level Calls' and is listed as SWC-104. This makes the contract vulnerable to unexpected behavior if the call fails, as there is no error handling or rollback."
+      },
+      {
+        "Feature": "Outdated Solidity Version",
+        "Description": "The contract uses Solidity version 0.4.25, which lacks several security enhancements present in later versions. Consider upgrading to a more recent version (e.g., 0.8.x) to take advantage of built-in error handling and other improvements.",
+        "RiskType": "Outdated Compiler",
+        "RiskDescription": "Using an outdated compiler can expose the contract to vulnerabilities that are fixed in later versions, such as improved error handling, overflow/underflow protection, and reentrancy mitigations."
+      }
+    ],
+    "InvariantValidationExamples": [
+      {
+        "Function": "callchecked",
+        "Invariant": "The function checks the return value of an external call, ensuring that only successful calls result in state changes or further actions. This invariant provides a safeguard against unexpected behavior if the call fails."
+      }
+    ]
+  }
+}
