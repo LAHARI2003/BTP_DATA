@@ -1,0 +1,20 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "DeployState": "Executed when newPuppet is called to deploy new Puppet contracts.",
+      "FundingState": "Occurs when fundPuppets is called to distribute funds to puppets.",
+      "WithdrawState": "Occurs when withdraw function is called by the owner to withdraw all contract funds."
+    },
+    "ExternalInteractions": [
+      {
+        "InteractionType": "Fund Transfer",
+        "Description": "Transfers funds from the contract to multiple puppet contracts through fundPuppets function.",
+        "Calls": ["extra[0].call", "extra[1].call", "extra[2].call", "extra[3].call"]
+      },
+      {
+        "InteractionType": "Contract Deployment",
+        "Description": "Deploys new Puppet contracts using the newPuppet function."
+      }
+    ]
+  }
+}
