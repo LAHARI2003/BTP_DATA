@@ -1,0 +1,12 @@
+{
+  "Edge Case Annotations": {
+    "Zero Value Ticket Purchase": "fallback function checks if ticket price is satisfied, returning partial refund if not.",
+    "Winner Calculation Before Round End": "calculateWinner checks that decisionBlockNumber <= block.number to avoid early calculation.",
+    "Double Cashing": "cash function prevents double payout with rounds[roundIndex].isCashed[subpotIndex] check."
+  },
+  "Common Attack Patterns": [
+    "Unchecked Low-Level Calls: Occurs in winner.send(subpot) and msg.sender.send(msg.value - value) without error handling.",
+    "Block Manipulation Attack: Block hash is used as a random number source for winner calculation, potentially exploitable."
+  ],
+  "Recovery Mechanisms": "No recovery mechanisms like circuit breaker or emergency stop are implemented in this contract."
+}
