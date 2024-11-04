@@ -1,0 +1,22 @@
+{
+  "TransactionContext": {
+    "TransactionStateContext": {
+      "DepositState": "Users can send Ether to the contract, stored in contract balance.",
+      "WithdrawalState": "When GetPie or withdraw functions are called, funds are transferred from the contract balance."
+    },
+    "ExternalInteractions": [
+      {
+        "Description": "The contract allows users to send Ether, increasing the contract's balance.",
+        "InteractionType": "Ether Transfer"
+      },
+      {
+        "Description": "Owner can transfer the contract balance to an arbitrary address or withdraw it entirely.",
+        "InteractionType": "Ether Transfer to Owner"
+      },
+      {
+        "Description": "The Owner can execute arbitrary calls with the Command function, sending Ether or interacting with other contracts.",
+        "InteractionType": "Cross-contract Call with Ether Transfer"
+      }
+    ]
+  }
+}
