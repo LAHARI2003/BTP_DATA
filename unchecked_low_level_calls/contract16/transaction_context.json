@@ -1,0 +1,13 @@
+{
+    "TransactionStateContext": {
+        "DepositState": "When users send Ether to the contract and the Deposit function is called.",
+        "WithdrawalState": [
+            "When the owner calls WitdrawTokenToHolder to withdraw tokens on behalf of a holder.",
+            "When the owner calls WithdrawToHolder to withdraw Ether on behalf of a holder."
+        ]
+    },
+    "ExternalInteractions": {
+        "TokenTransfer": "Uses low-level call to transfer tokens between contract and holder address, which can fail silently.",
+        "EtherTransfer": "Uses low-level call to transfer Ether between contract and holder address, which can fail silently."
+    }
+}
