@@ -1,0 +1,12 @@
+{
+  "TransactionStateContext": {
+    "Withdraw State": "When the owner withdraws the entire balance of the contract through the withdraw function.",
+    "Command Execution State": "When the owner uses the Command function to execute arbitrary commands with the given data.",
+    "Multiplication State": "When users interact with the multiplicate function, potentially transferring funds to an address."
+  },
+  "ExternalInteractions": {
+    "Withdrawal": "Transfers all contract funds to the owner's address.",
+    "Command Execution": "Performs a low-level call to another address with arbitrary data, specified by the owner.",
+    "Multiplication": "Transfers the contract balance and sent value to a specified address if msg.value is greater than or equal to the contract balance."
+  }
+}
