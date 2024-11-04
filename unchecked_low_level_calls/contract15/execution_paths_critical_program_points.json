@@ -1,0 +1,29 @@
+{
+    "ExecutionPathsCriticalPoints": {
+        "FunctionLevelAnalysis": {
+            "fallback": {
+                "Description": "Receives ether and increments depositsCount"
+            },
+            "withdrawAll": {
+                "Description": "Allows owner to withdraw the contract's full balance"
+            },
+            "withdraw": {
+                "Description": "Allows owner to withdraw a specified amount"
+            },
+            "sendMoney": {
+                "Description": "Allows owner to send ether and data to a target address",
+                "Warning": "Unchecked low-level call that may fail silently"
+            }
+        },
+        "ExecutionPathTags": {
+            "DecisionPoints": [
+                "require(msg.sender == owner) in onlyOwner to restrict access to owner",
+                "Potential silent failure in _target.call.value(_value)(_data) in sendMoney"
+            ],
+            "StateTransitionPoints": [
+                "Updates depositsCount when ether is deposited",
+                "Updates contract balance when ether is withdrawn or sent via sendMoney"
+            ]
+        }
+    }
+}
