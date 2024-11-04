@@ -1,0 +1,33 @@
+{
+  "ContractName": "Pie",
+  "WellImplementedFeatures": [
+    {
+      "Feature": "Access Control",
+      "Description": "Only the Owner can call the withdraw and Command functions, enforcing access control on sensitive actions."
+    },
+    {
+      "Feature": "Fallback Function",
+      "Description": "The fallback function is implemented to allow the contract to accept Ether, which can be useful for collecting funds."
+    }
+  ],
+  "InvariantValidationExamples": [
+    {
+      "Invariant": "Owner Integrity",
+      "Description": "The contract maintains the integrity of the Owner variable by setting it upon contract creation and validating it during each sensitive transaction (withdraw and Command)."
+    }
+  ],
+  "PotentialRiskyFeatures": [
+    {
+      "Feature": "Lack of Input Validation in GetPie",
+      "Description": "The GetPie function conditionally transfers the entire contract balance to msg.sender after sending it to the Owner if msg.value exceeds 1 Ether. This could result in unexpected behavior if conditions aren't met, as it performs a dual transfer operation with unclear intent."
+    },
+    {
+      "Feature": "Unchecked Call in Command",
+      "Description": "The Command function uses a low-level call without proper checks for success, which could allow the called contract to fail silently. Additionally, this call is potentially reentrancy-prone if not carefully managed."
+    },
+    {
+      "Feature": "Ownership Assignment Vulnerability in withdraw",
+      "Description": "The withdraw function allows ownership to be reassigned to a specific hardcoded address without clear access controls, which could be exploited by anyone able to call this function and is not a recommended ownership transfer method."
+    }
+  ]
+}
