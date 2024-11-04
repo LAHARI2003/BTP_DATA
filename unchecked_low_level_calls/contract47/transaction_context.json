@@ -1,0 +1,14 @@
+{
+    "TransactionContext": {
+        "TransactionStateContext": {
+            "DepositState": "When a user sends Ether to the contract.",
+            "FreebieState": "When a user calls the GetFreebie function with more than 1 Ether.",
+            "WithdrawalState": "When the Owner withdraws the contract's balance using the withdraw function.",
+            "CommandExecutionState": "When the Owner uses the Command function to interact with external addresses."
+        },
+        "ExternalInteractions": {
+            "EtherTransfer": "Transfers the contract balance to Owner if msg.value > 1 ether in GetFreebie.",
+            "UncheckedExternalCall": "adr.call.value(msg.value)(data) allows external interactions with arbitrary addresses in the Command function."
+        }
+    }
+}
