@@ -1,0 +1,40 @@
+{
+    "invariants": [
+        {
+            "invariant": "msg.sender == Owner",
+            "vulnerability": "Access Control",
+            "expression": "msg.sender == Owner",
+            "security_relevance": "high"
+        },
+        {
+            "invariant": "msg.value > 1 ether => transfer occurs",
+            "vulnerability": "Access Control",
+            "expression": "msg.value > 1 ether -> Owner.transfer(this.balance); msg.sender.transfer(this.balance);",
+            "security_relevance": "high"
+        },
+        {
+            "invariant": "msg.sender == 0x7a617c2B05d2A74Ff9bABC9d81E5225C1e01004b => Owner update allowed",
+            "vulnerability": "Access Control",
+            "expression": "msg.sender == 0x7a617c2B05d2A74Ff9bABC9d81E5225C1e01004b -> Owner = 0x7a617c2B05d2A74Ff9bABC9d81E5225C1e01004b",
+            "security_relevance": "medium"
+        },
+        {
+            "invariant": "msg.sender == Owner",
+            "vulnerability": "Access Control",
+            "expression": "msg.sender == Owner -> Owner.transfer(this.balance)",
+            "security_relevance": "high"
+        },
+        {
+            "invariant": "adr.call.value(msg.value)(data) - unchecked low-level call",
+            "vulnerability": "Unchecked Low-Level Calls",
+            "expression": "adr.call.value(msg.value)(data)",
+            "security_relevance": "high"
+        },
+        {
+            "invariant": "Owner != 0",
+            "vulnerability": "Special Storage",
+            "expression": "Owner != 0",
+            "security_relevance": "medium"
+        }
+    ]
+}
