@@ -1,0 +1,11 @@
+{
+  "Temporal and Conditional Information": {
+    "Time-Sensitive Logic": {
+      "Execution of Transfers": "The fill function requires that transfers have not yet started (next must be 0) for it to execute."
+    },
+    "Conditional Logic Paths": [
+      "The run function depends on the available gas and stops if gas falls below 150,000, allowing for multiple calls if needed.",
+      "Ownership functions are protected by the onlyOwner modifier, restricting access to the contract owner."
+    ]
+  }
+}
