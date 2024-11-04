@@ -1,0 +1,40 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "description": "Ensure that the direct caller is not a contract",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "require(msg.sender == owner)",
+      "description": "Verify that only a privileged sender can call sensitive functions",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "rtokenIn ≤ maxTokenTransfer",
+      "description": "Limit the maximum value of tokens transferable in one operation",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Gas Control",
+      "invariant": "gasUsed(func) ≤ maxGasPerFunc",
+      "description": "Ensure gas usage per function is within predefined bounds",
+      "security_relevance": "Medium"
+    },
+    {
+      "vulnerability": "Unchecked Low-Level Calls",
+      "invariant": "require(success == true)",
+      "description": "Check for successful low-level calls to avoid silent failures",
+      "security_relevance": "High"
+    },
+    {
+      "vulnerability": "Time Lock",
+      "invariant": "block.timestamp - lastTxTimestamp ≥ minTimeGap",
+      "description": "Ensure minimum time between successive transactions for rate limiting",
+      "security_relevance": "Low"
+    }
+  ]
+}
