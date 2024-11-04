@@ -1,0 +1,11 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": {
+            "WithdrawFunctions": "Only the contract owner is permitted to call 'withdrawTokens' and 'withdrawEther'."
+        }
+    },
+    "KnownVulnerabilities": {
+        "UncheckedExternalCalls": "The 'getTokens' function performs an unchecked call, leaving it vulnerable to reentrancy or denial-of-service attacks from malicious contracts."
+    },
+    "FallbackFunctionality": "No fallback function is implemented in this contract."
+}
