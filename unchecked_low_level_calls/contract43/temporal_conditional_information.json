@@ -1,0 +1,9 @@
+{
+    "TemporalAndConditionalInformation": {
+        "TimeSensitiveLogic": "No time-sensitive logic exists in this contract.",
+        "ConditionalLogicPaths": {
+            "RecipientCheck": "The _tos array must have at least one address for the function to execute.",
+            "LowLevelCall": "The call to caddress proceeds for each address in _tos, without any condition checking the success of each transfer."
+        }
+    }
+}
