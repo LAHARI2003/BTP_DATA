@@ -1,0 +1,19 @@
+{
+  "ImplementedSecurityControls": [
+    {
+      "RecipientArrayCheck": {
+        "Description": "The contract verifies that the `_tos` array has at least one recipient address using `require(_tos.length > 0)`."
+      }
+    }
+  ],
+  "Vulnerabilities": [
+    {
+      "UncheckedExternalCall": {
+        "Description": "The contract relies on an unchecked `call` to transfer tokens, potentially allowing calls to fail silently without being flagged. This is a known vulnerability if `caddress` does not perform as expected or is not a contract."
+      }
+    }
+  ],
+  "FallbackFunctionality": {
+    "Description": "The contract does not implement a fallback function."
+  }
+}
