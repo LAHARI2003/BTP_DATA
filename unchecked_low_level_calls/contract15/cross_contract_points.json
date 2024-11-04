@@ -1,0 +1,6 @@
+{
+    "CrossContractPoints": {
+        "CrossContractDependencies": "No explicit cross-contract dependencies",
+        "InterContractConsistencyConditions": "Not applicable"
+    }
+}
