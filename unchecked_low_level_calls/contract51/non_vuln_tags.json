@@ -1,0 +1,27 @@
+{
+  "nonVulnerableTags": {
+    "Well-Implemented Features": [
+      {
+        "Feature": "State Update Before External Call",
+        "Description": "The contract sets `userBalances[msg.sender]` to zero before making the external call with `msg.sender.send(amountToWithdraw)`. This ensures that re-entrancy attacks have limited opportunity to exploit the balance variable within this function."
+      }
+    ],
+    "Potentially Risky Features": [
+      {
+        "Feature": "Lack of Access Control",
+        "Description": "The `withdrawBalance` function is accessible by anyone, which could expose the function to misuse if userBalances are not properly initialized or if there is an unexpected state alteration. Adding access control modifiers could reduce potential misuse."
+      },
+      {
+        "Feature": "Unchecked Low-Level Call",
+        "Description": "The usage of `send` to transfer funds to `msg.sender` does not check for the success of the call, which may lead to unexpected contract states if the transfer fails. Using `require` with `transfer` or `call` would provide stronger guarantees that funds were successfully sent."
+      }
+    ],
+    "Invariant Validation Examples": [
+      {
+        "Function": "withdrawBalance",
+        "Invariant": "userBalances[msg.sender] is set to zero before transferring the funds",
+        "Description": "The function ensures that the balance for `msg.sender` is reduced to zero before attempting to transfer the balance out. This action preserves the invariant that `userBalances[msg.sender]` should accurately reflect the user's balance after withdrawal."
+      }
+    ]
+  }
+}
