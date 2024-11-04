@@ -1,0 +1,7 @@
+{
+  "TimeSensitiveLogic": "No time-sensitive operations exist in this contract.",
+  "ConditionalLogicPaths": {
+    "fallbackFunctionDeposit": "If msg.value > 0, balance is incremented.",
+    "withdrawFunction": "If the user's balance is greater than 0, the contract attempts to transfer the balance and reset it to 0."
+  }
+}
