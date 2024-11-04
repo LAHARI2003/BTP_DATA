@@ -1,0 +1,27 @@
+{
+  "NonVulnerableTags": [
+    {
+      "WellImplementedFeatures": [
+        {
+          "AccessControl": "The contract properly sets an owner upon initialization, giving control over specific functions to the contract deployer.",
+          "MoneyFlowIntegrity": "The withdrawTokens and withdrawEther functions consistently ensure funds are directed to the owner, avoiding unexpected beneficiaries."
+        }
+      ]
+    },
+    {
+      "InvariantValidationExamples": [
+        {
+          "WithdrawTokensInvariant": "The withdrawTokens function transfers the entire token balance of the contract to the owner, which maintains an invariant where the contract does not hold token balances unless specified by the owner.",
+          "WithdrawEtherInvariant": "The withdrawEther function maintains the invariant that Ether held in the contract should belong to the owner by transferring the balance upon withdrawal."
+        }
+      ]
+    }
+  ],
+  "PotentiallyRiskyFeatures": [
+    {
+      "UncheckedExternalCalls": "In the getTokens function, the addr.call.value(0 wei)() is an unprotected call to an external contract. This could lead to potential reentrancy attacks if the called contract is malicious or has complex fallback functions.",
+      "LackOfAuthorizationChecks": "The getTokens function does not have authorization checks, allowing any caller to execute arbitrary calls to an external contract, which can pose risks if executed maliciously.",
+      "DirectTransferUsage": "The withdrawEther function uses owner.transfer, which can fail if the receiving address is a contract with limited gas in the fallback function, potentially locking Ether in the contract."
+    }
+  ]
+}
