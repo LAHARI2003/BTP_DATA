@@ -1,0 +1,14 @@
+{
+    "CrossContractPoints": {
+        "CrossContractDependencies": {
+            "Description": "The contract relies on the caddress contract to perform transfers on behalf of the sender"
+        },
+        "InterContractConsistencyConditions": {
+            "Conditions": [
+                {
+                    "Description": "The transferFrom function in the caddress contract should succeed for the intended transfer to be completed"
+                }
+            ]
+        }
+    }
+}
