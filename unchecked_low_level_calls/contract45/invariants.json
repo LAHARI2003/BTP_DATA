@@ -1,0 +1,39 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "invariant": "msg.sender == owner",
+            "expression": "msg.sender == owner",
+            "security_relevance": "High",
+            "description": "Ensures only the owner can invoke critical functions to prevent unauthorized access."
+        },
+        {
+            "vulnerability": "Gas Control",
+            "invariant": "gasStart ≤ gas",
+            "expression": "gasUsed(makeOldFucks) <= maxGasPerFunc",
+            "security_relevance": "High",
+            "description": "Ensures that each call to makeOldFucks does not exceed maximum allowed gas limit, preventing potential denial of service."
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "callDepth ≤ maxDepth",
+            "expression": "callDepth <= maxDepth",
+            "security_relevance": "High",
+            "description": "Ensures no recursive call exceeds safe call depth limit, guarding against re-entrancy attacks."
+        },
+        {
+            "vulnerability": "Unchecked External Calls",
+            "invariant": "externalCall == true",
+            "expression": "assert(fuck.call(bytes4(sha3('giveBlockReward()'))) == success)",
+            "security_relevance": "High",
+            "description": "Checks that external calls are successful to avoid unintended side effects and vulnerabilities."
+        },
+        {
+            "vulnerability": "Oracle Slippage",
+            "invariant": "prLB <= price <= prUB",
+            "expression": "assert(block.gasprice <= maxGasPriceForOrder)",
+            "security_relevance": "Medium",
+            "description": "Limits gas price for reordering prevention and ensures call validity based on oracle price."
+        }
+    ]
+}
