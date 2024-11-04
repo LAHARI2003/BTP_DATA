@@ -1,0 +1,8 @@
+{
+    "CrossContractPoints": {
+        "CrossContractDependencies": {
+            "UncheckedExternalCall": "The Command function allows the Owner to make an arbitrary call to any address with provided data."
+        },
+        "InterContractConsistencyConditions": "Not applicable, as the contract does not interact directly with other specific contracts but allows arbitrary calls via Command."
+    }
+}
