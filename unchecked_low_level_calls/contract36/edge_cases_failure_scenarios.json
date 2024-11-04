@@ -1,0 +1,11 @@
+{
+    "Edge Case Annotations": {
+        "Zero Value Deposits": "The `deposit` function requires `msg.value > 0.5 ether`, preventing zero or small deposits.",
+        "Unauthorized Withdrawals": "The `onlyOwner` modifier restricts withdrawals to the owner only."
+    },
+    "Common Attack Patterns": {
+        "Unchecked Call Vulnerability": "In the `proxy` function, the low-level `call` is unchecked, which can allow re-entrancy or failed calls to go unnoticed.",
+        "Access Control Vulnerability": "The `Vault` function can initialize the `Owner` if called by an EOA, potentially allowing a new owner to be set unintentionally."
+    },
+    "Recovery Mechanisms": "No specific recovery mechanisms are implemented in this contract."
+}
