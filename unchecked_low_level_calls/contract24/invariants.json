@@ -1,0 +1,76 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "expression": "msg.sender == requests[0].requester",
+            "description": "Only the original requester can perform actions such as upgrade, reset, suspend, and restart.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Access Control",
+            "expression": "msg.sender == SGX_ADDRESS",
+            "description": "Only the SGX address can deliver a response.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Time Lock",
+            "expression": "unrespondedCnt >= 0",
+            "description": "The count of unresponded requests should never fall below zero.",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Gas Control",
+            "expression": "callbackGas <= (fee - MIN_FEE) / tx.gasprice",
+            "description": "The gas allocated for the callback function should be computed based on the remaining fee after subtracting the minimum fee.",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Gas Control",
+            "expression": "callbackGas <= msg.gas - 5000",
+            "description": "Ensures sufficient gas remains for critical operations, avoiding out-of-gas issues.",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "expression": "externalCallFlag == false",
+            "description": "The `externalCallFlag` is checked to prevent re-entrant calls.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Oracle Slippage",
+            "expression": "requests[requestId].paramsHash == paramsHash",
+            "description": "The parameters hash of the response must match the request parameters for integrity.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Special Storage",
+            "expression": "fee >= MIN_FEE",
+            "description": "Fee provided for each request must meet the minimum fee requirement for validity.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Money Flow",
+            "expression": "SGX_ADDRESS.send(fee)",
+            "description": "Transfer of funds to the SGX address upon successful completion of request.",
+            "security_relevance": "High"
+        },
+        {
+            "vulnerability": "Money Flow",
+            "expression": "msg.sender.call.value(fee - CANCELLATION_FEE)()",
+            "description": "Refund to requester upon cancellation, minus the cancellation fee.",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "expression": "requestCnt > 0",
+            "description": "Request count should always start at 1 and be greater than zero for valid operations.",
+            "security_relevance": "Medium"
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "expression": "requests[requestId].fee == DELIVERED_FEE_FLAG || requests[requestId].fee == CANCELLED_FEE_FLAG",
+            "description": "The fee flag must be set correctly to mark a request as either delivered or canceled.",
+            "security_relevance": "High"
+        }
+    ]
+}
