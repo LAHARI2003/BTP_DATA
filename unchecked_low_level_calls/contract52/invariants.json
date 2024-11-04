@@ -1,0 +1,34 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == tx.origin",
+      "expression": "msg.sender == tx.origin",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "require(msg.sender == owner)",
+      "expression": "require(msg.sender == owner)",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Unchecked Call",
+      "invariant": "callee.call() != false",
+      "expression": "callee.call() != false",
+      "security_relevance": "high"
+    },
+    {
+      "vulnerability": "Function Execution Rate Limiter",
+      "invariant": "callCount(callchecked) <= maxFreq",
+      "expression": "callCount(callchecked) <= maxFreq",
+      "security_relevance": "medium"
+    },
+    {
+      "vulnerability": "Data Flow Consistency",
+      "invariant": "isInitialized(callee)",
+      "expression": "isInitialized(callee)",
+      "security_relevance": "medium"
+    }
+  ]
+}
