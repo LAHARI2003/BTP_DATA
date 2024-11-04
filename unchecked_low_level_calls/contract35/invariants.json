@@ -1,0 +1,44 @@
+[
+    {
+        "invariant": "msg.sender == Owner",
+        "vulnerability": "Access Control",
+        "security_relevance": "High",
+        "expression": "msg.sender == Owner"
+    },
+    {
+        "invariant": "msg.sender == tx.origin",
+        "vulnerability": "Access Control",
+        "security_relevance": "Medium",
+        "expression": "msg.sender == tx.origin"
+    },
+    {
+        "invariant": "Deposits[msg.sender] >= amount",
+        "vulnerability": "Money Flow",
+        "security_relevance": "High",
+        "expression": "Deposits[msg.sender] >= amount"
+    },
+    {
+        "invariant": "deposit() only executes if msg.value > 0.25 ether",
+        "vulnerability": "Money Flow",
+        "security_relevance": "Medium",
+        "expression": "msg.value > 0.25 ether"
+    },
+    {
+        "invariant": "Owner != address(0)",
+        "vulnerability": "Special Storage",
+        "security_relevance": "High",
+        "expression": "Owner != address(0)"
+    },
+    {
+        "invariant": "balance of contract >= Deposits[msg.sender]",
+        "vulnerability": "Money Flow",
+        "security_relevance": "High",
+        "expression": "address(this).balance >= Deposits[msg.sender]"
+    },
+    {
+        "invariant": "target.call is unchecked for success",
+        "vulnerability": "Unchecked Low-Level Calls",
+        "security_relevance": "High",
+        "expression": "success(target.call.value(msg.value)(data))"
+    }
+]
