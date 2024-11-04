@@ -1,0 +1,9 @@
+{
+    "TransactionStateContext": {
+        "State1": "GetFreebie: When users send ETH above 1 ether, they receive contract balance.",
+        "State2": "Withdraw: Owner withdraws all contract balance."
+    },
+    "ExternalInteractions": {
+        "Description": "Transfers ether between users and contract. If more than 1 ether is sent, both Owner and msg.sender receive balance."
+    }
+}
