@@ -1,0 +1,46 @@
+{
+    "NonVulnerableTags": {
+        "AccessControl": {
+            "Feature": "Correct usage of onlyOwner in functions fill, run, changeOwner, and execute to restrict access to owner-only functions.",
+            "Details": "The onlyOwner modifier is applied to functions that perform sensitive actions, such as setting up token transfers and executing external calls."
+        },
+        "StateIntegrity": {
+            "Feature": "The contract ensures that totalToDistribute reflects the sum of all pending transfer amounts.",
+            "Details": "In the fill function, the sum of all transfer amounts is accumulated in the acc variable and added to totalToDistribute, maintaining accuracy in funds allocation."
+        },
+        "InvariantValidation": [
+            {
+                "Function": "fill",
+                "Invariant": "next should be 0 before filling new data to prevent overwriting data during an active transfer run.",
+                "Details": "The check if (next>0) ensures that data is only populated when no transfers are currently in progress, which maintains the validity of the transfer list."
+            },
+            {
+                "Function": "run",
+                "Invariant": "Ensures token balance matches totalToDistribute before initiating transfers.",
+                "Details": "The function verifies that the token balance is equal to totalToDistribute at the start of a transfer to prevent partial or incorrect distributions."
+            }
+        ]
+    },
+    "PotentialRiskyFeatures": {
+        "UncheckedLowLevelCalls": {
+            "Location": "execute function in Owned contract",
+            "Risk": "The use of _dst.call.value(_value)(_data) is unchecked, which can lead to potential vulnerabilities.",
+            "Mitigation": "Consider verifying the success of low-level calls to prevent failed transactions without notice."
+        },
+        "GasLimitDependency": {
+            "Location": "run function in TokenSender contract",
+            "Risk": "Gas usage within the run function relies on a specific gas threshold (gas > 150000) to process transfers. This dependency could result in failed executions if gas constraints change or if gas estimation varies.",
+            "Mitigation": "Implement an adaptive gas threshold or enable partial completion of transfers, rather than a hard-coded limit, for improved reliability."
+        },
+        "ReentrancyRisk": {
+            "Location": "run function in TokenSender contract",
+            "Risk": "Although there is an attempt to avoid reentrancy by setting next to transfers.length, there could still be reentrancy risks if the token contract itself is vulnerable to reentrancy.",
+            "Mitigation": "Consider using a checks-effects-interactions pattern or reentrancy guard to mitigate risks more comprehensively."
+        },
+        "IntegerOverflowRisk": {
+            "Location": "fill function in TokenSender contract",
+            "Risk": "Accumulator variable acc could potentially overflow with high data values, leading to inaccurate totalToDistribute calculations.",
+            "Mitigation": "Use SafeMath or similar overflow checks to ensure safe accumulation in acc to avoid unintended results."
+        }
+    }
+}
