@@ -1,0 +1,13 @@
+{
+    "TransactionContext": {
+        "TransactionState": {
+            "DepositState": "When users send Ether directly to the contract address",
+            "WithdrawalState": "When users attempt to call GetHoneyFromJar or withdraw to retrieve funds"
+        },
+        "ExternalInteractions": {
+            "IncomingEther": "Receives Ether when called directly",
+            "OutgoingEther": "Transfers Ether to the Owner and potentially the caller in GetHoneyFromJar",
+            "CallFunctionality": "Command function can execute external calls with arbitrary data"
+        }
+    }
+}
