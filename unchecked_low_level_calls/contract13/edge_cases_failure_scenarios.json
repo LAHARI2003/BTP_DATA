@@ -1,0 +1,12 @@
+{
+    "EdgeCaseAnnotations": {
+        "ZeroBalance": "If contract balance is zero, 'withdrawEther' may revert or have no effect.",
+        "InvalidTokenContract": "If 'withdrawTokens' is called with an invalid address or one that does not implement 'Token', it may revert or fail silently.",
+        "ExcessiveCalls": "The 'getTokens' function may loop indefinitely if 'num' is excessively large, potentially causing out-of-gas errors."
+    },
+    "CommonAttackPatterns": {
+        "UncheckedExternalCall": "The 'getTokens' function performs an unchecked call on an arbitrary address, which could be exploited by a malicious contract.",
+        "Access Control Violation": "Only the owner can withdraw Ether or tokens, but there's no check to prevent multiple withdrawals."
+    },
+    "RecoveryMechanisms": "No emergency stop or recovery mechanisms are implemented in this contract."
+}
