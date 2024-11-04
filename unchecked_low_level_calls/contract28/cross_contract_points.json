@@ -1,0 +1,11 @@
+{
+  "CrossContractDependencies": {
+    "transferFrom": {
+      "Description": "Relies on an external contract's 'transferFrom' function to execute the transfer.",
+      "ContractAddress": "contract_address"
+    }
+  },
+  "InterContractConsistencyConditions": {
+    "Description": "The success of each transfer call depends on the compatibility of the external contract at 'contract_address' with the 'transferFrom' function signature."
+  }
+}
