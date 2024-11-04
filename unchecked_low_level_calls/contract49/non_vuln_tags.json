@@ -1,0 +1,54 @@
+{
+  "Contract": "KingOfTheEtherThrone",
+  "WellImplementedFeatures": {
+    "AccessControl": [
+      {
+        "description": "Usage of onlywizard modifier restricts certain functions (sweepCommission, transferOwnership) to only the wizard address.",
+        "lines": "51, 206, 211"
+      }
+    ],
+    "MoneyFlowIntegrity": [
+      {
+        "description": "The currentMonarch state variable maintains a record of the current ruler's address, claim price, and other details, ensuring accurate tracking of the throne holder.",
+        "lines": "85, 159"
+      }
+    ],
+    "InvariantValidation": [
+      {
+        "description": "The claimThrone function adjusts the valuePaid variable to the correct amount by refunding excess Ether sent, ensuring accurate payments based on the currentClaimPrice.",
+        "lines": "134-140"
+      },
+      {
+        "description": "The contract maintains a pastMonarchs array, pushing the current monarch before replacing them, which preserves the chain of succession and transaction history.",
+        "lines": "162-164"
+      },
+      {
+        "description": "The contract applies a rounding mechanism to currentClaimPrice after each claim, preventing unintended growth in precision and potential overflow issues.",
+        "lines": "167-189"
+      }
+    ]
+  },
+  "RiskyFeatures": {
+    "UncheckedExternalCall": [
+      {
+        "description": "The contract uses send() to transfer compensation and excess payments, but send() returns a boolean instead of reverting on failure, which may lead to failed transfers without notification.",
+        "lines": "110, 118, 132, 174",
+        "potentialRisk": "Risk of fund loss if transfers fail, as the contract does not handle the boolean result of send() calls."
+      }
+    ],
+    "CommissionAccumulation": [
+      {
+        "description": "The wizard's commission accumulates until claimed via sweepCommission, which can potentially accumulate significant funds without visibility for stakeholders.",
+        "lines": "156-158",
+        "potentialRisk": "The accumulation model could result in high-value amounts being vulnerable if the onlywizard modifier is compromised."
+      }
+    ],
+    "ReentrancyRisk": [
+      {
+        "description": "Reentrancy attacks could be possible due to multiple send() calls, especially within claimThrone, which interacts with the currentMonarch and external addresses without a mutex or reentrancy guard.",
+        "lines": "110, 118, 174",
+        "potentialRisk": "Risk of reentrancy exploits, as external calls are performed without ensuring the completion of internal state updates first."
+      }
+    ]
+  }
+}
