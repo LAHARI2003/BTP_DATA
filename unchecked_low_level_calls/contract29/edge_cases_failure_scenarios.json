@@ -1,0 +1,24 @@
+{
+  "EdgeCaseAnnotations": [
+    {
+      "ZeroRecipients": {
+        "Description": "If `_tos` is empty, the `transfer` function reverts due to `require(_tos.length > 0)`."
+      },
+      "MismatchedArrayLengths": {
+        "Description": "If the `v` array does not match the length of `_tos`, the function may result in unexpected behavior since the function does not explicitly handle this condition."
+      }
+    }
+  ],
+  "CommonAttackPatterns": [
+    {
+      "UncheckedExternalCall": {
+        "Description": "The `caddress.call` is unchecked, which can lead to issues if `caddress` is not a contract or if the call fails. This can lead to token loss if not handled carefully."
+      }
+    }
+  ],
+  "RecoveryMechanisms": [
+    {
+      "Description": "There are no recovery mechanisms in place for handling failed transfers."
+    }
+  ]
+}
