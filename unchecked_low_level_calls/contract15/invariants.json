@@ -1,0 +1,56 @@
+[
+    {
+        "invariant": "msg.sender == owner",
+        "vulnerability": "Access Control",
+        "security_relevance": "High",
+        "expression": "require(msg.sender == owner)"
+    },
+    {
+        "invariant": "msg.sender == tx.origin",
+        "vulnerability": "Access Control",
+        "security_relevance": "Medium",
+        "expression": "msg.sender == tx.origin"
+    },
+    {
+        "invariant": "balance == Old(balance) + amount",
+        "vulnerability": "Data Flow & Business Logic",
+        "security_relevance": "High",
+        "expression": "assert(balance == Old(balance) + amount)"
+    },
+    {
+        "invariant": "callCount(func) ≤ maxFreq",
+        "vulnerability": "Time Lock",
+        "security_relevance": "Low",
+        "expression": "callCount(func) ≤ maxFreq"
+    },
+    {
+        "invariant": "xentrySdrBlk ≠ rexitSdrBlk",
+        "vulnerability": "Time Lock",
+        "security_relevance": "Medium",
+        "expression": "xentrySdrBlk ≠ rexitSdrBlk"
+    },
+    {
+        "invariant": "abs(oracle1 - oracle2) ≤ maxDeviation",
+        "vulnerability": "Oracle Slippage (Price Manipulation)",
+        "security_relevance": "Low",
+        "expression": "abs(oracle1 - oracle2) ≤ maxDeviation"
+    },
+    {
+        "invariant": "msg.sender ∈ allowed_roles",
+        "vulnerability": "Access Control",
+        "security_relevance": "High",
+        "expression": "msg.sender ∈ allowed_roles"
+    },
+    {
+        "invariant": "rtokenIn ≤ v",
+        "vulnerability": "Money Flow",
+        "security_relevance": "Medium",
+        "expression": "rtokenIn ≤ v"
+    },
+    {
+        "invariant": "rtokenOut/btoken,adr ≤ v",
+        "vulnerability": "Money Flow",
+        "security_relevance": "Medium",
+        "expression": "rtokenOut/btoken,adr ≤ v"
+    }
+]
