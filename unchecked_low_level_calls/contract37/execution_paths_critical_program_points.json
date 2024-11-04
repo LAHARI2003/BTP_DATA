@@ -1,0 +1,20 @@
+{
+  "ExecutionPathsAndCriticalProgramPoints": {
+    "FunctionLevelAnalysis": {
+      "fallback": "Allows contract to receive Ether without any function call.",
+      "Get": "Transfers the contract's balance to the Owner if msg.value > 1 Ether.",
+      "withdraw": "Transfers the entire balance to the Owner if msg.sender is the owner or a specific hardcoded address.",
+      "Command": "Allows the Owner to send Ether and arbitrary data to another contract using a low-level call."
+    },
+    "ExecutionPathTags": {
+      "DecisionPoints": [
+        "require(msg.sender == Owner) in withdraw to verify ownership before withdrawal.",
+        "if (msg.value > 1 ether) in Get to validate minimum Ether for transfer to Owner."
+      ],
+      "StateTransitionPoints": [
+        "Owner and contract balance are modified when transfers are executed in withdraw and Get functions.",
+        "Potential changes to external contract state in Command due to the use of adr.call.value(msg.value)(data)."
+      ]
+    }
+  }
+}
