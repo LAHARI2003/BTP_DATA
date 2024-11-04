@@ -1,0 +1,12 @@
+{
+  "TimeSensitiveLogic": {
+    "CoronationTimestamp": "Tracks when a monarch’s rule began, allowing future time-based rules (e.g., max reign duration)."
+  },
+  "ConditionalLogicPaths": {
+    "ClaimPriceAdjustment": "Adjusts claim price based on pre-defined thresholds (10 finney to 10000 ether) to prevent large price jumps.",
+    "UsurperRefundConditions": [
+      "Refunds full payment if valuePaid < currentClaimPrice",
+      "Refunds excess if valuePaid > currentClaimPrice"
+    ]
+  }
+}
