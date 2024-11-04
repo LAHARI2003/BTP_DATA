@@ -1,0 +1,11 @@
+{
+  "ImplementedSecurityControls": {
+    "AccessControl": "The onlyOwner access control is applied to withdraw and Command to restrict functionality to the contract owner."
+  },
+  "TimeLock": {
+    "TimeLock": "Not implemented; no time-based restrictions are present in this contract."
+  },
+  "FallbackFunctionality": {
+    "FallbackFunction": "The contract includes a fallback function to accept Ether but does not restrict or control its usage."
+  }
+}
