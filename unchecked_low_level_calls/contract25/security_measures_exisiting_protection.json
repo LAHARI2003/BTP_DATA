@@ -1,0 +1,10 @@
+{
+    "ImplementedSecurityControls": {
+        "AccessControl": "The onlyOwner modifier is applied to functions requiring ownership.",
+        "MinimumDeposit": "A minimum deposit amount is enforced in the Deposit function."
+    },
+    "ExistingProtections": {
+        "FallbackFunctionality": "The fallback function triggers the Deposit function when Ether is sent to the contract.",
+        "UncheckedLowLevelCalls": "Potential vulnerability due to unchecked low-level calls in WithdrawToken and WithdrawToHolder."
+    }
+}
