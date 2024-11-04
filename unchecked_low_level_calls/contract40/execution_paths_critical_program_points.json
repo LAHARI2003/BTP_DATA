@@ -1,0 +1,24 @@
+{
+    "FunctionLevelAnalysis": {
+        "wager": "Manages user bets, enforces bet limits, and transfers funds to jackpot, dev fee, and whale",
+        "play": "Determines bet outcome, pays winnings, and updates jackpot and dev fee",
+        "donateForContractHealth": "Accepts donations to maintain contract health",
+        "withdrawDevFee": "Allows owner to withdraw accumulated developer fees",
+        "withdrawBotFee": "Allows bot to withdraw bot fees",
+        "kill": "Destroys contract if there are no active bets"
+    },
+    "ExecutionPathTags": {
+        "DecisionPoints": {
+            "MinimumBet": "Checks if bet meets minimum amount",
+            "MaximumBet": "Checks if bet does not exceed maximum amount",
+            "ExpirationBlockCheck": "Ensures ticket is within a valid block range",
+            "SignatureVerification": "Verifies vrs signature to authorize wager"
+        },
+        "StateTransitionPoints": {
+            "JackpotUpdate": "Updates jackpot when a bet is placed",
+            "DevFeeUpdate": "Updates developer fee amount when a bet is placed",
+            "LockedBetsUpdate": "Tracks funds locked in bets",
+            "ResetBetAmount": "Resets bet amount after a result is determined"
+        }
+    }
+}
