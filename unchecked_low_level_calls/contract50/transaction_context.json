@@ -1,0 +1,10 @@
+{
+    "Transaction State Context": {
+        "State1": "Initial State - Prior to calling sendToWinner",
+        "State2": "Winner Selected State - After calling sendToWinner, setting payedOut to true"
+    },
+    "External Interactions": {
+        "Interaction1": "sendToWinner - Sends the winning amount to the winner address",
+        "Interaction2": "withdrawLeftOver - Sends remaining balance to the message sender if winnings have been paid out"
+    }
+}
