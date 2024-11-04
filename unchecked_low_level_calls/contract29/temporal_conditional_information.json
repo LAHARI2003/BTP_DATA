@@ -1,0 +1,12 @@
+{
+  "TimeSensitiveLogic": {
+    "Description": "There is no time-dependent logic in the `EBU` contract."
+  },
+  "ConditionalLogicPaths": [
+    {
+      "RecipientArrayCheck": {
+        "Description": "The `transfer` function only proceeds with transfers if `_tos.length > 0`. If not met, the function reverts."
+      }
+    ]
+  ]
+}
