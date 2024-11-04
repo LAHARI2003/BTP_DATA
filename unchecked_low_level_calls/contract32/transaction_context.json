@@ -1,0 +1,10 @@
+{
+    "Transaction State Context": {
+        "Deposit State": "When users send ether to the contract, triggering the fallback function and increasing depositsCount.",
+        "Withdrawal State": "When the owner withdraws funds using withdrawAll or withdraw, transferring ether out of the contract."
+    },
+    "External Interactions": {
+        "Ether Transfers": "The contract receives ether when deposits are made and transfers ether back to the owner during withdrawals.",
+        "Cross-Contract Calls": "The sendMoney function allows the contract owner to send ether to a target address, potentially invoking that contract’s fallback function."
+    }
+}
