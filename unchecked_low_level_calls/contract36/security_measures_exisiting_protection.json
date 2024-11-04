@@ -1,0 +1,10 @@
+{
+    "Implemented Security Controls": {
+        "Access Control": "The `onlyOwner` modifier restricts access to the `withdraw` function to the contract owner.",
+        "Minimum Deposit Amount": "A minimum deposit amount of 0.5 Ether is enforced in `deposit`."
+    },
+    "Missing Security Controls": {
+        "Unchecked Call": "The `proxy` function uses an unchecked `call` which can result in security issues.",
+        "Owner Initialization": "The `Vault` function allows setting the owner from an EOA, which could lead to ownership takeover under certain conditions."
+    }
+}
