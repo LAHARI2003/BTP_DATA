@@ -1,0 +1,88 @@
+{
+  "invariants": [
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == owner",
+      "security_relevance": "High",
+      "expression": "msg.sender == owner"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender == ceoAddress || msg.sender == cfoAddress || msg.sender == cooAddress",
+      "security_relevance": "High",
+      "expression": "msg.sender ∈ {ceoAddress, cfoAddress, cooAddress}"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "msg.sender != address(0)",
+      "security_relevance": "High",
+      "expression": "msg.sender ≠ 0"
+    },
+    {
+      "vulnerability": "Access Control",
+      "invariant": "newContractAddress == address(0)",
+      "security_relevance": "Medium",
+      "expression": "newContractAddress == 0"
+    },
+    {
+      "vulnerability": "Time Lock",
+      "invariant": "block.timestamp - lastTxTimestamp >= minTimeGap",
+      "security_relevance": "Medium",
+      "expression": "block.timestamp - lastTxTimestamp ≥ minTimeGap"
+    },
+    {
+      "vulnerability": "Gas Control",
+      "invariant": "gasStart - gasEnd <= maxGasPerFunc",
+      "security_relevance": "Medium",
+      "expression": "gasUsed(func) ≤ maxGasPerFunc"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "msg.sender.send(balance)",
+      "security_relevance": "High",
+      "expression": "msg.sender.send(balance)"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "!externalCallInCriticalFuncs",
+      "security_relevance": "High",
+      "expression": "!externalCallInCriticalFuncs"
+    },
+    {
+      "vulnerability": "Re-entrancy",
+      "invariant": "ownershipTokenCount[_from]--",
+      "security_relevance": "High",
+      "expression": "ownershipTokenCount[_from]--"
+    },
+    {
+      "vulnerability": "Oracle Slippage (Price Manipulation)",
+      "invariant": "auction.price >= minPrice",
+      "security_relevance": "Medium",
+      "expression": "auction.price ≥ minPrice"
+    },
+    {
+      "vulnerability": "Oracle Slippage (Price Manipulation)",
+      "invariant": "priceDifference <= maxAllowedDeviation",
+      "security_relevance": "High",
+      "expression": "|price - lastPrice| ≤ maxAllowedDeviation"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "msg.value >= auction.startingPrice",
+      "security_relevance": "High",
+      "expression": "msg.value ≥ auction.startingPrice"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "gen0CreatedCount < GEN0_CREATION_LIMIT",
+      "security_relevance": "Medium",
+      "expression": "gen0CreatedCount < GEN0_CREATION_LIMIT"
+    },
+    {
+      "vulnerability": "Money Flow",
+      "invariant": "balance >= auction.endPrice",
+      "security_relevance": "High",
+      "expression": "balance ≥ auction.endPrice"
+    }
+  ]
+}
