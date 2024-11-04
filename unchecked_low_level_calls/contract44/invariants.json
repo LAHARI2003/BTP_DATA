@@ -1,0 +1,46 @@
+{
+    "invariants": [
+        {
+            "vulnerability": "Access Control",
+            "invariant": "msg.sender == owner",
+            "expression": "msg.sender == owner",
+            "security_relevance": "High",
+            "description": "Ensures that only the contract owner can perform critical operations."
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "invariant": "totalToDistribute == sum(transfers.amount)",
+            "expression": "totalToDistribute == sum(transfers[i].amount for i in range(transfers.length))",
+            "security_relevance": "High",
+            "description": "Ensures that the total amount to distribute matches the accumulated amounts in all transfers."
+        },
+        {
+            "vulnerability": "Gas Control",
+            "invariant": "gas() > 150000",
+            "expression": "gas() > 150000",
+            "security_relevance": "Medium",
+            "description": "Ensures that there is enough gas to complete transactions, avoiding potential out-of-gas vulnerabilities in transfer loops."
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "invariant": "next <= transfers.length",
+            "expression": "next <= transfers.length",
+            "security_relevance": "Medium",
+            "description": "Ensures that the index for transfers (`next`) does not exceed the length of the transfers array, preventing out-of-bounds access."
+        },
+        {
+            "vulnerability": "Data Flow & Business Logic",
+            "invariant": "amount > 0 => token.transfer(addr, amount)",
+            "expression": "if transfers[mNext].amount > 0, then token.transfer(transfers[mNext].addr, transfers[mNext].amount)",
+            "security_relevance": "Medium",
+            "description": "Ensures that transfer amounts are greater than zero before invoking token transfers, which mitigates unnecessary function calls and potential errors."
+        },
+        {
+            "vulnerability": "Re-entrancy",
+            "invariant": "next == transfers.length before external calls",
+            "expression": "next == transfers.length",
+            "security_relevance": "High",
+            "description": "Prevents re-entrancy by setting `next` to `transfers.length` before making external token transfers, blocking additional re-entrant calls to `run`."
+        }
+    ]
+}
