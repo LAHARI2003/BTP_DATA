@@ -1,0 +1,21 @@
+{
+  "Execution Paths and Critical Program Points": {
+    "Function-Level Analysis": {
+      "changeOwner": "Updates the owner of the contract; can only be called by the current owner.",
+      "execute": "Allows the owner to make arbitrary calls on other contracts.",
+      "fill": "Populates the transfer list with recipients and amounts. Only callable by the owner and only if no transfers have been executed yet.",
+      "run": "Executes the list of transfers, transfers tokens to recipients, and manages gas to ensure the function completes safely within gas limits."
+    },
+    "Execution Path Tags": {
+      "Decision Points": [
+        "The execute function performs unchecked low-level calls.",
+        "The fill function checks if transfers have started, throwing if any have been made.",
+        "In the run function, transfer execution stops if gas runs low."
+      ],
+      "State Transition Points": [
+        "next variable is updated in run to track progress through the transfers list.",
+        "totalToDistribute is updated in fill to keep track of the total distribution."
+      ]
+    }
+  }
+}
