@@ -1,0 +1,64 @@
+{
+    "invariants": [
+        {
+            "invariant": "msg.sender == wizardAddress",
+            "description": "Ensures only the wizard can call restricted functions.",
+            "related_vulnerability": "Access Control",
+            "security_relevance": "High"
+        },
+        {
+            "invariant": "valuePaid >= currentClaimPrice",
+            "description": "Ensures that only transactions meeting or exceeding the current claim price can proceed.",
+            "related_vulnerability": "Access Control",
+            "security_relevance": "High"
+        },
+        {
+            "invariant": "currentClaimPrice >= startingClaimPrice",
+            "description": "Maintains that the claim price does not fall below the initial starting price.",
+            "related_vulnerability": "Data Flow & Business Logic",
+            "security_relevance": "Medium"
+        },
+        {
+            "invariant": "wizardCommission <= (msg.value * wizardCommissionFractionNum / wizardCommissionFractionDen)",
+            "description": "Ensures that the wizard’s commission does not exceed the specified fraction of the claim payment.",
+            "related_vulnerability": "Money Flow",
+            "security_relevance": "Medium"
+        },
+        {
+            "invariant": "compensation + wizardCommission == valuePaid",
+            "description": "Verifies that compensation paid to the monarch plus the wizard’s commission equals the total claim fee.",
+            "related_vulnerability": "Money Flow",
+            "security_relevance": "High"
+        },
+        {
+            "invariant": "currentMonarch.etherAddress != wizardAddress || compensation == 0",
+            "description": "Ensures compensation is only sent to a monarch if the throne is occupied.",
+            "related_vulnerability": "Money Flow",
+            "security_relevance": "Medium"
+        },
+        {
+            "invariant": "currentClaimPrice == startingClaimPrice * (claimPriceAdjustNum / claimPriceAdjustDen)^n",
+            "description": "Calculates claim price based on an incremental formula depending on the number of throne claims.",
+            "related_vulnerability": "Data Flow & Business Logic",
+            "security_relevance": "High"
+        },
+        {
+            "invariant": "msg.sender.send(valuePaid) && msg.sender.send(excessPaid)",
+            "description": "Checks that refunds for insufficient or excess payments are made correctly to the sender.",
+            "related_vulnerability": "Money Flow",
+            "security_relevance": "High"
+        },
+        {
+            "invariant": "currentMonarch.etherAddress.send(compensation)",
+            "description": "Ensures compensation is paid directly to the previous monarch before throne transfer.",
+            "related_vulnerability": "Re-entrancy",
+            "security_relevance": "High"
+        },
+        {
+            "invariant": "block.timestamp >= currentMonarch.coronationTimestamp",
+            "description": "Verifies the block timestamp reflects valid, non-manipulated progression of monarch succession.",
+            "related_vulnerability": "Time Lock",
+            "security_relevance": "Low"
+        }
+    ]
+}
