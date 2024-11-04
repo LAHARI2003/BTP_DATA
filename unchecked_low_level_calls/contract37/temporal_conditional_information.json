@@ -1,0 +1,9 @@
+{
+  "TemporalAndConditionalInformation": {
+    "TimeSensitiveLogic": "No explicit time-based conditions are applied in the Pie contract.",
+    "ConditionalLogicPaths": [
+      "msg.value condition in Get to check if minimum Ether is sent for balance transfer to the Owner.",
+      "msg.sender condition in withdraw and Command to verify if the caller is the Owner."
+    ]
+  }
+}
