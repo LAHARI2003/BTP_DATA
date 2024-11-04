@@ -1,0 +1,22 @@
+{
+    "Function-Level Analysis": {
+        "sendToWinner": {
+            "FunctionPurpose": "Transfers winnings to the selected winner if payedOut is false",
+            "SecurityWarning": "Potential unchecked low-level call - possible reentrancy risk"
+        },
+        "withdrawLeftOver": {
+            "FunctionPurpose": "Transfers remaining contract balance to the sender if winnings have been paid out",
+            "SecurityWarning": "Potential unchecked low-level call - possible reentrancy risk"
+        }
+    },
+    "Execution Path Tags": {
+        "Decision Points": {
+            "sendToWinner": "require(!payedOut) - Ensures winnings have not yet been paid out",
+            "withdrawLeftOver": "require(payedOut) - Ensures winnings have already been paid out"
+        },
+        "State Transition Points": {
+            "sendToWinner": "Sets payedOut to true after sending winAmount",
+            "withdrawLeftOver": "Sends remaining contract balance to msg.sender"
+        }
+    }
+}
